@@ -40,9 +40,9 @@ const CV_CONFIG = {
         website: "jeffzambrano.github.io",
         theme: "jeferson",
         colors: {
-            primary: "#f59e0b",
-            primaryDark: "#d97706", 
-            primaryLight: "#fbbf24"
+            primary: "#10b981",
+            primaryDark: "#059669", 
+            primaryLight: "#34d399"
         }
     }
 };
