@@ -117,26 +117,26 @@ class CVSystem {
     }
 
     setupNavigation() {
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-        const navLinks = document.querySelectorAll('.nav-link');
+        const hamburger = document.querySelector('.navbar__hamburger');
+        const navMenu = document.querySelector('.navbar__menu');
+        const navLinks = document.querySelectorAll('.navbar__link');
 
         if (!hamburger || !navMenu) return;
 
         // Toggle mobile menu
         hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('navbar__hamburger--active');
+            navMenu.classList.toggle('navbar__menu--active');
             
             // Prevent body scroll when menu is open
-            document.body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : '';
+            document.body.style.overflow = hamburger.classList.contains('navbar__hamburger--active') ? 'hidden' : '';
         });
 
         // Close mobile menu when clicking on links
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
+                hamburger.classList.remove('navbar__hamburger--active');
+                navMenu.classList.remove('navbar__menu--active');
                 document.body.style.overflow = '';
             });
         });
@@ -144,8 +144,8 @@ class CVSystem {
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
+                hamburger.classList.remove('navbar__hamburger--active');
+                navMenu.classList.remove('navbar__menu--active');
                 document.body.style.overflow = '';
             }
         });
@@ -239,7 +239,7 @@ class CVSystem {
                 }
                 .notification-success { background: #10b981; }
                 .notification-error { background: #ef4444; }
-                .notification-info { background: var(--primary-color); }
+                .notification-info { background: var(--color-primary); }
                 .notification-content {
                     display: flex;
                     align-items: center;
@@ -288,38 +288,38 @@ class CVSystem {
     }
 
     setupFormLabels() {
-        const inputs = document.querySelectorAll('.form-group input, .form-group textarea');
+        const inputs = document.querySelectorAll('.form__group input, .form__group textarea');
         
         inputs.forEach(input => {
             // Focus events
             input.addEventListener('focus', () => {
-                input.parentElement.classList.add('focused');
+                input.parentElement.classList.add('form__group--focused');
             });
             
             input.addEventListener('blur', () => {
                 if (!input.value.trim()) {
-                    input.parentElement.classList.remove('focused');
+                    input.parentElement.classList.remove('form__group--focused');
                 }
             });
             
             // Check if input has value on page load
             if (input.value.trim()) {
-                input.parentElement.classList.add('focused');
+                input.parentElement.classList.add('form__group--focused');
             }
         });
     }
 
     resetFormLabels() {
-        document.querySelectorAll('.form-group.focused').forEach(group => {
+        document.querySelectorAll('.form__group--focused').forEach(group => {
             const input = group.querySelector('input, textarea');
             if (!input.value.trim()) {
-                group.classList.remove('focused');
+                group.classList.remove('form__group--focused');
             }
         });
     }
 
     setupScrollEffects() {
-        const navbar = document.getElementById('navbar');
+        const navbar = document.querySelector('.navbar');
         if (!navbar) return;
 
         let lastScrollY = window.scrollY;
@@ -330,9 +330,9 @@ class CVSystem {
             
             // Add/remove scrolled class
             if (currentScrollY > 50) {
-                navbar.classList.add('scrolled');
+                navbar.classList.add('navbar--scrolled');
             } else {
-                navbar.classList.remove('scrolled');
+                navbar.classList.remove('navbar--scrolled');
             }
 
             // Hide/show navbar on scroll (optional)
@@ -360,7 +360,7 @@ class CVSystem {
 
     setupActiveNavLinks() {
         const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
+        const navLinks = document.querySelectorAll('.navbar__link');
         
         if (!sections.length || !navLinks.length) return;
 
@@ -376,12 +376,12 @@ class CVSystem {
                     const currentSection = entry.target.getAttribute('id');
                     
                     // Remove active class from all links
-                    navLinks.forEach(link => link.classList.remove('active'));
+                    navLinks.forEach(link => link.classList.remove('navbar__link--active'));
                     
                     // Add active class to current section link
                     const activeLink = document.querySelector(`a[href="#${currentSection}"]`);
                     if (activeLink) {
-                        activeLink.classList.add('active');
+                        activeLink.classList.add('navbar__link--active');
                     }
                 }
             });
