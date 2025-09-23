@@ -241,7 +241,7 @@ img {
     font-size: var(--font-size-md);
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: var(--spacing-xl);
-    line-height: var(--line-height-relaxed);
+    line-height: var(--line-height-base);
 }
 
 .hero__buttons {
@@ -456,7 +456,7 @@ img {
 
 .skill-category__description {
     color: var(--color-text-secondary);
-    line-height: var(--line-height-relaxed);
+    line-height: var(--line-height-base);
 }
 
 /* M-Tech-Stack: Stack tecnológico */
@@ -834,6 +834,11 @@ img {
 }
 
 .stats__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
     text-align: center;
     padding: var(--spacing-lg);
     background: var(--color-bg-card);
@@ -851,7 +856,6 @@ img {
     font-size: var(--font-size-2xl);
     font-weight: var(--font-weight-bold);
     color: var(--color-primary);
-    margin-bottom: var(--spacing-xs);
 }
 
 .stats__label {
@@ -966,7 +970,7 @@ img {
 
 .education__description {
     color: var(--color-text-secondary);
-    line-height: var(--line-height-relaxed);
+    line-height: var(--line-height-base);
     margin-bottom: var(--spacing-md);
 }
 
@@ -1162,7 +1166,7 @@ img {
 
 .profile-description {
     color: rgba(255, 255, 255, 0.8);
-    line-height: var(--line-height-relaxed);
+    line-height: var(--line-height-base);
     margin-bottom: var(--spacing-lg) !important;
 }
 
@@ -1284,7 +1288,7 @@ img {
 
 .feature-item p {
     color: var(--color-text-secondary);
-    line-height: var(--line-height-relaxed);
+    line-height: var(--line-height-base);
 }
 
 /* System Info Section */
@@ -1307,7 +1311,7 @@ img {
 
 .info-text p {
     font-size: var(--font-size-md);
-    line-height: var(--line-height-relaxed);
+    line-height: var(--line-height-base);
     margin-bottom: var(--spacing-lg);
 }
 
