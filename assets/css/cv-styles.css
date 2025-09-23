@@ -1504,8 +1504,11 @@ img {
 }
 
 @media (max-width: 30rem) {
+    .home-container {
+        padding: var(--spacing-section-block) var(--spacing-sm);
+    }
+    
     .l-container,
-    .home-container,
     .container {
         padding: 0 var(--spacing-sm);
     }
