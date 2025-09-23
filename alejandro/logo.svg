@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <!-- Gradiente principal -->
+    <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradiente secundario para efectos -->
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Sombra -->
+    <filter id="dropShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.2"/>
+    </filter>
+    
+    <!-- Efecto de brillo -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Fondo circular con efecto tech -->
+  <circle cx="100" cy="100" r="90" fill="url(#primaryGradient)" filter="url(#dropShadow)"/>
+  
+  <!-- Círculo interno decorativo -->
+  <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+  
+  <!-- Elementos tech decorativos -->
+  <!-- Pequeños círculos en las esquinas -->
+  <circle cx="45" cy="55" r="3" fill="rgba(255,255,255,0.3)"/>
+  <circle cx="155" cy="55" r="2" fill="rgba(255,255,255,0.2)"/>
+  <circle cx="45" cy="145" r="2" fill="rgba(255,255,255,0.2)"/>
+  <circle cx="155" cy="145" r="3" fill="rgba(255,255,255,0.3)"/>
+  
+  <!-- Líneas tech conectoras -->
+  <path d="M 55 65 L 75 85" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none"/>
+  <path d="M 145 65 L 125 85" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none"/>
+  <path d="M 55 135 L 75 115" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none"/>
+  <path d="M 145 135 L 125 115" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none"/>
+  
+  <!-- Letra A -->
+  <g filter="url(#glow)">
+    <path d="M 60 140 L 85 60 L 90 60 L 115 140 L 105 140 L 100 120 L 75 120 L 70 140 Z M 78 105 L 97 105 L 87.5 75 Z" 
+          fill="white" 
+          font-family="Inter, system-ui, sans-serif" 
+          font-weight="700"/>
+  </g>
+  
+  <!-- Letra B -->
+  <g filter="url(#glow)">
+    <path d="M 125 60 L 125 140 L 155 140 Q 170 140 170 125 Q 170 112.5 157.5 110 Q 167.5 107.5 167.5 95 Q 167.5 60 142.5 60 Z M 135 105 L 135 70 L 145 70 Q 157.5 70 157.5 87.5 Q 157.5 105 145 105 Z M 135 130 L 135 115 L 150 115 Q 160 115 160 122.5 Q 160 130 150 130 Z" 
+          fill="white" 
+          font-family="Inter, system-ui, sans-serif" 
+          font-weight="700"/>
+  </g>
+  
+  <!-- Punto decorativo central -->
+  <circle cx="100" cy="100" r="2" fill="rgba(255,255,255,0.8)"/>
+  
+  <!-- Arco decorativo superior -->
+  <path d="M 70 40 Q 100 30 130 40" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none"/>
+  
+  <!-- Arco decorativo inferior -->
+  <path d="M 70 160 Q 100 170 130 160" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none"/>
+</svg>
