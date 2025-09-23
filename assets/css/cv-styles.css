@@ -698,7 +698,7 @@ img {
 
 .btn--secondary {
     background: transparent;
-    color: var(--color-text-primary);
+    color: var(--color-primary);
     border: 0.125rem solid var(--color-primary);
 }
 
@@ -922,6 +922,7 @@ img {
 
 .education__item {
     display: flex;
+    flex-wrap: wrap;
     gap: var(--spacing-lg);
     background: var(--color-bg-card);
     padding: var(--spacing-xl);
