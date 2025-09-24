@@ -1185,8 +1185,8 @@ img {
 
 .profiles-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(25rem, 100%), 1fr));
-    gap: var(--spacing-xl);
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--spacing-lg);
     margin-bottom: var(--spacing-4xl);
 }
 
@@ -1199,7 +1199,7 @@ img {
     -webkit-backdrop-filter: blur(2rem);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: var(--radius-2xl);
-    padding: var(--spacing-2xl);
+    padding: var(--spacing-lg);
     text-align: center;
     box-shadow:
         var(--shadow-xl),
@@ -1317,6 +1317,7 @@ img {
     line-height: var(--line-height-relaxed);
     margin-bottom: var(--spacing-lg) !important;
     font-size: var(--font-size-base);
+    min-height: 15vh;
 }
 
 /* Profile Stats Grid */
@@ -1524,7 +1525,8 @@ img {
 .info-list li::before {
     content: '✓';
     position: absolute;
-    left: 0;
+    left: -5px;
+    top: -5px;
     color: var(--color-primary);
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-lg);
