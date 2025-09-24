@@ -20,6 +20,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 100%;
+    overflow-x: hidden;
     /* 16px base */
     scroll-padding-top: clamp(4rem, 8vw, 6rem);
 }
@@ -30,7 +31,6 @@ body {
     line-height: var(--line-height-base);
     color: var(--color-text-primary);
     background-color: var(--color-bg-primary);
-    overflow-x: hidden;
 }
 
 /* Tipografía base */
