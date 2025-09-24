@@ -1,237 +1,96 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Alejandro Battaglio Quintana - Chief Technology Officer (CTO) | IT & WebOps Specialist | UX/UI & Digital Systems">
+    <meta name="description" content="Alejandro Battaglio Quintana - Chief Technology Officer (CTO) | IT & WebOps Specialist | UX/UI & Digital Systems">
     <meta name="keywords" content="CTO, IT Operations, WebOps, Frontend Development, UX/UI, Digital Systems, Madrid">
     <meta name="author" content="Alejandro Battaglio Quintana">
-
+    
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Alejandro Battaglio - CTO & IT Specialist">
-    <meta property="og:description"
-        content="Chief Technology Officer especializado en IT Operations, WebOps y Desarrollo Frontend con experiencia internacional">
+    <meta property="og:description" content="Chief Technology Officer especializado en IT Operations, WebOps y Desarrollo Frontend con experiencia internacional">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://alebattaquin.github.io">
-
+    
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Alejandro Battaglio - CTO & IT Specialist">
-    <meta name="twitter:description"
-        content="Chief Technology Officer especializado en IT Operations, WebOps y Desarrollo Frontend">
-
+    <meta name="twitter:description" content="Chief Technology Officer especializado en IT Operations, WebOps y Desarrollo Frontend">
+    
     <title>Alejandro Battaglio - Chief Technology Officer</title>
-
+    
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-
+    
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <!-- AOS (Animate On Scroll) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+    
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/cv-root.css">
     <link rel="stylesheet" href="../assets/css/cv-styles.css">
-
-    <meta name="theme-color" content="#2563eb">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Alejandro Battaglio - CTO">
-    <style>
-        /* Mejoras específicas para Alejandro */
-        @media (max-width: 48rem) {
-            .navbar__menu--active::before {
-                background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
-            }
-
-            .navbar__link--active::after {
-                content: '';
-                position: absolute;
-                right: 1rem;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 0.5rem;
-                height: 0.5rem;
-                background: #2563eb;
-                border-radius: 50%;
-                box-shadow: 0 0 0.5rem rgba(37, 99, 235, 0.5);
-            }
-
-            /* Efecto de typing para el título en móvil */
-            .hero__title {
-                overflow: hidden;
-                border-right: 0.15em solid #2563eb;
-                white-space: nowrap;
-                animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
-            }
-
-            @keyframes typing {
-                from {
-                    width: 0;
-                }
-
-                to {
-                    width: 100%;
-                }
-            }
-
-            @keyframes blink-caret {
-
-                from,
-                to {
-                    border-color: transparent;
-                }
-
-                50% {
-                    border-color: #2563eb;
-                }
-            }
-        }
-
-        /* Indicador de carga para navegación */
-        .navbar__link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #2563eb, #1d4ed8);
-            transition: width 0.3s ease;
-        }
-
-        .navbar__link:hover::after,
-        .navbar__link--active::after {
-            width: 100%;
-        }
-
-        /* Mejora de accesibilidad - indicador de foco visible */
-        .navbar__hamburger:focus-visible {
-            outline: 3px solid #2563eb;
-            outline-offset: 2px;
-            background: rgba(37, 99, 235, 0.1);
-        }
-
-        /* Animación suave para transiciones de página */
-        .page-transition {
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .page-transition-enter {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .page-transition-enter-active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
-    <!-- ==========================================
-     SCHEMA MARKUP MEJORADO
-     Añadir antes del cierre </body>
-     ========================================== -->
-
-    <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Alejandro Battaglio Quintana",
-    "jobTitle": "Chief Technology Officer",
-    "description": "IT & WebOps Specialist especializado en arquitectura de sistemas, gestión de infraestructura digital y dirección tecnológica",
-    "url": "https://alebattaquin.github.io",
-    "email": "alebattaquin@gmail.com",
-    "telephone": "+34665543280",
-    "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Madrid",
-        "addressCountry": "ES"
-    },
-    "sameAs": [
-        "https://linkedin.com/in/desarollador-alejandro-battaglio",
-        "https://github.com/alebattaquin"
-    ],
-    "knowsAbout": [
-        "IT Operations",
-        "WebOps",
-        "Arquitectura de Sistemas",
-        "Dirección Tecnológica",
-        "UX/UI",
-        "Desarrollo Frontend",
-        "Automatización",
-        "CRM"
-    ],
-    "alumniOf": {
-        "@type": "EducationalOrganization",
-        "name": "Instituto Superior de Estudios Profesionales CEU"
-    }
-}
-</script>
 </head>
-
 <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar__container">
+            <!-- Logo -->
             <div class="navbar__logo">
-                <a href="/">
+                <a href="#home" class="navbar__logo-link">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="40" height="40">
                         <defs>
                             <linearGradient id="navGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#2563eb" />
-                                <stop offset="100%" style="stop-color:#1d4ed8" />
+                                <stop offset="0%" style="stop-color:#2563eb"/>
+                                <stop offset="100%" style="stop-color:#1d4ed8"/>
                             </linearGradient>
                         </defs>
-                        <circle cx="16" cy="16" r="15" fill="url(#navGradient)" />
-                        <circle cx="16" cy="16" r="14" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.5" />
-                        <path
-                            d="M 8 24 L 12 10 L 14 10 L 18 24 L 16 24 L 15.2 21 L 10.8 21 L 10 24 Z M 11.5 18.5 L 14.5 18.5 L 13 13.5 Z"
-                            fill="white" font-weight="bold" />
-                        <path
-                            d="M 19 10 L 19 24 L 25 24 Q 28 24 28 21.5 Q 28 19.5 26 19 Q 27.5 18.5 27.5 16.5 Q 27.5 10 24 10 Z M 21 18.5 L 21 12 L 23.5 12 Q 25.5 12 25.5 15.25 Q 25.5 18.5 23.5 18.5 Z M 21 22 L 21 20 L 24 20 Q 26 20 26 21 Q 26 22 24 22 Z"
-                            fill="white" font-weight="bold" />
-                        <circle cx="16" cy="16" r="0.5" fill="rgba(255,255,255,0.6)" />
+                        <circle cx="16" cy="16" r="15" fill="url(#navGradient)"/>
+                        <circle cx="16" cy="16" r="14" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+                        <path d="M 8 24 L 12 10 L 14 10 L 18 24 L 16 24 L 15.2 21 L 10.8 21 L 10 24 Z M 11.5 18.5 L 14.5 18.5 L 13 13.5 Z" fill="white" font-weight="bold"/>
+                        <path d="M 19 10 L 19 24 L 25 24 Q 28 24 28 21.5 Q 28 19.5 26 19 Q 27.5 18.5 27.5 16.5 Q 27.5 10 24 10 Z M 21 18.5 L 21 12 L 23.5 12 Q 25.5 12 25.5 15.25 Q 25.5 18.5 23.5 18.5 Z M 21 22 L 21 20 L 24 20 Q 26 20 26 21 Q 26 22 24 22 Z" fill="white" font-weight="bold"/>
+                        <circle cx="16" cy="16" r="0.5" fill="rgba(255,255,255,0.6)"/>
                     </svg>
                 </a>
             </div>
-            <!-- Menu Desktop/Mobile -->
-            <ul class="navbar__menu" role="menu">
-                <li class="navbar__item" role="none">
-                    <a href="/" class="navbar__link" role="menuitem">Inicio</a>
+
+            <!-- Menu Items -->
+            <ul class="navbar__menu" id="navbar-menu">
+                <li class="navbar__item">
+                    <a href="/" class="navbar__link navbar__link--active">Inicio</a>
                 </li>
-                <li class="navbar__item" role="none">
-                    <a href="#about" class="navbar__link" role="menuitem">Sobre Mí</a>
+                <li class="navbar__item">
+                    <a href="#about" class="navbar__link">Sobre Mí</a>
                 </li>
-                <li class="navbar__item" role="none">
-                    <a href="#experience" class="navbar__link" role="menuitem">Experiencia</a>
+                <li class="navbar__item">
+                    <a href="#experience" class="navbar__link">Experiencia</a>
                 </li>
-                <li class="navbar__item" role="none">
-                    <a href="#skills" class="navbar__link" role="menuitem">Competencias</a>
+                <li class="navbar__item">
+                    <a href="#skills" class="navbar__link">Competencias</a>
                 </li>
-                <li class="navbar__item" role="none">
-                    <a href="#contact" class="navbar__link" role="menuitem">Contacto</a>
+                <li class="navbar__item">
+                    <a href="#contact" class="navbar__link">Contacto</a>
                 </li>
             </ul>
 
             <!-- Hamburger Button -->
-            <button class="navbar__hamburger" type="button" aria-label="Abrir menú de navegación" aria-expanded="false"
-                aria-controls="navbar-menu">
-                <span class="navbar__hamburger-bar" aria-hidden="true"></span>
-                <span class="navbar__hamburger-bar" aria-hidden="true"></span>
-                <span class="navbar__hamburger-bar" aria-hidden="true"></span>
+            <button class="navbar__hamburger" id="navbar-hamburger" aria-label="Abrir menú de navegación" aria-expanded="false">
+                <span class="navbar__hamburger-bar"></span>
+                <span class="navbar__hamburger-bar"></span>
+                <span class="navbar__hamburger-bar"></span>
             </button>
         </div>
-    </nav>
 
+        <!-- Mobile Menu Overlay -->
+        <div class="navbar__overlay" id="navbar-overlay"></div>
+    </nav>
     <!-- Hero Section -->
     <section id="home" class="hero l-section l-section--hero">
         <div class="hero__container l-container">
@@ -245,8 +104,7 @@
                         IT & WebOps Specialist | UX/UI & Digital Systems
                     </p>
                     <p class="hero__description">
-                        Transformo ecosistemas digitales complejos en infraestructuras escalables y experiencias
-                        excepcionales
+                        Transformo ecosistemas digitales complejos en infraestructuras escalables y experiencias excepcionales
                     </p>
                     <div class="hero__buttons">
                         <a href="#contact" class="btn btn--primary">
@@ -279,20 +137,15 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="120" height="120">
                                 <defs>
                                     <linearGradient id="profileGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#3b82f6" />
-                                        <stop offset="100%" style="stop-color:#2563eb" />
+                                        <stop offset="0%" style="stop-color:#3b82f6"/>
+                                        <stop offset="100%" style="stop-color:#2563eb"/>
                                     </linearGradient>
                                 </defs>
-                                <circle cx="100" cy="100" r="90" fill="url(#profileGradient)" />
-                                <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(255,255,255,0.2)"
-                                    stroke-width="1" />
-                                <path
-                                    d="M 60 140 L 85 60 L 90 60 L 115 140 L 105 140 L 100 120 L 75 120 L 70 140 Z M 78 105 L 97 105 L 87.5 75 Z"
-                                    fill="white" font-weight="700" />
-                                <path
-                                    d="M 125 60 L 125 140 L 155 140 Q 170 140 170 125 Q 170 112.5 157.5 110 Q 167.5 107.5 167.5 95 Q 167.5 60 142.5 60 Z M 135 105 L 135 70 L 145 70 Q 157.5 70 157.5 87.5 Q 157.5 105 145 105 Z M 135 130 L 135 115 L 150 115 Q 160 115 160 122.5 Q 160 130 150 130 Z"
-                                    fill="white" font-weight="700" />
-                                <circle cx="100" cy="100" r="2" fill="rgba(255,255,255,0.8)" />
+                                <circle cx="100" cy="100" r="90" fill="url(#profileGradient)"/>
+                                <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                                <path d="M 60 140 L 85 60 L 90 60 L 115 140 L 105 140 L 100 120 L 75 120 L 70 140 Z M 78 105 L 97 105 L 87.5 75 Z" fill="white" font-weight="700"/>
+                                <path d="M 125 60 L 125 140 L 155 140 Q 170 140 170 125 Q 170 112.5 157.5 110 Q 167.5 107.5 167.5 95 Q 167.5 60 142.5 60 Z M 135 105 L 135 70 L 145 70 Q 157.5 70 157.5 87.5 Q 157.5 105 145 105 Z M 135 130 L 135 115 L 150 115 Q 160 115 160 122.5 Q 160 130 150 130 Z" fill="white" font-weight="700"/>
+                                <circle cx="100" cy="100" r="2" fill="rgba(255,255,255,0.8)"/>
                             </svg>
                         </div>
                         <div class="profile-card__info">
@@ -320,16 +173,10 @@
             <div class="l-grid l-grid--two-columns">
                 <div class="about__text" data-aos="fade-right">
                     <p>
-                        Profesional en IT Operations, WebOps y Desarrollo Frontend con experiencia internacional en
-                        ecosistemas digitales de alto impacto. Especializado en la gestión integral de infraestructuras
-                        tecnológicas, servidores y hosting, así como en el diseño y optimización de experiencias
-                        digitales para universidades y corporaciones líderes.
+                        Profesional en IT Operations, WebOps y Desarrollo Frontend con experiencia internacional en ecosistemas digitales de alto impacto. Especializado en la gestión integral de infraestructuras tecnológicas, servidores y hosting, así como en el diseño y optimización de experiencias digitales para universidades y corporaciones líderes.
                     </p>
                     <p>
-                        Actualmente desempeño funciones de CTO en OH WOW! Agencia, liderando la estrategia tecnológica,
-                        la innovación digital y la arquitectura de sistemas para proyectos internacionales. Con
-                        mentalidad analítica y resolutiva, aporto valor en entornos que exigen visión estratégica,
-                        ejecución ágil y soporte técnico avanzado (N1/N2).
+                        Actualmente desempeño funciones de CTO en OH WOW! Agencia, liderando la estrategia tecnológica, la innovación digital y la arquitectura de sistemas para proyectos internacionales. Con mentalidad analítica y resolutiva, aporto valor en entornos que exigen visión estratégica, ejecución ágil y soporte técnico avanzado (N1/N2).
                     </p>
                 </div>
                 <div class="stats" data-aos="fade-left">
@@ -369,30 +216,21 @@
                             <span class="timeline__location">Madrid</span>
                         </div>
                         <p class="timeline__description">
-                            Agencia digital con enfoque en branding, desarrollo web y automatización de procesos para
-                            clientes internacionales.
+                            Agencia digital con enfoque en branding, desarrollo web y automatización de procesos para clientes internacionales.
                         </p>
                         <ul class="timeline__list">
-                            <li class="timeline__list-item">Dirección tecnológica global: definición de la estrategia
-                                digital, liderazgo en decisiones tecnológicas y arquitectura de sistemas escalables</li>
-                            <li class="timeline__list-item">Mantenimiento avanzado de hosting y servidores, con
-                                implementación de sistemas de seguridad y continuidad de negocio</li>
-                            <li class="timeline__list-item">Diseño y ejecución de ecosistemas CRM con Clientify y
-                                HubSpot, integrando flujos de datos mediante Zapier y Make</li>
-                            <li class="timeline__list-item">Arquitectura digital & DesignOps: estandarización de
-                                procesos internos, documentación y gobierno de sistemas</li>
-                            <li class="timeline__list-item">Soporte técnico interdepartamental y cliente final,
-                                gestionando entornos web complejos con eficiencia y escalabilidad</li>
+                            <li class="timeline__list-item">Dirección tecnológica global: definición de la estrategia digital, liderazgo en decisiones tecnológicas y arquitectura de sistemas escalables</li>
+                            <li class="timeline__list-item">Mantenimiento avanzado de hosting y servidores, con implementación de sistemas de seguridad y continuidad de negocio</li>
+                            <li class="timeline__list-item">Diseño y ejecución de ecosistemas CRM con Clientify y HubSpot, integrando flujos de datos mediante Zapier y Make</li>
+                            <li class="timeline__list-item">Arquitectura digital & DesignOps: estandarización de procesos internos, documentación y gobierno de sistemas</li>
+                            <li class="timeline__list-item">Soporte técnico interdepartamental y cliente final, gestionando entornos web complejos con eficiencia y escalabilidad</li>
                         </ul>
                         <div class="achievements">
                             <h4 class="achievements__title">Logros Clave:</h4>
                             <ul class="achievements__list">
-                                <li class="achievements__item">Creación de una infraestructura tecnológica escalable que
-                                    soporta múltiples proyectos internacionales</li>
-                                <li class="achievements__item">Reducción de tiempos de despliegue web mediante
-                                    automatizaciones estratégicas</li>
-                                <li class="achievements__item">Implementación de metodologías ágiles y design systems
-                                    que aumentaron la eficiencia operativa</li>
+                                <li class="achievements__item">Creación de una infraestructura tecnológica escalable que soporta múltiples proyectos internacionales</li>
+                                <li class="achievements__item">Reducción de tiempos de despliegue web mediante automatizaciones estratégicas</li>
+                                <li class="achievements__item">Implementación de metodologías ágiles y design systems que aumentaron la eficiencia operativa</li>
                             </ul>
                         </div>
                     </div>
@@ -409,32 +247,21 @@
                             <span class="timeline__location">Madrid</span>
                         </div>
                         <p class="timeline__description">
-                            Empresa líder en educación online, partner de universidades como MIT xPRO, Chicago Booth,
-                            University of Pennsylvania y ESADE.
+                            Empresa líder en educación online, partner de universidades como MIT xPRO, Chicago Booth, University of Pennsylvania y ESADE.
                         </p>
                         <ul class="timeline__list">
-                            <li class="timeline__list-item">Gestión de infraestructuras tecnológicas: mantenimiento
-                                integral de hosting, servidores y dominios (DNS, SSL, backups, migraciones, monitoreo
-                                proactivo)</li>
-                            <li class="timeline__list-item">Automatización avanzada: implementación de integraciones con
-                                Make, Zapier y webhooks, optimizando flujos operativos y reduciendo tiempos de respuesta
-                            </li>
-                            <li class="timeline__list-item">Frontend & UX/UI: desarrollo de sitios educativos accesibles
-                                y optimizados (HTML, CSS, JS, WordPress), con mejoras en SEO técnico y performance</li>
-                            <li class="timeline__list-item">Project Management & GovOps: coordinación interdepartamental
-                                bajo metodologías ágiles (Scrum/Kanban), asegurando entregables en tiempo y forma</li>
-                            <li class="timeline__list-item">Soporte N1/N2: asistencia técnica a equipos internos y
-                                clientes, gestionando incidencias bajo SLAs establecidos</li>
+                            <li class="timeline__list-item">Gestión de infraestructuras tecnológicas: mantenimiento integral de hosting, servidores y dominios (DNS, SSL, backups, migraciones, monitoreo proactivo)</li>
+                            <li class="timeline__list-item">Automatización avanzada: implementación de integraciones con Make, Zapier y webhooks, optimizando flujos operativos y reduciendo tiempos de respuesta</li>
+                            <li class="timeline__list-item">Frontend & UX/UI: desarrollo de sitios educativos accesibles y optimizados (HTML, CSS, JS, WordPress), con mejoras en SEO técnico y performance</li>
+                            <li class="timeline__list-item">Project Management & GovOps: coordinación interdepartamental bajo metodologías ágiles (Scrum/Kanban), asegurando entregables en tiempo y forma</li>
+                            <li class="timeline__list-item">Soporte N1/N2: asistencia técnica a equipos internos y clientes, gestionando incidencias bajo SLAs establecidos</li>
                         </ul>
                         <div class="achievements">
                             <h4 class="achievements__title">Logros Clave:</h4>
                             <ul class="achievements__list">
-                                <li class="achievements__item">Escalabilidad y estandarización de procesos digitales
-                                    para proyectos internacionales</li>
-                                <li class="achievements__item">Optimización del SEO técnico y accesibilidad, aumentando
-                                    visibilidad y conversión</li>
-                                <li class="achievements__item">Desarrollo de design systems y prototipos en Figma,
-                                    mejorando la experiencia de usuario</li>
+                                <li class="achievements__item">Escalabilidad y estandarización de procesos digitales para proyectos internacionales</li>
+                                <li class="achievements__item">Optimización del SEO técnico y accesibilidad, aumentando visibilidad y conversión</li>
+                                <li class="achievements__item">Desarrollo de design systems y prototipos en Figma, mejorando la experiencia de usuario</li>
                             </ul>
                         </div>
                     </div>
@@ -456,19 +283,17 @@
                         <i class="fas fa-cogs"></i>
                     </div>
                     <h3 class="skill-category__title">Dirección Tecnológica & CTO</h3>
-                    <p class="skill-category__description">Liderazgo de estrategia digital, arquitectura de sistemas,
-                        gobierno IT</p>
+                    <p class="skill-category__description">Liderazgo de estrategia digital, arquitectura de sistemas, gobierno IT</p>
                 </div>
-
+                
                 <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
                     <div class="skill-category__icon">
                         <i class="fas fa-server"></i>
                     </div>
                     <h3 class="skill-category__title">IT & WebOps</h3>
-                    <p class="skill-category__description">Administración de servidores, DNS, SSL, backups, migraciones,
-                        monitorización</p>
+                    <p class="skill-category__description">Administración de servidores, DNS, SSL, backups, migraciones, monitorización</p>
                 </div>
-
+                
                 <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
                     <div class="skill-category__icon">
                         <i class="fas fa-robot"></i>
@@ -476,35 +301,32 @@
                     <h3 class="skill-category__title">Automatización & CRM</h3>
                     <p class="skill-category__description">Clientify, Zapier, Make, webhooks, automatizaciones</p>
                 </div>
-
+                
                 <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
                     <div class="skill-category__icon">
                         <i class="fas fa-tasks"></i>
                     </div>
                     <h3 class="skill-category__title">Gobierno Digital & Metodologías</h3>
-                    <p class="skill-category__description">Documentación, procesos, Trello, Jira, ClickUp, Scrum/Kanban
-                    </p>
+                    <p class="skill-category__description">Documentación, procesos, Trello, Jira, ClickUp, Scrum/Kanban</p>
                 </div>
-
+                
                 <div class="skill-category" data-aos="fade-up" data-aos-delay="500">
                     <div class="skill-category__icon">
                         <i class="fas fa-paint-brush"></i>
                     </div>
                     <h3 class="skill-category__title">UX/UI & Desarrollo Web</h3>
-                    <p class="skill-category__description">Diseño de interfaces, design systems, accesibilidad, SEO
-                        técnico</p>
+                    <p class="skill-category__description">Diseño de interfaces, design systems, accesibilidad, SEO técnico</p>
                 </div>
-
+                
                 <div class="skill-category" data-aos="fade-up" data-aos-delay="600">
                     <div class="skill-category__icon">
                         <i class="fas fa-users"></i>
                     </div>
                     <h3 class="skill-category__title">Liderazgo Estratégico</h3>
-                    <p class="skill-category__description">Coordinación de equipos, comunicación con stakeholders,
-                        optimización de recursos</p>
+                    <p class="skill-category__description">Coordinación de equipos, comunicación con stakeholders, optimización de recursos</p>
                 </div>
             </div>
-
+            
             <!-- Tech Stack -->
             <div class="tech-stack" data-aos="fade-up">
                 <h3 class="tech-stack__title">Stack Tecnológico</h3>
@@ -520,7 +342,7 @@
                             <span class="tech-stack__tag">WPBakery</span>
                         </div>
                     </div>
-
+                    
                     <div class="tech-stack__category">
                         <h4 class="tech-stack__category-title">Backend</h4>
                         <div class="tech-stack__tags">
@@ -528,7 +350,7 @@
                             <span class="tech-stack__tag">Laravel</span>
                         </div>
                     </div>
-
+                    
                     <div class="tech-stack__category">
                         <h4 class="tech-stack__category-title">CMS & CRM</h4>
                         <div class="tech-stack__tags">
@@ -537,7 +359,7 @@
                             <span class="tech-stack__tag">HubSpot</span>
                         </div>
                     </div>
-
+                    
                     <div class="tech-stack__category">
                         <h4 class="tech-stack__category-title">Automatización & IA</h4>
                         <div class="tech-stack__tags">
@@ -547,7 +369,7 @@
                             <span class="tech-stack__tag">Webhooks</span>
                         </div>
                     </div>
-
+                    
                     <div class="tech-stack__category">
                         <h4 class="tech-stack__category-title">DevOps & Herramientas</h4>
                         <div class="tech-stack__tags">
@@ -559,7 +381,7 @@
                             <span class="tech-stack__tag">Figma</span>
                         </div>
                     </div>
-
+                    
                     <div class="tech-stack__category">
                         <h4 class="tech-stack__category-title">Diseño & Creatividad</h4>
                         <div class="tech-stack__tags">
@@ -609,7 +431,7 @@
                 <div class="contact__info" data-aos="fade-right">
                     <h3>¿Hablamos?</h3>
                     <p>Estoy disponible para nuevos proyectos y oportunidades. No dudes en contactarme.</p>
-
+                    
                     <div class="contact__details">
                         <div class="contact-detail">
                             <div class="contact-detail__icon">
@@ -617,11 +439,10 @@
                             </div>
                             <div class="contact-detail__text">
                                 <h4 class="contact-detail__title">Email</h4>
-                                <a href="mailto:alebattaquin@gmail.com"
-                                    class="contact-detail__link">alebattaquin@gmail.com</a>
+                                <a href="mailto:alebattaquin@gmail.com" class="contact-detail__link">alebattaquin@gmail.com</a>
                             </div>
                         </div>
-
+                        
                         <div class="contact-detail">
                             <div class="contact-detail__icon">
                                 <i class="fas fa-phone"></i>
@@ -631,7 +452,7 @@
                                 <a href="tel:+34665543280" class="contact-detail__link">+34 665 543 280</a>
                             </div>
                         </div>
-
+                        
                         <div class="contact-detail">
                             <div class="contact-detail__icon">
                                 <i class="fas fa-map-marker-alt"></i>
@@ -641,42 +462,41 @@
                                 <span class="contact-detail__text">Madrid, España</span>
                             </div>
                         </div>
-
+                        
                         <div class="contact-detail">
                             <div class="contact-detail__icon">
                                 <i class="fab fa-linkedin"></i>
                             </div>
                             <div class="contact-detail__text">
                                 <h4 class="contact-detail__title">LinkedIn</h4>
-                                <a href="https://linkedin.com/in/desarollador-alejandro-battaglio" target="_blank"
-                                    class="contact-detail__link">desarollador-alejandro-battaglio</a>
+                                <a href="https://linkedin.com/in/desarollador-alejandro-battaglio" target="_blank" class="contact-detail__link">desarollador-alejandro-battaglio</a>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="container--form" data-aos="fade-left">
                     <form class="form" id="contactForm">
                         <div class="form__group">
                             <input type="text" id="name" name="name" class="form__input" required>
                             <label for="name" class="form__label">Nombre</label>
                         </div>
-
+                        
                         <div class="form__group">
                             <input type="email" id="email" name="email" class="form__input" required>
                             <label for="email" class="form__label">Email</label>
                         </div>
-
+                        
                         <div class="form__group">
                             <input type="text" id="subject" name="subject" class="form__input" required>
                             <label for="subject" class="form__label">Asunto</label>
                         </div>
-
+                        
                         <div class="form__group">
                             <textarea id="message" name="message" rows="5" class="form__textarea" required></textarea>
                             <label for="message" class="form__label">Mensaje</label>
                         </div>
-
+                        
                         <button type="submit" class="btn btn--primary">
                             <i class="fas fa-paper-plane"></i>
                             Enviar Mensaje
@@ -696,12 +516,10 @@
                     <p class="footer__subtitle">Chief Technology Officer | IT & WebOps Specialist</p>
                 </div>
                 <div class="footer__social">
-                    <a href="https://linkedin.com/in/desarollador-alejandro-battaglio" target="_blank" title="LinkedIn"
-                        class="footer__social-link">
+                    <a href="https://linkedin.com/in/desarollador-alejandro-battaglio" target="_blank" title="LinkedIn" class="footer__social-link">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="https://github.com/alebattaquin" target="_blank" title="GitHub"
-                        class="footer__social-link">
+                    <a href="https://github.com/alebattaquin" target="_blank" title="GitHub" class="footer__social-link">
                         <i class="fab fa-github"></i>
                     </a>
                     <a href="mailto:alebattaquin@gmail.com" title="Email" class="footer__social-link">
@@ -718,104 +536,6 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../assets/js/cv-config.js"></script>
-
-    <!-- ==========================================
-     JAVASCRIPT MEJORADO
-     Reemplazar el script de configuración existente
-     ========================================== -->
-
-    <script>
-        // Mejoras específicas para Alejandro
-        document.addEventListener('DOMContentLoaded', function () {
-            // Mejorar accesibilidad del hamburger
-            const hamburger = document.querySelector('.navbar__hamburger');
-            const navMenu = document.querySelector('.navbar__menu');
-
-            if (hamburger && navMenu) {
-                // Actualizar aria-expanded cuando cambie el estado
-                const observer = new MutationObserver(function (mutations) {
-                    mutations.forEach(function (mutation) {
-                        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                            const isActive = hamburger.classList.contains('navbar__hamburger--active');
-                            hamburger.setAttribute('aria-expanded', isActive.toString());
-
-                            // Cambiar el texto del aria-label
-                            hamburger.setAttribute('aria-label',
-                                isActive ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'
-                            );
-                        }
-                    });
-                });
-
-                observer.observe(hamburger, { attributes: true });
-
-                // Añadir ID al menú para referencia ARIA
-                navMenu.id = 'navbar-menu';
-            }
-
-            // Indicador de carga suave entre secciones
-            document.querySelectorAll('.navbar__link[href^="#"]').forEach(link => {
-                link.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    // Añadir clase de transición
-                    document.body.classList.add('page-transition', 'page-transition-enter');
-
-                    // Remover clase después de la animación
-                    setTimeout(() => {
-                        document.body.classList.remove('page-transition-enter');
-                    }, 100);
-
-                    setTimeout(() => {
-                        document.body.classList.remove('page-transition');
-
-                        // Scroll suave a la sección
-                        const target = document.querySelector(this.getAttribute('href'));
-                        if (target) {
-                            target.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-                        }
-                    }, 300);
-                });
-            });
-
-            // Detector de dispositivo táctil para optimizaciones
-            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-            if (isTouchDevice) {
-                document.body.classList.add('touch-device');
-            }
-
-            // Preload de imágenes importantes en móvil
-            if (window.innerWidth <= 768) {
-                const importantImages = [
-                    'alejandro/logo.svg',
-                    'alejandro/favicon.svg'
-                ];
-
-                importantImages.forEach(src => {
-                    const link = document.createElement('link');
-                    link.rel = 'preload';
-                    link.as = 'image';
-                    link.href = src;
-                    document.head.appendChild(link);
-                });
-            }
-
-            // Analytics para menú hamburguesa (opcional)
-            if (window.gtag) {
-                const hamburger = document.querySelector('.navbar__hamburger');
-                hamburger?.addEventListener('click', () => {
-                    gtag('event', 'mobile_menu_toggle', {
-                        event_category: 'Navigation',
-                        event_label: 'Alejandro Profile'
-                    });
-                });
-            }
-        });
-    </script>
-
+    <script src="../assets/js/cv-hamburgesa-menu.js"></script>
 </body>
-
 </html>
