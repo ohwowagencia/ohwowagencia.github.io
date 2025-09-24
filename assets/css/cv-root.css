@@ -287,6 +287,28 @@
 }
 
 /* ==========================================
+   TEMA ALTERNATIVO - CLAUDIA (CORAL/TERRACOTA)
+   ========================================== */
+
+[data-theme="claudia"] {
+    /* Colores principales coral/terracota */
+    --color-primary: #F97316;
+    --color-primary-dark: #EA580C;
+    --color-primary-light: #FB923C;
+    --color-accent: #10B981;
+    
+    /* Fondo secundario específico */
+    --color-bg-secondary: #FFF7ED;
+    
+    /* Gradientes actualizados para el tema coral */
+    --gradient-primary: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+    --gradient-accent: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    
+    /* Sombra de brillo específica para el tema coral */
+    --shadow-glow: 0 0 1rem rgba(249, 115, 22, 0.3);
+}
+
+/* ==========================================
    TEMAS ADICIONALES (PREPARADOS PARA FUTURO)
    ========================================== */
 

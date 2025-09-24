@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <defs>
-    <!-- Gradiente principal verde -->
+    <!-- Gradiente principal coral/terracota -->
     <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EA580C;stop-opacity:1" />
     </linearGradient>
     
     <!-- Gradiente secundario -->
     <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#34d399;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#FB923C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F97316;stop-opacity:1" />
     </linearGradient>
     
     <!-- Sombra -->
@@ -27,42 +27,42 @@
     </filter>
   </defs>
   
-  <!-- Fondo circular principal -->
+  <!-- Fondo circular con efecto tech -->
   <circle cx="100" cy="100" r="90" fill="url(#primaryGradient)" filter="url(#dropShadow)"/>
   
-  <!-- Círculos decorativos -->
+  <!-- Círculo interno decorativo -->
   <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
   <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
   
   <!-- Elementos tech decorativos -->
-  <!-- Círculos en esquinas -->
-  <circle cx="50" cy="60" r="4" fill="rgba(255,255,255,0.3)"/>
-  <circle cx="150" cy="60" r="3" fill="rgba(255,255,255,0.2)"/>
-  <circle cx="50" cy="140" r="3" fill="rgba(255,255,255,0.2)"/>
-  <circle cx="150" cy="140" r="4" fill="rgba(255,255,255,0.3)"/>
+  <!-- Pequeños círculos en las esquinas -->
+  <circle cx="45" cy="55" r="3" fill="rgba(255,255,255,0.3)"/>
+  <circle cx="155" cy="55" r="2" fill="rgba(255,255,255,0.2)"/>
+  <circle cx="45" cy="145" r="2" fill="rgba(255,255,255,0.2)"/>
+  <circle cx="155" cy="145" r="3" fill="rgba(255,255,255,0.3)"/>
   
   <!-- Líneas tech conectoras -->
-  <path d="M 60 70 L 80 90" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none"/>
-  <path d="M 140 70 L 120 90" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none"/>
-  <path d="M 60 130 L 80 110" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none"/>
-  <path d="M 140 130 L 120 110" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none"/>
+  <path d="M 55 65 L 75 85" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none"/>
+  <path d="M 145 65 L 125 85" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none"/>
+  <path d="M 55 135 L 75 115" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none"/>
+  <path d="M 145 135 L 125 115" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none"/>
   
-  <!-- Letra J principal con efecto -->
+  <!-- Letra C principal con efecto -->
   <g filter="url(#glow)">
-    <path d="M 70 60 L 130 60 L 130 75 L 115 75 L 115 125 Q 115 150 90 150 Q 65 150 65 125 L 80 125 Q 80 135 90 135 Q 100 135 100 125 L 100 75 L 70 75 Z" 
+    <path d="M 130 70 Q 70 70 70 100 Q 70 130 130 130 L 130 115 Q 85 115 85 100 Q 85 85 130 85 Z" 
           fill="white" 
           font-family="Inter, system-ui, sans-serif" 
           font-weight="700"/>
   </g>
   
   <!-- Punto decorativo central -->
-  <circle cx="100" cy="100" r="3" fill="rgba(255,255,255,0.8)"/>
+  <circle cx="100" cy="100" r="2" fill="rgba(255,255,255,0.8)"/>
   
   <!-- Arco decorativo superior -->
-  <path d="M 75 45 Q 100 35 125 45" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none"/>
+  <path d="M 70 40 Q 100 30 130 40" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none"/>
   
   <!-- Arco decorativo inferior -->
-  <path d="M 75 155 Q 100 165 125 155" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none"/>
+  <path d="M 70 160 Q 100 170 130 160" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none"/>
   
   <!-- Elementos hexagonales tech (sutiles) -->
   <polygon points="45,85 50,82 55,85 55,91 50,94 45,91" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>

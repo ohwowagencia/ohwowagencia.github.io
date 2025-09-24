@@ -1,44 +1,73 @@
-# CV System - Estructura Corregida
+# CV System - Sistema Unificado de CVs Profesionales
 
-## 🚨 Problemas Solucionados
+## 🚀 Descripción del Proyecto
 
-### 1. **Rutas CSS Incorrectas**
-❌ **Problema:** Los archivos CSS estaban referenciados con rutas incorrectas
-✅ **Solución:** Rutas corregidas según la estructura de archivos
+Sistema unificado de CVs que combina múltiples metodologías de desarrollo web moderno para crear perfiles profesionales escalables, accesibles y altamente personalizables.
 
-### 2. **Estructura de Archivos Organizada**
+### 👥 Perfiles Incluidos
+
+1. **Alejandro Battaglio** - Chief Technology Officer (Tema Azul)
+2. **Jeferson Zambrano** - IT & Web Ops Lead (Tema Verde)
+3. **Claudia Mallea** - Directora Creativa (Tema Coral/Terracota)
+
+## 📁 Estructura de Archivos
+
 ```
 cv-system/
-├── index.html                 # Página principal
+├── index.html                    # Página principal del sistema
 ├── assets/
 │   ├── css/
-│   │   ├── cv-root.css        # Variables CSS (custom properties)
-│   │   └── cv-styles.css      # Estilos principales
+│   │   ├── cv-root.css          # Variables CSS y temas
+│   │   └── cv-styles.css        # Estilos principales
 │   └── js/
-│       └── cv-config.js       # JavaScript unificado
+│       └── cv-config.js         # Configuración JavaScript
 ├── alejandro/
-│   └── index.html             # CV de Alejandro
-└── jeferson/
-    └── index.html             # CV de Jeferson
+│   ├── index.html               # CV de Alejandro
+│   ├── favicon.svg              # Favicon con iniciales "AB"
+│   └── logo.svg                 # Logo completo
+├── jeferson/
+│   ├── index.html               # CV de Jeferson
+│   ├── favicon.svg              # Favicon con inicial "J"
+│   └── logo.svg                 # Logo completo
+└── claudia/
+    ├── index.html               # CV de Claudia
+    ├── favicon.svg              # Favicon con inicial "C"
+    └── logo.svg                 # Logo completo
 ```
 
-### 3. **Referencias CSS Corregidas**
-```html
-<!-- Para archivos en subcarpetas (alejandro/, jeferson/) -->
-<link rel="stylesheet" href="../assets/css/cv-root.css">
-<link rel="stylesheet" href="../assets/css/cv-styles.css">
+## 🎨 Sistema de Temas
 
-<!-- Para archivo principal (index.html) -->
-<link rel="stylesheet" href="./assets/css/cv-root.css">
-<link rel="stylesheet" href="./assets/css/cv-styles.css">
+### Tema Alejandro (Azul - Por defecto)
+```css
+:root {
+    --color-primary: #2563eb;
+    --color-primary-dark: #1d4ed8;
+    --color-primary-light: #3b82f6;
+    --color-accent: #f59e0b;
+}
 ```
 
-### 4. **JavaScript Corregido**
-- **Hamburger Menu**: Clases CSS corregidas para funcionar correctamente
-- **Form Labels**: Sistema de etiquetas flotantes mejorado
-- **Navegación**: Smooth scrolling y estados activos funcionales
+### Tema Jeferson (Verde)
+```css
+[data-theme="jeferson"] {
+    --color-primary: #10b981;
+    --color-primary-dark: #059669;
+    --color-primary-light: #34d399;
+    --color-accent: #2979FF;
+}
+```
 
-## 🎨 **Metodologías CSS Implementadas**
+### Tema Claudia (Coral/Terracota)
+```css
+[data-theme="claudia"] {
+    --color-primary: #F97316;
+    --color-primary-dark: #EA580C;
+    --color-primary-light: #FB923C;
+    --color-accent: #10B981;
+}
+```
+
+## 🏗️ Metodologías Implementadas
 
 ### **SMACSS (Scalable and Modular Architecture for CSS)**
 - **Base**: Reset, elementos HTML base
@@ -69,88 +98,171 @@ cv-system/
 --spacing-xl: clamp(2rem, 3vw, 3rem);
 ```
 
-## 🔧 **Características Técnicas**
+## 🚀 Implementación
 
-### **Sistema de Temas**
-```css
-:root { /* Tema Alejandro - Azul */ }
-[data-theme="jeferson"] { /* Tema Jeferson - Naranja */ }
+### Para cada perfil:
+
+**Alejandro:**
+```html
+<html lang="es"> <!-- Sin data-theme = tema por defecto -->
 ```
 
-### **CSS Custom Properties**
-- Variables de color, tipografía, espaciado
-- Transiciones, sombras, bordes
-- Sistema de breakpoints
-- Z-index scale
+**Jeferson:**
+```html
+<html lang="es" data-theme="jeferson">
+```
 
-### **Responsive Design**
-- Mobile-first approach
-- Fluid typography y spacing
-- Grids adaptativos
-- Navegación hamburger funcional
+**Claudia:**
+```html
+<html lang="es" data-theme="claudia">
+```
 
-### **Accesibilidad**
-- Focus indicators
-- Contraste WCAG AA
-- Screen reader support
-- Reduced motion support
-- Print styles
+### Archivos requeridos:
+```html
+<link rel="stylesheet" href="../assets/css/cv-root.css">
+<link rel="stylesheet" href="../assets/css/cv-styles.css">
+<script src="../assets/js/cv-config.js"></script>
+```
 
-## 🚀 **Funcionalidades JavaScript**
+## 📝 Configuración por Perfil
 
-### **CVSystem Class**
-- Detección automática de perfil
-- Configuración de temas
-- Gestión de navegación
-- Formulario de contacto
-- Etiquetas animadas
-- Efectos de scroll
+```javascript
+const CV_CONFIG = {
+    alejandro: {
+        name: "Alejandro Battaglio",
+        role: "Chief Technology Officer",
+        theme: "default"
+    },
+    jeferson: {
+        name: "Jeferson Zambrano", 
+        role: "IT & Web Ops Lead",
+        theme: "jeferson"
+    },
+    claudia: {
+        name: "Claudia Mallea",
+        role: "Directora Creativa", 
+        theme: "claudia"
+    }
+};
+```
 
-### **Utilidades Globales**
-- Copy to clipboard
-- Lazy loading images
-- Analytics tracking (preparado)
-- Formateo de teléfonos
+## 🛠️ Características Técnicas
 
-## 📱 **Breakpoints**
+### Componentes Unificados:
+- ✅ Sistema de navegación responsive
+- ✅ Hero section adaptable por tema
+- ✅ Timeline de experiencia profesional
+- ✅ Grid de competencias clave
+- ✅ Formulario de contacto funcional
+- ✅ Footer con redes sociales
+- ✅ Animaciones AOS
+- ✅ Navegación hamburger móvil
+
+### Componentes Específicos:
+- **Alejandro**: Enfoque ejecutivo CTO
+- **Jeferson**: Value proposition, stats avanzadas
+- **Claudia**: Enfoque creativo y portfolio
+
+## 📱 Diseño Responsive
+
+### Breakpoints:
 - **Mobile**: 320px - 767px
-- **Tablet**: 768px - 1023px
+- **Tablet**: 768px - 1023px  
 - **Desktop**: 1024px+
 
-## 🎯 **Optimizaciones**
+### Adaptaciones:
+- Grid layouts adaptativos
+- Navegación hamburger móvil
+- Tipografía fluida con `clamp()`
+- Espaciado proporcional
 
-### **Performance**
+## ♿ Accesibilidad
+
+- Indicadores de foco consistentes
+- Contraste WCAG AA
+- Navegación por teclado
+- Soporte para screen readers
+- Soporte para motion reducido
+- Estilos optimizados para impresión
+
+## 🎯 Extensibilidad
+
+### Para agregar un nuevo perfil:
+
+1. **Definir tema CSS**:
+```css
+[data-theme="nuevo-perfil"] {
+    --color-primary: #color-principal;
+    --color-primary-dark: #color-oscuro;
+    --color-primary-light: #color-claro;
+}
+```
+
+2. **Agregar configuración**:
+```javascript
+nuevo_perfil: {
+    name: "Nombre",
+    role: "Rol",
+    theme: "nuevo-perfil"
+}
+```
+
+3. **Crear estructura de archivos**:
+```
+nuevo-perfil/
+├── index.html
+├── favicon.svg
+└── logo.svg
+```
+
+## 📊 Optimizaciones de Rendimiento
+
 - CSS custom properties para cambios de tema rápidos
-- Transiciones optimizadas
-- Animaciones con `will-change`
+- Componentes reutilizables
+- Animaciones optimizadas
+- JavaScript modular
 - Lazy loading preparado
 
-### **SEO**
-- Meta tags dinámicos por perfil
-- Estructura semántica HTML5
-- Enlaces internos optimizados
-- Schema markup preparado
+## 🔧 Tecnologías Utilizadas
 
-## ✅ **Estado del Proyecto**
-- [x] Estructura de archivos corregida
-- [x] Rutas CSS funcionalesl
-- [x] JavaScript operativo
-- [x] Navegación hamburger funcional
-- [x] Sistema de temas trabajando
-- [x] Formularios con validación
-- [x] Responsive design completo
-- [x] Accesibilidad implementada
+- **HTML5**: Estructura semántica
+- **CSS3**: Variables, Grid, Flexbox, clamp()
+- **JavaScript ES6+**: Clases, modules, async/await
+- **Font Awesome**: Iconografía
+- **AOS**: Animaciones on scroll
+- **Inter Font**: Tipografía moderna
 
-## 📋 **Próximos Pasos**
-1. Subir archivos a GitHub con la estructura corregida
-2. Configurar GitHub Pages
-3. Probar funcionalidad en diferentes dispositivos
-4. Optimizar imágenes y favicons
-5. Implementar analytics si es necesario
+## 📈 Métricas de Calidad
+
+### Objetivos de Rendimiento:
+- **First Contentful Paint**: <1.5s
+- **Largest Contentful Paint**: <2.5s  
+- **Cumulative Layout Shift**: <0.1
+- **First Input Delay**: <100ms
+
+### Compatibilidad:
+- Chrome, Firefox, Safari, Edge (últimas versiones)
+- Soporte móvil completo
+- Degradación elegante en navegadores antiguos
+
+## 📋 Próximos Pasos
+
+1. Configurar GitHub Pages
+2. Implementar analytics
+3. Agregar más temas de color
+4. Optimizar imágenes SVG
+5. Implementar service worker
+
+## 👥 Equipo
+
+- **Alejandro Battaglio** - CTO & IT Specialist
+- **Jeferson Zambrano** - Frontend Lead & UX Designer  
+- **Claudia Mallea** - Creative Director & Graphic Designer
+- **Claude Assistant** - System Architecture & Development
 
 ---
 
-**Arquitectura:** SMACSS + BEM + OOCSS + Fluid Design  
-**Compatibilidad:** Chrome, Firefox, Safari, Edge (últimas versiones)  
-**Responsivo:** ✅ Mobile, Tablet, Desktop  
-**Accesibilidad:** ✅ WCAG AA compliant
+**Versión:** 1.1.0  
+**Última actualización:** Septiembre 2025  
+**Licencia:** Propietaria  
+**Arquitectura:** SMACSS + BEM + OOCSS + Fluid Design

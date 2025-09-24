@@ -1,7 +1,7 @@
 /**
  * CV SYSTEM - CONFIGURACIÓN UNIFICADA
- * Alejandro Battaglio & Jeferson Zambrano
- * Version: 1.0.0
+ * Alejandro Battaglio, Jeferson Zambrano & Claudia Mallea
+ * Version: 1.1.0
  */
 
 // ==========================================
@@ -31,7 +31,7 @@ const CV_CONFIG = {
         name: "Jeferson Zambrano",
         fullName: "Jeferson Zambrano",
         role: "IT & Web Ops Lead",
-        subtitle: "Senior Frontend · UX/UI Designer · 10+ años de experiencia",
+        subtitle: "Senior Frontend · UX/UI Designer · 15+ años de experiencia",
         email: "jeffproduccion@gmail.com",
         phone: "+34 688 351 935",
         location: "Madrid, España",
@@ -43,6 +43,24 @@ const CV_CONFIG = {
             primary: "#10b981",
             primaryDark: "#059669", 
             primaryLight: "#34d399"
+        }
+    },
+    claudia: {
+        name: "Claudia Mallea",
+        fullName: "Claudia Mallea",
+        role: "Directora Creativa",
+        subtitle: "Diseñadora Gráfica Senior | Estrategia de Diseño & Branding Digital",
+        email: "claudiamalleag@gmail.com",
+        phone: "+34 722 419 875",
+        location: "Madrid, España",
+        linkedin: "claudiamallea",
+        github: "",
+        website: "behance.net/gallery/220856129/Design-Portfolio-2025",
+        theme: "claudia",
+        colors: {
+            primary: "#F97316",
+            primaryDark: "#EA580C",
+            primaryLight: "#FB923C"
         }
     }
 };
@@ -62,10 +80,12 @@ class CVSystem {
         // Detectar perfil por data-theme o URL
         const theme = document.documentElement.getAttribute('data-theme');
         if (theme === 'jeferson') return 'jeferson';
+        if (theme === 'claudia') return 'claudia';
         
         // Fallback por URL
         const url = window.location.href;
         if (url.includes('jeferson') || url.includes('jeff')) return 'jeferson';
+        if (url.includes('claudia')) return 'claudia';
         
         return 'alejandro'; // Default
     }
