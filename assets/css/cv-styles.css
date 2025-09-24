@@ -1104,6 +1104,9 @@ img {
     align-items: center;
     position: relative;
     overflow: hidden;
+    padding-top: clamp(5rem, 8vw, 7rem);
+    /* ← AÑADIR ESTA LÍNEA */
+
 }
 
 .home-hero::before {
