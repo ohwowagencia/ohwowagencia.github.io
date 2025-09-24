@@ -41,7 +41,7 @@ const CV_CONFIG = {
         theme: "jeferson",
         colors: {
             primary: "#10b981",
-            primaryDark: "#059669", 
+            primaryDark: "#059669",
             primaryLight: "#34d399"
         }
     },
@@ -58,9 +58,9 @@ const CV_CONFIG = {
         website: "behance.net/gallery/220856129/Design-Portfolio-2025",
         theme: "claudia",
         colors: {
-            primary: "#F97316",
-            primaryDark: "#EA580C",
-            primaryLight: "#FB923C"
+            primary: "#8b5cf6",
+            primaryDark: "#7c3aed",
+            primaryLight: "#a78bfa"
         }
     }
 };
@@ -81,12 +81,12 @@ class CVSystem {
         const theme = document.documentElement.getAttribute('data-theme');
         if (theme === 'jeferson') return 'jeferson';
         if (theme === 'claudia') return 'claudia';
-        
+
         // Fallback por URL
         const url = window.location.href;
         if (url.includes('jeferson') || url.includes('jeff')) return 'jeferson';
         if (url.includes('claudia')) return 'claudia';
-        
+
         return 'alejandro'; // Default
     }
 
@@ -98,7 +98,7 @@ class CVSystem {
         this.setupFormLabels();
         this.setupScrollEffects();
         this.setupActiveNavLinks();
-        
+
         console.log(`CV System initialized for ${this.config.name}`);
     }
 
@@ -106,15 +106,15 @@ class CVSystem {
         if (this.config.theme !== 'default') {
             document.documentElement.setAttribute('data-theme', this.config.theme);
         }
-        
+
         // Actualizar meta tags dinámicamente
         this.updateMetaTags();
     }
 
     updateMetaTags() {
         const updateMeta = (name, content) => {
-            let meta = document.querySelector(`meta[name="${name}"]`) || 
-                      document.querySelector(`meta[property="${name}"]`);
+            let meta = document.querySelector(`meta[name="${name}"]`) ||
+                document.querySelector(`meta[property="${name}"]`);
             if (meta) meta.setAttribute('content', content);
         };
 
@@ -147,7 +147,7 @@ class CVSystem {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('navbar__hamburger--active');
             navMenu.classList.toggle('navbar__menu--active');
-            
+
             // Prevent body scroll when menu is open
             document.body.style.overflow = hamburger.classList.contains('navbar__hamburger--active') ? 'hidden' : '';
         });
@@ -191,7 +191,7 @@ class CVSystem {
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             const formData = new FormData(form);
             const data = {
                 name: formData.get('name'),
@@ -208,10 +208,10 @@ class CVSystem {
 
             // Create mailto link
             const mailtoLink = `mailto:${this.config.email}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`Nombre: ${data.name}\nEmail: ${data.email}\n\nMensaje:\n${data.message}`)}`;
-            
+
             // Open mail client
             window.location.href = mailtoLink;
-            
+
             // Reset form and show success message
             form.reset();
             this.resetFormLabels();
@@ -221,12 +221,12 @@ class CVSystem {
 
     validateForm(data) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
-        return data.name.trim() && 
-               data.email.trim() && 
-               emailRegex.test(data.email) &&
-               data.subject.trim() && 
-               data.message.trim();
+
+        return data.name.trim() &&
+            data.email.trim() &&
+            emailRegex.test(data.email) &&
+            data.subject.trim() &&
+            data.message.trim();
     }
 
     showNotification(message, type = 'info') {
@@ -309,19 +309,19 @@ class CVSystem {
 
     setupFormLabels() {
         const inputs = document.querySelectorAll('.form__group input, .form__group textarea');
-        
+
         inputs.forEach(input => {
             // Focus events
             input.addEventListener('focus', () => {
                 input.parentElement.classList.add('form__group--focused');
             });
-            
+
             input.addEventListener('blur', () => {
                 if (!input.value.trim()) {
                     input.parentElement.classList.remove('form__group--focused');
                 }
             });
-            
+
             // Check if input has value on page load
             if (input.value.trim()) {
                 input.parentElement.classList.add('form__group--focused');
@@ -347,7 +347,7 @@ class CVSystem {
 
         const updateNavbar = () => {
             const currentScrollY = window.scrollY;
-            
+
             // Add/remove scrolled class
             if (currentScrollY > 50) {
                 navbar.classList.add('navbar--scrolled');
@@ -381,7 +381,7 @@ class CVSystem {
     setupActiveNavLinks() {
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.navbar__link');
-        
+
         if (!sections.length || !navLinks.length) return;
 
         const observerOptions = {
@@ -394,10 +394,10 @@ class CVSystem {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const currentSection = entry.target.getAttribute('id');
-                    
+
                     // Remove active class from all links
                     navLinks.forEach(link => link.classList.remove('navbar__link--active'));
-                    
+
                     // Add active class to current section link
                     const activeLink = document.querySelector(`a[href="#${currentSection}"]`);
                     if (activeLink) {
@@ -427,7 +427,7 @@ class CVSystem {
 
     throttle(func, limit) {
         let inThrottle;
-        return function() {
+        return function () {
             const args = arguments;
             const context = this;
             if (!inThrottle) {
@@ -459,7 +459,7 @@ if (document.readyState === 'loading') {
 window.CVUtils = {
     // Format phone for calling
     formatPhoneForCall: (phone) => phone.replace(/\s/g, ''),
-    
+
     // Copy text to clipboard
     copyToClipboard: async (text) => {
         try {
@@ -482,7 +482,7 @@ window.CVUtils = {
             }
         }
     },
-    
+
     // Lazy load images
     lazyLoadImages: () => {
         const images = document.querySelectorAll('img[data-src]');
@@ -496,20 +496,20 @@ window.CVUtils = {
                 }
             });
         });
-        
+
         images.forEach(img => imageObserver.observe(img));
     },
-    
+
     // Analytics tracking (ready for implementation)
     track: (event, properties = {}) => {
         // Implement analytics tracking here
         console.log('Track event:', event, properties);
-        
+
         // Example: Google Analytics 4
         if (typeof gtag !== 'undefined') {
             gtag('event', event, properties);
         }
-        
+
         // Example: Custom analytics
         if (window.analytics && typeof window.analytics.track === 'function') {
             window.analytics.track(event, properties);

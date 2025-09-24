@@ -1284,7 +1284,7 @@ img {
 }
 
 .home-profile-avatar.claudia {
-    background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+    background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
     box-shadow:
         0 0.5rem 1rem rgba(249, 115, 22, 0.4),
         0 0 2rem rgba(249, 115, 22, 0.2);
@@ -1703,11 +1703,11 @@ img {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .hero__contact,
+    /* .hero__contact,
     .contact-item {
         align-items: center;
         justify-content: center;
-    }
+    } */
 
     .footer__content,
     .footer-content {
@@ -1995,49 +1995,49 @@ textarea:focus {
     --color-primary: #2563eb;
     --color-primary-dark: #1d4ed8;
     --color-primary-light: #3b82f6;
-    
+
     /* Colores de fondo */
     --color-bg-primary: #ffffff;
     --color-bg-secondary: #f8fafc;
     --color-navbar-bg: rgba(255, 255, 255, 0.95);
     --color-navbar-bg-scrolled: rgba(255, 255, 255, 0.98);
-    
+
     /* Colores de texto */
     --color-text-primary: #0f172a;
     --color-text-secondary: #64748b;
     --color-text-white: #ffffff;
-    
+
     /* Colores de borde */
     --color-border-light: rgba(0, 0, 0, 0.1);
-    
+
     /* Tipografía fluida */
     --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-size-base: clamp(1rem, 1.2vw, 1.125rem);
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
-    
+
     /* Espaciado fluido */
     --spacing-xs: clamp(0.25rem, 0.5vw, 0.5rem);
     --spacing-sm: clamp(0.5rem, 1vw, 1rem);
     --spacing-md: clamp(1rem, 1.5vw, 1.5rem);
     --spacing-lg: clamp(1.5rem, 2vw, 2rem);
-    
+
     /* Transiciones */
     --duration-fast: 150ms;
     --duration-normal: 300ms;
     --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
     --transition-base: var(--duration-normal) var(--ease-smooth);
-    
+
     /* Border radius */
     --radius-sm: 0.25rem;
     --radius-md: 0.375rem;
     --radius-lg: 0.5rem;
     --radius-full: 9999px;
-    
+
     /* Sombras */
     --shadow-md: 0 0.25rem 0.375rem -0.0625rem rgba(0, 0, 0, 0.1), 0 0.125rem 0.25rem -0.0625rem rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 0.625rem 0.9375rem -0.1875rem rgba(0, 0, 0, 0.1), 0 0.25rem 0.375rem -0.125rem rgba(0, 0, 0, 0.05);
-    
+
     /* Z-index */
     --z-index-navbar: 1100;
     --z-index-overlay: 1300;
@@ -2249,12 +2249,12 @@ body {
 
 /* Mobile: hasta 768px */
 @media (max-width: 48rem) {
-    
+
     /* Mostrar hamburger */
     .navbar__hamburger {
         display: flex;
     }
-    
+
     /* Ocultar/transformar menu */
     .navbar__menu {
         position: fixed;
@@ -2273,17 +2273,17 @@ body {
         z-index: var(--z-index-navbar);
         overflow-y: auto;
     }
-    
+
     /* State: menu active */
     .navbar__menu--active {
         left: 0;
     }
-    
+
     /* Mobile menu items */
     .navbar__item {
         width: 100%;
     }
-    
+
     /* Mobile menu links */
     .navbar__link {
         display: block;
@@ -2294,7 +2294,7 @@ body {
         border-radius: var(--radius-lg);
         text-align: center;
     }
-    
+
     /* Mobile link hover/active states */
     .navbar__link:hover,
     .navbar__link--active {
@@ -2302,7 +2302,7 @@ body {
         color: var(--color-text-white);
         transform: translateX(0.25rem);
     }
-    
+
     /* Prevent body scroll when menu is open */
     body.navbar--menu-open {
         overflow: hidden;
@@ -2316,7 +2316,7 @@ body {
     .navbar__menu {
         gap: var(--spacing-md);
     }
-    
+
     .navbar__link {
         font-size: clamp(0.875rem, 1.2vw, 1rem);
         padding: var(--spacing-xs) var(--spacing-md);
@@ -2328,7 +2328,7 @@ body {
     .navbar__container {
         padding: var(--spacing-md) var(--spacing-lg);
     }
-    
+
     .navbar__menu {
         gap: var(--spacing-lg);
     }
@@ -2347,9 +2347,9 @@ body {
 
 /* Theme: Claudia (Coral) */
 [data-theme="claudia"] {
-    --color-primary: #F97316;
-    --color-primary-dark: #EA580C;
-    --color-primary-light: #FB923C;
+    --color-primary: #8b5cf6;
+    --color-primary-dark: #7c3aed;
+    --color-primary-light: #a78bfa;
 }
 
 /* ==========================================
@@ -2369,11 +2369,11 @@ body {
     .navbar__hamburger-bar {
         background: #000;
     }
-    
+
     .navbar__link {
         border: 1px solid transparent;
     }
-    
+
     .navbar__link:hover,
     .navbar__link--active {
         border-color: var(--color-primary);
@@ -2382,6 +2382,7 @@ body {
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
+
     .navbar,
     .navbar__hamburger-bar,
     .navbar__menu,
@@ -2401,11 +2402,11 @@ body {
         box-shadow: none;
         border-bottom: 1px solid #ccc;
     }
-    
+
     .navbar__hamburger {
         display: none;
     }
-    
+
     .navbar__menu {
         position: static;
         flex-direction: row;
@@ -2428,6 +2429,7 @@ body {
         transform: translateX(-100%);
         opacity: 0;
     }
+
     to {
         transform: translateX(0);
         opacity: 1;
@@ -2439,6 +2441,7 @@ body {
         transform: translateX(0);
         opacity: 1;
     }
+
     to {
         transform: translateX(-100%);
         opacity: 0;
@@ -2450,17 +2453,32 @@ body {
     animation: slideInUp 0.3s ease-out forwards;
 }
 
-.navbar__menu--active .navbar__item:nth-child(1) { animation-delay: 0.1s; }
-.navbar__menu--active .navbar__item:nth-child(2) { animation-delay: 0.15s; }
-.navbar__menu--active .navbar__item:nth-child(3) { animation-delay: 0.2s; }
-.navbar__menu--active .navbar__item:nth-child(4) { animation-delay: 0.25s; }
-.navbar__menu--active .navbar__item:nth-child(5) { animation-delay: 0.3s; }
+.navbar__menu--active .navbar__item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.navbar__menu--active .navbar__item:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.navbar__menu--active .navbar__item:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.navbar__menu--active .navbar__item:nth-child(4) {
+    animation-delay: 0.25s;
+}
+
+.navbar__menu--active .navbar__item:nth-child(5) {
+    animation-delay: 0.3s;
+}
 
 @keyframes slideInUp {
     from {
         opacity: 0;
         transform: translateY(1rem);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
