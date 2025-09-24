@@ -543,6 +543,7 @@ img {
     justify-content: center;
     color: var(--color-text-white);
     font-size: 1.2rem;
+    flex-shrink: 0;
 }
 
 .contact-detail__title {
@@ -1188,7 +1189,8 @@ img {
 
 /* Profile Cards específicas para home */
 .profile-card.alejandro,
-.profile-card.jeferson {
+.profile-card.jeferson,
+.profile-card.claudia {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(2rem);
     -webkit-backdrop-filter: blur(2rem);
@@ -1207,7 +1209,8 @@ img {
 
 /* Efecto de hover mejorado */
 .profile-card.alejandro:hover,
-.profile-card.jeferson:hover {
+.profile-card.jeferson:hover,
+.profile-card.claudia:hover {
     transform: translateY(-1.25rem) scale(1.02);
     box-shadow:
         0 2rem 4rem -1rem rgba(0, 0, 0, 0.3),
@@ -1273,8 +1276,15 @@ img {
 .home-profile-avatar.jeferson {
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     box-shadow:
-        0 0.5rem 1rem rgba(245, 158, 11, 0.4),
-        0 0 2rem rgba(245, 158, 11, 0.2);
+        0 0.5rem 1rem rgba(16, 185, 129, 0.4),
+        0 0 2rem rgba(16, 185, 129, 0.2);
+}
+
+.home-profile-avatar.claudia {
+    background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+    box-shadow:
+        0 0.5rem 1rem rgba(249, 115, 22, 0.4),
+        0 0 2rem rgba(249, 115, 22, 0.2);
 }
 
 /* Profile Info */
@@ -1360,6 +1370,10 @@ img {
 
 .profile-btn.jeferson {
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.profile-btn.claudia {
+    background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
 }
 
 .profile-btn:hover {

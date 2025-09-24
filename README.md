@@ -258,7 +258,6 @@ nuevo-perfil/
 - **Alejandro Battaglio** - CTO & IT Specialist
 - **Jeferson Zambrano** - Frontend Lead & UX Designer  
 - **Claudia Mallea** - Creative Director & Graphic Designer
-- **Claude Assistant** - System Architecture & Development
 
 ---
 
