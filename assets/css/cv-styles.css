@@ -1144,7 +1144,7 @@ img {
 }
 
 .home-container {
-    max-width: clamp(20rem, 90vw, 75rem);
+    max-width: clamp(20rem, 95vw, 100rem);
     margin: 0 auto;
     padding: 0 var(--spacing-md);
     position: relative;
