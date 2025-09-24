@@ -1355,6 +1355,7 @@ img {
 .profile-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: var(--spacing-xs);
     padding: var(--spacing-md) var(--spacing-xl);
     border-radius: var(--radius-lg);
