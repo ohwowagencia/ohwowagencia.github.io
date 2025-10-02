@@ -1,7 +1,7 @@
 /**
- * CV SYSTEM - CONFIGURACIÓN UNIFICADA
+ * CV SYSTEM - CONFIGURACIÓN UNIFICADA con i18n
  * Alejandro Battaglio, Jeferson Zambrano & Claudia Mallea
- * Version: 1.1.0
+ * Version: 1.2.0
  */
 
 // ==========================================
@@ -66,14 +66,26 @@ const CV_CONFIG = {
 };
 
 // ==========================================
-// INICIALIZACIÓN DEL SISTEMA
+// INICIALIZACIÓN DEL SISTEMA CON i18n
 // ==========================================
 
 class CVSystem {
     constructor() {
         this.profile = this.detectProfile();
         this.config = CV_CONFIG[this.profile];
-        this.init();
+        
+        // Wait for i18n to be available
+        this.waitForI18n().then(() => {
+            this.init();
+        });
+    }
+
+    async waitForI18n() {
+        // Wait for i18n to be available
+        while (!window.i18n) {
+            await new Promise(resolve => setTimeout(resolve, 50));
+        }
+        this.i18n = window.i18n;
     }
 
     detectProfile() {
@@ -98,8 +110,43 @@ class CVSystem {
         this.setupFormLabels();
         this.setupScrollEffects();
         this.setupActiveNavLinks();
+        this.bindI18nEvents();
 
-        console.log(`CV System initialized for ${this.config.name}`);
+        console.log(`CV System initialized for ${this.config.name} with i18n support`);
+    }
+
+    bindI18nEvents() {
+        // Listen for language changes
+        document.addEventListener('languageChanged', (e) => {
+            const newLang = e.detail.language;
+            console.log(`Language changed to: ${newLang}`);
+            
+            // Update form validation messages
+            this.updateFormMessages(newLang);
+            
+            // Update any dynamic content
+            this.updateDynamicContent(newLang);
+        });
+    }
+
+    updateFormMessages(lang) {
+        // Update form validation messages
+        this.formMessages = {
+            success: this.i18n.get('form.success'),
+            error: this.i18n.get('form.error')
+        };
+    }
+
+    updateDynamicContent(lang) {
+        // Update any content that's added dynamically
+        // This is useful for notifications, dynamic form labels, etc.
+        
+        // Update document title dynamically
+        const baseTitleKey = `roles.${this.profile === 'alejandro' ? 'cto' : this.profile === 'claudia' ? 'creative_director' : 'it_lead'}`;
+        const baseTitle = this.i18n.get(baseTitleKey);
+        if (baseTitle && !baseTitle.includes('[Missing:')) {
+            document.title = `${this.config.name} - ${baseTitle}`;
+        }
     }
 
     setupTheme() {
@@ -117,6 +164,10 @@ class CVSystem {
                 document.querySelector(`meta[property="${name}"]`);
             if (meta) meta.setAttribute('content', content);
         };
+
+        const currentLang = this.i18n ? this.i18n.getCurrentLanguage() : 'es';
+        const roleKey = this.profile === 'alejandro' ? 'cto' : 
+                       this.profile === 'claudia' ? 'creative_director' : 'it_lead';
 
         updateMeta('description', `${this.config.fullName} - ${this.config.role} con experiencia en tecnología y desarrollo web`);
         updateMeta('og:title', `${this.config.name} - ${this.config.role}`);
@@ -202,12 +253,13 @@ class CVSystem {
 
             // Validate form
             if (!this.validateForm(data)) {
-                this.showNotification('Por favor, completa todos los campos correctamente.', 'error');
+                const errorMsg = this.i18n ? this.i18n.get('form.error') : 'Por favor, completa todos los campos correctamente.';
+                this.showNotification(errorMsg, 'error');
                 return;
             }
 
             // Create mailto link
-            const mailtoLink = `mailto:${this.config.email}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`Nombre: ${data.name}\nEmail: ${data.email}\n\nMensaje:\n${data.message}`)}`;
+            const mailtoLink = `mailto:${this.config.email}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`${this.i18n ? this.i18n.get('form.name') : 'Nombre'}: ${data.name}\nEmail: ${data.email}\n\n${this.i18n ? this.i18n.get('form.message') : 'Mensaje'}:\n${data.message}`)}`;
 
             // Open mail client
             window.location.href = mailtoLink;
@@ -215,7 +267,8 @@ class CVSystem {
             // Reset form and show success message
             form.reset();
             this.resetFormLabels();
-            this.showNotification('¡Gracias por tu mensaje! Se abrirá tu cliente de correo.', 'success');
+            const successMsg = this.i18n ? this.i18n.get('form.success') : '¡Gracias por tu mensaje! Se abrirá tu cliente de correo.';
+            this.showNotification(successMsg, 'success');
         });
     }
 
@@ -453,7 +506,7 @@ if (document.readyState === 'loading') {
 }
 
 // ==========================================
-// UTILIDADES GLOBALES
+// UTILIDADES GLOBALES ACTUALIZADAS
 // ==========================================
 
 window.CVUtils = {
@@ -483,25 +536,22 @@ window.CVUtils = {
         }
     },
 
-    // Lazy load images
-    lazyLoadImages: () => {
-        const images = document.querySelectorAll('img[data-src]');
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
+    // Get current language
+    getCurrentLanguage: () => {
+        return window.i18n ? window.i18n.getCurrentLanguage() : 'es';
+    },
 
-        images.forEach(img => imageObserver.observe(img));
+    // Translate text programmatically
+    t: (key) => {
+        return window.i18n ? window.i18n.get(key) : key;
     },
 
     // Analytics tracking (ready for implementation)
     track: (event, properties = {}) => {
+        // Add language to tracking
+        const lang = window.i18n ? window.i18n.getCurrentLanguage() : 'es';
+        properties.language = lang;
+        
         // Implement analytics tracking here
         console.log('Track event:', event, properties);
 
