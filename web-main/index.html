@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGENCIA OHWOW! - Digital Brutalism Studio</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- GSAP for smooth animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Cursor Trail -->
+    <div class="cursor-trail"></div>
+    
+    <!-- Scroll Progress -->
+    <div class="scroll-progress"></div>
+    
+    <!-- Mobile Menu Button -->
+    <div class="mobile-menu-btn" id="mobileMenuBtn">
+        <span></span>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#section-0">EL EQUIPO</a>
+        <a href="#section-1">QUIÉNES SOMOS</a>
+        <a href="#section-2">SERVICIOS</a>
+        <a href="#section-3">PORTFOLIO</a>
+        <a href="#section-4">CONTACTO</a>
+    </div>
+    
+    <!-- Top Navigation Menu -->
+    <nav class="top-nav" id="topNav">
+        <div class="nav-logo" onclick="scrollToSection(0)">OHWOW<span class="exclamation">!</span></div>
+        <div class="top-nav-items">
+            <a href="#section-0" onclick="scrollToSection(0); return false;">EL EQUIPO</a>
+            <a href="#section-1" onclick="scrollToSection(1); return false;">QUIÉNES SOMOS</a>
+            <a href="#section-2" onclick="scrollToSection(2); return false;">SERVICIOS</a>
+            <a href="#section-3" onclick="scrollToSection(3); return false;">PORTFOLIO</a>
+            <a href="#section-4" onclick="scrollToSection(4); return false;">CONTACTO</a>
+        </div>
+    </nav>
+    
+    <!-- Specialty Popup -->
+    <div class="specialty-popup" id="specialtyPopup">
+        <h4 id="popupTitle"></h4>
+        <p id="popupText"></p>
+        <span class="popup-close" onclick="closePopup()">×</span>
+    </div>
+    
+    <!-- Side Navigation Dots -->
+    <div class="nav-container">
+        <div class="nav-dots">
+            <div class="nav-item" onclick="scrollToSection(0)">
+                <span class="nav-label">EL EQUIPO</span>
+                <div class="nav-dot active"></div>
+            </div>
+            <div class="nav-item" onclick="scrollToSection(1)">
+                <span class="nav-label">QUIÉNES SOMOS</span>
+                <div class="nav-dot"></div>
+            </div>
+            <div class="nav-item" onclick="scrollToSection(2)">
+                <span class="nav-label">SERVICIOS</span>
+                <div class="nav-dot"></div>
+            </div>
+            <div class="nav-item" onclick="scrollToSection(3)">
+                <span class="nav-label">PORTFOLIO</span>
+                <div class="nav-dot"></div>
+            </div>
+            <div class="nav-item" onclick="scrollToSection(4)">
+                <span class="nav-label">CONTACTO</span>
+                <div class="nav-dot"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hero Section with Team -->
+    <section class="hero" id="section-0">
+        <h1 class="main-title">
+            <div class="line"><span>AGENCIA</span></div>
+            <div class="line"><span>OHWOW<span class="exclamation">!</span></span></div>
+            <div class="title-alternate">
+                <div>EL SIGUIENTE PASO</div>
+                <div>QUE NECESITA TU EMPRESA</div>
+            </div>
+        </h1>
+        
+        <!-- Team Cards -->
+        <div class="cards-section">
+            <div class="team-card" onclick="toggleCard(this)">
+                <div class="card-header">
+                    <div class="card-label">UX/UI</div>
+                    <div class="card-expand">+</div>
+                </div>
+                <div class="card-avatar"></div>
+                <div class="card-front-info">
+                    <div class="card-front-name">María González</div>
+                    <div class="card-front-role">UX/UI & WebOps Lead</div>
+                </div>
+                <div class="card-details">
+                    <div class="card-name">María González</div>
+                    <div class="card-role">UX/UI & WebOps Lead</div>
+                    <ul class="card-skills">
+                        <li>Diseño de Interfaces Brutalistas</li>
+                        <li>Arquitectura de Información</li>
+                        <li>Prototipado Rápido</li>
+                        <li>Gestión WebOps & Hosting</li>
+                    </ul>
+                </div>
+                <button class="card-cta">IR AL PERFIL →</button>
+            </div>
+            
+            <div class="team-card" onclick="toggleCard(this)">
+                <div class="card-header">
+                    <div class="card-label">DESARROLLO</div>
+                    <div class="card-expand">+</div>
+                </div>
+                <div class="card-avatar"></div>
+                <div class="card-front-info">
+                    <div class="card-front-name">Carlos Rodríguez</div>
+                    <div class="card-front-role">Full Stack Developer</div>
+                </div>
+                <div class="card-details">
+                    <div class="card-name">Carlos Rodríguez</div>
+                    <div class="card-role">Full Stack Developer</div>
+                    <ul class="card-skills">
+                        <li>JavaScript Avanzado (ES6+)</li>
+                        <li>React / Vue / Angular</li>
+                        <li>Node.js & Express</li>
+                        <li>MongoDB & PostgreSQL</li>
+                    </ul>
+                </div>
+                <button class="card-cta">IR AL PERFIL →</button>
+            </div>
+            
+            <div class="team-card" onclick="toggleCard(this)">
+                <div class="card-header">
+                    <div class="card-label">CREATIVIDAD</div>
+                    <div class="card-expand">+</div>
+                </div>
+                <div class="card-avatar"></div>
+                <div class="card-front-info">
+                    <div class="card-front-name">Ana Martínez</div>
+                    <div class="card-front-role">Directora de Arte</div>
+                </div>
+                <div class="card-details">
+                    <div class="card-name">Ana Martínez</div>
+                    <div class="card-role">Directora de Arte</div>
+                    <ul class="card-skills">
+                        <li>Dirección Creativa</li>
+                        <li>Branding Disruptivo</li>
+                        <li>Motion Graphics</li>
+                        <li>Estrategia Visual 360°</li>
+                    </ul>
+                </div>
+                <button class="card-cta">IR AL PERFIL →</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about-section" id="section-1">
+        <p class="about-text">
+            <span class="line1">Los sitios web pueden ser bastante complejos -</span>
+            <span class="line2">pero el proceso y la web en sí no deberían serlo.</span>
+            <span class="line3">Nadie quiere hacer clic por páginas interminables.</span>
+        </p>
+        <div class="about-image"></div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services-section" id="section-2">
+        <div class="services-header">
+            <h2 class="section-title">SERVICIOS</h2>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-column">
+                <h3>ESTRATEGIA</h3>
+                <ul class="service-list">
+                    <li data-popup="Investigación Visual|Analizamos tendencias y referencias para crear conceptos únicos que destaquen.">
+                        Investigación Visual
+                    </li>
+                    <li data-popup="Análisis de Competencia|Estudiamos a tu competencia para crear estrategias que te posicionen por encima.">
+                        Análisis de Competencia
+                    </li>
+                    <li data-popup="Wireframes|Estructuramos la información de forma óptima para garantizar una experiencia intuitiva.">
+                        Wireframes
+                    </li>
+                    <li data-popup="Mapeo de Contenido|Organizamos tu contenido para maximizar impacto y conversión.">
+                        Mapeo de Contenido
+                    </li>
+                    <li data-popup="User Flow|Diseñamos recorridos optimizados que convierten visitantes en clientes.">
+                        User Flow
+                    </li>
+                    <li data-popup="Conceptualización|Creamos conceptos creativos que comunican tu esencia de forma memorable.">
+                        Conceptualización
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="service-column">
+                <h3>DISEÑO</h3>
+                <ul class="service-list">
+                    <li data-popup="Websites Corporativos|Diseños profesionales que rompen con lo convencional sin perder seriedad.">
+                        Websites Corporativos
+                    </li>
+                    <li data-popup="Marketing Digital|Campañas visuales que capturan atención y generan resultados medibles.">
+                        Marketing Digital
+                    </li>
+                    <li data-popup="Sistemas de Diseño|Sistemas escalables con consistencia y flexibilidad creativa.">
+                        Sistemas de Diseño
+                    </li>
+                    <li data-popup="Animación Web|Microinteracciones que dan vida y mejoran la experiencia de usuario.">
+                        Animación Web
+                    </li>
+                    <li data-popup="Soporte de Diseño|Apoyo continuo para mantener tu presencia digital actualizada.">
+                        Soporte de Diseño
+                    </li>
+                    <li data-popup="Diseño Accesible|Experiencias inclusivas sin comprometer la estética.">
+                        Diseño Accesible
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="service-column">
+                <h3>DESARROLLO</h3>
+                <ul class="service-list">
+                    <li data-popup="Desarrollo Frontend|Código limpio y optimizado con performance impecable.">
+                        Desarrollo Frontend
+                    </li>
+                    <li data-popup="Animaciones Web|Animaciones fluidas que funcionan en todos los dispositivos.">
+                        Animaciones Web
+                    </li>
+                    <li data-popup="CMS Personalizado|Gestión de contenido a medida sin complicaciones.">
+                        CMS Personalizado
+                    </li>
+                    <li data-popup="Desarrollo Accesible|Código que cumple estándares WCAG para accesibilidad universal.">
+                        Desarrollo Accesible
+                    </li>
+                    <li data-popup="SEO Técnico|Optimización que garantiza visibilidad en buscadores.">
+                        SEO Técnico
+                    </li>
+                    <li data-popup="Soporte Frontend|Mantenimiento y evolución continua de tu plataforma.">
+                        Soporte Frontend
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Portfolio Section -->
+    <section class="portfolio-section" id="section-3">
+        <div class="portfolio-header">
+            <h2 class="section-title">TRABAJOS RECIENTES</h2>
+        </div>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item" onclick="togglePortfolio(this)">
+                <div class="portfolio-header-card">
+                    <span class="portfolio-label">WEB</span>
+                    <span class="portfolio-expand">+</span>
+                </div>
+                <div class="portfolio-preview"></div>
+                <div class="portfolio-client">Nike</div>
+                <div class="portfolio-category">Rediseño Conceptual</div>
+                <div class="portfolio-expanded-info">
+                    <div class="portfolio-info-row">
+                        <span>España</span>
+                        <span>2025</span>
+                    </div>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">web</span>
+                        <span class="portfolio-tag">ux/ui</span>
+                        <span class="portfolio-tag">figma</span>
+                        <span class="portfolio-tag">brand</span>
+                    </div>
+                    <div class="portfolio-description">
+                        Rediseño completo del ecosistema digital de Nike España con enfoque brutalista. Implementación de nueva arquitectura de información y sistema de diseño escalable.
+                    </div>
+                </div>
+                <button class="portfolio-cta">VER PROYECTO →</button>
+            </div>
+            
+            <div class="portfolio-item" onclick="togglePortfolio(this)">
+                <div class="portfolio-header-card">
+                    <span class="portfolio-label">CAMPAÑA</span>
+                    <span class="portfolio-expand">+</span>
+                </div>
+                <div class="portfolio-preview"></div>
+                <div class="portfolio-client">Spotify</div>
+                <div class="portfolio-category">Campaña Digital</div>
+                <div class="portfolio-expanded-info">
+                    <div class="portfolio-info-row">
+                        <span>Global</span>
+                        <span>2025</span>
+                    </div>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">digital</span>
+                        <span class="portfolio-tag">motion</span>
+                        <span class="portfolio-tag">social</span>
+                        <span class="portfolio-tag">video</span>
+                    </div>
+                    <div class="portfolio-description">
+                        Campaña multiplataforma con estética glitch para el lanzamiento de Spotify Wrapped. Alcance global con adaptaciones para 25 mercados.
+                    </div>
+                </div>
+                <button class="portfolio-cta">VER PROYECTO →</button>
+            </div>
+            
+            <div class="portfolio-item" onclick="togglePortfolio(this)">
+                <div class="portfolio-header-card">
+                    <span class="portfolio-label">WEBGL</span>
+                    <span class="portfolio-expand">+</span>
+                </div>
+                <div class="portfolio-preview"></div>
+                <div class="portfolio-client">MoMA</div>
+                <div class="portfolio-category">Experiencia WebGL</div>
+                <div class="portfolio-expanded-info">
+                    <div class="portfolio-info-row">
+                        <span>USA</span>
+                        <span>2024</span>
+                    </div>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">webgl</span>
+                        <span class="portfolio-tag">three.js</span>
+                        <span class="portfolio-tag">immersive</span>
+                        <span class="portfolio-tag">3d</span>
+                    </div>
+                    <div class="portfolio-description">
+                        Experiencia inmersiva 3D para la exposición "Museum of Chaos". Navegación experimental con elementos generativos y sonido espacial.
+                    </div>
+                </div>
+                <button class="portfolio-cta">VER PROYECTO →</button>
+            </div>
+            
+            <div class="portfolio-item" onclick="togglePortfolio(this)">
+                <div class="portfolio-header-card">
+                    <span class="portfolio-label">E-COMMERCE</span>
+                    <span class="portfolio-expand">+</span>
+                </div>
+                <div class="portfolio-preview"></div>
+                <div class="portfolio-client">Balenciaga</div>
+                <div class="portfolio-category">E-commerce Experimental</div>
+                <div class="portfolio-expanded-info">
+                    <div class="portfolio-info-row">
+                        <span>Francia</span>
+                        <span>2025</span>
+                    </div>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">ecommerce</span>
+                        <span class="portfolio-tag">react</span>
+                        <span class="portfolio-tag">shopify</span>
+                        <span class="portfolio-tag">ar</span>
+                    </div>
+                    <div class="portfolio-description">
+                        Plataforma de comercio electrónico con integración AR para pruebas virtuales. Interface minimalista con navegación experimental.
+                    </div>
+                </div>
+                <button class="portfolio-cta">VER PROYECTO →</button>
+            </div>
+            
+            <div class="portfolio-item" onclick="togglePortfolio(this)">
+                <div class="portfolio-header-card">
+                    <span class="portfolio-label">EVENTO</span>
+                    <span class="portfolio-expand">+</span>
+                </div>
+                <div class="portfolio-preview"></div>
+                <div class="portfolio-client">Sónar</div>
+                <div class="portfolio-category">Festival Digital</div>
+                <div class="portfolio-expanded-info">
+                    <div class="portfolio-info-row">
+                        <span>España</span>
+                        <span>2024</span>
+                    </div>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">event</span>
+                        <span class="portfolio-tag">live</span>
+                        <span class="portfolio-tag">streaming</span>
+                        <span class="portfolio-tag">interactive</span>
+                    </div>
+                    <div class="portfolio-description">
+                        Plataforma interactiva para Sónar+D con experiencias digitales en tiempo real. Sistema de streaming multi-escenario con visuales generativos.
+                    </div>
+                </div>
+                <button class="portfolio-cta">VER PROYECTO →</button>
+            </div>
+            
+            <div class="portfolio-item" onclick="togglePortfolio(this)">
+                <div class="portfolio-header-card">
+                    <span class="portfolio-label">DASHBOARD</span>
+                    <span class="portfolio-expand">+</span>
+                </div>
+                <div class="portfolio-preview"></div>
+                <div class="portfolio-client">Bloomberg</div>
+                <div class="portfolio-category">Dashboard Interactivo</div>
+                <div class="portfolio-expanded-info">
+                    <div class="portfolio-info-row">
+                        <span>UK</span>
+                        <span>2025</span>
+                    </div>
+                    <div class="portfolio-tags">
+                        <span class="portfolio-tag">data-viz</span>
+                        <span class="portfolio-tag">d3.js</span>
+                        <span class="portfolio-tag">real-time</span>
+                        <span class="portfolio-tag">api</span>
+                    </div>
+                    <div class="portfolio-description">
+                        Dashboard de visualización de datos financieros en tiempo real con estética cyberpunk. Integración con múltiples APIs y actualización en vivo.
+                    </div>
+                </div>
+                <button class="portfolio-cta">VER PROYECTO →</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <p class="cta-text">
+            <span class="line1">No somos otra agencia digital más. Somos el 
+            <span class="emphasis">partner estratégico</span> 
+            que tu marca necesita para romper esquemas.</span>
+            <span class="line2">Combinamos diseño disruptivo con tecnología de vanguardia 
+            para crear experiencias digitales que</span>
+            <span class="line3"><span class="emphasis">convierten</span> y 
+            <span class="emphasis">escalan</span> 
+            tu negocio al siguiente nivel.</span>
+        </p>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="section-4">
+        <div class="footer-content">
+            <div class="footer-title-container">
+                <div class="footer-subtitle" id="footerSubtitle">AGENCIA</div>
+                <h2 class="footer-title" id="footerTitle">OHWOW<span class="exclamation">!</span></h2>
+            </div>
+            
+            <div class="footer-boxes">
+                <span class="footer-box">hello@ohwow.agency</span>
+                <span class="footer-box">+34 640 031 535</span>
+                <span class="footer-box">Madrid</span>
+                <span class="footer-box">España</span>
+                <span class="footer-box">Worldwide</span>
+                <span class="footer-box">
+                    <svg class="social-icon" viewBox="0 0 24 24">
+                        <path d="M22.07 16.75L22.09 16.72L22.07 16.75ZM12 0C5.37 0 0 5.37 0 12C0 18.63 5.37 24 12 24C18.63 24 24 18.63 24 12C24 5.37 18.63 0 12 0ZM16.68 9.6C16.68 9.6 16.68 9.58 16.68 9.56C16.68 7.19 15.32 5.83 12.95 5.83C11.82 5.83 10.89 6.38 10.43 7.24H10.41V6.05H7.91V17.72H10.52V13.27C10.52 12.03 10.77 10.83 12.31 10.83C13.83 10.83 13.85 12.26 13.85 13.35V17.72H16.46V12.75C16.46 10.9 16.68 9.6 16.68 9.6Z"/>
+                    </svg>
+                </span>
+                <span class="footer-box">
+                    <svg class="social-icon" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.405a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
+                    </svg>
+                </span>
+                <span class="footer-box">
+                    <svg class="social-icon" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </span>
+                <span class="footer-box">
+                    <svg class="social-icon" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </span>
+                <span class="footer-box">Privacidad</span>
+                <span class="footer-box">Términos</span>
+                <span class="footer-box">Cookies</span>
+            </div>
+            
+            <div class="footer-copyright">
+                © 2025 AGENCIA OHWOW! Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Link to external JavaScript -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>
