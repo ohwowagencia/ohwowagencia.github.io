@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manifestando con Jes&uacute;s &mdash; Plan de Lanzamiento Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fafafa;--teal:#068d9d;--purple:#3a3afe;--rose:#e5446d;--text:#1a1a1a;
+  --gray-100:#f5f5f5;--gray-200:#e8e8e8;--gray-300:#d4d4d4;--gray-500:#737373;--gray-600:#525252;
+  --radius:12px;--shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.04);
+  --shadow-lg:0 2px 8px rgba(0,0,0,.06),0 8px 32px rgba(0,0,0,.06);
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:'Instrument Serif',Georgia,serif;font-weight:400;line-height:1.2}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* Header */
+.header{padding:40px 0 32px;border-bottom:1px solid var(--gray-200)}
+.header-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:20px}
+.header h1{font-size:clamp(1.75rem,4vw,2.5rem);color:var(--text);letter-spacing:-.02em}
+.header .subtitle{font-size:.95rem;color:var(--gray-500);margin-top:4px;font-weight:400}
+.header .date-badge{
+  display:inline-block;background:var(--teal);color:#fff;font-size:.8rem;font-weight:600;
+  padding:4px 14px;border-radius:20px;margin-top:8px;letter-spacing:.02em;
+}
+.btn-export{
+  display:inline-flex;align-items:center;gap:8px;background:var(--text);color:#fff;
+  border:none;padding:12px 24px;border-radius:8px;font-size:.875rem;font-weight:600;
+  cursor:pointer;transition:opacity .2s;font-family:'Inter',sans-serif;
+}
+.btn-export:hover{opacity:.85}
+.btn-export svg{width:18px;height:18px}
+
+/* Sections */
+.section{padding:48px 0}
+.section+.section{border-top:1px solid var(--gray-200)}
+.section-title{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:8px;color:var(--text)}
+.section-subtitle{font-size:.9rem;color:var(--gray-500);margin-bottom:32px;max-width:640px}
+
+/* Hero Book Card */
+.book-hero{
+  background:linear-gradient(135deg,#068d9d08 0%,#3a3afe06 100%);
+  border:1px solid var(--gray-200);border-radius:var(--radius);padding:40px;
+  box-shadow:var(--shadow-lg);position:relative;overflow:hidden;
+}
+.book-hero::before{
+  content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;
+  background:radial-gradient(circle,var(--teal) 0%,transparent 70%);opacity:.06;
+}
+.book-hero h2{font-size:clamp(1.5rem,3vw,2.25rem);margin-bottom:4px}
+.book-hero .author{font-size:1.1rem;color:var(--teal);font-weight:500;margin-bottom:24px}
+.book-meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.book-meta-item{display:flex;flex-direction:column;gap:2px}
+.book-meta-item .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-500);font-weight:600}
+.book-meta-item .value{font-size:.95rem;font-weight:500}
+
+/* KPI Cards */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px}
+.kpi-card{
+  background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);
+  padding:24px 20px;text-align:center;box-shadow:var(--shadow);transition:transform .2s;
+}
+.kpi-card:hover{transform:translateY(-2px)}
+.kpi-number{font-family:'Instrument Serif',serif;font-size:2.25rem;color:var(--teal);line-height:1}
+.kpi-label{font-size:.8rem;color:var(--gray-500);margin-top:8px;font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+
+/* Amazon KDP */
+.title-tag-box{
+  background:#fff;border-left:4px solid var(--teal);padding:20px 24px;border-radius:0 var(--radius) var(--radius) 0;
+  box-shadow:var(--shadow);margin-bottom:24px;
+}
+.title-tag-box .label{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-500);font-weight:600;margin-bottom:6px}
+.title-tag-box .value{font-size:1.1rem;font-family:'Instrument Serif',serif;font-weight:400}
+
+.subtitle-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:32px}
+.subtitle-card{
+  background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px;
+  box-shadow:var(--shadow);position:relative;
+}
+.subtitle-card .option-letter{
+  display:inline-block;width:28px;height:28px;line-height:28px;text-align:center;
+  background:var(--teal);color:#fff;border-radius:50%;font-size:.8rem;font-weight:700;margin-bottom:10px;
+}
+.subtitle-card p{font-size:.95rem;font-style:italic;color:var(--gray-600)}
+
+.blurb-box{
+  background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:32px;
+  box-shadow:var(--shadow);margin-bottom:32px;
+}
+.blurb-box h4{font-size:1.25rem;margin-bottom:16px;color:var(--teal)}
+.blurb-box p{margin-bottom:12px;font-size:.925rem;color:var(--gray-600);line-height:1.7}
+.blurb-box ul{margin:12px 0;padding-left:20px}
+.blurb-box li{margin-bottom:6px;font-size:.925rem;color:var(--gray-600);line-height:1.6}
+
+.keywords-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-bottom:24px}
+.keyword-chip{
+  background:#fff;border:1px solid var(--gray-200);border-radius:8px;padding:12px 16px;
+  font-size:.875rem;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow);
+}
+.keyword-chip .num{
+  display:inline-block;width:24px;height:24px;line-height:24px;text-align:center;
+  background:var(--purple);color:#fff;border-radius:50%;font-size:.7rem;font-weight:700;flex-shrink:0;
+}
+.categories-row{display:flex;flex-wrap:wrap;gap:10px}
+.cat-badge{
+  background:linear-gradient(135deg,var(--teal),var(--purple));color:#fff;
+  padding:8px 18px;border-radius:20px;font-size:.8rem;font-weight:600;
+}
+
+/* Timeline */
+.phase-block{margin-bottom:40px}
+.phase-header{
+  display:flex;align-items:center;gap:12px;margin-bottom:20px;
+}
+.phase-badge{
+  padding:6px 16px;border-radius:20px;font-size:.8rem;font-weight:700;color:#fff;letter-spacing:.04em;
+}
+.phase-badge.f1{background:var(--teal)}
+.phase-badge.f2{background:var(--rose)}
+.phase-badge.f3{background:var(--purple)}
+.phase-name{font-family:'Instrument Serif',serif;font-size:1.3rem}
+
+.timeline-table{width:100%;border-collapse:collapse;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.timeline-table th{
+  text-align:left;padding:12px 16px;background:var(--gray-100);font-size:.75rem;
+  text-transform:uppercase;letter-spacing:.06em;color:var(--gray-500);font-weight:600;border-bottom:1px solid var(--gray-200);
+}
+.timeline-table td{padding:12px 16px;border-bottom:1px solid var(--gray-100);font-size:.875rem;vertical-align:top}
+.timeline-table tr:last-child td{border-bottom:none}
+.timeline-table tr:hover td{background:var(--gray-100)}
+
+.post-list{list-style:none;padding:0}
+.post-list li{
+  position:relative;padding:12px 0 12px 28px;border-bottom:1px solid var(--gray-100);font-size:.9rem;color:var(--gray-600);
+}
+.post-list li::before{
+  content:'';position:absolute;left:8px;top:20px;width:8px;height:8px;
+  border-radius:50%;background:var(--purple);
+}
+.post-list li:last-child{border-bottom:none}
+
+/* Email Sequence */
+.email-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.email-card{
+  background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);
+  padding:20px;box-shadow:var(--shadow);
+}
+.email-card .email-num{
+  display:inline-block;background:var(--rose);color:#fff;font-size:.7rem;font-weight:700;
+  padding:3px 10px;border-radius:12px;margin-bottom:10px;
+}
+.email-card .email-timing{font-size:.75rem;color:var(--gray-500);margin-bottom:6px;font-weight:500}
+.email-card .email-subject{font-family:'Instrument Serif',serif;font-size:1.05rem;margin-bottom:6px}
+.email-card .email-desc{font-size:.85rem;color:var(--gray-500);line-height:1.5}
+.email-phase-label{
+  font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--teal);margin-bottom:16px;margin-top:24px;
+}
+.email-phase-label:first-child{margin-top:0}
+
+/* BookTok */
+.format-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.format-card{
+  background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);
+  padding:20px;box-shadow:var(--shadow);display:flex;gap:16px;align-items:flex-start;
+}
+.format-icon{
+  width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;flex-shrink:0;
+}
+.format-card:nth-child(1) .format-icon{background:#068d9d15;color:var(--teal)}
+.format-card:nth-child(2) .format-icon{background:#e5446d15;color:var(--rose)}
+.format-card:nth-child(3) .format-icon{background:#3a3afe15;color:var(--purple)}
+.format-card:nth-child(4) .format-icon{background:#068d9d15;color:var(--teal)}
+.format-card:nth-child(5) .format-icon{background:#e5446d15;color:var(--rose)}
+.format-card:nth-child(6) .format-icon{background:#3a3afe15;color:var(--purple)}
+.format-card h4{font-size:1rem;margin-bottom:4px}
+.format-card .format-desc{font-size:.85rem;color:var(--gray-500);line-height:1.5}
+.format-card .format-platform{font-size:.75rem;color:var(--teal);font-weight:600;margin-top:6px}
+
+/* Sales Page Wireframe */
+.wireframe{
+  background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow);
+}
+.wireframe-step{
+  display:flex;align-items:flex-start;gap:20px;padding:20px 24px;
+  border-bottom:1px solid var(--gray-100);
+}
+.wireframe-step:last-child{border-bottom:none}
+.wireframe-step:hover{background:var(--gray-100)}
+.wire-num{
+  width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;font-weight:700;flex-shrink:0;color:#fff;
+}
+.wire-num.t{background:var(--teal)}.wire-num.p{background:var(--purple)}.wire-num.r{background:var(--rose)}
+.wire-label{font-family:'Instrument Serif',serif;font-size:1.05rem;margin-bottom:2px}
+.wire-copy{font-size:.85rem;color:var(--gray-500);line-height:1.5}
+
+/* Sensitivity Badge */
+.sensitivity-banner{
+  background:linear-gradient(135deg,#06854912,#068d9d08);border:1px solid #068d9d30;
+  border-radius:var(--radius);padding:24px 28px;display:flex;align-items:flex-start;gap:16px;
+}
+.sensitivity-icon{
+  width:40px;height:40px;border-radius:50%;background:#068d9d20;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;font-size:1.1rem;
+}
+.sensitivity-banner p{font-size:.9rem;color:var(--gray-600);line-height:1.6}
+
+/* Chart */
+.chart-wrap{
+  background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);
+  padding:28px;box-shadow:var(--shadow);max-width:900px;
+}
+.chart-wrap canvas{max-height:360px}
+
+/* Checklist */
+.checklist-toggle{
+  background:none;border:1px solid var(--gray-200);padding:10px 20px;border-radius:8px;
+  font-size:.875rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;
+  color:var(--teal);transition:all .2s;margin-bottom:16px;
+}
+.checklist-toggle:hover{background:var(--teal);color:#fff}
+.checklist{list-style:none;padding:0;display:none}
+.checklist.open{display:block}
+.checklist li{
+  padding:14px 16px;border-bottom:1px solid var(--gray-100);font-size:.9rem;
+  display:flex;align-items:center;gap:12px;cursor:pointer;transition:opacity .2s;
+}
+.checklist li:hover{background:var(--gray-100)}
+.checklist li .check-box{
+  width:22px;height:22px;border:2px solid var(--gray-300);border-radius:6px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;transition:all .2s;
+}
+.checklist li.done .check-box{background:var(--teal);border-color:var(--teal)}
+.checklist li.done .check-box::after{content:'\2713';color:#fff;font-size:.75rem;font-weight:700}
+.checklist li.done span{text-decoration:line-through;opacity:.5}
+
+/* Footer */
+.footer{
+  padding:32px 0;border-top:1px solid var(--gray-200);text-align:center;
+  font-size:.8rem;color:var(--gray-500);
+}
+.footer strong{color:var(--teal);font-weight:600}
+
+/* Print */
+@media print{
+  .btn-export,.checklist-toggle,.no-print{display:none!important}
+  .checklist{display:block!important}
+  .section{break-inside:avoid;padding:24px 0}
+  body{font-size:14px}
+}
+@media(max-width:640px){
+  .container{padding:0 16px}
+  .header-inner{flex-direction:column}
+  .book-hero{padding:24px}
+  .kpi-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+<div class="container header-inner">
+  <div>
+    <h1>Manifestando con Jes&uacute;s</h1>
+    <p class="subtitle">Jairo Prado Rold&aacute;n &middot; Estrategia de marketing del libro</p>
+    <span class="date-badge">16 abril 2026</span>
+  </div>
+  <button class="btn-export" onclick="exportPDF()">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M7.5 12l4.5 4.5m0 0l4.5-4.5m-4.5 4.5V3"/></svg>
+    Exportar PDF
+  </button>
+</div>
+</header>
+
+<!-- BOOK INFO HERO -->
+<section class="section">
+<div class="container">
+  <div class="book-hero">
+    <h2>Manifestando con Jes&uacute;s</h2>
+    <p class="author">Jairo Prado Rold&aacute;n</p>
+    <div class="book-meta-grid">
+      <div class="book-meta-item"><span class="label">G&eacute;nero</span><span class="value">Espiritualidad contempor&aacute;nea + ciencia cu&aacute;ntica</span></div>
+      <div class="book-meta-item"><span class="label">Formatos</span><span class="value">eBook Kindle, Tapa blanda</span></div>
+      <div class="book-meta-item"><span class="label">Canal principal</span><span class="value">Amazon KDP</span></div>
+      <div class="book-meta-item"><span class="label">P&uacute;blico objetivo</span><span class="value">Hombres y mujeres 25-50, hispanohablantes, en b&uacute;squeda de transformaci&oacute;n</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- KPI CARDS -->
+<section class="section">
+<div class="container">
+  <h2 class="section-title">Indicadores del plan</h2>
+  <p class="section-subtitle">M&eacute;tricas clave de la estrategia de lanzamiento editorial</p>
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-number">3</div><div class="kpi-label">Fases de lanzamiento</div></div>
+    <div class="kpi-card"><div class="kpi-number">14</div><div class="kpi-label">Semanas de campa&ntilde;a</div></div>
+    <div class="kpi-card"><div class="kpi-number">5</div><div class="kpi-label">Canales de promoci&oacute;n</div></div>
+    <div class="kpi-card"><div class="kpi-number">12</div><div class="kpi-label">Emails en secuencia</div></div>
+    <div class="kpi-card"><div class="kpi-number">4</div><div class="kpi-label">Segmentos de audiencia</div></div>
+    <div class="kpi-card"><div class="kpi-number" style="font-size:1.5rem">TBD</div><div class="kpi-label">Inversi&oacute;n publicitaria</div></div>
+  </div>
+</div>
+</section>
+
+<!-- AMAZON KDP OPTIMIZATION -->
+<section class="section">
+<div class="container">
+  <h2 class="section-title">Optimizaci&oacute;n Amazon KDP</h2>
+  <p class="section-subtitle">T&iacute;tulo, subt&iacute;tulos, descripci&oacute;n, keywords y categor&iacute;as para maximizar la visibilidad en Amazon</p>
+
+  <div class="title-tag-box">
+    <div class="label">Title Tag</div>
+    <div class="value">Manifestando con Jes&uacute;s: El camino de la expansi&oacute;n consciente para transformar tu realidad</div>
+  </div>
+
+  <h3 style="font-size:1.1rem;margin-bottom:16px;color:var(--gray-600)">Opciones de subt&iacute;tulo</h3>
+  <div class="subtitle-options">
+    <div class="subtitle-card"><span class="option-letter">A</span><p>Ciencia cu&aacute;ntica y espiritualidad para una vida en plenitud</p></div>
+    <div class="subtitle-card"><span class="option-letter">B</span><p>Despierta tu conciencia y manifiesta la vida que mereces</p></div>
+    <div class="subtitle-card"><span class="option-letter">C</span><p>Un viaje profundo hacia la transformaci&oacute;n personal a trav&eacute;s de la expansi&oacute;n de conciencia</p></div>
+  </div>
+
+  <div class="blurb-box">
+    <h4>Descripci&oacute;n / Blurb</h4>
+    <p>&iquest;Alguna vez has sentido que hay algo m&aacute;s? Que la vida que llevas, aunque funcional, no refleja lo que realmente eres capaz de experimentar?</p>
+    <p><em>Manifestando con Jes&uacute;s</em> no es un libro de f&oacute;rmulas m&aacute;gicas ni promesas vac&iacute;as. Es una invitaci&oacute;n a explorar la naturaleza de tu conciencia &mdash; donde la ciencia cu&aacute;ntica y la espiritualidad m&aacute;s profunda convergen en un mensaje claro y transformador.</p>
+    <p>Jairo Prado Rold&aacute;n dedic&oacute; a&ntilde;os a investigar c&oacute;mo la expansi&oacute;n de conciencia puede cambiar no solo tu percepci&oacute;n, sino tu realidad tangible. En estas p&aacute;ginas encontrar&aacute;s:</p>
+    <ul>
+      <li>Una comprensi&oacute;n accesible de c&oacute;mo tu atenci&oacute;n moldea la realidad (sin jerga cient&iacute;fica impenetrable)</li>
+      <li>Pr&aacute;cticas de presencia y meditaci&oacute;n que puedes aplicar desde hoy</li>
+      <li>La conexi&oacute;n entre manifestaci&oacute;n consciente y f&iacute;sica cu&aacute;ntica, explicada con claridad y profundidad</li>
+      <li>Reflexiones que desaf&iacute;an lo que crees saber sobre ti mismo y tu potencial</li>
+      <li>Un camino paso a paso hacia una vida m&aacute;s consciente, aut&eacute;ntica y plena</li>
+    </ul>
+    <p>Este libro es para ti si buscas profundidad, no atajos. Si prefieres entender antes de creer. Si sientes que el cambio que necesitas empieza por dentro.</p>
+    <p><strong>Comienza tu lectura. El camino ya est&aacute; abierto.</strong></p>
+  </div>
+
+  <h3 style="font-size:1.1rem;margin-bottom:16px;color:var(--gray-600)">Backend Keywords (7 slots)</h3>
+  <div class="keywords-grid">
+    <div class="keyword-chip"><span class="num">1</span> expansi&oacute;n de conciencia libro espa&ntilde;ol</div>
+    <div class="keyword-chip"><span class="num">2</span> espiritualidad ciencia cu&aacute;ntica</div>
+    <div class="keyword-chip"><span class="num">3</span> manifestaci&oacute;n consciente gu&iacute;a</div>
+    <div class="keyword-chip"><span class="num">4</span> desarrollo personal profundo transformaci&oacute;n</div>
+    <div class="keyword-chip"><span class="num">5</span> meditaci&oacute;n presencia libro pr&aacute;ctico</div>
+    <div class="keyword-chip"><span class="num">6</span> despertar espiritual contempor&aacute;neo</div>
+    <div class="keyword-chip"><span class="num">7</span> libro autoayuda espiritualidad moderna</div>
+  </div>
+
+  <h3 style="font-size:1.1rem;margin-bottom:16px;color:var(--gray-600)">Categor&iacute;as BISAC</h3>
+  <div class="categories-row">
+    <span class="cat-badge">Self-Help &rsaquo; Personal Growth &rsaquo; General</span>
+    <span class="cat-badge">Body, Mind &amp; Spirit &rsaquo; Inspiration &amp; Personal Growth</span>
+  </div>
+</div>
+</section>
+
+<!-- 3-PHASE LAUNCH TIMELINE -->
+<section class="section">
+<div class="container">
+  <h2 class="section-title">Timeline de lanzamiento en 3 fases</h2>
+  <p class="section-subtitle">14 semanas de campa&ntilde;a estructurada: pre-lanzamiento, lanzamiento y post-lanzamiento</p>
+
+  <!-- FASE 1 -->
+  <div class="phase-block">
+    <div class="phase-header">
+      <span class="phase-badge f1">FASE 1</span>
+      <span class="phase-name">Pre-lanzamiento (Semanas -6 a -1)</span>
+    </div>
+    <table class="timeline-table">
+      <thead><tr><th>Semana</th><th>Acci&oacute;n</th><th>Canal</th><th>Pieza clave</th></tr></thead>
+      <tbody>
+        <tr><td><strong>-6</strong></td><td>Anuncio del libro: portada + t&iacute;tulo + fecha</td><td>RRSS, email</td><td>Post reveal de portada</td></tr>
+        <tr><td><strong>-5</strong></td><td>Primer extracto del libro</td><td>Instagram carrusel, blog</td><td>&ldquo;El primer cap&iacute;tulo que escribi&oacute; Jairo&rdquo;</td></tr>
+        <tr><td><strong>-4</strong></td><td>Detr&aacute;s de la creaci&oacute;n: proceso creativo</td><td>Instagram stories, YouTube</td><td>Making-of con fotos y notas</td></tr>
+        <tr><td><strong>-3</strong></td><td>Segundo extracto + pre-venta abierta</td><td>RRSS, email, Amazon</td><td>Link de pre-order</td></tr>
+        <tr><td><strong>-2</strong></td><td>Testimonios de lectores beta</td><td>Instagram, email</td><td>3 rese&ntilde;as anticipadas</td></tr>
+        <tr><td><strong>-1</strong></td><td>Invitaci&oacute;n final + cap&iacute;tulo gratis</td><td>Todos los canales</td><td>Landing page con descarga gratuita</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FASE 2 -->
+  <div class="phase-block">
+    <div class="phase-header">
+      <span class="phase-badge f2">FASE 2</span>
+      <span class="phase-name">Lanzamiento (Semana 0)</span>
+    </div>
+    <table class="timeline-table">
+      <thead><tr><th>D&iacute;a</th><th>Acci&oacute;n</th><th>Canal</th></tr></thead>
+      <tbody>
+        <tr><td><strong>D-1</strong></td><td>&ldquo;Ma&ntilde;ana compartimos algo especial contigo&rdquo; &mdash; teaser final</td><td>RRSS, email</td></tr>
+        <tr><td><strong>D</strong></td><td>Anuncio oficial + link de compra</td><td>TODOS</td></tr>
+        <tr><td><strong>D+1</strong></td><td>Primer testimonio de comprador</td><td>Instagram, TikTok</td></tr>
+        <tr><td><strong>D+3</strong></td><td>Extracto viral + CTA</td><td>RRSS, email</td></tr>
+        <tr><td><strong>D+5</strong></td><td>Rese&ntilde;a detallada / entrevista sobre el libro</td><td>Blog, YouTube</td></tr>
+        <tr><td><strong>D+7</strong></td><td>Agradecimiento + resultados primera semana</td><td>RRSS, email</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FASE 3 -->
+  <div class="phase-block">
+    <div class="phase-header">
+      <span class="phase-badge f3">FASE 3</span>
+      <span class="phase-name">Post-lanzamiento (Semanas 2&ndash;8)</span>
+    </div>
+    <ul class="post-list">
+      <li>Contenido continuo basado en temas del libro</li>
+      <li>Campa&ntilde;a de rese&ntilde;as en Amazon (solicitar reviews)</li>
+      <li>BookTok / Bookstagram campaign</li>
+      <li>Colaboraciones con influencers de espiritualidad</li>
+      <li>Repurposing del libro a formatos RRSS</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<!-- EMAIL LAUNCH SEQUENCE -->
+<section class="section">
+<div class="container">
+  <h2 class="section-title">Secuencia de email de lanzamiento</h2>
+  <p class="section-subtitle">8 emails estrat&eacute;gicos que acompa&ntilde;an al lector desde el descubrimiento hasta la compra</p>
+
+  <p class="email-phase-label">Pre-lanzamiento</p>
+  <div class="email-grid" style="margin-bottom:24px">
+    <div class="email-card">
+      <span class="email-num">EMAIL 1</span>
+      <div class="email-timing">Semana -6</div>
+      <div class="email-subject">&ldquo;Algo especial est&aacute; por llegar&rdquo;</div>
+      <div class="email-desc">Teaser del libro, sin revelar todo. Generar expectativa y curiosidad.</div>
+    </div>
+    <div class="email-card">
+      <span class="email-num">EMAIL 2</span>
+      <div class="email-timing">Semana -4</div>
+      <div class="email-subject">&ldquo;Lee el primer extracto de Manifestando con Jes&uacute;s&rdquo;</div>
+      <div class="email-desc">Fragmento poderoso del libro. Primera muestra real del contenido.</div>
+    </div>
+    <div class="email-card">
+      <span class="email-num">EMAIL 3</span>
+      <div class="email-timing">Semana -2</div>
+      <div class="email-subject">&ldquo;Lo que dicen quienes ya lo han le&iacute;do&rdquo;</div>
+      <div class="email-desc">Testimonios de beta readers. Social proof para generar confianza.</div>
+    </div>
+    <div class="email-card">
+      <span class="email-num">EMAIL 4</span>
+      <div class="email-timing">Semana -1</div>
+      <div class="email-subject">&ldquo;Tu cap&iacute;tulo gratis te est&aacute; esperando&rdquo;</div>
+      <div class="email-desc">Lead magnet: cap&iacute;tulo completo gratuito. Conversi&oacute;n directa.</div>
+    </div>
+  </div>
+
+  <p class="email-phase-label">Lanzamiento</p>
+  <div class="email-grid" style="margin-bottom:24px">
+    <div class="email-card">
+      <span class="email-num">EMAIL 5</span>
+      <div class="email-timing">D&iacute;a D</div>
+      <div class="email-subject">&ldquo;Ya est&aacute; aqu&iacute;: Manifestando con Jes&uacute;s&rdquo;</div>
+      <div class="email-desc">Anuncio oficial + link directo de compra en Amazon.</div>
+    </div>
+    <div class="email-card">
+      <span class="email-num">EMAIL 6</span>
+      <div class="email-timing">D+2</div>
+      <div class="email-subject">&ldquo;Por qu&eacute; escrib&iacute; este libro (en palabras de Jairo)&rdquo;</div>
+      <div class="email-desc">Storytelling + extracto del pr&oacute;logo. Conexi&oacute;n emocional.</div>
+    </div>
+  </div>
+
+  <p class="email-phase-label">Post-lanzamiento</p>
+  <div class="email-grid">
+    <div class="email-card">
+      <span class="email-num">EMAIL 7</span>
+      <div class="email-timing">D+7</div>
+      <div class="email-subject">&ldquo;Las primeras reacciones nos han dejado sin palabras&rdquo;</div>
+      <div class="email-desc">Social proof + reviews reales de los primeros compradores.</div>
+    </div>
+    <div class="email-card">
+      <span class="email-num">EMAIL 8</span>
+      <div class="email-timing">D+14</div>
+      <div class="email-subject">&ldquo;Una pr&aacute;ctica del libro que puedes hacer ahora mismo&rdquo;</div>
+      <div class="email-desc">Valor directo + CTA suave. Mantener la conversaci&oacute;n viva.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- BOOKTOK / BOOKSTAGRAM -->
+<section class="section">
+<div class="container">
+  <h2 class="section-title">Estrategia BookTok / Bookstagram</h2>
+  <p class="section-subtitle">6 formatos de contenido dise&ntilde;ados para viralizar el libro en redes sociales</p>
+  <div class="format-grid">
+    <div class="format-card">
+      <div class="format-icon">&#9654;</div>
+      <div>
+        <h4>Unboxing est&eacute;tico</h4>
+        <div class="format-desc">Video aesthetic del libro, p&aacute;ginas, lectura. Sensorial y contemplativo.</div>
+        <div class="format-platform">TikTok, Instagram Reels</div>
+      </div>
+    </div>
+    <div class="format-card">
+      <div class="format-icon">&#10077;</div>
+      <div>
+        <h4>&ldquo;Frase que me cambi&oacute;&rdquo;</h4>
+        <div class="format-desc">Cita del libro + reacci&oacute;n personal genuina. Formato cara a c&aacute;mara.</div>
+        <div class="format-platform">TikTok, Instagram Reels</div>
+      </div>
+    </div>
+    <div class="format-card">
+      <div class="format-icon">&#9638;</div>
+      <div>
+        <h4>Carrusel de frases</h4>
+        <div class="format-desc">5&ndash;7 citas del libro en dise&ntilde;o editorial limpio. Guardable y compartible.</div>
+        <div class="format-platform">Instagram</div>
+      </div>
+    </div>
+    <div class="format-card">
+      <div class="format-icon">&#8596;</div>
+      <div>
+        <h4>&ldquo;Si te gust&oacute; X, lee esto&rdquo;</h4>
+        <div class="format-desc">Comparativa con Dispenza, Tolle, Yung Pueblo. Posicionamiento por afinidad.</div>
+        <div class="format-platform">TikTok</div>
+      </div>
+    </div>
+    <div class="format-card">
+      <div class="format-icon">&#9998;</div>
+      <div>
+        <h4>Annotation tour</h4>
+        <div class="format-desc">P&aacute;ginas subrayadas y anotadas. Muestra la experiencia real de lectura.</div>
+        <div class="format-platform">TikTok, Instagram</div>
+      </div>
+    </div>
+    <div class="format-card">
+      <div class="format-icon">#</div>
+      <div>
+        <h4>#ManifiestaConJesus</h4>
+        <div class="format-desc">Challenge: comparte tu reflexi&oacute;n despu&eacute;s de leer. UGC org&aacute;nico.</div>
+        <div class="format-platform">TikTok</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SALES PAGE WIREFRAME -->
+<section class="section">
+<div class="container">
+  <h2 class="section-title">Estructura de p&aacute;gina de ventas</h2>
+  <p class="section-subtitle">Wireframe de la landing page del libro con directrices de copy por secci&oacute;n</p>
+  <div class="wireframe">
+    <div class="wireframe-step"><div class="wire-num t">1</div><div><div class="wire-label">Hero</div><div class="wire-copy">Portada del libro + CTA principal. Dise&ntilde;o limpio, editorial.</div></div></div>
+    <div class="wireframe-step"><div class="wire-num r">2</div><div><div class="wire-label">Problema</div><div class="wire-copy">Identificar al lector: &ldquo;&iquest;Sientes que hay algo m&aacute;s?&rdquo;</div></div></div>
+    <div class="wireframe-step"><div class="wire-num p">3</div><div><div class="wire-label">Visi&oacute;n</div><div class="wire-copy">Pintar el despu&eacute;s: claridad, presencia, prop&oacute;sito.</div></div></div>
+    <div class="wireframe-step"><div class="wire-num t">4</div><div><div class="wire-label">Sobre el libro</div><div class="wire-copy">Qu&eacute; contiene, estructura, diferenciador.</div></div></div>
+    <div class="wireframe-step"><div class="wire-num r">5</div><div><div class="wire-label">Extracto</div><div class="wire-copy">1&ndash;2 fragmentos poderosos reales del manuscrito.</div></div></div>
+    <div class="wireframe-step"><div class="wire-num p">6</div><div><div class="wire-label">Sobre Jairo</div><div class="wire-copy">Bio digna y respetuosa. Legado, no tragedia.</div></div></div>
+    <div class="wireframe-step"><div class="wire-num t">7</div><div><div class="wire-label">Testimonios</div><div class="wire-copy">Rese&ntilde;as reales (placeholders hasta tener).</div></div></div>
+    <div class="wireframe-step"><div class="wire-num r">8</div><div><div class="wire-label">FAQ</div><div class="wire-copy">5 preguntas: formato, precio, tem&aacute;tica, para qui&eacute;n es, c&oacute;mo comprar.</div></div></div>
+    <div class="wireframe-step"><div class="wire-num p">9</div><div><div class="wire-label">CTA</div><div class="wire-copy">&ldquo;Comienza tu lectura&rdquo; &mdash; NO urgencia, NO countdown timers.</div></div></div>
+  </div>
+</div>
+</section>
+
+<!-- SENSITIVITY BADGE -->
+<section class="section">
+<div class="container">
+  <div class="sensitivity-banner">
+    <div class="sensitivity-icon">&#9679;</div>
+    <div>
+      <p><strong style="color:var(--teal)">Nivel VERDE de sensibilidad</strong><br>
+      Todo el contenido de este plan de lanzamiento ha sido dise&ntilde;ado con m&aacute;ximo respeto y dignidad. No se referencia el fallecimiento de Jairo. El enfoque es celebrar su mensaje y hacer llegar su obra al mundo.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CHART -->
+<section class="section">
+<div class="container">
+  <h2 class="section-title">Timeline de acciones por semana</h2>
+  <p class="section-subtitle">Distribuci&oacute;n de acciones a lo largo de las 14 semanas de campa&ntilde;a</p>
+  <div class="chart-wrap">
+    <canvas id="actionsChart"></canvas>
+  </div>
+</div>
+</section>
+
+<!-- IMPLEMENTATION CHECKLIST -->
+<section class="section">
+<div class="container">
+  <h2 class="section-title">Checklist de implementaci&oacute;n</h2>
+  <p class="section-subtitle">Tareas cr&iacute;ticas para ejecutar el plan de lanzamiento</p>
+  <button class="checklist-toggle" id="toggleChecklist">Mostrar / ocultar checklist</button>
+  <ul class="checklist" id="checklist">
+    <li><div class="check-box"></div><span>Finalizar manuscrito y preparar formatos KDP</span></li>
+    <li><div class="check-box"></div><span>Dise&ntilde;ar portada definitiva del libro</span></li>
+    <li><div class="check-box"></div><span>Configurar cuenta Amazon KDP</span></li>
+    <li><div class="check-box"></div><span>Crear landing page del libro</span></li>
+    <li><div class="check-box"></div><span>Preparar 8 emails de la secuencia de lanzamiento</span></li>
+    <li><div class="check-box"></div><span>Abrir pre-venta en Amazon</span></li>
+    <li><div class="check-box"></div><span>Producir contenido BookTok (6 videos m&iacute;nimo)</span></li>
+    <li><div class="check-box"></div><span>Contactar 5 influencers de espiritualidad</span></li>
+    <li><div class="check-box"></div><span>Configurar Amazon Ads (presupuesto por definir)</span></li>
+    <li><div class="check-box"></div><span>Dise&ntilde;ar cap&iacute;tulo gratuito como lead magnet</span></li>
+    <li><div class="check-box"></div><span>Solicitar rese&ntilde;as a beta readers</span></li>
+    <li><div class="check-box"></div><span>Aprobaci&oacute;n final de toda la campa&ntilde;a por la familia</span></li>
+  </ul>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p>Generado por <strong>Agencia OH WOW!</strong> &mdash; Legado Jairo Prado</p>
+  </div>
+</footer>
+
+<script>
+// Chart.js — Actions per week
+const ctx = document.getElementById('actionsChart').getContext('2d');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['S-6','S-5','S-4','S-3','S-2','S-1','S0 (D-1)','S0 (D)','S0 (D+1-3)','S0 (D+5-7)','S2','S4','S6','S8'],
+    datasets: [{
+      label: 'Acciones',
+      data: [3, 2, 3, 3, 3, 4, 2, 3, 3, 3, 4, 3, 3, 2],
+      backgroundColor: [
+        '#068d9d','#068d9d','#068d9d','#068d9d','#068d9d','#068d9d',
+        '#e5446d','#e5446d','#e5446d','#e5446d',
+        '#3a3afe','#3a3afe','#3a3afe','#3a3afe'
+      ],
+      borderRadius: 6,
+      maxBarThickness: 48
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1a1a1a',
+        titleFont: { family: 'Inter' },
+        bodyFont: { family: 'Inter' },
+        cornerRadius: 8,
+        padding: 12
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: { stepSize: 1, font: { family: 'Inter', size: 12 } },
+        grid: { color: '#e8e8e8' }
+      },
+      x: {
+        ticks: { font: { family: 'Inter', size: 11 } },
+        grid: { display: false }
+      }
+    }
+  }
+});
+
+// Checklist toggle
+document.getElementById('toggleChecklist').addEventListener('click', function() {
+  document.getElementById('checklist').classList.toggle('open');
+});
+
+// Checklist item toggle
+document.querySelectorAll('#checklist li').forEach(function(li) {
+  li.addEventListener('click', function() {
+    this.classList.toggle('done');
+  });
+});
+
+// Export PDF
+function exportPDF() {
+  // Open checklist before printing
+  document.getElementById('checklist').classList.add('open');
+  window.print();
+}
+</script>
+
+<!-- QA REVIEW -->
+<section class="section no-print" style="padding-bottom:32px">
+<div class="container">
+  <div style="background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);border-top:3px solid var(--teal)">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+      <div style="width:36px;height:36px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem;font-weight:700;flex-shrink:0">QA</div>
+      <div>
+        <h3 style="font-family:'Instrument Serif',serif;font-size:1.25rem;font-weight:400;line-height:1.2">QA Review &mdash; jz-qa-reviewer</h3>
+        <p style="font-size:.8rem;color:var(--gray-500);margin-top:2px">Fecha: 2026-04-16 &middot; Basado en: Jeferson Zambrano (CDO &amp; CMO, Land of Nomads Group)</p>
+      </div>
+    </div>
+    <div style="display:inline-block;background:linear-gradient(135deg,var(--teal),#05a5b8);color:#fff;padding:6px 18px;border-radius:20px;font-size:.85rem;font-weight:700;margin-bottom:24px">
+      Puntuaci&oacute;n: 8.5/10 &mdash; APROBADO CON OBSERVACIONES
+    </div>
+    <h4 style="font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;color:var(--gray-500);font-weight:600;margin-bottom:16px">Cambios realizados</h4>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="padding:16px 20px;background:var(--gray-100);border-radius:8px;border-left:3px solid var(--teal)">
+        <p style="font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:4px">1. CTAs: Reemplazados 3 CTAs agresivos</p>
+        <p style="font-size:.85rem;color:var(--gray-500);line-height:1.6">&laquo;Cuenta atr&aacute;s&raquo; &rarr; &laquo;Invitaci&oacute;n final&raquo; &middot; &laquo;Ma&ntilde;ana cambia todo&raquo; &rarr; &laquo;Ma&ntilde;ana compartimos algo especial contigo&raquo; &middot; &laquo;desc&aacute;rgalo ahora&raquo; &rarr; &laquo;te est&aacute; esperando&raquo;. Raz&oacute;n: El marketing de un legado p&oacute;stumo debe invitar, nunca presionar.</p>
+      </div>
+      <div style="padding:16px 20px;background:var(--gray-100);border-radius:8px;border-left:3px solid var(--teal)">
+        <p style="font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:4px">2. Blurb Amazon: Tono correcto &mdash; sin cambios necesarios</p>
+        <p style="font-size:.85rem;color:var(--gray-500);line-height:1.6">Verificada la ausencia de palabras prohibidas (guaranteed, miracle, secret, urgent). La descripci&oacute;n mantiene tono invitacional con cierre suave &laquo;Comienza tu lectura&raquo;. Raz&oacute;n: La ficha de Amazon es el primer contacto &mdash; debe reflejar la esencia del libro, no t&eacute;cnicas de venta agresivas.</p>
+      </div>
+      <div style="padding:16px 20px;background:var(--gray-100);border-radius:8px;border-left:3px solid var(--teal)">
+        <p style="font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:4px">3. Subject lines emails: 8 verificadas &mdash; todas nivel VERDE</p>
+        <p style="font-size:.85rem;color:var(--gray-500);line-height:1.6">Ninguna subject line referencia el fallecimiento de Jairo ni lo utiliza como palanca emocional. Se corrigi&oacute; la subject del Email 4 por contener lenguaje de urgencia (&laquo;desc&aacute;rgalo ahora&raquo;). Raz&oacute;n: Ning&uacute;n email de la secuencia debe usar el fallecimiento como palanca emocional.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+</body>
+</html>

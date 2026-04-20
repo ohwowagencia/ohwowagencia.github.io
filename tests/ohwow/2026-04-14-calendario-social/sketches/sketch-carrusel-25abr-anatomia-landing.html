@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sketch — Entry 11 — Anatomía de una landing | Agencia OH WOW!</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #e8e4df; font-family: 'Segoe UI', system-ui, sans-serif; color: #1c1c1c; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
+  .sketch-container { background: #fff; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); padding: 32px; max-width: 620px; width: 100%; }
+  .sketch-header { font-size: 13px; color: #888; margin-bottom: 8px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+  .sketch-meta { font-size: 12px; color: #aaa; margin-bottom: 20px; }
+  .svg-wrap { display: flex; justify-content: center; margin-bottom: 24px; }
+  .notas { border-left: 4px solid #c8f135; padding: 16px 20px; margin-top: 24px; background: #fafaf5; border-radius: 0 8px 8px 0; }
+  .notas h3 { font-family: Georgia, serif; font-size: 15px; margin-bottom: 8px; color: #1c1c1c; }
+  .notas ul { font-size: 13px; color: #555; line-height: 1.7; padding-left: 18px; }
+  .footer { text-align: center; margin-top: 32px; font-size: 11px; color: #bbb; letter-spacing: 0.3px; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .sketch-container { box-shadow: none; border: 1px solid #ddd; }
+    .footer { color: #999; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sketch-container">
+  <div class="sketch-header">Entry 11 — Instagram Carousel Cover</div>
+  <div class="sketch-meta">1080 &times; 1080 px &middot; 25 abril 2026 &middot; Tema: Anatom&iacute;a de una landing que convierte</div>
+
+  <div class="svg-wrap">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="540" height="540" style="border:1px solid #333; border-radius:8px;">
+      <!-- Dark background -->
+      <rect width="1080" height="1080" fill="#1c1c1c"/>
+
+      <!-- Subtle grid/wireframe pattern -->
+      <defs>
+        <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffffff" stroke-width="0.3" opacity="0.06"/>
+        </pattern>
+      </defs>
+      <rect width="1080" height="1080" fill="url(#grid)"/>
+
+      <!-- Headline top area -->
+      <text x="540" y="110" text-anchor="middle" font-family="Georgia, serif" font-size="52" fill="#ffffff">Anatom&#237;a de una</text>
+      <text x="540" y="180" text-anchor="middle" font-family="Georgia, serif" font-size="76" fill="#c8f135" font-weight="bold">landing.</text>
+
+      <!-- Wireframe mockup of landing page (center) -->
+      <g transform="translate(280, 230)">
+        <!-- Browser chrome -->
+        <rect x="0" y="0" width="520" height="36" rx="6" ry="6" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+        <circle cx="18" cy="18" r="5" fill="#e85d8a" opacity="0.7"/>
+        <circle cx="36" cy="18" r="5" fill="#c8f135" opacity="0.7"/>
+        <circle cx="54" cy="18" r="5" fill="#666"/>
+        <rect x="80" y="10" width="200" height="16" rx="4" fill="#333"/>
+
+        <!-- Page body -->
+        <rect x="0" y="36" width="520" height="560" fill="none" stroke="#c8f135" stroke-width="1" opacity="0.4"/>
+
+        <!-- Navigation bar -->
+        <rect x="0" y="36" width="520" height="40" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.2"/>
+        <rect x="20" y="48" width="60" height="14" rx="2" fill="#c8f135" opacity="0.3"/>
+        <rect x="340" y="48" width="40" height="14" rx="2" fill="#555"/>
+        <rect x="390" y="48" width="40" height="14" rx="2" fill="#555"/>
+        <rect x="440" y="48" width="60" height="14" rx="2" fill="#c8f135" opacity="0.5"/>
+
+        <!-- Hero area -->
+        <rect x="20" y="96" width="480" height="160" rx="4" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="6 4" opacity="0.3"/>
+        <text x="260" y="155" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="18" fill="#ffffff" opacity="0.4">HERO SECTION</text>
+        <rect x="160" y="170" width="200" height="10" rx="2" fill="#ffffff" opacity="0.1"/>
+        <rect x="180" y="190" width="160" height="10" rx="2" fill="#ffffff" opacity="0.07"/>
+        <!-- CTA in hero -->
+        <rect x="195" y="215" width="130" height="30" rx="15" fill="#c8f135" opacity="0.4"/>
+        <text x="260" y="234" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" fill="#1c1c1c" opacity="0.6">CTA Button</text>
+
+        <!-- 3 Feature boxes -->
+        <rect x="20" y="280" width="148" height="100" rx="4" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="5 4" opacity="0.25"/>
+        <rect x="186" y="280" width="148" height="100" rx="4" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="5 4" opacity="0.25"/>
+        <rect x="352" y="280" width="148" height="100" rx="4" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="5 4" opacity="0.25"/>
+        <circle cx="94" cy="310" r="12" fill="#c8f135" opacity="0.2"/>
+        <circle cx="260" cy="310" r="12" fill="#c8f135" opacity="0.2"/>
+        <circle cx="426" cy="310" r="12" fill="#c8f135" opacity="0.2"/>
+        <rect x="55" y="335" width="78" height="8" rx="2" fill="#ffffff" opacity="0.1"/>
+        <rect x="221" y="335" width="78" height="8" rx="2" fill="#ffffff" opacity="0.1"/>
+        <rect x="387" y="335" width="78" height="8" rx="2" fill="#ffffff" opacity="0.1"/>
+        <rect x="45" y="350" width="98" height="6" rx="2" fill="#ffffff" opacity="0.06"/>
+        <rect x="211" y="350" width="98" height="6" rx="2" fill="#ffffff" opacity="0.06"/>
+        <rect x="377" y="350" width="98" height="6" rx="2" fill="#ffffff" opacity="0.06"/>
+
+        <!-- Testimonial area -->
+        <rect x="60" y="400" width="400" height="60" rx="4" fill="none" stroke="#e85d8a" stroke-width="0.8" stroke-dasharray="5 4" opacity="0.3"/>
+        <text x="260" y="430" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#e85d8a" opacity="0.4" font-style="italic">&ldquo;Testimonio&rdquo;</text>
+        <rect x="210" y="445" width="100" height="6" rx="2" fill="#e85d8a" opacity="0.1"/>
+
+        <!-- Final CTA -->
+        <rect x="140" y="490" width="240" height="44" rx="22" fill="#c8f135" opacity="0.35"/>
+        <text x="260" y="517" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="16" fill="#1c1c1c" opacity="0.5">CONVERTIR AHORA</text>
+
+        <!-- Footer -->
+        <rect x="0" y="550" width="520" height="46" fill="none" stroke="#ffffff" stroke-width="0.5" opacity="0.1"/>
+        <rect x="200" y="567" width="120" height="6" rx="2" fill="#ffffff" opacity="0.06"/>
+      </g>
+
+      <!-- Annotation lines pointing to sections -->
+      <!-- Arrow to nav -->
+      <line x1="220" y1="290" x2="278" y2="290" stroke="#c8f135" stroke-width="1.5"/>
+      <circle cx="278" cy="290" r="3" fill="#c8f135"/>
+      <text x="210" y="286" text-anchor="end" font-family="'Segoe UI', sans-serif" font-size="16" fill="#c8f135">Nav clara</text>
+      <text x="210" y="304" text-anchor="end" font-family="'Segoe UI', sans-serif" font-size="12" fill="#888">1 CTA visible</text>
+
+      <!-- Arrow to hero -->
+      <line x1="850" y1="380" x2="802" y2="380" stroke="#c8f135" stroke-width="1.5"/>
+      <circle cx="802" cy="380" r="3" fill="#c8f135"/>
+      <text x="860" y="376" text-anchor="start" font-family="'Segoe UI', sans-serif" font-size="16" fill="#c8f135">Hero con H1</text>
+      <text x="860" y="394" text-anchor="start" font-family="'Segoe UI', sans-serif" font-size="12" fill="#888">Propuesta de valor</text>
+
+      <!-- Arrow to features -->
+      <line x1="220" y1="540" x2="278" y2="540" stroke="#c8f135" stroke-width="1.5"/>
+      <circle cx="278" cy="540" r="3" fill="#c8f135"/>
+      <text x="210" y="536" text-anchor="end" font-family="'Segoe UI', sans-serif" font-size="16" fill="#c8f135">3 beneficios</text>
+      <text x="210" y="554" text-anchor="end" font-family="'Segoe UI', sans-serif" font-size="12" fill="#888">Iconos + texto</text>
+
+      <!-- Arrow to testimonial -->
+      <line x1="850" y1="645" x2="802" y2="645" stroke="#e85d8a" stroke-width="1.5"/>
+      <circle cx="802" cy="645" r="3" fill="#e85d8a"/>
+      <text x="860" y="641" text-anchor="start" font-family="'Segoe UI', sans-serif" font-size="16" fill="#e85d8a">Social proof</text>
+      <text x="860" y="659" text-anchor="start" font-family="'Segoe UI', sans-serif" font-size="12" fill="#888">Testimonio real</text>
+
+      <!-- Arrow to CTA -->
+      <line x1="220" y1="730" x2="278" y2="730" stroke="#c8f135" stroke-width="1.5"/>
+      <circle cx="278" cy="730" r="3" fill="#c8f135"/>
+      <text x="210" y="726" text-anchor="end" font-family="'Segoe UI', sans-serif" font-size="16" fill="#c8f135">CTA final</text>
+      <text x="210" y="744" text-anchor="end" font-family="'Segoe UI', sans-serif" font-size="12" fill="#888">Contraste alto</text>
+
+      <!-- Stat badge: 8% conversión pill -->
+      <rect x="60" y="870" width="240" height="52" rx="26" fill="#e85d8a"/>
+      <text x="180" y="902" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#ffffff" font-weight="bold">8% conversi&#243;n</text>
+
+      <!-- vs average -->
+      <text x="340" y="902" text-anchor="start" font-family="'Segoe UI', sans-serif" font-size="18" fill="#666">vs</text>
+      <rect x="370" y="876" width="260" height="44" rx="22" fill="#333"/>
+      <text x="500" y="904" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#888">2.35% media</text>
+
+      <!-- Magnifying glass icon (geometric) -->
+      <g transform="translate(880, 860)" opacity="0.25">
+        <circle cx="30" cy="30" r="28" fill="none" stroke="#c8f135" stroke-width="3"/>
+        <line x1="50" y1="50" x2="72" y2="72" stroke="#c8f135" stroke-width="3" stroke-linecap="round"/>
+        <!-- Cross-hair inside -->
+        <line x1="18" y1="30" x2="42" y2="30" stroke="#c8f135" stroke-width="1" opacity="0.5"/>
+        <line x1="30" y1="18" x2="30" y2="42" stroke="#c8f135" stroke-width="1" opacity="0.5"/>
+      </g>
+
+      <!-- Scalpel icon (geometric) -->
+      <g transform="translate(960, 880)" opacity="0.2">
+        <line x1="0" y1="40" x2="40" y2="0" stroke="#e85d8a" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M 38,-2 L 44,4 L 40,8 L 34,2 Z" fill="#e85d8a"/>
+      </g>
+
+      <!-- "Desliza" indicator -->
+      <g transform="translate(880, 1000)">
+        <text x="0" y="0" font-family="'Segoe UI', sans-serif" font-size="22" fill="#c8f135" font-weight="600">Desliza &#x2192;</text>
+      </g>
+
+      <!-- Decorative corner elements -->
+      <rect x="30" y="30" width="40" height="2" fill="#c8f135" opacity="0.15"/>
+      <rect x="30" y="30" width="2" height="40" fill="#c8f135" opacity="0.15"/>
+      <rect x="1010" y="30" width="40" height="2" fill="#c8f135" opacity="0.15"/>
+      <rect x="1048" y="30" width="2" height="40" fill="#c8f135" opacity="0.15"/>
+      <rect x="30" y="1048" width="40" height="2" fill="#c8f135" opacity="0.15"/>
+      <rect x="30" y="1010" width="2" height="40" fill="#c8f135" opacity="0.15"/>
+      <rect x="1010" y="1048" width="40" height="2" fill="#c8f135" opacity="0.15"/>
+      <rect x="1048" y="1010" width="2" height="40" fill="#c8f135" opacity="0.15"/>
+
+      <!-- Logo placeholder bottom-center -->
+      <circle cx="540" cy="1010" r="30" fill="none" stroke="#ffffff" stroke-width="1" stroke-dasharray="5 4" opacity="0.3"/>
+      <text x="540" y="1014" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" fill="#666" dominant-baseline="middle">Logo</text>
+      <text x="540" y="1055" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#555">OH WOW!</text>
+    </svg>
+  </div>
+
+  <div class="notas">
+    <h3>Notas para el dise&ntilde;ador</h3>
+    <ul>
+      <li>Formato: Instagram Carousel Cover 1080 &times; 1080 px (portada del carrusel)</li>
+      <li>Fondo oscuro #1c1c1c con patr&oacute;n de rejilla sutil (estilo wireframe/t&eacute;cnico)</li>
+      <li>El wireframe central es esquem&aacute;tico: trazos finos blancos y lima. No necesita ser perfecto, es est&eacute;tico</li>
+      <li>Anotaciones con l&iacute;neas lima apuntando a cada secci&oacute;n: nav, hero, beneficios, social proof, CTA</li>
+      <li>Badge de conversi&oacute;n: pill rosa &laquo;8% conversi&oacute;n&raquo; vs pill gris &laquo;2.35% media&raquo;</li>
+      <li>Iconos geom&eacute;tricos (lupa, escalpelo) sugieren disecci&oacute;n/an&aacute;lisis. Baja opacidad</li>
+      <li>Indicador &laquo;Desliza &rarr;&raquo; en lima, esquina inferior derecha</li>
+      <li>Estilo: AI Drugs / editorial t&eacute;cnico / dark mode elegante</li>
+      <li>Las slides interiores del carrusel explorar&iacute;an cada secci&oacute;n en detalle</li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer">Sketch generado por Agencia OH WOW!</div>
+
+</body>
+</html>

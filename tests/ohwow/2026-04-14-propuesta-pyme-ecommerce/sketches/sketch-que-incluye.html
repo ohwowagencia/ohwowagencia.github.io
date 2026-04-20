@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sketch — ¿Qué incluye?</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #e8e4df; font-family: 'Segoe UI', system-ui, sans-serif; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
+  .sketch-container { background: #fff; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.12); padding: 32px; max-width: 860px; width: 100%; }
+  .sketch-label { font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  .notes { max-width: 860px; width: 100%; margin-top: 28px; border-left: 4px solid #c8f135; background: #fff; border-radius: 0 12px 12px 0; padding: 20px 24px; }
+  .notes h3 { font-family: Georgia, serif; font-size: 16px; color: #1c1c1c; margin-bottom: 8px; }
+  .notes ul { margin-left: 18px; font-size: 14px; color: #555; line-height: 1.7; }
+  footer { margin-top: 28px; font-size: 12px; color: #aaa; text-align: center; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .sketch-container { box-shadow: none; border: 1px solid #ddd; }
+    .notes { break-inside: avoid; }
+    footer { margin-top: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="sketch-container">
+  <p class="sketch-label">Sketch &mdash; ¿Qué incluye? &mdash; Propuesta Dulce Raíz</p>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1132" width="100%" height="auto" style="display:block;">
+    <!-- Background -->
+    <rect width="800" height="1132" rx="8" fill="#f5f0eb"/>
+
+    <!-- Decorative rosa circles in corners (low opacity) -->
+    <circle cx="40" cy="40" r="60" fill="#e85d8a" opacity="0.06"/>
+    <circle cx="760" cy="40" r="45" fill="#e85d8a" opacity="0.05"/>
+    <circle cx="50" cy="1100" r="50" fill="#e85d8a" opacity="0.05"/>
+    <circle cx="760" cy="1090" r="70" fill="#e85d8a" opacity="0.06"/>
+
+    <!-- Top accent line -->
+    <rect x="0" y="0" width="800" height="5" rx="8" fill="#c8f135"/>
+
+    <!-- Title -->
+    <text x="400" y="80" font-family="Georgia, serif" font-size="38" fill="#1c1c1c" font-weight="bold" text-anchor="middle">¿Qué incluye?</text>
+    <text x="400" y="115" font-family="'Segoe UI', system-ui, sans-serif" font-size="16" fill="#888" text-anchor="middle">Todo lo que Dulce Raíz necesita para vender online</text>
+
+    <!-- Separator -->
+    <line x1="300" y1="138" x2="500" y2="138" stroke="#c8f135" stroke-width="2"/>
+
+    <!-- ICON GRID: 4 columns x 3 rows -->
+    <!-- Row 1 -->
+    <!-- 1: Diseño responsive (mobile phone) -->
+    <g transform="translate(115, 200)">
+      <circle cx="0" cy="0" r="36" fill="#c8f135" opacity="0.15"/>
+      <circle cx="0" cy="0" r="36" fill="none" stroke="#c8f135" stroke-width="2"/>
+      <!-- Phone icon -->
+      <rect x="-10" y="-18" width="20" height="36" rx="3" fill="none" stroke="#1c1c1c" stroke-width="2"/>
+      <line x1="-4" y1="14" x2="4" y2="14" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"/>
+      <text x="0" y="56" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#1c1c1c" text-anchor="middle" font-weight="600">Diseño responsive</text>
+    </g>
+
+    <!-- 2: WordPress + Elementor (code brackets) -->
+    <g transform="translate(305, 200)">
+      <circle cx="0" cy="0" r="36" fill="#c8f135" opacity="0.15"/>
+      <circle cx="0" cy="0" r="36" fill="none" stroke="#c8f135" stroke-width="2"/>
+      <!-- Code brackets -->
+      <polyline points="-10,-12 -18,0 -10,12" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="10,-12 18,0 10,12" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="-4" y1="14" x2="4" y2="-14" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"/>
+      <text x="0" y="56" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#1c1c1c" text-anchor="middle" font-weight="600">WordPress</text>
+      <text x="0" y="72" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#888" text-anchor="middle">+ Elementor</text>
+    </g>
+
+    <!-- 3: WooCommerce (shopping cart) -->
+    <g transform="translate(495, 200)">
+      <circle cx="0" cy="0" r="36" fill="#c8f135" opacity="0.15"/>
+      <circle cx="0" cy="0" r="36" fill="none" stroke="#c8f135" stroke-width="2"/>
+      <!-- Cart -->
+      <polyline points="-16,-10 -12,-10 -4,10 12,10" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="-10" y1="-4" x2="14" y2="-4" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="-2" cy="16" r="2.5" fill="#1c1c1c"/>
+      <circle cx="10" cy="16" r="2.5" fill="#1c1c1c"/>
+      <text x="0" y="56" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#1c1c1c" text-anchor="middle" font-weight="600">WooCommerce</text>
+    </g>
+
+    <!-- 4: Pasarela de pago (credit card) -->
+    <g transform="translate(685, 200)">
+      <circle cx="0" cy="0" r="36" fill="#c8f135" opacity="0.15"/>
+      <circle cx="0" cy="0" r="36" fill="none" stroke="#c8f135" stroke-width="2"/>
+      <!-- Credit card -->
+      <rect x="-16" y="-10" width="32" height="22" rx="3" fill="none" stroke="#1c1c1c" stroke-width="2"/>
+      <line x1="-16" y1="-2" x2="16" y2="-2" stroke="#1c1c1c" stroke-width="2"/>
+      <rect x="-12" y="4" width="10" height="4" rx="1" fill="#1c1c1c" opacity="0.3"/>
+      <text x="0" y="56" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#1c1c1c" text-anchor="middle" font-weight="600">Pasarela de pago</text>
+    </g>
+
+    <!-- Row 2 -->
+    <!-- 5: Recogida en tienda (store) -->
+    <g transform="translate(115, 430)">
+      <circle cx="0" cy="0" r="36" fill="#c8f135" opacity="0.15"/>
+      <circle cx="0" cy="0" r="36" fill="none" stroke="#c8f135" stroke-width="2"/>
+      <!-- Store -->
+      <rect x="-14" y="-4" width="28" height="18" rx="2" fill="none" stroke="#1c1c1c" stroke-width="2"/>
+      <polyline points="-16,-4 0,-16 16,-4" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="-4" y="4" width="8" height="10" rx="1" fill="none" stroke="#1c1c1c" stroke-width="1.5"/>
+      <text x="0" y="56" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#1c1c1c" text-anchor="middle" font-weight="600">Recogida en tienda</text>
+    </g>
+
+    <!-- 6: Envío a domicilio (truck) -->
+    <g transform="translate(305, 430)">
+      <circle cx="0" cy="0" r="36" fill="#c8f135" opacity="0.15"/>
+      <circle cx="0" cy="0" r="36" fill="none" stroke="#c8f135" stroke-width="2"/>
+      <!-- Truck -->
+      <rect x="-18" y="-8" width="22" height="16" rx="2" fill="none" stroke="#1c1c1c" stroke-width="2"/>
+      <polyline points="4,-8 4,-2 16,-2 16,8 4,8 4,-8" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linejoin="round"/>
+      <circle cx="-8" cy="10" r="3" fill="none" stroke="#1c1c1c" stroke-width="2"/>
+      <circle cx="10" cy="10" r="3" fill="none" stroke="#1c1c1c" stroke-width="2"/>
+      <text x="0" y="56" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#1c1c1c" text-anchor="middle" font-weight="600">Envío a domicilio</text>
+    </g>
+
+    <!-- 7: SEO on-page (magnifying glass) -->
+    <g transform="translate(495, 430)">
+      <circle cx="0" cy="0" r="36" fill="#c8f135" opacity="0.15"/>
+      <circle cx="0" cy="0" r="36" fill="none" stroke="#c8f135" stroke-width="2"/>
+      <!-- Magnifying glass -->
+      <circle cx="-4" cy="-4" r="11" fill="none" stroke="#1c1c1c" stroke-width="2"/>
+      <line x1="4" y1="4" x2="14" y2="14" stroke="#1c1c1c" stroke-width="3" stroke-linecap="round"/>
+      <text x="0" y="56" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#1c1c1c" text-anchor="middle" font-weight="600">SEO on-page</text>
+    </g>
+
+    <!-- 8: Velocidad optimizada (speedometer) -->
+    <g transform="translate(685, 430)">
+      <circle cx="0" cy="0" r="36" fill="#c8f135" opacity="0.15"/>
+      <circle cx="0" cy="0" r="36" fill="none" stroke="#c8f135" stroke-width="2"/>
+      <!-- Speedometer -->
+      <path d="M-14,6 A16,16 0 1,1 14,6" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"/>
+      <line x1="0" y1="4" x2="6" y2="-10" stroke="#e85d8a" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="0" cy="4" r="3" fill="#1c1c1c"/>
+      <text x="0" y="56" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#1c1c1c" text-anchor="middle" font-weight="600">Velocidad optimizada</text>
+    </g>
+
+    <!-- Row 3 -->
+    <!-- 9: Google Business (map pin) -->
+    <g transform="translate(115, 660)">
+      <circle cx="0" cy="0" r="36" fill="#c8f135" opacity="0.15"/>
+      <circle cx="0" cy="0" r="36" fill="none" stroke="#c8f135" stroke-width="2"/>
+      <!-- Map pin -->
+      <path d="M0,-16 C-9,-16 -14,-10 -14,-4 C-14,4 0,18 0,18 C0,18 14,4 14,-4 C14,-10 9,-16 0,-16 Z" fill="none" stroke="#1c1c1c" stroke-width="2"/>
+      <circle cx="0" cy="-4" r="4" fill="none" stroke="#1c1c1c" stroke-width="2"/>
+      <text x="0" y="56" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#1c1c1c" text-anchor="middle" font-weight="600">Google Business</text>
+    </g>
+
+    <!-- 10: Analytics (chart) -->
+    <g transform="translate(305, 660)">
+      <circle cx="0" cy="0" r="36" fill="#c8f135" opacity="0.15"/>
+      <circle cx="0" cy="0" r="36" fill="none" stroke="#c8f135" stroke-width="2"/>
+      <!-- Bar chart -->
+      <rect x="-14" y="2" width="7" height="12" rx="1" fill="#1c1c1c" opacity="0.6"/>
+      <rect x="-4" y="-6" width="7" height="20" rx="1" fill="#1c1c1c" opacity="0.8"/>
+      <rect x="6" y="-14" width="7" height="28" rx="1" fill="#1c1c1c"/>
+      <text x="0" y="56" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#1c1c1c" text-anchor="middle" font-weight="600">Analytics</text>
+    </g>
+
+    <!-- 11: Formación 2h (graduation cap) -->
+    <g transform="translate(495, 660)">
+      <circle cx="0" cy="0" r="36" fill="#c8f135" opacity="0.15"/>
+      <circle cx="0" cy="0" r="36" fill="none" stroke="#c8f135" stroke-width="2"/>
+      <!-- Graduation cap -->
+      <polygon points="0,-14 -18,-4 0,6 18,-4" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linejoin="round"/>
+      <polyline points="-10,0 -10,10 0,16 10,10 10,0" fill="none" stroke="#1c1c1c" stroke-width="1.5" stroke-linejoin="round"/>
+      <line x1="18" y1="-4" x2="18" y2="10" stroke="#1c1c1c" stroke-width="1.5"/>
+      <text x="0" y="56" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#1c1c1c" text-anchor="middle" font-weight="600">Formación 2h</text>
+    </g>
+
+    <!-- 12: 3 meses soporte (headset) -->
+    <g transform="translate(685, 660)">
+      <circle cx="0" cy="0" r="36" fill="#c8f135" opacity="0.15"/>
+      <circle cx="0" cy="0" r="36" fill="none" stroke="#c8f135" stroke-width="2"/>
+      <!-- Headset -->
+      <path d="M-14,-2 C-14,-14 14,-14 14,-2" fill="none" stroke="#1c1c1c" stroke-width="2"/>
+      <rect x="-16" y="-2" width="8" height="14" rx="3" fill="none" stroke="#1c1c1c" stroke-width="2"/>
+      <rect x="8" y="-2" width="8" height="14" rx="3" fill="none" stroke="#1c1c1c" stroke-width="2"/>
+      <path d="M14,10 C14,16 6,18 2,18" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"/>
+      <text x="0" y="56" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#1c1c1c" text-anchor="middle" font-weight="600">3 meses soporte</text>
+    </g>
+
+    <!-- Separator before total -->
+    <line x1="100" y1="790" x2="700" y2="790" stroke="#ddd" stroke-width="1"/>
+
+    <!-- Bottom: Total with large checkmark -->
+    <g transform="translate(400, 870)">
+      <!-- Lima checkmark circle -->
+      <circle cx="-160" cy="0" r="30" fill="#c8f135"/>
+      <polyline points="-172,-2 -164,8 -148,-10" fill="none" stroke="#1c1c1c" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Text -->
+      <text x="-110" y="-8" font-family="'Segoe UI', system-ui, sans-serif" font-size="18" fill="#1c1c1c" font-weight="600">Todo incluido en</text>
+      <text x="-110" y="20" font-family="Georgia, serif" font-size="36" fill="#1c1c1c" font-weight="bold">9.800 €</text>
+    </g>
+
+    <!-- Subtitle under total -->
+    <text x="400" y="940" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#888" text-anchor="middle">IVA no incluido · Pago fraccionado en 3 fases</text>
+
+    <!-- Decorative lima line -->
+    <rect x="350" y="960" width="100" height="3" rx="2" fill="#c8f135" opacity="0.5"/>
+
+    <!-- Logo placeholder bottom-center -->
+    <g transform="translate(400, 1040)">
+      <rect x="-60" y="-18" width="120" height="36" rx="6" fill="none" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/>
+      <text x="0" y="2" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#ccc" text-anchor="middle">LOGO OH WOW!</text>
+    </g>
+
+    <!-- Footer text -->
+    <text x="400" y="1110" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#bbb" text-anchor="middle">Propuesta comercial — Dulce Raíz — Abril 2026</text>
+  </svg>
+</div>
+
+<div class="notes">
+  <h3>Notas para el diseñador</h3>
+  <ul>
+    <li>Los 12 iconos son geométricos y minimalistas — reemplazar con iconos del set de marca si existe.</li>
+    <li>Los círculos lima con borde crean consistencia visual en la cuadrícula.</li>
+    <li>Formato A4 vertical pensado para envío por email o inclusión en PDF de propuesta.</li>
+    <li>Los círculos rosa decorativos en esquinas añaden calidez sin distraer — mantener opacidad baja.</li>
+    <li>El checkmark final con "Todo incluido" es el CTA visual — debe ser lo último que el ojo recorra.</li>
+    <li>Considerar versión interactiva donde cada icono revele más detalle al hacer hover.</li>
+  </ul>
+</div>
+
+<footer>Sketch generado por Agencia OH WOW!</footer>
+</body>
+</html>

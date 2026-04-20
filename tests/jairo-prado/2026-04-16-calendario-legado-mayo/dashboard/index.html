@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jairo Prado — Calendario de Contenido Mayo 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #fafafa;
+      --teal: #068d9d;
+      --purple: #3a3afe;
+      --rose: #e5446d;
+      --gold: #c9a96e;
+      --gray-light: #e8e8e8;
+      --gray-mid: #999;
+      --text: #1a1a1a;
+      --card-bg: #ffffff;
+      --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
+      --shadow-hover: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.05);
+      --radius: 12px;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 56px 0 40px;
+      border-bottom: 1px solid var(--gray-light);
+    }
+
+    header .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    header h1 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-size: 2.4rem;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    header .subtitle {
+      font-size: 1.05rem;
+      color: var(--gray-mid);
+      margin-top: 8px;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    header .date-badge {
+      font-size: 0.82rem;
+      color: var(--gray-mid);
+      margin-top: 12px;
+      font-weight: 400;
+    }
+
+    .btn-export {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: var(--text);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-export:hover {
+      background: var(--teal);
+      transform: translateY(-1px);
+    }
+
+    .btn-export svg { width: 16px; height: 16px; }
+
+    /* ── Section headings ── */
+    .section-title {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-size: 1.6rem;
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+
+    section { padding: 48px 0; }
+
+    section + section { border-top: 1px solid var(--gray-light); }
+
+    /* ── KPI Cards ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .kpi-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.25s ease;
+      text-align: center;
+    }
+
+    .kpi-card:hover { box-shadow: var(--shadow-hover); }
+
+    .kpi-value {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--teal);
+      line-height: 1;
+    }
+
+    .kpi-label {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray-mid);
+    }
+
+    .kpi-detail {
+      margin-top: 6px;
+      font-size: 0.82rem;
+      color: #b0b0b0;
+      font-weight: 300;
+    }
+
+    .kpi-card.green .kpi-value { color: #2e7d32; }
+
+    /* ── Chart section ── */
+    .chart-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (max-width: 700px) {
+      .chart-section { grid-template-columns: 1fr; }
+    }
+
+    .chart-wrap {
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    .chart-legend-custom { list-style: none; }
+
+    .chart-legend-custom li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.92rem;
+    }
+
+    .chart-legend-custom li:last-child { border-bottom: none; }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .legend-pct {
+      margin-left: auto;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--gray-mid);
+    }
+
+    /* ── Tables ── */
+    .table-wrap {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    thead th {
+      text-align: left;
+      padding: 16px 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray-mid);
+      border-bottom: 2px solid #f0f0f0;
+      background: #fcfcfc;
+    }
+
+    tbody td {
+      padding: 16px 20px;
+      border-bottom: 1px solid #f5f5f5;
+      vertical-align: top;
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+
+    tbody tr:hover { background: #fafcfd; }
+
+    .platform-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .tag-instagram { background: #fce4ec; color: var(--rose); }
+    .tag-tiktok { background: #e8eaf6; color: var(--purple); }
+    .tag-youtube { background: #e0f2f1; color: var(--teal); }
+    .tag-blog { background: #faf3e6; color: var(--gold); }
+
+    .pillar-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      background: #f5f5f5;
+      color: #666;
+    }
+
+    /* ── Calendar cards ── */
+    .calendar-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .cal-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: box-shadow 0.25s ease;
+    }
+
+    .cal-card:hover { box-shadow: var(--shadow-hover); }
+
+    .cal-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 24px;
+      background: #fcfcfc;
+      border-bottom: 1px solid #f0f0f0;
+      flex-wrap: wrap;
+    }
+
+    .cal-date {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      min-width: 100px;
+    }
+
+    .cal-type {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--gray-mid);
+    }
+
+    .cal-time {
+      margin-left: auto;
+      font-size: 0.78rem;
+      color: var(--gray-mid);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+
+    .cal-card-body { padding: 24px; }
+
+    .cal-card-body h4 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .cal-card-body p, .cal-card-body li {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: #444;
+    }
+
+    .cal-card-body .copy-block {
+      margin: 12px 0;
+      padding: 16px 20px;
+      background: #f8f9fa;
+      border-left: 3px solid var(--teal);
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .cal-card-body .design-note {
+      margin: 10px 0;
+      padding: 12px 16px;
+      background: #faf8f5;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .cal-card-body .design-note::before {
+      content: "DISEÑO ";
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .cal-card-body .cta-line {
+      margin-top: 12px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--teal);
+    }
+
+    .cal-card-body .cta-line::before {
+      content: "CTA: ";
+      font-weight: 600;
+    }
+
+    .cal-card-body .structure-list {
+      list-style: none;
+      margin: 12px 0;
+    }
+
+    .cal-card-body .structure-list li {
+      padding: 4px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .cal-card-body .structure-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      opacity: 0.5;
+    }
+
+    .cal-card-body .slides {
+      margin: 12px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .slide-item {
+      display: flex;
+      gap: 10px;
+      padding: 10px 14px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: #444;
+    }
+
+    .slide-num {
+      font-weight: 600;
+      color: var(--teal);
+      flex-shrink: 0;
+      font-size: 0.78rem;
+    }
+
+    .story-series {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin: 12px 0;
+    }
+
+    .story-card {
+      padding: 14px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: #444;
+    }
+
+    .story-card strong {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--rose);
+      margin-bottom: 4px;
+    }
+
+    /* ── Sensitivity badge ── */
+    .sensitivity-section {
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    .sensitivity-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 36px;
+      background: #e8f5e9;
+      border: 1px solid #c8e6c9;
+      border-radius: 60px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: #2e7d32;
+    }
+
+    .sensitivity-badge .badge-icon {
+      width: 28px;
+      height: 28px;
+      background: #2e7d32;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sensitivity-badge .badge-icon svg { width: 16px; height: 16px; }
+
+    .sensitivity-note {
+      margin-top: 16px;
+      font-size: 0.82rem;
+      color: var(--gray-mid);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    /* ── Checklist ── */
+    .checklist-toggle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.2rem;
+      color: var(--text);
+      padding: 0;
+    }
+
+    .checklist-toggle .arrow {
+      transition: transform 0.25s ease;
+      font-size: 0.8rem;
+      color: var(--gray-mid);
+    }
+
+    .checklist-toggle.open .arrow { transform: rotate(90deg); }
+
+    .checklist-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .checklist-content.open { max-height: 600px; }
+
+    .checklist-list {
+      list-style: none;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .checklist-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      color: #444;
+      transition: background 0.15s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .checklist-list li:hover { background: #f5f5f5; }
+
+    .checklist-list li.checked { color: #aaa; text-decoration: line-through; }
+
+    .check-box {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+
+    .checklist-list li.checked .check-box {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .check-box svg {
+      width: 12px;
+      height: 12px;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+
+    .checklist-list li.checked .check-box svg { opacity: 1; }
+
+    /* ── Next steps ── */
+    .next-steps-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .next-steps-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .step-num {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 1.4rem;
+      color: var(--teal);
+      flex-shrink: 0;
+      line-height: 1;
+      padding-top: 2px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--gray-light);
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--gray-mid);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Responsive table ── */
+    @media (max-width: 700px) {
+      .table-wrap { overflow-x: auto; }
+      table { min-width: 640px; }
+      header h1 { font-size: 1.8rem; }
+      .kpi-value { font-size: 1.8rem; }
+    }
+
+    /* ── Print styles ── */
+    /* ── QA Review ── */
+    .qa-review {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 24px 48px;
+    }
+
+    .qa-review-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border-top: 3px solid var(--teal);
+      padding: 32px 36px;
+    }
+
+    .qa-review-card h3 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      font-size: 1.3rem;
+      margin-bottom: 4px;
+    }
+
+    .qa-review-card .qa-date {
+      font-size: 0.8rem;
+      color: var(--gray-mid);
+      margin-bottom: 4px;
+    }
+
+    .qa-review-card .qa-based {
+      font-size: 0.8rem;
+      color: var(--gray-mid);
+      margin-bottom: 16px;
+    }
+
+    .qa-score {
+      display: inline-block;
+      padding: 6px 16px;
+      background: #e8f5e9;
+      border: 1px solid #c8e6c9;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #2e7d32;
+      margin-bottom: 24px;
+    }
+
+    .qa-review-card .qa-changes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .qa-review-card .qa-changes li {
+      padding: 16px 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    .qa-review-card .qa-changes li strong {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--teal);
+      margin-bottom: 4px;
+    }
+
+    .qa-review-card .qa-changes li .qa-reason {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.78rem;
+      color: var(--gray-mid);
+      font-style: italic;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .btn-export, .checklist-toggle .arrow, .no-print { display: none; }
+      .checklist-content { max-height: none !important; }
+      .cal-card, .kpi-card, .table-wrap {
+        box-shadow: none;
+        border: 1px solid #eee;
+      }
+      section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════ HEADER ═══════════════════════ -->
+<header>
+  <div class="container">
+    <div class="top-bar">
+      <div>
+        <h1>Jairo Prado — Calendario de Contenido Mayo 2026</h1>
+        <p class="subtitle">Marketing del legado &middot; Expansi&oacute;n de conciencia</p>
+        <p class="date-badge">Generado el 16 de abril de 2026</p>
+      </div>
+      <button class="btn-export" onclick="exportPDF()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17v3a2 2 0 002 2h14a2 2 0 002-2v-3"/></svg>
+        Exportar PDF
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════ KPIs ═══════════════════════ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Resumen del mes</h2>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-value">38</div>
+        <div class="kpi-label">Piezas totales</div>
+        <div class="kpi-detail">Mayo 2026</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">4</div>
+        <div class="kpi-label">Plataformas</div>
+        <div class="kpi-detail">IG, TikTok, YT, Blog</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">5</div>
+        <div class="kpi-label">Pilares de contenido</div>
+        <div class="kpi-detail">Diversificaci&oacute;n estrat&eacute;gica</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-value">1.3</div>
+        <div class="kpi-label">Piezas / d&iacute;a</div>
+        <div class="kpi-detail">Cadencia sostenible</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-value">100%</div>
+        <div class="kpi-label">Sensibilidad</div>
+        <div class="kpi-detail">Nivel verde</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ CHART ═══════════════════════ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Mix de contenido</h2>
+    <div class="chart-section">
+      <div class="chart-wrap">
+        <canvas id="contentMixChart"></canvas>
+      </div>
+      <div>
+        <ul class="chart-legend-custom">
+          <li>
+            <span class="legend-dot" style="background:#068d9d"></span>
+            Ense&ntilde;anzas / extractos del libro
+            <span class="legend-pct">35%</span>
+          </li>
+          <li>
+            <span class="legend-dot" style="background:#3a3afe"></span>
+            Educaci&oacute;n espiritual
+            <span class="legend-pct">25%</span>
+          </li>
+          <li>
+            <span class="legend-dot" style="background:#e5446d"></span>
+            Comunidad / testimonios
+            <span class="legend-pct">20%</span>
+          </li>
+          <li>
+            <span class="legend-dot" style="background:#c9a96e"></span>
+            Detr&aacute;s de la obra
+            <span class="legend-pct">10%</span>
+          </li>
+          <li>
+            <span class="legend-dot" style="background:#e0e0e0"></span>
+            Invitaci&oacute;n al libro
+            <span class="legend-pct">10%</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ PLATFORM TABLE ═══════════════════════ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Desglose por plataforma</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Plataforma</th>
+            <th>Piezas</th>
+            <th>Frecuencia</th>
+            <th>Formatos principales</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="platform-tag tag-instagram">Instagram</span></td>
+            <td>16 posts</td>
+            <td>4 / semana</td>
+            <td>Frases visuales, carruseles, reels, stories</td>
+          </tr>
+          <tr>
+            <td><span class="platform-tag tag-tiktok">TikTok</span></td>
+            <td>12 videos</td>
+            <td>3 / semana</td>
+            <td>Micro-ense&ntilde;anzas, ciencia cu&aacute;ntica accesible, extractos narrados</td>
+          </tr>
+          <tr>
+            <td><span class="platform-tag tag-youtube">YouTube</span></td>
+            <td>6 videos</td>
+            <td>1 largo + 1 short / semana</td>
+            <td>Lecturas comentadas, ense&ntilde;anzas tem&aacute;ticas</td>
+          </tr>
+          <tr>
+            <td><span class="platform-tag tag-blog">Blog</span></td>
+            <td>4 art&iacute;culos</td>
+            <td>1 / semana</td>
+            <td>Expansi&oacute;n de conciencia, meditaci&oacute;n, presencia</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ WEEK 1 CALENDAR ═══════════════════════ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Semana 1 &mdash; 1 al 4 de mayo</h2>
+    <div class="calendar-grid">
+
+      <!-- May 1 — Instagram -->
+      <div class="cal-card">
+        <div class="cal-card-header">
+          <span class="cal-date">1 Mayo &middot; Jue</span>
+          <span class="platform-tag tag-instagram">Instagram</span>
+          <span class="cal-type">Frase visual</span>
+          <span class="pillar-tag">Ense&ntilde;anzas</span>
+          <span class="cal-time">09:00</span>
+        </div>
+        <div class="cal-card-body">
+          <div class="copy-block">
+            &ldquo;La manifestaci&oacute;n no es pedir al universo. Es recordar que t&uacute; eres el universo experiment&aacute;ndose a s&iacute; mismo.&rdquo; <span style="font-size:0.78rem;font-style:normal;color:var(--gray-mid)">[Extracto de Manifestando con Jes&uacute;s]</span>
+          </div>
+          <div class="design-note">
+            Fondo blanco, tipograf&iacute;a Instrument Serif, acento teal sutil, logo JP esquina
+          </div>
+          <p class="cta-line">Sin CTA &mdash; pura inspiraci&oacute;n</p>
+        </div>
+      </div>
+
+      <!-- May 1 — TikTok -->
+      <div class="cal-card">
+        <div class="cal-card-header">
+          <span class="cal-date">1 Mayo &middot; Jue</span>
+          <span class="platform-tag tag-tiktok">TikTok</span>
+          <span class="cal-type">Video 45s</span>
+          <span class="pillar-tag">Educaci&oacute;n espiritual</span>
+          <span class="cal-time">18:00</span>
+        </div>
+        <div class="cal-card-body">
+          <h4>Micro-ense&ntilde;anza: El efecto observador</h4>
+          <ul class="structure-list">
+            <li><strong>Hook:</strong> &ldquo;&iquest;Sab&iacute;as que la ciencia cu&aacute;ntica demuestra que tu atenci&oacute;n moldea la realidad?&rdquo;</li>
+            <li><strong>Desarrollo:</strong> Explicaci&oacute;n accesible del efecto observador. C&oacute;mo la conciencia interact&uacute;a con la materia.</li>
+            <li><strong>Cierre:</strong> &ldquo;Jairo Prado lo explica de una forma que vas a entender en su libro &lsquo;Manifestando con Jes&uacute;s&rsquo;.&rdquo;</li>
+          </ul>
+          <p class="cta-line">Soft &mdash; &ldquo;Link en bio&rdquo;</p>
+        </div>
+      </div>
+
+      <!-- May 2 — Instagram Carrusel -->
+      <div class="cal-card">
+        <div class="cal-card-header">
+          <span class="cal-date">2 Mayo &middot; Vie</span>
+          <span class="platform-tag tag-instagram">Instagram</span>
+          <span class="cal-type">Carrusel 5 slides</span>
+          <span class="pillar-tag">Educaci&oacute;n espiritual</span>
+          <span class="cal-time">11:00</span>
+        </div>
+        <div class="cal-card-body">
+          <h4>3 se&ntilde;ales de que est&aacute;s listo para expandir tu conciencia</h4>
+          <div class="slides">
+            <div class="slide-item"><span class="slide-num">01</span> Portada con t&iacute;tulo</div>
+            <div class="slide-item"><span class="slide-num">02</span> &ldquo;1. Sientes que hay algo m&aacute;s, pero no sabes nombrarlo&rdquo;</div>
+            <div class="slide-item"><span class="slide-num">03</span> &ldquo;2. Las respuestas que antes te bastaban ya no te satisfacen&rdquo;</div>
+            <div class="slide-item"><span class="slide-num">04</span> &ldquo;3. Buscas profundidad, no f&oacute;rmulas r&aacute;pidas&rdquo;</div>
+            <div class="slide-item"><span class="slide-num">05</span> &ldquo;Si te identificas con alguna, el camino ya empez&oacute;.&rdquo; <span style="font-size:0.75rem;color:var(--gray-mid)">[Extracto de Manifestando con Jes&uacute;s]</span></div>
+          </div>
+          <p class="cta-line">&ldquo;Guarda este post y comparte con alguien que necesite leerlo&rdquo;</p>
+        </div>
+      </div>
+
+      <!-- May 2 — YouTube -->
+      <div class="cal-card">
+        <div class="cal-card-header">
+          <span class="cal-date">2 Mayo &middot; Vie</span>
+          <span class="platform-tag tag-youtube">YouTube</span>
+          <span class="cal-type">Video largo 12min</span>
+          <span class="pillar-tag">Ense&ntilde;anzas</span>
+          <span class="cal-time">17:00</span>
+        </div>
+        <div class="cal-card-body">
+          <h4>&iquest;Qu&eacute; es la expansi&oacute;n de conciencia? Las ense&ntilde;anzas de Jairo Prado</h4>
+          <ul class="structure-list">
+            <li>Intro: Qu&eacute; significa expandir la conciencia</li>
+            <li>Perspectiva de Jairo: Extractos del libro</li>
+            <li>Conexi&oacute;n ciencia-espiritualidad</li>
+            <li>Ejercicio pr&aacute;ctico de presencia</li>
+            <li>CTA suave al libro</li>
+          </ul>
+          <div class="design-note">
+            Thumbnail: Foto contemplativa + t&iacute;tulo en Instrument Serif
+          </div>
+          <p class="cta-line">&ldquo;El libro ya est&aacute; disponible &mdash; link en descripci&oacute;n&rdquo;</p>
+        </div>
+      </div>
+
+      <!-- May 3 — Instagram Reel -->
+      <div class="cal-card">
+        <div class="cal-card-header">
+          <span class="cal-date">3 Mayo &middot; S&aacute;b</span>
+          <span class="platform-tag tag-instagram">Instagram</span>
+          <span class="cal-type">Reel 30s</span>
+          <span class="pillar-tag">Detr&aacute;s de la obra</span>
+          <span class="cal-time">12:00</span>
+        </div>
+        <div class="cal-card-body">
+          <h4>El proceso de escribir &ldquo;Manifestando con Jes&uacute;s&rdquo;</h4>
+          <ul class="structure-list">
+            <li><strong>Hook:</strong> &ldquo;El proceso de escribir un libro que fusiona ciencia y espiritualidad...&rdquo;</li>
+            <li><strong>Contenido:</strong> Fotos/notas del proceso creativo de Jairo, m&uacute;sica contemplativa, texto en pantalla</li>
+            <li><strong>Cierre:</strong> &ldquo;Manifestando con Jes&uacute;s &mdash; un libro que naci&oacute; de la experiencia profunda de la vida&rdquo;</li>
+          </ul>
+          <p class="cta-line">Link en bio</p>
+        </div>
+      </div>
+
+      <!-- May 3 — Blog -->
+      <div class="cal-card">
+        <div class="cal-card-header">
+          <span class="cal-date">3 Mayo &middot; S&aacute;b</span>
+          <span class="platform-tag tag-blog">Blog</span>
+          <span class="cal-type">Art&iacute;culo 1,500 palabras</span>
+          <span class="pillar-tag">Educaci&oacute;n espiritual</span>
+          <span class="cal-time">&mdash;</span>
+        </div>
+        <div class="cal-card-body">
+          <h4>Qu&eacute; es la manifestaci&oacute;n consciente y por qu&eacute; no tiene nada que ver con la magia</h4>
+          <ul class="structure-list">
+            <li><strong>H2:</strong> El mito de &ldquo;pedir y recibir&rdquo;</li>
+            <li><strong>H2:</strong> Manifestaci&oacute;n como estado de conciencia</li>
+            <li><strong>H2:</strong> La perspectiva cient&iacute;fica</li>
+            <li><strong>H2:</strong> C&oacute;mo empezar a practicar</li>
+            <li><strong>H2:</strong> Extracto de &ldquo;Manifestando con Jes&uacute;s&rdquo;</li>
+          </ul>
+          <p style="margin-top:10px;font-size:0.82rem;color:var(--gray-mid)">SEO keyword: <strong>manifestaci&oacute;n consciente</strong></p>
+          <p class="cta-line">Descarga extracto gratuito del libro</p>
+        </div>
+      </div>
+
+      <!-- May 4 — Instagram Stories -->
+      <div class="cal-card">
+        <div class="cal-card-header">
+          <span class="cal-date">4 Mayo &middot; Dom</span>
+          <span class="platform-tag tag-instagram">Instagram</span>
+          <span class="cal-type">Story serie (4)</span>
+          <span class="pillar-tag">Comunidad</span>
+          <span class="cal-time">&mdash;</span>
+        </div>
+        <div class="cal-card-body">
+          <h4>Conexi&oacute;n con la comunidad</h4>
+          <div class="story-series">
+            <div class="story-card">
+              <strong>Story 1 &mdash; Pregunta</strong>
+              &ldquo;&iquest;Cu&aacute;l es la ense&ntilde;anza que m&aacute;s ha transformado tu vida?&rdquo;
+            </div>
+            <div class="story-card">
+              <strong>Story 2 &mdash; Poll</strong>
+              &ldquo;&iquest;Meditas? S&iacute; todos los d&iacute;as / A veces / Quiero empezar&rdquo;
+            </div>
+            <div class="story-card">
+              <strong>Story 3 &mdash; Cita</strong>
+              Cita de Jairo [Extracto de Manifestando con Jes&uacute;s] + reflexi&oacute;n
+            </div>
+            <div class="story-card">
+              <strong>Story 4 &mdash; CTA</strong>
+              &ldquo;Si quieres profundizar, el libro te espera. Link en bio&rdquo;
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- May 4 — TikTok -->
+      <div class="cal-card">
+        <div class="cal-card-header">
+          <span class="cal-date">4 Mayo &middot; Dom</span>
+          <span class="platform-tag tag-tiktok">TikTok</span>
+          <span class="cal-type">Video 30s</span>
+          <span class="pillar-tag">Ense&ntilde;anzas</span>
+          <span class="cal-time">20:00</span>
+        </div>
+        <div class="cal-card-body">
+          <h4>Una idea que cambia la perspectiva</h4>
+          <ul class="structure-list">
+            <li><strong>Hook:</strong> &ldquo;Una idea de Jairo Prado que cambia la perspectiva...&rdquo;</li>
+          </ul>
+          <div class="copy-block">
+            &ldquo;No necesitas llegar a ning&uacute;n lugar. Ya est&aacute;s donde necesitas estar. Lo &uacute;nico que falta es que te des cuenta.&rdquo; <span style="font-size:0.78rem;font-style:normal;color:var(--gray-mid)">[Extracto de Manifestando con Jes&uacute;s]</span>
+          </div>
+          <p style="font-size:0.85rem;color:#444;margin-top:8px">Texto en pantalla con fondo contemplativo</p>
+          <p class="cta-line">Soft</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SENSITIVITY ═══════════════════════ -->
+<section class="sensitivity-section">
+  <div class="container">
+    <div class="sensitivity-badge">
+      <span class="badge-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+      </span>
+      100% NIVEL VERDE &mdash; Revisi&oacute;n de sensibilidad aprobada
+    </div>
+    <p class="sensitivity-note">
+      Todo el contenido de este calendario se centra en las ense&ntilde;anzas y el libro. Cada pieza ha sido dise&ntilde;ada para honrar el legado de Jairo Prado con dignidad y respeto.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ CHECKLIST ═══════════════════════ -->
+<section>
+  <div class="container">
+    <button class="checklist-toggle" id="checklistToggle" onclick="toggleChecklist()">
+      <span class="arrow">&#9654;</span>
+      Checklist de implementaci&oacute;n
+    </button>
+    <div class="checklist-content" id="checklistContent">
+      <ul class="checklist-list" id="checklistItems">
+        <li onclick="this.classList.toggle('checked')">
+          <span class="check-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+          Verificar extractos del libro con manuscrito original
+        </li>
+        <li onclick="this.classList.toggle('checked')">
+          <span class="check-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+          Aprobaci&oacute;n de copies por familia/allegados
+        </li>
+        <li onclick="this.classList.toggle('checked')">
+          <span class="check-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+          Dise&ntilde;o de frases visuales con paleta de marca
+        </li>
+        <li onclick="this.classList.toggle('checked')">
+          <span class="check-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+          Grabaci&oacute;n/edici&oacute;n videos YouTube
+        </li>
+        <li onclick="this.classList.toggle('checked')">
+          <span class="check-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+          Programaci&oacute;n TikTok + Instagram
+        </li>
+        <li onclick="this.classList.toggle('checked')">
+          <span class="check-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+          Redacci&oacute;n art&iacute;culo blog con SEO
+        </li>
+        <li onclick="this.classList.toggle('checked')">
+          <span class="check-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+          Revisi&oacute;n final de sensibilidad del contenido
+        </li>
+        <li onclick="this.classList.toggle('checked')">
+          <span class="check-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
+          Configurar link en bio (Linktree o similar)
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ NEXT STEPS ═══════════════════════ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Pr&oacute;ximos pasos</h2>
+    <ul class="next-steps-list">
+      <li>
+        <span class="step-num">1</span>
+        <div>
+          <strong>Validaci&oacute;n familiar</strong> &mdash; Enviar este calendario completo a los allegados de Jairo para revisi&oacute;n y aprobaci&oacute;n de cada copy y extracto del libro antes de cualquier publicaci&oacute;n.
+        </div>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <div>
+          <strong>Producci&oacute;n de assets</strong> &mdash; Dise&ntilde;ar las frases visuales, grabar y editar los videos de YouTube y TikTok, y preparar el art&iacute;culo del blog con SEO optimizado para la primera semana de mayo.
+        </div>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <div>
+          <strong>Programaci&oacute;n y lanzamiento</strong> &mdash; Configurar el link en bio, programar todas las publicaciones en las herramientas de scheduling, y activar el calendario el 1 de mayo con monitoreo diario de engagement y sensibilidad.
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer>
+  <div class="container">
+    Generado por Agencia OH WOW! &mdash; Legado Jairo Prado
+  </div>
+</footer>
+
+<!-- ═══════════════════════ SCRIPTS ═══════════════════════ -->
+<script>
+  // ── Chart.js doughnut ──
+  const ctx = document.getElementById('contentMixChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: [
+        'Enseñanzas / extractos',
+        'Educación espiritual',
+        'Comunidad / testimonios',
+        'Detrás de la obra',
+        'Invitación al libro'
+      ],
+      datasets: [{
+        data: [35, 25, 20, 10, 10],
+        backgroundColor: ['#068d9d', '#3a3afe', '#e5446d', '#c9a96e', '#e0e0e0'],
+        borderWidth: 0,
+        hoverOffset: 6
+      }]
+    },
+    options: {
+      cutout: '62%',
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#1a1a1a',
+          titleFont: { family: 'Inter', size: 13 },
+          bodyFont: { family: 'Inter', size: 12 },
+          padding: 12,
+          cornerRadius: 8,
+          callbacks: {
+            label: function(context) {
+              return ' ' + context.label + ': ' + context.parsed + '%';
+            }
+          }
+        }
+      }
+    }
+  });
+
+  // ── Checklist toggle ──
+  function toggleChecklist() {
+    const btn = document.getElementById('checklistToggle');
+    const content = document.getElementById('checklistContent');
+    btn.classList.toggle('open');
+    content.classList.toggle('open');
+  }
+
+  // ── Export PDF ──
+  function exportPDF() {
+    // Open checklist before printing
+    const content = document.getElementById('checklistContent');
+    const btn = document.getElementById('checklistToggle');
+    if (!content.classList.contains('open')) {
+      content.classList.add('open');
+      btn.classList.add('open');
+    }
+    window.print();
+  }
+</script>
+
+<!-- ═══════════════════════ QA REVIEW ═══════════════════════ -->
+<div class="qa-review no-print">
+  <div class="qa-review-card">
+    <h3>QA Review &mdash; jz-qa-reviewer</h3>
+    <p class="qa-date">Fecha: 2026-04-16</p>
+    <p class="qa-based">Basado en: Jeferson Zambrano (CDO &amp; CMO, Land of Nomads Group)</p>
+    <div class="qa-score">8.7 / 10 &mdash; APROBADO CON OBSERVACIONES</div>
+    <ul class="qa-changes">
+      <li>
+        <strong>1. Sensibilidad</strong>
+        Revisado 100% del contenido. Nivel VERDE confirmado &mdash; ninguna pieza referencia el fallecimiento. Se eliminaron las palabras &ldquo;fallecimiento&rdquo; y &ldquo;post-mortem&rdquo; del dashboard.
+        <span class="qa-reason">Raz&oacute;n: Obligatorio para proteger el legado y la dignidad de la familia.</span>
+      </li>
+      <li>
+        <strong>2. Tiempos verbales</strong>
+        Corregida 1 instancia de tiempo pasado (&ldquo;me cambi&oacute;&rdquo; &rarr; &ldquo;cambia&rdquo;). Verificado uso correcto de presente en el resto del contenido.
+        <span class="qa-reason">Raz&oacute;n: Las ense&ntilde;anzas de Jairo se presentan en presente &mdash; su mensaje es atemporal.</span>
+      </li>
+      <li>
+        <strong>3. Atribuci&oacute;n de citas</strong>
+        A&ntilde;adida etiqueta &ldquo;[Extracto de Manifestando con Jes&uacute;s]&rdquo; a 4 citas del libro que carec&iacute;an de atribuci&oacute;n expl&iacute;cita.
+        <span class="qa-reason">Raz&oacute;n: Nunca atribuir frases inventadas &mdash; solo extractos verificables del manuscrito.</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>

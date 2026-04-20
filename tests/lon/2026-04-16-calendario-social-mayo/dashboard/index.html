@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LON — Calendario de Contenido Mayo 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+/* ── Reset & Base ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #F3EBE1;
+  --bg-card: #FFFFFF;
+  --bg-alt:  #D9C8B1;
+  --teal:    #B83E25;
+  --white:   #1A1814;
+  --gold:    #FFBC7D;
+  --muted:   #6B5F4F;
+  --border:  #D9C8B1;
+  --danger:  #B83E25;
+  --radius:  12px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--teal); text-decoration: none; transition: opacity .2s; }
+a:hover { opacity: .8; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* ── Header ───────────────────────────────────────── */
+.header {
+  background: linear-gradient(135deg, #FAF5EE 0%, #F3EBE1 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 28px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-logo {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--teal), var(--gold));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--bg);
+  letter-spacing: -0.5px;
+}
+
+.brand h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.brand h1 span {
+  color: var(--teal);
+}
+
+.brand-subtitle {
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.date-badge {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: var(--white);
+  font-weight: 500;
+}
+
+.date-badge strong { color: var(--teal); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.btn-primary {
+  background: var(--teal);
+  color: var(--bg);
+}
+
+.btn-primary:hover { background: #9A3420; transform: translateY(-1px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--teal);
+  border: 1px solid var(--teal);
+}
+
+.btn-outline:hover { background: rgba(184,62,37,.08); }
+
+/* ── Navigation ───────────────────────────────────── */
+.nav-bar {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+  transition: all .2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--teal);
+  border-bottom-color: var(--teal);
+  opacity: 1;
+}
+
+/* ── Sections ─────────────────────────────────────── */
+.section {
+  padding: 48px 0;
+}
+
+.section + .section {
+  border-top: 1px solid var(--border);
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title::before {
+  content: '';
+  width: 4px;
+  height: 24px;
+  background: var(--teal);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.section-desc {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+/* ── KPI Cards ────────────────────────────────────── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.kpi-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color .2s;
+}
+
+.kpi-card:hover { border-color: var(--teal); }
+
+.kpi-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+}
+
+.kpi-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.kpi-value {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--teal);
+  letter-spacing: -1px;
+}
+
+.kpi-unit {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* ── Charts ───────────────────────────────────────── */
+.chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.chart-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.chart-box h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--teal);
+}
+
+.chart-canvas-wrapper {
+  position: relative;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.pillar-legend {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pillar-legend li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.pillar-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.pillar-pct {
+  margin-left: auto;
+  font-weight: 700;
+  color: var(--teal);
+}
+
+/* ── Tables ───────────────────────────────────────── */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead th {
+  background: var(--teal);
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  padding: 14px 16px;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+}
+
+tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+tbody tr:last-child td { border-bottom: none; }
+
+tbody tr:hover { background: rgba(184,62,37,.04); }
+
+.platform-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tag-instagram  { background: rgba(225,48,108,.15); color: #e1306c; }
+.tag-linkedin   { background: rgba(0,119,181,.15);  color: #0077b5; }
+.tag-facebook   { background: rgba(24,119,242,.15); color: #1877f2; }
+.tag-tiktok     { background: rgba(0,0,0,.08);  color: #111111; }
+.tag-youtube    { background: rgba(255,0,0,.12);     color: #ff4444; }
+
+.pillar-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pillar-progreso     { background: rgba(184,62,37,.12);  color: var(--teal); }
+.pillar-educacion    { background: rgba(99,102,241,.15); color: #5b63c4; }
+.pillar-personas     { background: rgba(255,188,125,.25); color: #8a5a2b; }
+.pillar-numeros      { background: rgba(34,211,238,.15); color: #0e8ea3; }
+.pillar-transparencia { background: rgba(251,146,60,.18); color: #c06a1e; }
+
+.hook-text {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.cta-text {
+  font-size: 13px;
+  color: var(--teal);
+  margin-top: 4px;
+}
+
+.time-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--teal);
+  white-space: nowrap;
+}
+
+/* ── Checklist ────────────────────────────────────── */
+.checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checklist li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: all .2s;
+  user-select: none;
+}
+
+.checklist li:hover { border-color: var(--teal); }
+
+.checklist li.done {
+  opacity: .55;
+  border-color: transparent;
+}
+
+.checklist li.done .check-box {
+  background: var(--teal);
+  border-color: var(--teal);
+}
+
+.checklist li.done .check-box::after {
+  content: '\2713';
+  color: var(--bg);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.checklist li.done .check-label {
+  text-decoration: line-through;
+}
+
+.check-box {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s;
+}
+
+.check-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ── Próximos Pasos ───────────────────────────────── */
+.steps-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  counter-reset: step;
+}
+
+.steps-list li {
+  counter-increment: step;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+}
+
+.steps-list li::before {
+  content: counter(step);
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--teal), var(--gold));
+  color: var(--bg);
+  font-weight: 800;
+  font-size: 14px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-content h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.step-content p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ── Footer ───────────────────────────────────────── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.footer strong { color: var(--teal); }
+
+/* ── Responsive ───────────────────────────────────── */
+@media (max-width: 768px) {
+  .header-inner { flex-direction: column; align-items: flex-start; }
+  .chart-grid { grid-template-columns: 1fr; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .brand h1 { font-size: 18px; }
+  .kpi-value { font-size: 28px; }
+  table { font-size: 13px; }
+  thead th, tbody td { padding: 10px 12px; }
+}
+
+@media (max-width: 480px) {
+  .kpi-grid { grid-template-columns: 1fr; }
+  .container { padding: 0 16px; }
+  .section { padding: 32px 0; }
+}
+
+/* ── Print / PDF ──────────────────────────────────── */
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body { background: #fff; color: #1A1814; font-size: 11px; }
+  .header { position: static; background: #fff; border-bottom: 2px solid #D9C8B1; }
+  .brand-logo { background: #B83E25; }
+  .brand h1, .brand h1 span { color: #1A1814; }
+  .btn, .nav-bar, .no-print { display: none !important; }
+  .kpi-card, .chart-box, .table-wrap, .checklist li, .steps-list li {
+    background: #FAF5EE;
+    border-color: #D9C8B1;
+    break-inside: avoid;
+  }
+  .kpi-value { color: #B83E25; }
+  .section { padding: 24px 0; }
+  table { font-size: 10px; }
+  thead th { background: #B83E25; color: #FFFFFF; }
+  tbody td { color: #1A1814; }
+  .section-title::before { background: #B83E25; }
+  .footer { color: #6B5F4F; }
+  .footer strong { color: #B83E25; }
+  .check-box { border-color: #D9C8B1; }
+  .checklist li.done .check-box { background: #B83E25; border-color: #B83E25; }
+  a { color: #B83E25; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header class="header">
+  <div class="container header-inner">
+    <div class="brand">
+      <div class="brand-logo">LON</div>
+      <div>
+        <h1><span>Land of Nomads</span> Group</h1>
+        <p class="brand-subtitle">Calendario de Contenido &mdash; Mayo 2026</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <span class="date-badge">Generado: <strong>16 abril 2026</strong></span>
+      <button class="btn btn-primary" onclick="window.print()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Exportar PDF
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<nav class="nav-bar">
+  <div class="container">
+    <ul class="nav-links">
+      <li><a href="#" class="active">Dashboard</a></li>
+      <li><a href="calendario.html">Calendario Completo</a></li>
+      <li><a href="#kpis">KPIs</a></li>
+      <li><a href="#mix">Mix de Contenido</a></li>
+      <li><a href="#plataformas">Plataformas</a></li>
+      <li><a href="#semana1">Semana 1</a></li>
+      <li><a href="#checklist">Checklist</a></li>
+      <li><a href="#pasos">Pr&oacute;ximos Pasos</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════════ KPI SECTION ═══════════════ -->
+<section class="section" id="kpis">
+  <div class="container">
+    <h2 class="section-title">Indicadores Clave</h2>
+    <p class="section-desc">Resumen de la estrategia de contenido para mayo 2026.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Piezas Totales</div>
+        <div class="kpi-value">62</div>
+        <div class="kpi-unit">contenidos planificados</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Plataformas</div>
+        <div class="kpi-value">5</div>
+        <div class="kpi-unit">IG &middot; LI &middot; FB &middot; TK &middot; YT</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Pilares de Contenido</div>
+        <div class="kpi-value">5</div>
+        <div class="kpi-unit">pilares estrat&eacute;gicos</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Cadencia</div>
+        <div class="kpi-value">2.1</div>
+        <div class="kpi-unit">piezas / d&iacute;a</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONTENT MIX ═══════════════ -->
+<section class="section" id="mix">
+  <div class="container">
+    <h2 class="section-title">Mix de Contenido por Pilar</h2>
+    <p class="section-desc">Distribuci&oacute;n estrat&eacute;gica de los 5 pilares de comunicaci&oacute;n de LON.</p>
+
+    <div class="chart-grid">
+      <div class="chart-box">
+        <h3>Distribuci&oacute;n por Pilar</h3>
+        <div class="chart-canvas-wrapper">
+          <canvas id="pillarChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-box">
+        <h3>Detalle de Pilares</h3>
+        <ul class="pillar-legend">
+          <li>
+            <span class="pillar-dot" style="background:#B83E25"></span>
+            <span><strong>Progreso Real</strong><br><small style="color:var(--muted)">Avances de obra, timelapses, tours en sitio</small></span>
+            <span class="pillar-pct">40%</span>
+          </li>
+          <li>
+            <span class="pillar-dot" style="background:#818cf8"></span>
+            <span><strong>Educaci&oacute;n</strong><br><small style="color:var(--muted)">Leasehold, fiscalidad, mercado Filipinas</small></span>
+            <span class="pillar-pct">20%</span>
+          </li>
+          <li>
+            <span class="pillar-dot" style="background:#FFBC7D"></span>
+            <span><strong>Personas / Comunidad</strong><br><small style="color:var(--muted)">Testimoniales, equipo, vida local</small></span>
+            <span class="pillar-pct">20%</span>
+          </li>
+          <li>
+            <span class="pillar-dot" style="background:#22d3ee"></span>
+            <span><strong>N&uacute;meros sin Humo</strong><br><small style="color:var(--muted)">ROI, desgloses, escenarios financieros</small></span>
+            <span class="pillar-pct">10%</span>
+          </li>
+          <li>
+            <span class="pillar-dot" style="background:#fb923c"></span>
+            <span><strong>Transparencia</strong><br><small style="color:var(--muted)">Q&A, riesgos, preguntas dif&iacute;ciles</small></span>
+            <span class="pillar-pct">10%</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PLATFORM BREAKDOWN ═══════════════ -->
+<section class="section" id="plataformas">
+  <div class="container">
+    <h2 class="section-title">Desglose por Plataforma</h2>
+    <p class="section-desc">Frecuencia, formatos y enfoque de cada canal.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Plataforma</th>
+            <th>Posts / mes</th>
+            <th>Frecuencia</th>
+            <th>Formatos</th>
+            <th>Notas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="platform-tag tag-instagram">Instagram</span></td>
+            <td><strong>20</strong></td>
+            <td>4-5 / semana</td>
+            <td>Feed, Carruseles, Reels, Stories</td>
+            <td>Canal principal de marca. Contenido visual premium. Stories diarias con encuestas y behind-the-scenes.</td>
+          </tr>
+          <tr>
+            <td><span class="platform-tag tag-linkedin">LinkedIn</span></td>
+            <td><strong>12</strong></td>
+            <td>2-3 / semana</td>
+            <td>Art&iacute;culos, Posts, Documentos</td>
+            <td>Perfil empresa + perfiles personales de Mike y Sergio. Tono profesional y data-driven.</td>
+          </tr>
+          <tr>
+            <td><span class="platform-tag tag-facebook">Facebook</span></td>
+            <td><strong>14</strong></td>
+            <td>3-4 / semana</td>
+            <td>Posts, &Aacute;lbumes, Videos, Eventos</td>
+            <td>Comunidad de inversores existentes. Testimoniales y contenido de valor para retenci&oacute;n.</td>
+          </tr>
+          <tr>
+            <td><span class="platform-tag tag-tiktok">TikTok</span></td>
+            <td><strong>10</strong></td>
+            <td>4-6 / semana (S1-S2)</td>
+            <td>Videos 30-60s</td>
+            <td>Activaci&oacute;n semanas 1 y 2. Edutainment con trending audio. Gancho en primeros 2 segundos.</td>
+          </tr>
+          <tr>
+            <td><span class="platform-tag tag-youtube">YouTube</span></td>
+            <td><strong>6</strong></td>
+            <td>1 largo / semana + Shorts</td>
+            <td>Video largo (8-12 min), Shorts</td>
+            <td>1 video largo semanal (tour, educativo, entrevista) + shorts derivados del contenido largo.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ WEEK 1 CALENDAR ═══════════════ -->
+<section class="section" id="semana1">
+  <div class="container">
+    <h2 class="section-title">Semana 1 &mdash; 1 al 4 de Mayo 2026</h2>
+    <p class="section-desc">Muestra del calendario detallado con copies, hooks, CTAs y horarios de publicaci&oacute;n.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Plataforma</th>
+            <th>Formato</th>
+            <th>Pilar</th>
+            <th>Contenido</th>
+            <th>Hora</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- May 1 - Instagram -->
+          <tr>
+            <td><strong>1 May</strong><br><small style="color:var(--muted)">Jueves</small></td>
+            <td><span class="platform-tag tag-instagram">Instagram</span></td>
+            <td>Reel</td>
+            <td><span class="pillar-tag pillar-progreso">Progreso Real</span></td>
+            <td>
+              <strong>Tour por las eco-villas de San Fernando: as&iacute; avanza la Fase 2</strong>
+              <div class="hook-text">Hook: &laquo;As&iacute; avanza la Fase 2 de San Fernando &mdash; sin filtros, sin edici&oacute;n&raquo;</div>
+              <div class="cta-text">CTA: Link en bio a landing San Fernando</div>
+            </td>
+            <td><span class="time-badge">10:00 CEST</span></td>
+          </tr>
+          <!-- May 1 - LinkedIn -->
+          <tr>
+            <td><strong>1 May</strong><br><small style="color:var(--muted)">Jueves</small></td>
+            <td><span class="platform-tag tag-linkedin">LinkedIn (empresa)</span></td>
+            <td>Art&iacute;culo</td>
+            <td><span class="pillar-tag pillar-educacion">Educaci&oacute;n</span></td>
+            <td>
+              <strong>Leaseholds en Filipinas: la estructura legal que usan m&aacute;s de 400 inversores</strong>
+              <div class="hook-text">Tono profesional, data-driven. Mike como co-author.</div>
+              <div class="cta-text">CTA: Descarga dossier completo</div>
+            </td>
+            <td><span class="time-badge">09:00 CEST</span></td>
+          </tr>
+          <!-- May 2 - Instagram -->
+          <tr>
+            <td><strong>2 May</strong><br><small style="color:var(--muted)">Viernes</small></td>
+            <td><span class="platform-tag tag-instagram">Instagram</span></td>
+            <td>Carrusel 5 slides</td>
+            <td><span class="pillar-tag pillar-numeros">N&uacute;meros sin Humo</span></td>
+            <td>
+              <strong>&iquest;12% de rentabilidad anual? As&iacute; se desglosa el modelo de inversi&oacute;n LON</strong>
+              <div style="font-size:12px; font-style:italic; color:#fb923c; margin-top:4px;">*Rentabilidad estimada seg&uacute;n modelo de ocupaci&oacute;n actual. No constituye garant&iacute;a de retorno.</div>
+              <div class="hook-text">Escenario conservador vs optimista. Infograf&iacute;a con datos reales.</div>
+              <div class="cta-text">CTA: Agendar llamada</div>
+            </td>
+            <td><span class="time-badge">11:00 CEST</span></td>
+          </tr>
+          <!-- May 2 - TikTok -->
+          <tr>
+            <td><strong>2 May</strong><br><small style="color:var(--muted)">Viernes</small></td>
+            <td><span class="platform-tag tag-tiktok">TikTok</span></td>
+            <td>Video 45s</td>
+            <td><span class="pillar-tag pillar-educacion">Educaci&oacute;n</span></td>
+            <td>
+              <strong>3 errores que cometen los europeos al invertir fuera de su pa&iacute;s</strong>
+              <div class="hook-text">Trending audio, formato edutainment. Gancho inmediato.</div>
+              <div class="cta-text">CTA: Soft &mdash; visita web</div>
+            </td>
+            <td><span class="time-badge">18:00 CEST</span></td>
+          </tr>
+          <!-- May 3 - Facebook -->
+          <tr>
+            <td><strong>3 May</strong><br><small style="color:var(--muted)">S&aacute;bado</small></td>
+            <td><span class="platform-tag tag-facebook">Facebook</span></td>
+            <td>Post + &Aacute;lbum</td>
+            <td><span class="pillar-tag pillar-personas">Personas / Comunidad</span></td>
+            <td>
+              <strong>Conoce a Mar&iacute;a: inversora desde Barcelona que visit&oacute; San Fernando en enero</strong>
+              <div class="hook-text">Testimonial real con foto. Historia personal de una inversora.</div>
+              <div class="cta-text">CTA: Suscr&iacute;bete a la newsletter</div>
+            </td>
+            <td><span class="time-badge">12:00 CEST</span></td>
+          </tr>
+          <!-- May 3 - YouTube -->
+          <tr>
+            <td><strong>3 May</strong><br><small style="color:var(--muted)">S&aacute;bado</small></td>
+            <td><span class="platform-tag tag-youtube">YouTube</span></td>
+            <td>Short 60s</td>
+            <td><span class="pillar-tag pillar-progreso">Progreso Real</span></td>
+            <td>
+              <strong>Timelapse: 30 d&iacute;as de obra en San Fernando condensados en 1 minuto</strong>
+              <div class="hook-text">Derivado del video largo de la semana. M&uacute;sica ambient.</div>
+              <div class="cta-text">CTA: Suscr&iacute;bete al canal</div>
+            </td>
+            <td><span class="time-badge">17:00 CEST</span></td>
+          </tr>
+          <!-- May 4 - Instagram -->
+          <tr>
+            <td><strong>4 May</strong><br><small style="color:var(--muted)">Domingo</small></td>
+            <td><span class="platform-tag tag-instagram">Instagram</span></td>
+            <td>Story serie (5)</td>
+            <td><span class="pillar-tag pillar-transparencia">Transparencia</span></td>
+            <td>
+              <strong>Preguntas dif&iacute;ciles que nos hac&eacute;is (y las respondemos)</strong>
+              <div class="hook-text">Formato Q&A con encuestas interactivas. Hashtag #LONRealTalk</div>
+              <div class="cta-text">CTA: Link en stories a FAQ</div>
+            </td>
+            <td><span class="time-badge">20:00 CEST</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CHECKLIST ═══════════════ -->
+<section class="section" id="checklist">
+  <div class="container">
+    <h2 class="section-title">Checklist de Implementaci&oacute;n</h2>
+    <p class="section-desc">Tareas pendientes antes de comenzar la publicaci&oacute;n. Haz clic para marcar como completada.</p>
+
+    <ul class="checklist" id="implementChecklist">
+      <li onclick="toggleCheck(this)">
+        <div class="check-box"></div>
+        <span class="check-label">Aprobaci&oacute;n de copies semana 1 por <strong>Claudia Mallea</strong></span>
+      </li>
+      <li onclick="toggleCheck(this)">
+        <div class="check-box"></div>
+        <span class="check-label">Rodaje de <strong>Mike en Filipinas</strong> para reels de progreso de obra</span>
+      </li>
+      <li onclick="toggleCheck(this)">
+        <div class="check-box"></div>
+        <span class="check-label">Dise&ntilde;o de carruseles por el <strong>equipo gr&aacute;fico</strong></span>
+      </li>
+      <li onclick="toggleCheck(this)">
+        <div class="check-box"></div>
+        <span class="check-label">Programaci&oacute;n en planner (<strong>Meta Suite + LinkedIn</strong>)</span>
+      </li>
+      <li onclick="toggleCheck(this)">
+        <div class="check-box"></div>
+        <span class="check-label">Revisi&oacute;n legal de claims de rentabilidad por <strong>Sergio</strong></span>
+      </li>
+      <li onclick="toggleCheck(this)">
+        <div class="check-box"></div>
+        <span class="check-label">Aprobaci&oacute;n final de <strong>Jeferson Zambrano</strong> antes de publicar</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════ PROXIMOS PASOS ═══════════════ -->
+<section class="section" id="pasos">
+  <div class="container">
+    <h2 class="section-title">Pr&oacute;ximos Pasos</h2>
+    <p class="section-desc">Acciones inmediatas para poner en marcha el calendario de mayo.</p>
+
+    <ul class="steps-list">
+      <li>
+        <div class="step-content">
+          <h4>Revisi&oacute;n y aprobaci&oacute;n del calendario completo (17-20 abril)</h4>
+          <p>Claudia, Mike y Sergio revisan los copies de las 4 semanas. Jeferson Zambrano da el visto bueno final. Cualquier ajuste de messaging o claims financieros se cierra antes del 21 de abril.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-content">
+          <h4>Producci&oacute;n de assets visuales y audiovisuales (21-28 abril)</h4>
+          <p>El equipo gr&aacute;fico dise&ntilde;a carruseles, infograf&iacute;as y thumbnails. Mike graba en Filipinas los reels y timelapses de progreso de obra. Se editan los videos largos de YouTube y se derivan los Shorts y TikToks.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-content">
+          <h4>Programaci&oacute;n y lanzamiento (29 abril - 1 mayo)</h4>
+          <p>Se programan todas las piezas de semana 1 y 2 en Meta Business Suite y LinkedIn. Se configuran UTMs para tracking de campa&ntilde;a. El equipo monitoriza las primeras 48h y ajusta horarios seg&uacute;n engagement en tiempo real.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="footer">
+  <div class="container">
+    <p>Generado por <strong>Agencia OH WOW!</strong> para <strong>Land of Nomads Group</strong></p>
+    <p style="margin-top:6px; font-size:12px; opacity:.6;">Documento confidencial &middot; Mayo 2026</p>
+  </div>
+</footer>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+// ── Checklist toggle ──
+function toggleCheck(li) {
+  li.classList.toggle('done');
+  // Persist to localStorage
+  saveChecklist();
+}
+
+function saveChecklist() {
+  const items = document.querySelectorAll('#implementChecklist li');
+  const state = Array.from(items).map(li => li.classList.contains('done'));
+  localStorage.setItem('lon_checklist_mayo2026', JSON.stringify(state));
+}
+
+function loadChecklist() {
+  const saved = localStorage.getItem('lon_checklist_mayo2026');
+  if (saved) {
+    const state = JSON.parse(saved);
+    const items = document.querySelectorAll('#implementChecklist li');
+    state.forEach((done, i) => {
+      if (done && items[i]) items[i].classList.add('done');
+    });
+  }
+}
+
+loadChecklist();
+
+// ── Chart.js Pie Chart ──
+const ctx = document.getElementById('pillarChart').getContext('2d');
+new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: [
+      'Progreso Real',
+      'Educacion',
+      'Personas / Comunidad',
+      'Numeros sin Humo',
+      'Transparencia'
+    ],
+    datasets: [{
+      data: [40, 20, 20, 10, 10],
+      backgroundColor: [
+        '#B83E25',
+        '#818cf8',
+        '#FFBC7D',
+        '#22d3ee',
+        '#fb923c'
+      ],
+      borderColor: '#F3EBE1',
+      borderWidth: 3,
+      hoverOffset: 8
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    cutout: '55%',
+    plugins: {
+      legend: {
+        display: false
+      },
+      tooltip: {
+        backgroundColor: '#FFFFFF',
+        titleColor: '#1A1814',
+        bodyColor: '#6B5F4F',
+        borderColor: '#D9C8B1',
+        borderWidth: 1,
+        padding: 12,
+        cornerRadius: 8,
+        titleFont: { family: 'Inter', weight: '600' },
+        bodyFont: { family: 'Inter' },
+        callbacks: {
+          label: function(context) {
+            return ' ' + context.label + ': ' + context.parsed + '%';
+          }
+        }
+      }
+    }
+  }
+});
+</script>
+
+<!-- ═══════════════ QA REVIEW ═══════════════ -->
+<section class="no-print" style="border-top:2px solid var(--teal); background:linear-gradient(180deg, #FAF5EE 0%, #F3EBE1 100%); padding:48px 0;">
+  <div class="container">
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:24px;">
+      <span style="display:inline-flex; align-items:center; justify-content:center; background:var(--teal); color:var(--bg); font-weight:800; font-size:13px; letter-spacing:1px; padding:6px 14px; border-radius:6px;">QA</span>
+      <div>
+        <h2 style="font-size:20px; font-weight:700; color:var(--white); margin:0;">QA Review &mdash; jz-qa-reviewer</h2>
+        <p style="font-size:13px; color:var(--muted); margin:0;">Fecha: 2026-04-16 &middot; Basado en: Jeferson Zambrano (CDO &amp; CMO, Land of Nomads Group)</p>
+      </div>
+      <span style="margin-left:auto; background:rgba(184,62,37,.1); color:var(--teal); font-weight:700; font-size:14px; padding:8px 18px; border-radius:8px; border:1px solid rgba(184,62,37,.3); white-space:nowrap;">8.5/10 &mdash; APROBADO CON OBSERVACIONES</span>
+    </div>
+
+    <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:28px;">
+      <h3 style="font-size:15px; font-weight:600; color:var(--teal); margin-bottom:18px;">Cambios realizados</h3>
+      <ol style="list-style:none; counter-reset:qa; display:flex; flex-direction:column; gap:16px; padding:0;">
+        <li style="counter-increment:qa; display:flex; gap:14px; align-items:flex-start;">
+          <span style="display:flex; align-items:center; justify-content:center; width:28px; height:28px; background:linear-gradient(135deg, var(--teal), var(--gold)); color:var(--bg); font-weight:800; font-size:13px; border-radius:6px; flex-shrink:0;">1</span>
+          <div>
+            <strong style="color:var(--white); font-size:14px;">Claim de rentabilidad</strong>
+            <p style="color:var(--muted); font-size:13px; margin-top:4px;">Se a&ntilde;adi&oacute; disclaimer legal al copy del carrusel &laquo;12% de rentabilidad&raquo;. <span style="color:var(--teal);">Raz&oacute;n:</span> Todo claim financiero debe incluir disclaimer visible para cumplir normativa y coherencia con la transparencia radical de LON.</p>
+          </div>
+        </li>
+        <li style="counter-increment:qa; display:flex; gap:14px; align-items:flex-start;">
+          <span style="display:flex; align-items:center; justify-content:center; width:28px; height:28px; background:linear-gradient(135deg, var(--teal), var(--gold)); color:var(--bg); font-weight:800; font-size:13px; border-radius:6px; flex-shrink:0;">2</span>
+          <div>
+            <strong style="color:var(--white); font-size:14px;">CTA &laquo;Swipe up&raquo;</strong>
+            <p style="color:var(--muted); font-size:13px; margin-top:4px;">Reemplazado por &laquo;Link en stories&raquo;. <span style="color:var(--teal);">Raz&oacute;n:</span> Instagram elimin&oacute; swipe-up en 2021; usar terminolog&iacute;a actualizada de la plataforma.</p>
+          </div>
+        </li>
+        <li style="counter-increment:qa; display:flex; gap:14px; align-items:flex-start;">
+          <span style="display:flex; align-items:center; justify-content:center; width:28px; height:28px; background:linear-gradient(135deg, var(--teal), var(--gold)); color:var(--bg); font-weight:800; font-size:13px; border-radius:6px; flex-shrink:0;">3</span>
+          <div>
+            <strong style="color:var(--white); font-size:14px;">Hook clickbait</strong>
+            <p style="color:var(--muted); font-size:13px; margin-top:4px;">&laquo;Lo que nadie te ense&ntilde;a...&raquo; reemplazado por &laquo;As&iacute; avanza la Fase 2 &mdash; sin filtros&raquo;. <span style="color:var(--teal);">Raz&oacute;n:</span> El hook original contradice el posicionamiento anti-hype de LON (&laquo;hechos por encima del hype&raquo;).</p>
+          </div>
+        </li>
+        <li style="counter-increment:qa; display:flex; gap:14px; align-items:flex-start;">
+          <span style="display:flex; align-items:center; justify-content:center; width:28px; height:28px; background:linear-gradient(135deg, var(--teal), var(--gold)); color:var(--bg); font-weight:800; font-size:13px; border-radius:6px; flex-shrink:0;">4</span>
+          <div>
+            <strong style="color:var(--white); font-size:14px;">Reskin visual a identidad LON real</strong>
+            <p style="color:var(--muted); font-size:13px; margin-top:4px;"><span style="color:var(--teal);">Raz&oacute;n:</span> El dashboard original usaba paleta dark/teal gen&eacute;rica. Tras analizar landofnomadsgroup.com se aplic&oacute; la paleta real (terracota #B83E25, beige #D9C8B1, crema #F3EBE1, melocot&oacute;n #FFBC7D) y tipograf&iacute;a Outfit (fallback de Galano Grotesque, fuente original no disponible en Google Fonts). Tema cambiado de dark a light para coincidir con el sitio real.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sketch — Problemas Actuales | Dulce Raíz</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #e8e4df; font-family: 'Segoe UI', system-ui, sans-serif; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
+  .sketch-container { background: #fff; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); padding: 32px; max-width: 1280px; width: 100%; }
+  .notes { max-width: 1280px; width: 100%; margin-top: 32px; padding: 20px 24px; border-left: 4px solid #c8f135; background: #fff; border-radius: 0 8px 8px 0; }
+  .notes h3 { font-family: Georgia, serif; font-size: 16px; color: #1c1c1c; margin-bottom: 10px; }
+  .notes ul { padding-left: 20px; color: #555; font-size: 14px; line-height: 1.8; }
+  .footer { max-width: 1280px; width: 100%; text-align: center; margin-top: 24px; font-size: 12px; color: #999; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .sketch-container { box-shadow: none; border-radius: 0; padding: 0; }
+    .notes, .footer { display: none; }
+    svg { width: 100%; height: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sketch-container">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="auto" style="display:block;">
+
+    <!-- Beige background -->
+    <rect width="1200" height="675" fill="#f5f0eb" rx="6"/>
+
+    <!-- Subtle diagonal lines decoration -->
+    <line x1="0" y1="0" x2="60" y2="60" stroke="#e85d8a" stroke-width="0.5" opacity="0.1"/>
+    <line x1="1140" y1="0" x2="1200" y2="60" stroke="#e85d8a" stroke-width="0.5" opacity="0.1"/>
+
+    <!-- Title section -->
+    <text x="600" y="50" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#1c1c1c" font-weight="bold">Diagnostico: dulceraiz.es</text>
+    <line x1="460" y1="62" x2="740" y2="62" stroke="#e85d8a" stroke-width="2"/>
+
+    <!-- Subtitle -->
+    <text x="600" y="88" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="14" fill="#1c1c1c" opacity="0.5">5 areas críticas detectadas en la auditoría</text>
+
+    <!-- ==================== ROW 1: 2 cards ==================== -->
+
+    <!-- CARD 1: Móvil roto -->
+    <g>
+      <rect x="115" y="115" width="450" height="185" rx="14" fill="#1c1c1c"/>
+      <!-- Rosa accent left bar -->
+      <rect x="115" y="115" width="5" height="185" rx="2" fill="#e85d8a"/>
+
+      <!-- Warning triangle -->
+      <g transform="translate(152, 140)">
+        <polygon points="0,-10 9,6 -9,6" fill="none" stroke="#e85d8a" stroke-width="1.5"/>
+        <text x="0" y="4" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#e85d8a" font-weight="bold">!</text>
+      </g>
+
+      <!-- Phone icon -->
+      <g transform="translate(180, 185)">
+        <rect x="-14" y="-22" width="28" height="44" rx="4" fill="none" stroke="#e85d8a" stroke-width="2"/>
+        <line x1="-8" y1="-16" x2="8" y2="-16" stroke="#e85d8a" stroke-width="1" opacity="0.5"/>
+        <line x1="-8" y1="16" x2="8" y2="16" stroke="#e85d8a" stroke-width="1" opacity="0.5"/>
+        <circle cx="0" cy="19" r="2" fill="#e85d8a" opacity="0.5"/>
+        <!-- Crack lines -->
+        <line x1="-6" y1="-8" x2="4" y2="2" stroke="#e85d8a" stroke-width="1" opacity="0.4"/>
+        <line x1="4" y1="2" x2="-2" y2="10" stroke="#e85d8a" stroke-width="1" opacity="0.4"/>
+      </g>
+
+      <!-- Text -->
+      <text x="230" y="170" font-family="Georgia, serif" font-size="20" fill="#ffffff" font-weight="bold">Móvil roto</text>
+      <text x="230" y="196" font-family="'Segoe UI', system-ui, sans-serif" font-size="14" fill="#e85d8a" font-weight="bold">70% tráfico, 0% adaptado</text>
+      <text x="230" y="220" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#888">La mayoría de clientes navegan desde el móvil</text>
+      <text x="230" y="238" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#888">pero la web no es responsive.</text>
+
+      <!-- Number badge -->
+      <circle cx="530" cy="145" r="16" fill="#e85d8a" opacity="0.15"/>
+      <text x="530" y="150" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#e85d8a" font-weight="bold">1</text>
+    </g>
+
+    <!-- CARD 2: Sin pedidos online -->
+    <g>
+      <rect x="635" y="115" width="450" height="185" rx="14" fill="#1c1c1c"/>
+      <rect x="635" y="115" width="5" height="185" rx="2" fill="#e85d8a"/>
+
+      <!-- Warning triangle -->
+      <g transform="translate(672, 140)">
+        <polygon points="0,-10 9,6 -9,6" fill="none" stroke="#e85d8a" stroke-width="1.5"/>
+        <text x="0" y="4" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#e85d8a" font-weight="bold">!</text>
+      </g>
+
+      <!-- Cart icon with X -->
+      <g transform="translate(700, 185)">
+        <path d="M-16,10 L-12,-10 L16,-10 L12,6 Z" fill="none" stroke="#e85d8a" stroke-width="2"/>
+        <circle cx="-8" cy="16" r="3" fill="none" stroke="#e85d8a" stroke-width="1.5"/>
+        <circle cx="8" cy="16" r="3" fill="none" stroke="#e85d8a" stroke-width="1.5"/>
+        <!-- X mark -->
+        <line x1="-6" y1="-4" x2="6" y2="4" stroke="#e85d8a" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="6" y1="-4" x2="-6" y2="4" stroke="#e85d8a" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+
+      <!-- Text -->
+      <text x="750" y="170" font-family="Georgia, serif" font-size="20" fill="#ffffff" font-weight="bold">Sin pedidos online</text>
+      <text x="750" y="196" font-family="'Segoe UI', system-ui, sans-serif" font-size="14" fill="#e85d8a" font-weight="bold">Competidores ya venden</text>
+      <text x="750" y="220" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#888">Panaderias como La Tahona y Mama Framboise</text>
+      <text x="750" y="238" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#888">ya aceptan pedidos y envios online.</text>
+
+      <!-- Number badge -->
+      <circle cx="1050" cy="145" r="16" fill="#e85d8a" opacity="0.15"/>
+      <text x="1050" y="150" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#e85d8a" font-weight="bold">2</text>
+    </g>
+
+    <!-- ==================== ROW 2: 3 cards ==================== -->
+
+    <!-- CARD 3: 6+ seg de carga -->
+    <g>
+      <rect x="55" y="330" width="340" height="185" rx="14" fill="#1c1c1c"/>
+      <rect x="55" y="330" width="5" height="185" rx="2" fill="#e85d8a"/>
+
+      <!-- Warning triangle -->
+      <g transform="translate(92, 355)">
+        <polygon points="0,-10 9,6 -9,6" fill="none" stroke="#e85d8a" stroke-width="1.5"/>
+        <text x="0" y="4" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#e85d8a" font-weight="bold">!</text>
+      </g>
+
+      <!-- Clock icon -->
+      <g transform="translate(120, 400)">
+        <circle cx="0" cy="0" r="18" fill="none" stroke="#e85d8a" stroke-width="2"/>
+        <line x1="0" y1="0" x2="0" y2="-12" stroke="#e85d8a" stroke-width="2" stroke-linecap="round"/>
+        <line x1="0" y1="0" x2="10" y2="4" stroke="#e85d8a" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="0" cy="0" r="2" fill="#e85d8a"/>
+      </g>
+
+      <!-- Text -->
+      <text x="170" y="385" font-family="Georgia, serif" font-size="20" fill="#ffffff" font-weight="bold">6+ seg de carga</text>
+      <text x="170" y="411" font-family="'Segoe UI', system-ui, sans-serif" font-size="14" fill="#e85d8a" font-weight="bold">Estandar: &lt; 3 seg</text>
+      <text x="170" y="435" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#888">Cada segundo extra reduce</text>
+      <text x="170" y="453" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#888">las conversiones un 7%.</text>
+
+      <!-- Number badge -->
+      <circle cx="362" cy="360" r="16" fill="#e85d8a" opacity="0.15"/>
+      <text x="362" y="365" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#e85d8a" font-weight="bold">3</text>
+    </g>
+
+    <!-- CARD 4: SEO con brechas -->
+    <g>
+      <rect x="430" y="330" width="340" height="185" rx="14" fill="#1c1c1c"/>
+      <rect x="430" y="330" width="5" height="185" rx="2" fill="#e85d8a"/>
+
+      <!-- Warning triangle -->
+      <g transform="translate(467, 355)">
+        <polygon points="0,-10 9,6 -9,6" fill="none" stroke="#e85d8a" stroke-width="1.5"/>
+        <text x="0" y="4" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#e85d8a" font-weight="bold">!</text>
+      </g>
+
+      <!-- Search/SEO icon -->
+      <g transform="translate(497, 400)">
+        <circle cx="0" cy="-4" r="14" fill="none" stroke="#e85d8a" stroke-width="2"/>
+        <line x1="10" y1="6" x2="18" y2="14" stroke="#e85d8a" stroke-width="2" stroke-linecap="round"/>
+        <!-- SEO text inside -->
+        <text x="0" y="0" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="8" fill="#e85d8a" font-weight="bold">SEO</text>
+      </g>
+
+      <!-- Text -->
+      <text x="545" y="385" font-family="Georgia, serif" font-size="20" fill="#ffffff" font-weight="bold">SEO con brechas</text>
+      <text x="545" y="411" font-family="'Segoe UI', system-ui, sans-serif" font-size="14" fill="#e85d8a" font-weight="bold">No aparece en local</text>
+      <text x="545" y="435" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#888">Busquedas como "panaderia artesanal</text>
+      <text x="545" y="453" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#888">Madrid" no muestran Dulce Raiz.</text>
+
+      <!-- Number badge -->
+      <circle cx="737" cy="360" r="16" fill="#e85d8a" opacity="0.15"/>
+      <text x="737" y="365" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#e85d8a" font-weight="bold">4</text>
+    </g>
+
+    <!-- CARD 5: Diseño de 2019 -->
+    <g>
+      <rect x="805" y="330" width="340" height="185" rx="14" fill="#1c1c1c"/>
+      <rect x="805" y="330" width="5" height="185" rx="2" fill="#e85d8a"/>
+
+      <!-- Warning triangle -->
+      <g transform="translate(842, 355)">
+        <polygon points="0,-10 9,6 -9,6" fill="none" stroke="#e85d8a" stroke-width="1.5"/>
+        <text x="0" y="4" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#e85d8a" font-weight="bold">!</text>
+      </g>
+
+      <!-- Calendar icon -->
+      <g transform="translate(872, 400)">
+        <rect x="-16" y="-14" width="32" height="28" rx="3" fill="none" stroke="#e85d8a" stroke-width="2"/>
+        <line x1="-16" y1="-6" x2="16" y2="-6" stroke="#e85d8a" stroke-width="1.5"/>
+        <line x1="-8" y1="-18" x2="-8" y2="-10" stroke="#e85d8a" stroke-width="2" stroke-linecap="round"/>
+        <line x1="8" y1="-18" x2="8" y2="-10" stroke="#e85d8a" stroke-width="2" stroke-linecap="round"/>
+        <!-- 2019 text -->
+        <text x="0" y="6" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#e85d8a" font-weight="bold">2019</text>
+      </g>
+
+      <!-- Text -->
+      <text x="920" y="385" font-family="Georgia, serif" font-size="20" fill="#ffffff" font-weight="bold">Diseño de 2019</text>
+      <text x="920" y="411" font-family="'Segoe UI', system-ui, sans-serif" font-size="14" fill="#e85d8a" font-weight="bold">No refleja la marca</text>
+      <text x="920" y="435" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#888">El sitio actual no transmite la calidad</text>
+      <text x="920" y="453" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#888">artesanal de Dulce Raiz.</text>
+
+      <!-- Number badge -->
+      <circle cx="1112" cy="360" r="16" fill="#e85d8a" opacity="0.15"/>
+      <text x="1112" y="365" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#e85d8a" font-weight="bold">5</text>
+    </g>
+
+    <!-- ==================== BOTTOM SECTION ==================== -->
+
+    <!-- Good news message -->
+    <rect x="200" y="545" width="800" height="44" rx="22" fill="#c8f135" opacity="0.15"/>
+    <text x="600" y="573" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#1c1c1c" font-style="italic">"La buena noticia: todo tiene solucion."</text>
+
+    <!-- Lima accent dots -->
+    <circle cx="220" cy="567" r="4" fill="#c8f135"/>
+    <circle cx="980" cy="567" r="4" fill="#c8f135"/>
+
+    <!-- Logo placeholder bottom-right -->
+    <g transform="translate(1120, 635)">
+      <circle cx="0" cy="0" r="20" fill="none" stroke="#1c1c1c" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+      <text x="0" y="3" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="6" fill="#999">OH WOW!</text>
+    </g>
+
+    <!-- Attribution bottom-left -->
+    <text x="55" y="650" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#1c1c1c" opacity="0.35">Agencia OH WOW! | agenciaohwow.com</text>
+
+  </svg>
+</div>
+
+<div class="notes">
+  <h3>Notas para el diseñador</h3>
+  <ul>
+    <li>Las 5 tarjetas oscuras sobre fondo beige crean contraste y urgencia visual</li>
+    <li>La barra rosa izquierda en cada tarjeta refuerza el color de alerta sin ser agresivo</li>
+    <li>Los iconos son placeholders SVG simples; sustituir por iconografia de marca si existe</li>
+    <li>Los triangulos de advertencia en cada tarjeta refuerzan el mensaje de urgencia</li>
+    <li>La frase final en lima cierra con optimismo: la auditoría no es para asustar sino para motivar</li>
+    <li>Las estadísticas (70%, 6+ seg, 2019) deben verificarse con datos reales de la auditoría</li>
+    <li>Formato: 16:9 landscape para presentación en pantalla</li>
+    <li>Paleta: Lima #c8f135, Negro #1c1c1c, Rosa #e85d8a, Beige #f5f0eb</li>
+  </ul>
+</div>
+
+<div class="footer">Sketch generado por Agencia OH WOW!</div>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sketch — Inversión — Desglose</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #e8e4df; font-family: 'Segoe UI', system-ui, sans-serif; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
+  .sketch-container { background: #fff; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.12); padding: 32px; max-width: 1260px; width: 100%; }
+  .sketch-label { font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  .notes { max-width: 1260px; width: 100%; margin-top: 28px; border-left: 4px solid #c8f135; background: #fff; border-radius: 0 12px 12px 0; padding: 20px 24px; }
+  .notes h3 { font-family: Georgia, serif; font-size: 16px; color: #1c1c1c; margin-bottom: 8px; }
+  .notes ul { margin-left: 18px; font-size: 14px; color: #555; line-height: 1.7; }
+  footer { margin-top: 28px; font-size: 12px; color: #aaa; text-align: center; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .sketch-container { box-shadow: none; border: 1px solid #ddd; }
+    .notes { break-inside: avoid; }
+    footer { margin-top: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="sketch-container">
+  <p class="sketch-label">Sketch &mdash; Inversión &mdash; Propuesta Dulce Raíz</p>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="auto" style="display:block;">
+    <!-- Dark background -->
+    <rect width="1200" height="675" rx="8" fill="#1c1c1c"/>
+
+    <!-- Subtle grid pattern -->
+    <defs>
+      <pattern id="grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+        <rect width="40" height="40" fill="none" stroke="#ffffff" stroke-width="0.3" opacity="0.05"/>
+      </pattern>
+    </defs>
+    <rect width="1200" height="675" rx="8" fill="url(#grid)"/>
+
+    <!-- Decorative rosa circle -->
+    <circle cx="1150" cy="50" r="120" fill="#e85d8a" opacity="0.04"/>
+
+    <!-- Title -->
+    <text x="60" y="65" font-family="Georgia, serif" font-size="40" fill="#c8f135" font-weight="bold">Inversión</text>
+    <text x="60" y="95" font-family="'Segoe UI', system-ui, sans-serif" font-size="15" fill="#888">Desglose por fases del proyecto e-commerce Dulce Raíz</text>
+
+    <!-- Separator -->
+    <line x1="60" y1="115" x2="400" y2="115" stroke="#c8f135" stroke-width="2" opacity="0.3"/>
+
+    <!-- BAR CHART AREA -->
+    <!-- Baseline -->
+    <line x1="100" y1="500" x2="750" y2="500" stroke="#444" stroke-width="1"/>
+
+    <!-- Phase 1 Bar -->
+    <rect x="130" y="300" width="140" height="200" rx="8" ry="8" fill="#c8f135"/>
+    <rect x="130" y="300" width="140" height="200" rx="8" ry="8" fill="#c8f135" opacity="0.9"/>
+    <text x="200" y="390" font-family="Georgia, serif" font-size="26" fill="#1c1c1c" font-weight="bold" text-anchor="middle">1.960 €</text>
+    <text x="200" y="530" font-family="'Segoe UI', system-ui, sans-serif" font-size="14" fill="#ccc" text-anchor="middle">Descubrimiento</text>
+    <text x="200" y="550" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#888" text-anchor="middle">Fase 1</text>
+    <!-- Payment badge -->
+    <rect x="165" y="265" width="70" height="26" rx="13" fill="#e85d8a"/>
+    <text x="200" y="283" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#fff" font-weight="bold" text-anchor="middle">40%</text>
+
+    <!-- Phase 2 Bar (tallest, double width) -->
+    <rect x="330" y="170" width="200" height="330" rx="8" ry="8" fill="#c8f135"/>
+    <text x="430" y="330" font-family="Georgia, serif" font-size="30" fill="#1c1c1c" font-weight="bold" text-anchor="middle">5.880 €</text>
+    <text x="430" y="530" font-family="'Segoe UI', system-ui, sans-serif" font-size="14" fill="#ccc" text-anchor="middle">Diseño + Desarrollo</text>
+    <text x="430" y="550" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#888" text-anchor="middle">Fase 2</text>
+    <!-- Payment badge -->
+    <rect x="395" y="135" width="70" height="26" rx="13" fill="#e85d8a"/>
+    <text x="430" y="153" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#fff" font-weight="bold" text-anchor="middle">40%</text>
+
+    <!-- Phase 3 Bar -->
+    <rect x="590" y="300" width="140" height="200" rx="8" ry="8" fill="#c8f135"/>
+    <text x="660" y="390" font-family="Georgia, serif" font-size="26" fill="#1c1c1c" font-weight="bold" text-anchor="middle">1.960 €</text>
+    <text x="660" y="530" font-family="'Segoe UI', system-ui, sans-serif" font-size="14" fill="#ccc" text-anchor="middle">Lanzamiento</text>
+    <text x="660" y="550" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#888" text-anchor="middle">Fase 3</text>
+    <!-- Payment badge -->
+    <rect x="625" y="265" width="70" height="26" rx="13" fill="#e85d8a"/>
+    <text x="660" y="283" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#fff" font-weight="bold" text-anchor="middle">20%</text>
+
+    <!-- Payment timeline arrow -->
+    <line x1="130" y1="585" x2="730" y2="585" stroke="#555" stroke-width="2"/>
+    <polygon points="730,580 745,585 730,590" fill="#555"/>
+    <!-- Timeline labels -->
+    <circle cx="200" cy="585" r="6" fill="#c8f135"/>
+    <text x="200" y="608" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#888" text-anchor="middle">40% inicio</text>
+    <circle cx="430" cy="585" r="6" fill="#c8f135"/>
+    <text x="430" y="608" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#888" text-anchor="middle">40% aprobación</text>
+    <circle cx="660" cy="585" r="6" fill="#c8f135"/>
+    <text x="660" y="608" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#888" text-anchor="middle">20% entrega</text>
+
+    <!-- TOTAL at right -->
+    <text x="920" y="270" font-family="'Segoe UI', system-ui, sans-serif" font-size="14" fill="#888" text-anchor="middle">TOTAL PROYECTO</text>
+    <text x="920" y="340" font-family="Georgia, serif" font-size="64" fill="#c8f135" font-weight="bold" text-anchor="middle">9.800 €</text>
+
+    <!-- Divider below total -->
+    <line x1="820" y1="360" x2="1020" y2="360" stroke="#c8f135" stroke-width="1" opacity="0.3"/>
+
+    <!-- Support inclusion -->
+    <rect x="822" y="385" width="196" height="36" rx="6" fill="#ffffff" opacity="0.05"/>
+    <!-- Check icon -->
+    <circle cx="844" cy="403" r="10" fill="#c8f135" opacity="0.2"/>
+    <polyline points="839,403 843,407 850,398" fill="none" stroke="#c8f135" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="860" y="400" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#ccc">
+      <tspan x="860" dy="0">Incluye 3 meses de</tspan>
+      <tspan x="860" dy="16">soporte post-lanzamiento</tspan>
+    </text>
+
+    <!-- Small text: IVA -->
+    <text x="920" y="460" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#666" text-anchor="middle">IVA no incluido · Validez 30 días</text>
+
+    <!-- Logo placeholder bottom-right -->
+    <rect x="1040" y="620" width="120" height="36" rx="6" fill="none" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+    <text x="1100" y="643" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#555" text-anchor="middle">LOGO OH WOW!</text>
+
+    <!-- Footer text -->
+    <text x="60" y="650" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#555">Propuesta comercial — Dulce Raíz — Abril 2026</text>
+  </svg>
+</div>
+
+<div class="notes">
+  <h3>Notas para el diseñador</h3>
+  <ul>
+    <li>Fondo oscuro (#1c1c1c) con barras lima — alto contraste para impacto visual.</li>
+    <li>La barra central (Fase 2) es intencionalmente más alta y ancha para comunicar que es la fase principal.</li>
+    <li>Los badges rosa (40%, 40%, 20%) contrastan con las barras lima para separar visualmente precio de condiciones de pago.</li>
+    <li>El total "9.800 €" debe ser el elemento más prominente — usar tipografía display si se dispone.</li>
+    <li>La línea temporal inferior refuerza la secuencia de pagos — añadir iconos si el diseño lo permite.</li>
+    <li>Considerar versión alternativa con fondo claro para impresión.</li>
+  </ul>
+</div>
+
+<footer>Sketch generado por Agencia OH WOW!</footer>
+</body>
+</html>

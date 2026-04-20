@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Marketing Test — Secuencia de Bienvenida Inversores | LON</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg-primary: #F3EBE1;
+            --bg-secondary: #FFFFFF;
+            --bg-card: #FFFFFF;
+            --bg-card-hover: #FBF5EC;
+            --beige: #D9C8B1;
+            --accent: #B83E25;
+            --accent-dim: rgba(184,62,37,0.10);
+            --accent-glow: rgba(184,62,37,0.25);
+            --gold: #FFBC7D;
+            --gold-dim: rgba(255,188,125,0.18);
+            --white: #1A1814;
+            --text-secondary: #5C4A3A;
+            --text-muted: #8A7A68;
+            --border: rgba(217,200,177,0.6);
+            --border-accent: rgba(184,62,37,0.30);
+            --danger: #C0392B;
+            --success: #B83E25;
+            --warning: #FFBC7D;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --shadow: 0 4px 24px rgba(92,74,58,0.10);
+            --shadow-lg: 0 8px 48px rgba(92,74,58,0.15);
+        }
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--white);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 32px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--accent-dim) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-left { flex: 1; min-width: 280px; }
+
+        .brand-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-dim);
+            border: 1px solid var(--border-accent);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+
+        .brand-tag .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .header h1 {
+            font-size: clamp(22px, 3vw, 32px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+
+        .header-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, #8E2F1C 100%);
+            color: #FFFFFF;
+            box-shadow: 0 4px 16px rgba(184,62,37,0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(184,62,37,0.35);
+        }
+
+        .btn-ghost {
+            background: rgba(217,200,177,0.25);
+            color: var(--white);
+            border: 1px solid var(--border);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(217,200,177,0.45);
+            border-color: var(--accent);
+        }
+
+        /* ========== SECTIONS ========== */
+        .section {
+            padding: 48px 0;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title .icon {
+            width: 36px;
+            height: 36px;
+            background: var(--accent-dim);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 0;
+        }
+
+        /* ========== KPI CARDS ========== */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .kpi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .kpi-card:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .kpi-card:hover::before { opacity: 1; }
+
+        .kpi-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .kpi-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1.2;
+        }
+
+        .kpi-value.gold { color: var(--gold); }
+
+        .kpi-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* ========== FLOW DIAGRAM ========== */
+        .flow-container {
+            overflow-x: auto;
+            padding: 16px 0 24px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .flow-timeline {
+            display: flex;
+            align-items: center;
+            min-width: 900px;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .flow-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            flex: 1;
+            z-index: 1;
+        }
+
+        .flow-dot {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 3px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(184,62,37,0.12);
+            position: relative;
+            z-index: 2;
+        }
+
+        .flow-node:hover .flow-dot {
+            background: var(--accent);
+            color: #FFFFFF;
+            box-shadow: 0 0 30px rgba(184,62,37,0.35);
+            transform: scale(1.1);
+        }
+
+        .flow-day {
+            margin-top: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .flow-label {
+            margin-top: 4px;
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+            max-width: 110px;
+            line-height: 1.3;
+        }
+
+        .flow-line {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--border-accent));
+            position: relative;
+            min-width: 40px;
+            z-index: 0;
+            margin: 0 -8px;
+            align-self: flex-start;
+            margin-top: 47px;
+        }
+
+        .flow-line::after {
+            content: '';
+            position: absolute;
+            right: -4px;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid var(--accent);
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+
+        /* ========== EMAIL CARDS ========== */
+        .email-cards-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .email-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .email-card:hover {
+            border-color: var(--border-accent);
+        }
+
+        .email-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            cursor: pointer;
+            user-select: none;
+            gap: 16px;
+        }
+
+        .email-card-header:hover {
+            background: rgba(217,200,177,0.15);
+        }
+
+        .email-header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .email-number {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border-radius: 50%;
+            background: var(--accent-dim);
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .email-header-text h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .email-header-text .email-day-tag {
+            font-size: 12px;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .email-toggle {
+            width: 32px;
+            height: 32px;
+            min-width: 32px;
+            border-radius: 50%;
+            background: rgba(217,200,177,0.35);
+            border: none;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .email-toggle:hover {
+            background: var(--accent-dim);
+            color: var(--accent);
+        }
+
+        .email-card.open .email-toggle {
+            transform: rotate(180deg);
+        }
+
+        .email-card-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .email-card.open .email-card-body {
+            max-height: 3000px;
+        }
+
+        .email-card-content {
+            padding: 0 24px 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .email-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .email-detail-grid { grid-template-columns: 1fr; }
+        }
+
+        .email-detail-block {
+            background: var(--bg-primary);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .email-detail-block.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .detail-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .detail-value {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .detail-value strong { color: var(--white); font-weight: 600; }
+
+        .subject-line {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .subject-variant {
+            display: inline-block;
+            background: var(--gold-dim);
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            min-width: 16px;
+            text-align: center;
+            margin-top: 2px;
+        }
+
+        .subject-text {
+            font-size: 14px;
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .cta-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, var(--accent), #8E2F1C);
+            color: #FFFFFF;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        .utm-code {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 11px;
+            background: rgba(217,200,177,0.30);
+            padding: 8px 12px;
+            border-radius: 6px;
+            color: var(--accent);
+            word-break: break-all;
+            line-height: 1.5;
+            border: 1px solid var(--border);
+        }
+
+        /* ========== CHART ========== */
+        .chart-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            max-width: 800px;
+        }
+
+        .chart-canvas-container {
+            position: relative;
+            height: 360px;
+        }
+
+        /* ========== CHECKLIST ========== */
+        .checklist-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .checklist-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checklist-header:hover {
+            background: rgba(217,200,177,0.15);
+        }
+
+        .checklist-header h3 {
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checklist-progress {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .checklist-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .checklist-wrapper.open .checklist-body {
+            max-height: 1000px;
+        }
+
+        .checklist-items {
+            padding: 0 24px 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .checklist-item:last-child { border-bottom: none; }
+
+        .checklist-item.checked { opacity: 0.5; }
+
+        .checklist-item .check-box {
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            border-radius: 6px;
+            border: 2px solid var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            font-size: 12px;
+            color: transparent;
+        }
+
+        .checklist-item.checked .check-box {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #FFFFFF;
+        }
+
+        .checklist-item .check-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .checklist-item.checked .check-text {
+            text-decoration: line-through;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            padding: 32px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        .footer p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .footer .agency {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .footer .client {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* ========== PRINT ========== */
+        @media print {
+            body { background: #fff; color: #111; }
+            .btn, .email-toggle, .checklist-header, .no-print { display: none; }
+            .email-card-body, .checklist-body { max-height: none !important; overflow: visible !important; }
+            .kpi-card, .email-card, .chart-wrapper, .checklist-wrapper, .email-detail-block {
+                border-color: #ddd;
+                background: #f9f9f9;
+                box-shadow: none;
+            }
+            .kpi-value, .email-number, .flow-dot, .detail-label, .cta-badge { color: #0a7; }
+            .section-title .icon { background: #e0f7f1; }
+            .header::before { display: none; }
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 600px) {
+            .header-inner { flex-direction: column; }
+            .kpi-grid { grid-template-columns: 1fr 1fr; }
+            .chart-wrapper { padding: 16px; }
+            .email-card-header { padding: 16px; }
+            .email-card-content { padding: 0 16px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="header">
+    <div class="container header-inner">
+        <div class="header-left">
+            <div class="brand-tag"><span class="dot"></span> Land of Nomads Group</div>
+            <h1>Email Marketing Test &mdash; Secuencia de Bienvenida Inversores</h1>
+            <div class="header-meta">
+                <span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    16 de abril de 2026
+                </span>
+                <span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Email Automation &middot; Brevo
+                </span>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-primary" onclick="exportPDF()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                Exportar PDF
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+
+<!-- ============ KPI SECTION ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <span class="icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </span>
+            Resumen de la secuencia
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">Emails en secuencia</div>
+                <div class="kpi-value">7</div>
+                <div class="kpi-desc">Automatizados via Brevo</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Duraci&oacute;n total</div>
+                <div class="kpi-value">21 <span style="font-size:16px;font-weight:600;">d&iacute;as</span></div>
+                <div class="kpi-desc">Del d&iacute;a 0 al d&iacute;a 21</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Segmento</div>
+                <div class="kpi-value gold" style="font-size:20px;">Inversores internacionales</div>
+                <div class="kpi-desc">Leads cualificados</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Trigger</div>
+                <div class="kpi-value gold" style="font-size:18px;">Descarga de dossier</div>
+                <div class="kpi-desc">Dossier de inversi&oacute;n</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Plataforma</div>
+                <div class="kpi-value" style="font-size:24px;">Brevo</div>
+                <div class="kpi-desc">Email marketing &amp; automation</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Objetivo</div>
+                <div class="kpi-value gold" style="font-size:16px;line-height:1.4;">Agendar llamada 1:1</div>
+                <div class="kpi-desc">Lead cualificado &rarr; llamada</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ============ FLOW DIAGRAM ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <span class="icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </span>
+            Flujo de la secuencia
+        </div>
+        <div class="flow-container">
+            <div class="flow-timeline">
+                <div class="flow-node">
+                    <div class="flow-dot">E1</div>
+                    <div class="flow-day">D&iacute;a 0</div>
+                    <div class="flow-label">Bienvenida + Dossier</div>
+                </div>
+                <div class="flow-line"></div>
+                <div class="flow-node">
+                    <div class="flow-dot">E2</div>
+                    <div class="flow-day">D&iacute;a 2</div>
+                    <div class="flow-label">Historia de LON</div>
+                </div>
+                <div class="flow-line"></div>
+                <div class="flow-node">
+                    <div class="flow-dot">E3</div>
+                    <div class="flow-day">D&iacute;a 5</div>
+                    <div class="flow-label">Educaci&oacute;n legal</div>
+                </div>
+                <div class="flow-line"></div>
+                <div class="flow-node">
+                    <div class="flow-dot">E4</div>
+                    <div class="flow-day">D&iacute;a 8</div>
+                    <div class="flow-label">Caso real</div>
+                </div>
+                <div class="flow-line"></div>
+                <div class="flow-node">
+                    <div class="flow-dot">E5</div>
+                    <div class="flow-day">D&iacute;a 12</div>
+                    <div class="flow-label">Webinar</div>
+                </div>
+                <div class="flow-line"></div>
+                <div class="flow-node">
+                    <div class="flow-dot">E6</div>
+                    <div class="flow-day">D&iacute;a 16</div>
+                    <div class="flow-label">N&uacute;meros sin humo</div>
+                </div>
+                <div class="flow-line"></div>
+                <div class="flow-node">
+                    <div class="flow-dot">E7</div>
+                    <div class="flow-day">D&iacute;a 21</div>
+                    <div class="flow-label">CTA final</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ============ EMAIL DETAILS ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <span class="icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </span>
+            Detalle de cada email
+        </div>
+
+        <div class="email-cards-stack">
+
+            <!-- EMAIL 1 -->
+            <div class="email-card open" data-email="1">
+                <div class="email-card-header" onclick="toggleEmail(this)">
+                    <div class="email-header-left">
+                        <div class="email-number">1</div>
+                        <div class="email-header-text">
+                            <h3>Bienvenida + Dossier</h3>
+                            <span class="email-day-tag">D&iacute;a 0 &mdash; Trigger: descarga de dossier</span>
+                        </div>
+                    </div>
+                    <button class="email-toggle" aria-label="Toggle">&#9662;</button>
+                </div>
+                <div class="email-card-body">
+                    <div class="email-card-content">
+                        <div class="email-detail-grid">
+                            <div class="email-detail-block">
+                                <div class="detail-label">Subject Lines (A/B Test)</div>
+                                <div class="detail-value">
+                                    <div class="subject-line"><span class="subject-variant">A</span><span class="subject-text">Tu dossier de inversi&oacute;n en eco-villas est&aacute; listo</span></div>
+                                    <div class="subject-line"><span class="subject-variant">B</span><span class="subject-text">Aqu&iacute; tienes todo sobre invertir en Filipinas</span></div>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">Preheader</div>
+                                <div class="detail-value">M&aacute;s de 400 inversores de 14 pa&iacute;ses ya conf&iacute;an en este modelo</div>
+                            </div>
+                            <div class="email-detail-block full-width">
+                                <div class="detail-label">Body copy completo</div>
+                                <div class="detail-value">
+                                    <p><strong>Hola {{first_name}},</strong></p>
+                                    <br>
+                                    <p>Gracias por descargar el dossier de inversi&oacute;n de <strong>Land of Nomads Group</strong>. Acabas de dar el primer paso hacia una de las oportunidades m&aacute;s interesantes del mercado inmobiliario en el Sudeste Así&aacute;tico.</p>
+                                    <br>
+                                    <p>Land of Nomads es una desarrolladora de eco-resorts en Filipinas con m&aacute;s de <strong>400 inversores de 14 pa&iacute;ses</strong>, +300 unidades en desarrollo y 3 proyectos activos. Nuestro modelo combina rentabilidad inmobiliaria con turismo sostenible en una de las econom&iacute;as de mayor crecimiento de Asia.</p>
+                                    <br>
+                                    <p>En los pr&oacute;ximos 21 d&iacute;as recibir&aacute;s <strong>6 emails adicionales</strong> donde te contaremos nuestra historia, el marco legal para invertir en Filipinas, casos reales de inversores, una invitaci&oacute;n a un webinar en directo, el desglose de rentabilidad sin humo y, finalmente, la posibilidad de agendar una llamada personal con nuestro equipo.</p>
+                                    <br>
+                                    <p>De momento, aqu&iacute; tienes tu dossier:</p>
+                                    <br>
+                                    <div class="cta-badge">&#8594; Descarga tu dossier completo</div>
+                                    <br><br>
+                                    <p>Si tienes cualquier pregunta antes de eso, simplemente responde a este email.</p>
+                                    <br>
+                                    <p>Un saludo,<br><strong>Jeferson Zambrano</strong><br>Chief Digital Officer &mdash; Land of Nomads Group</p>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">CTA principal</div>
+                                <div class="detail-value">
+                                    <div class="cta-badge">Descarga tu dossier completo</div>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">UTM Parameters</div>
+                                <div class="utm-code">utm_source=brevo&amp;utm_medium=email&amp;utm_campaign=welcome-inversores&amp;utm_content=email1</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EMAIL 2 -->
+            <div class="email-card" data-email="2">
+                <div class="email-card-header" onclick="toggleEmail(this)">
+                    <div class="email-header-left">
+                        <div class="email-number">2</div>
+                        <div class="email-header-text">
+                            <h3>Historia de LON</h3>
+                            <span class="email-day-tag">D&iacute;a 2 &mdash; Storytelling + conexi&oacute;n emocional</span>
+                        </div>
+                    </div>
+                    <button class="email-toggle" aria-label="Toggle">&#9662;</button>
+                </div>
+                <div class="email-card-body">
+                    <div class="email-card-content">
+                        <div class="email-detail-grid">
+                            <div class="email-detail-block">
+                                <div class="detail-label">Subject Lines (A/B Test)</div>
+                                <div class="detail-value">
+                                    <div class="subject-line"><span class="subject-variant">A</span><span class="subject-text">De Barcelona a 400 inversores en 14 pa&iacute;ses</span></div>
+                                    <div class="subject-line"><span class="subject-variant">B</span><span class="subject-text">C&oacute;mo naci&oacute; LON (y por qu&eacute; seguimos)</span></div>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">Preheader</div>
+                                <div class="detail-value">La historia que no aparece en los foros</div>
+                            </div>
+                            <div class="email-detail-block full-width">
+                                <div class="detail-label">Body copy completo</div>
+                                <div class="detail-value">
+                                    <p><strong>Hola {{first_name}},</strong></p>
+                                    <br>
+                                    <p>Antes de hablar de n&uacute;meros, queremos contarte de d&oacute;nde venimos.</p>
+                                    <br>
+                                    <p>Land of Nomads naci&oacute; de una conversaci&oacute;n entre tres amigos en Barcelona que compart&iacute;an una obsesi&oacute;n: <strong>crear algo que combinara inversi&oacute;n inteligente con impacto real</strong>. No quer&iacute;amos ser otra promotora que construye, vende y desaparece. Quer&iacute;amos construir comunidades sostenibles que generaran valor a largo plazo &mdash; para los inversores, para la comunidad local y para el planeta.</p>
+                                    <br>
+                                    <p>Los primeros meses fueron duros. Viajamos a Filipinas con m&aacute;s ilusi&oacute;n que presupuesto, negociamos leaseholds, aprendimos a navegar la burocracia local y dise&ntilde;amos un modelo de negocio que hoy, a&ntilde;os despu&eacute;s, ha demostrado su solidez.</p>
+                                    <br>
+                                    <p><strong>Hoy somos esto:</strong></p>
+                                    <ul style="margin:8px 0 8px 20px;color:var(--text-secondary);">
+                                        <li>+400 inversores de 14 pa&iacute;ses</li>
+                                        <li>+300 unidades en desarrollo</li>
+                                        <li>3 proyectos activos en Filipinas</li>
+                                        <li>Un equipo multidisciplinar en Manila, Barcelona y Siargao</li>
+                                    </ul>
+                                    <br>
+                                    <p>Hemos grabado un v&iacute;deo que resume nuestro camino hasta aqu&iacute; y te da un vistazo a lo que estamos construyendo en terreno. Te recomendamos verlo &mdash; dura menos de 4 minutos:</p>
+                                    <br>
+                                    <div class="cta-badge">&#9654; Conoce nuestra historia completa</div>
+                                    <br><br>
+                                    <p>En el pr&oacute;ximo email te explicaremos el marco legal para invertir en Filipinas &mdash; sin jerga, sin letra peque&ntilde;a.</p>
+                                    <br>
+                                    <p>Un saludo,<br><strong>El equipo de Land of Nomads</strong></p>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">CTA principal</div>
+                                <div class="detail-value">
+                                    <div class="cta-badge">Conoce nuestra historia completa</div>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">UTM Parameters</div>
+                                <div class="utm-code">utm_source=brevo&amp;utm_medium=email&amp;utm_campaign=welcome-inversores&amp;utm_content=email2</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EMAIL 3 -->
+            <div class="email-card" data-email="3">
+                <div class="email-card-header" onclick="toggleEmail(this)">
+                    <div class="email-header-left">
+                        <div class="email-number">3</div>
+                        <div class="email-header-text">
+                            <h3>Educaci&oacute;n: Marco legal en Filipinas</h3>
+                            <span class="email-day-tag">D&iacute;a 5 &mdash; Contenido educativo + autoridad</span>
+                        </div>
+                    </div>
+                    <button class="email-toggle" aria-label="Toggle">&#9662;</button>
+                </div>
+                <div class="email-card-body">
+                    <div class="email-card-content">
+                        <div class="email-detail-grid">
+                            <div class="email-detail-block">
+                                <div class="detail-label">Subject Lines (A/B Test)</div>
+                                <div class="detail-value">
+                                    <div class="subject-line"><span class="subject-variant">A</span><span class="subject-text">Leasehold en Filipinas: lo que no te dicen</span></div>
+                                    <div class="subject-line"><span class="subject-variant">B</span><span class="subject-text">&iquest;Invertir en Asia siendo europeo? As&iacute; es</span></div>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">Preheader</div>
+                                <div class="detail-value">75 a&ntilde;os de leasehold, renovable &mdash; explicado f&aacute;cil</div>
+                            </div>
+                            <div class="email-detail-block full-width">
+                                <div class="detail-label">Body copy completo</div>
+                                <div class="detail-value">
+                                    <p><strong>Hola {{first_name}},</strong></p>
+                                    <br>
+                                    <p>Una de las primeras preguntas que nos hacen los inversores es: <strong>&laquo;&iquest;Puede un extranjero ser propietario en Filipinas?&raquo;</strong>. Es la pregunta correcta. Y la respuesta es m&aacute;s sencilla de lo que parece.</p>
+                                    <br>
+                                    <p>En Filipinas, los extranjeros no pueden poseer suelo en propiedad (freehold). Pero s&iacute; pueden acceder a contratos de <strong>leasehold de hasta 75 a&ntilde;os renovables</strong>, registrados ante la autoridad competente, con los mismos derechos de uso y explotaci&oacute;n.</p>
+                                    <br>
+                                    <p><strong>&iquest;Leasehold vs. freehold?</strong> Aqu&iacute; va una comparativa r&aacute;pida:</p>
+                                    <br>
+                                    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:12px;">
+                                        <tr style="border-bottom:1px solid rgba(184,62,37,0.30);">
+                                            <td style="padding:8px 12px;color:var(--accent);font-weight:700;"></td>
+                                            <td style="padding:8px 12px;color:var(--accent);font-weight:700;">Leasehold (Filipinas)</td>
+                                            <td style="padding:8px 12px;color:var(--gold);font-weight:700;">Freehold (Espa&ntilde;a/EU)</td>
+                                        </tr>
+                                        <tr style="border-bottom:1px solid rgba(217,200,177,0.5);">
+                                            <td style="padding:8px 12px;color:var(--text-secondary);">Duraci&oacute;n</td>
+                                            <td style="padding:8px 12px;color:var(--text-secondary);">Hasta 75 a&ntilde;os renovable</td>
+                                            <td style="padding:8px 12px;color:var(--text-secondary);">Perpetua</td>
+                                        </tr>
+                                        <tr style="border-bottom:1px solid rgba(217,200,177,0.5);">
+                                            <td style="padding:8px 12px;color:var(--text-secondary);">Acceso extranjeros</td>
+                                            <td style="padding:8px 12px;color:var(--text-secondary);">S&iacute;</td>
+                                            <td style="padding:8px 12px;color:var(--text-secondary);">S&iacute;</td>
+                                        </tr>
+                                        <tr style="border-bottom:1px solid rgba(217,200,177,0.5);">
+                                            <td style="padding:8px 12px;color:var(--text-secondary);">Coste de entrada</td>
+                                            <td style="padding:8px 12px;color:var(--text-secondary);">Significativamente menor</td>
+                                            <td style="padding:8px 12px;color:var(--text-secondary);">Alto</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:8px 12px;color:var(--text-secondary);">Rentabilidad bruta</td>
+                                            <td style="padding:8px 12px;color:var(--text-secondary);">8%-18% estimado</td>
+                                            <td style="padding:8px 12px;color:var(--text-secondary);">3%-6% t&iacute;pico</td>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                    <p><strong>&iquest;Por qu&eacute; Filipinas?</strong> Porque es la econom&iacute;a que m&aacute;s crece del Sudeste Así&aacute;tico, con un sector tur&iacute;stico en auge, infraestructura en expansi&oacute;n y un gobierno que incentiva activamente la inversi&oacute;n extranjera en turismo sostenible.</p>
+                                    <br>
+                                    <p>Hemos escrito una gu&iacute;a detallada en nuestro blog que cubre todo esto con m&aacute;s profundidad, incluyendo los pasos legales exactos, los costes asociados y las garant&iacute;as contractuales:</p>
+                                    <br>
+                                    <div class="cta-badge">&#128214; Lee la gu&iacute;a completa en nuestro blog</div>
+                                    <br><br>
+                                    <p>En el siguiente email te presentaremos un caso real: un inversor desde Madrid que ya ha completado todo el proceso.</p>
+                                    <br>
+                                    <p>Un saludo,<br><strong>El equipo de Land of Nomads</strong></p>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">CTA principal</div>
+                                <div class="detail-value">
+                                    <div class="cta-badge">Lee la gu&iacute;a completa en nuestro blog</div>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">UTM Parameters</div>
+                                <div class="utm-code">utm_source=brevo&amp;utm_medium=email&amp;utm_campaign=welcome-inversores&amp;utm_content=email3</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EMAIL 4 -->
+            <div class="email-card" data-email="4">
+                <div class="email-card-header" onclick="toggleEmail(this)">
+                    <div class="email-header-left">
+                        <div class="email-number">4</div>
+                        <div class="email-header-text">
+                            <h3>Caso real de inversor</h3>
+                            <span class="email-day-tag">D&iacute;a 8 &mdash; Social proof con n&uacute;meros</span>
+                        </div>
+                    </div>
+                    <button class="email-toggle" aria-label="Toggle">&#9662;</button>
+                </div>
+                <div class="email-card-body">
+                    <div class="email-card-content">
+                        <div class="email-detail-grid">
+                            <div class="email-detail-block">
+                                <div class="detail-label">Subject Lines (A/B Test)</div>
+                                <div class="detail-value">
+                                    <div class="subject-line"><span class="subject-variant">A</span><span class="subject-text">Invirti&oacute; 85.000&euro; desde Madrid &mdash; resultado</span></div>
+                                    <div class="subject-line"><span class="subject-variant">B</span><span class="subject-text">Un inversor real cuenta su experiencia</span></div>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">Preheader</div>
+                                <div class="detail-value">Sin nombres inventados. Sin cifras maquilladas.</div>
+                            </div>
+                            <div class="email-detail-block full-width">
+                                <div class="detail-label">Body copy completo</div>
+                                <div class="detail-value">
+                                    <p><strong>Hola {{first_name}},</strong></p>
+                                    <br>
+                                    <p>Hoy queremos presentarte a <strong>Carlos</strong> (nombre cambiado por privacidad). Carlos es ingeniero, vive en Madrid y llevaba a&ntilde;os buscando una forma de diversificar su cartera fuera de Europa. Descubri&oacute; LON a trav&eacute;s de un webinar en 2024.</p>
+                                    <br>
+                                    <p><strong>Su proceso:</strong></p>
+                                    <ul style="margin:8px 0 8px 20px;color:var(--text-secondary);">
+                                        <li>Descarg&oacute; el dossier (igual que t&uacute;)</li>
+                                        <li>Asisti&oacute; a un webinar y pregunt&oacute; de todo</li>
+                                        <li>Tuvo una llamada 1:1 con nuestro equipo financiero</li>
+                                        <li>Viaj&oacute; a Siargao para ver el proyecto en persona</li>
+                                        <li>Invirti&oacute; 85.000&euro; en una eco-villa del Proyecto Pacifico</li>
+                                    </ul>
+                                    <br>
+                                    <p><strong>Resultados tras el primer a&ntilde;o:</strong></p>
+                                    <ul style="margin:8px 0 8px 20px;color:var(--text-secondary);">
+                                        <li>Ocupaci&oacute;n media: 72%</li>
+                                        <li>Rentabilidad bruta: 14.2%</li>
+                                        <li>Gesti&oacute;n 100% delegada al equipo de LON en terreno</li>
+                                    </ul>
+                                    <br>
+                                    <p style="border-left:3px solid var(--gold);padding-left:16px;font-style:italic;color:var(--text-secondary);">&laquo;Lo que m&aacute;s me convenci&oacute; fue ir all&iacute; y ver la construcci&oacute;n en marcha. No era un render bonito: era hormig&oacute;n, trabajadores y plazos cumpli&eacute;ndose. Eso es lo que separa a LON de otras propuestas que vi.&raquo;<br><span style="font-style:normal;color:var(--gold);font-weight:600;">&mdash; Carlos, inversor desde Madrid</span></p>
+                                    <br>
+                                    <p>La historia de Carlos no es &uacute;nica. Tenemos decenas de inversores que han seguido un camino similar. Puedes ver m&aacute;s testimonios aqu&iacute;:</p>
+                                    <br>
+                                    <div class="cta-badge">&#128172; Ver m&aacute;s testimonios de inversores</div>
+                                    <br><br>
+                                    <p>En unos d&iacute;as te invitaremos a un webinar en directo donde podr&aacute;s hacer todas tus preguntas.</p>
+                                    <br>
+                                    <p>Un saludo,<br><strong>El equipo de Land of Nomads</strong></p>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">CTA principal</div>
+                                <div class="detail-value">
+                                    <div class="cta-badge">Ver m&aacute;s testimonios de inversores</div>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">UTM Parameters</div>
+                                <div class="utm-code">utm_source=brevo&amp;utm_medium=email&amp;utm_campaign=welcome-inversores&amp;utm_content=email4</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EMAIL 5 -->
+            <div class="email-card" data-email="5">
+                <div class="email-card-header" onclick="toggleEmail(this)">
+                    <div class="email-header-left">
+                        <div class="email-number">5</div>
+                        <div class="email-header-text">
+                            <h3>Invitaci&oacute;n a webinar</h3>
+                            <span class="email-day-tag">D&iacute;a 12 &mdash; Engagement en directo</span>
+                        </div>
+                    </div>
+                    <button class="email-toggle" aria-label="Toggle">&#9662;</button>
+                </div>
+                <div class="email-card-body">
+                    <div class="email-card-content">
+                        <div class="email-detail-grid">
+                            <div class="email-detail-block">
+                                <div class="detail-label">Subject Lines (A/B Test)</div>
+                                <div class="detail-value">
+                                    <div class="subject-line"><span class="subject-variant">A</span><span class="subject-text">Webinar de inversi&oacute;n &mdash; plazas limitadas</span></div>
+                                    <div class="subject-line"><span class="subject-variant">B</span><span class="subject-text">Pregunta lo que quieras en directo</span></div>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">Preheader</div>
+                                <div class="detail-value">Q&amp;A abierto con Sergio (finanzas) y Mike (legal)</div>
+                            </div>
+                            <div class="email-detail-block full-width">
+                                <div class="detail-label">Body copy completo</div>
+                                <div class="detail-value">
+                                    <p><strong>Hola {{first_name}},</strong></p>
+                                    <br>
+                                    <p>Sabemos que invertir en un proyecto internacional genera muchas preguntas. Por eso organizamos <strong>webinars mensuales en directo</strong> donde puedes preguntar absolutamente lo que quieras &mdash; sin filtro, sin gui&oacute;n.</p>
+                                    <br>
+                                    <p><strong>Pr&oacute;ximo webinar:</strong></p>
+                                    <ul style="margin:8px 0 8px 20px;color:var(--text-secondary);">
+                                        <li><strong>Fecha:</strong> [fecha din&aacute;mica seg&uacute;n calendario]</li>
+                                        <li><strong>Hora:</strong> 19:00 CET / 13:00 EST</li>
+                                        <li><strong>Duraci&oacute;n:</strong> 60 minutos (30 min presentaci&oacute;n + 30 min Q&amp;A)</li>
+                                        <li><strong>Plataforma:</strong> Zoom (link tras registro)</li>
+                                    </ul>
+                                    <br>
+                                    <p><strong>&iquest;Qui&eacute;n presenta?</strong></p>
+                                    <ul style="margin:8px 0 8px 20px;color:var(--text-secondary);">
+                                        <li><strong>Sergio</strong> &mdash; Director financiero. Responder&aacute; todo sobre n&uacute;meros, rentabilidad, escenarios y estructura de la inversi&oacute;n.</li>
+                                        <li><strong>Mike</strong> &mdash; Asesor legal en Manila. Cubrir&aacute; marco regulatorio, leaseholds, garant&iacute;as contractuales y protecci&oacute;n del inversor.</li>
+                                    </ul>
+                                    <br>
+                                    <p><strong>Agenda:</strong></p>
+                                    <ol style="margin:8px 0 8px 20px;color:var(--text-secondary);">
+                                        <li>Actualizaci&oacute;n de proyectos (fotos y v&iacute;deos recientes)</li>
+                                        <li>Modelo financiero: escenarios conservador, medio y optimista</li>
+                                        <li>Marco legal simplificado</li>
+                                        <li>Q&amp;A abierto &mdash; pregunta lo que quieras</li>
+                                    </ol>
+                                    <br>
+                                    <p>Las plazas son limitadas a <strong>50 asistentes</strong> para mantener la calidad de la interacci&oacute;n. Reserva la tuya ahora:</p>
+                                    <br>
+                                    <div class="cta-badge">&#128197; Reserva tu plaza</div>
+                                    <br><br>
+                                    <p>Si no puedes asistir en directo, reg&iacute;strate igualmente y te enviaremos la grabaci&oacute;n.</p>
+                                    <br>
+                                    <p>Un saludo,<br><strong>El equipo de Land of Nomads</strong></p>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">CTA principal</div>
+                                <div class="detail-value">
+                                    <div class="cta-badge">Reserva tu plaza</div>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">UTM Parameters</div>
+                                <div class="utm-code">utm_source=brevo&amp;utm_medium=email&amp;utm_campaign=welcome-inversores&amp;utm_content=email5</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EMAIL 6 -->
+            <div class="email-card" data-email="6">
+                <div class="email-card-header" onclick="toggleEmail(this)">
+                    <div class="email-header-left">
+                        <div class="email-number">6</div>
+                        <div class="email-header-text">
+                            <h3>N&uacute;meros sin humo</h3>
+                            <span class="email-day-tag">D&iacute;a 16 &mdash; Transparencia + datos duros</span>
+                        </div>
+                    </div>
+                    <button class="email-toggle" aria-label="Toggle">&#9662;</button>
+                </div>
+                <div class="email-card-body">
+                    <div class="email-card-content">
+                        <div class="email-detail-grid">
+                            <div class="email-detail-block">
+                                <div class="detail-label">Subject Lines (A/B Test)</div>
+                                <div class="detail-value">
+                                    <div class="subject-line"><span class="subject-variant">A</span><span class="subject-text">As&iacute; se desglosa el modelo LON (datos)</span></div>
+                                    <div class="subject-line"><span class="subject-variant">B</span><span class="subject-text">Rentabilidad real: 3 escenarios clave</span></div>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">Preheader</div>
+                                <div class="detail-value">Escenario conservador: 8%. Optimista: 18%. Te ense&ntilde;amos los tres.</div>
+                            </div>
+                            <div class="email-detail-block full-width">
+                                <div class="detail-label">Body copy completo</div>
+                                <div class="detail-value">
+                                    <p><strong>Hola {{first_name}},</strong></p>
+                                    <br>
+                                    <p>Prometimos n&uacute;meros sin humo. Aqu&iacute; van.</p>
+                                    <br>
+                                    <p>Hemos preparado un desglose de los <strong>tres escenarios de rentabilidad</strong> para una eco-villa tipo en nuestro proyecto principal. Estos n&uacute;meros est&aacute;n basados en datos reales de ocupaci&oacute;n, costes operativos y precios medios por noche:</p>
+                                    <br>
+                                    <table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:16px;">
+                                        <tr style="border-bottom:2px solid rgba(184,62,37,0.30);">
+                                            <td style="padding:10px 12px;font-weight:700;color:var(--accent);">Escenario</td>
+                                            <td style="padding:10px 12px;font-weight:700;color:var(--accent);text-align:center;">Ocupaci&oacute;n</td>
+                                            <td style="padding:10px 12px;font-weight:700;color:var(--accent);text-align:center;">Precio/noche</td>
+                                            <td style="padding:10px 12px;font-weight:700;color:var(--accent);text-align:center;">Rentabilidad bruta</td>
+                                        </tr>
+                                        <tr style="border-bottom:1px solid rgba(217,200,177,0.5);">
+                                            <td style="padding:10px 12px;color:var(--text-secondary);">Conservador</td>
+                                            <td style="padding:10px 12px;color:var(--text-secondary);text-align:center;">55%</td>
+                                            <td style="padding:10px 12px;color:var(--text-secondary);text-align:center;">$95</td>
+                                            <td style="padding:10px 12px;color:var(--warning);text-align:center;font-weight:700;">~8%</td>
+                                        </tr>
+                                        <tr style="border-bottom:1px solid rgba(217,200,177,0.5);">
+                                            <td style="padding:10px 12px;color:var(--text-secondary);">Medio (actual)</td>
+                                            <td style="padding:10px 12px;color:var(--text-secondary);text-align:center;">72%</td>
+                                            <td style="padding:10px 12px;color:var(--text-secondary);text-align:center;">$120</td>
+                                            <td style="padding:10px 12px;color:var(--accent);text-align:center;font-weight:700;">~12.4%</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:10px 12px;color:var(--text-secondary);">Optimista</td>
+                                            <td style="padding:10px 12px;color:var(--text-secondary);text-align:center;">85%</td>
+                                            <td style="padding:10px 12px;color:var(--text-secondary);text-align:center;">$145</td>
+                                            <td style="padding:10px 12px;color:var(--gold);text-align:center;font-weight:700;">~18%</td>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                    <p style="font-size:12px;color:var(--text-muted);border:1px solid rgba(217,200,177,0.7);background:rgba(217,200,177,0.20);padding:12px;border-radius:6px;"><strong>Disclaimer:</strong> Las cifras presentadas son estimaciones basadas en datos hist&oacute;ricos y proyecciones. La rentabilidad pasada no garantiza resultados futuros. Toda inversi&oacute;n conlleva riesgos, incluyendo la posible p&eacute;rdida parcial o total del capital invertido. Consulta con un asesor financiero independiente antes de tomar decisiones de inversi&oacute;n.</p>
+                                    <br>
+                                    <p><strong>&iquest;C&oacute;mo se compara con otros mercados?</strong></p>
+                                    <ul style="margin:8px 0 8px 20px;color:var(--text-secondary);">
+                                        <li>Alquiler tur&iacute;stico en Espa&ntilde;a: 4-6% bruto</li>
+                                        <li>Inmobiliario en Bali: 8-12% bruto (pero con regulaci&oacute;n m&aacute;s compleja)</li>
+                                        <li>REITs globales: 5-8% bruto</li>
+                                        <li><strong>LON eco-villa: 8-18% bruto</strong> (seg&uacute;n escenario)</li>
+                                    </ul>
+                                    <br>
+                                    <p>Hemos creado un simulador interactivo donde puedes ajustar las variables (precio de compra, ocupaci&oacute;n, precio por noche) y ver c&oacute;mo impacta tu rentabilidad:</p>
+                                    <br>
+                                    <div class="cta-badge">&#128202; Prueba el simulador de escenarios</div>
+                                    <br><br>
+                                    <p>En el &uacute;ltimo email de esta secuencia te propondremos algo concreto. Sin presi&oacute;n.</p>
+                                    <br>
+                                    <p>Un saludo,<br><strong>El equipo de Land of Nomads</strong></p>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">CTA principal</div>
+                                <div class="detail-value">
+                                    <div class="cta-badge">Prueba el simulador de escenarios</div>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">UTM Parameters</div>
+                                <div class="utm-code">utm_source=brevo&amp;utm_medium=email&amp;utm_campaign=welcome-inversores&amp;utm_content=email6</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EMAIL 7 -->
+            <div class="email-card" data-email="7">
+                <div class="email-card-header" onclick="toggleEmail(this)">
+                    <div class="email-header-left">
+                        <div class="email-number">7</div>
+                        <div class="email-header-text">
+                            <h3>CTA final: Agenda tu llamada</h3>
+                            <span class="email-day-tag">D&iacute;a 21 &mdash; Conversi&oacute;n</span>
+                        </div>
+                    </div>
+                    <button class="email-toggle" aria-label="Toggle">&#9662;</button>
+                </div>
+                <div class="email-card-body">
+                    <div class="email-card-content">
+                        <div class="email-detail-grid">
+                            <div class="email-detail-block">
+                                <div class="detail-label">Subject Lines (A/B Test)</div>
+                                <div class="detail-value">
+                                    <div class="subject-line"><span class="subject-variant">A</span><span class="subject-text">&iquest;Listo para dar el siguiente paso? Hablemos</span></div>
+                                    <div class="subject-line"><span class="subject-variant">B</span><span class="subject-text">Una llamada de 30 minutos &mdash; sin compromiso</span></div>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">Preheader</div>
+                                <div class="detail-value">Resolvemos tus dudas personales sobre el proyecto</div>
+                            </div>
+                            <div class="email-detail-block full-width">
+                                <div class="detail-label">Body copy completo</div>
+                                <div class="detail-value">
+                                    <p><strong>Hola {{first_name}},</strong></p>
+                                    <br>
+                                    <p>Durante las &uacute;ltimas tres semanas hemos compartido contigo bastante informaci&oacute;n. Hagamos un resumen r&aacute;pido de lo que hemos cubierto:</p>
+                                    <br>
+                                    <ol style="margin:8px 0 16px 20px;color:var(--text-secondary);">
+                                        <li><strong>Tu dossier de inversi&oacute;n</strong> &mdash; los datos clave del proyecto</li>
+                                        <li><strong>Nuestra historia</strong> &mdash; de Barcelona a Filipinas, de 0 a 400 inversores</li>
+                                        <li><strong>Marco legal</strong> &mdash; leasehold, regulaci&oacute;n y por qu&eacute; Filipinas</li>
+                                        <li><strong>Caso real</strong> &mdash; un inversor desde Madrid con n&uacute;meros reales</li>
+                                        <li><strong>Webinar</strong> &mdash; Q&amp;A abierto con nuestro equipo</li>
+                                        <li><strong>Rentabilidad</strong> &mdash; 3 escenarios transparentes con disclaimer incluido</li>
+                                    </ol>
+                                    <br>
+                                    <p>Si has llegado hasta aqu&iacute;, probablemente tengas preguntas espec&iacute;ficas sobre <strong>tu situaci&oacute;n concreta</strong>: tu presupuesto, tu perfil fiscal, tus objetivos de rentabilidad, tus plazos. Esas preguntas no se responden en un email gen&eacute;rico.</p>
+                                    <br>
+                                    <p><strong>Por eso te proponemos una llamada 1:1 de 30 minutos</strong> con un miembro de nuestro equipo. Sin compromiso, sin presi&oacute;n de venta. En esa llamada cubriremos:</p>
+                                    <br>
+                                    <ul style="margin:8px 0 8px 20px;color:var(--text-secondary);">
+                                        <li><strong>Encaje:</strong> &iquest;Es LON la inversi&oacute;n adecuada para tu perfil?</li>
+                                        <li><strong>Propuesta personalizada:</strong> Unidad, proyecto, plan de pago adaptado a ti</li>
+                                        <li><strong>Riesgos:</strong> Te los explicamos todos, sin omitir nada</li>
+                                        <li><strong>Siguientes pasos:</strong> Solo si t&uacute; decides avanzar</li>
+                                    </ul>
+                                    <br>
+                                    <p>Selecciona el horario que mejor te venga:</p>
+                                    <br>
+                                    <div class="cta-badge">&#128222; Agenda tu llamada 1:1</div>
+                                    <br><br>
+                                    <p>Si a&uacute;n no es el momento, no pasa absolutamente nada. Seguir&aacute;s recibiendo nuestras actualizaciones mensuales con novedades del proyecto. Estaremos aqu&iacute; cuando est&eacute;s listo.</p>
+                                    <br>
+                                    <p>Un abrazo,<br><strong>El equipo de Land of Nomads</strong></p>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">CTA principal</div>
+                                <div class="detail-value">
+                                    <div class="cta-badge">Agenda tu llamada 1:1</div>
+                                </div>
+                            </div>
+                            <div class="email-detail-block">
+                                <div class="detail-label">UTM Parameters</div>
+                                <div class="utm-code">utm_source=brevo&amp;utm_medium=email&amp;utm_campaign=welcome-inversores&amp;utm_content=email7</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end email-cards-stack -->
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ============ CHART ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <span class="icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+            </span>
+            Tasa de apertura estimada por email
+        </div>
+        <div class="chart-wrapper">
+            <div class="chart-canvas-container">
+                <canvas id="openRateChart"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ============ CHECKLIST ============ -->
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <span class="icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </span>
+            Checklist de implementaci&oacute;n
+        </div>
+        <div class="checklist-wrapper open" id="checklist">
+            <div class="checklist-header" onclick="toggleChecklist()">
+                <h3>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    Tareas pendientes
+                </h3>
+                <span class="checklist-progress" id="checklistProgress">0 / 8 completadas</span>
+            </div>
+            <div class="checklist-body">
+                <div class="checklist-items">
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <span class="check-box">&#10003;</span>
+                        <span class="check-text">Crear lista &ldquo;Inversores - Welcome&rdquo; en Brevo</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <span class="check-box">&#10003;</span>
+                        <span class="check-text">Configurar trigger: descarga de dossier de inversi&oacute;n</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <span class="check-box">&#10003;</span>
+                        <span class="check-text">Dise&ntilde;ar plantilla HTML responsive (600px max-width)</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <span class="check-box">&#10003;</span>
+                        <span class="check-text">Configurar UTM parameters para cada email</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <span class="check-box">&#10003;</span>
+                        <span class="check-text">A/B test de subject lines (primeros 100 env&iacute;os)</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <span class="check-box">&#10003;</span>
+                        <span class="check-text">Configurar delays entre emails (D0, D2, D5, D8, D12, D16, D21)</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <span class="check-box">&#10003;</span>
+                        <span class="check-text">A&ntilde;adir enlace de unsubscribe y disclaimer legal en cada email</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <span class="check-box">&#10003;</span>
+                        <span class="check-text">Revisar todos los emails en Litmus / Email on Acid antes de activar</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+    <div class="container">
+        <p>Generado por <span class="agency">Agencia OH WOW!</span> para <span class="client">Land of Nomads Group</span></p>
+        <p style="margin-top:6px;font-size:11px;">Dashboard generado el 16 de abril de 2026 &middot; Todos los datos son estimaciones sujetas a validaci&oacute;n</p>
+    </div>
+</footer>
+
+<script>
+// ========== EMAIL CARD TOGGLE ==========
+function toggleEmail(header) {
+    const card = header.closest('.email-card');
+    card.classList.toggle('open');
+}
+
+// ========== CHECKLIST TOGGLE ==========
+function toggleChecklist() {
+    document.getElementById('checklist').classList.toggle('open');
+}
+
+function toggleCheck(item) {
+    item.classList.toggle('checked');
+    updateChecklistProgress();
+}
+
+function updateChecklistProgress() {
+    const items = document.querySelectorAll('.checklist-item');
+    const checked = document.querySelectorAll('.checklist-item.checked');
+    document.getElementById('checklistProgress').textContent = checked.length + ' / ' + items.length + ' completadas';
+}
+
+// ========== CHART.JS ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('openRateChart').getContext('2d');
+
+    const gradient = ctx.createLinearGradient(0, 0, 0, 360);
+    gradient.addColorStop(0, 'rgba(184, 62, 37, 0.75)');
+    gradient.addColorStop(1, 'rgba(255, 188, 125, 0.15)');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [
+                'E1: Bienvenida',
+                'E2: Historia',
+                'E3: Educaci\u00f3n',
+                'E4: Caso real',
+                'E5: Webinar',
+                'E6: N\u00fameros',
+                'E7: CTA final'
+            ],
+            datasets: [{
+                label: 'Tasa de apertura estimada (%)',
+                data: [65, 52, 45, 48, 42, 40, 38],
+                backgroundColor: gradient,
+                borderColor: '#B83E25',
+                borderWidth: 2,
+                borderRadius: 6,
+                borderSkipped: false,
+                barPercentage: 0.7,
+                categoryPercentage: 0.8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: '#FFFFFF',
+                    titleColor: '#1A1814',
+                    bodyColor: '#B83E25',
+                    borderColor: 'rgba(184,62,37,0.30)',
+                    borderWidth: 1,
+                    padding: 12,
+                    cornerRadius: 8,
+                    displayColors: false,
+                    callbacks: {
+                        label: function(context) {
+                            return context.parsed.y + '% tasa de apertura estimada';
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 80,
+                    ticks: {
+                        color: '#8A7A68',
+                        font: { family: 'Outfit', size: 12 },
+                        callback: function(value) { return value + '%'; },
+                        stepSize: 20
+                    },
+                    grid: {
+                        color: 'rgba(217,200,177,0.40)',
+                        drawBorder: false
+                    },
+                    border: { display: false }
+                },
+                x: {
+                    ticks: {
+                        color: '#5C4A3A',
+                        font: { family: 'Outfit', size: 11 },
+                        maxRotation: 45,
+                        minRotation: 0
+                    },
+                    grid: { display: false },
+                    border: { display: false }
+                }
+            }
+        }
+    });
+});
+
+// ========== EXPORT PDF ==========
+function exportPDF() {
+    // Expand all cards before printing
+    document.querySelectorAll('.email-card').forEach(c => c.classList.add('open'));
+    document.getElementById('checklist').classList.add('open');
+    setTimeout(() => { window.print(); }, 300);
+}
+</script>
+
+<!-- ============ QA REVIEW ============ -->
+<section class="no-print" style="border-top:2px solid var(--accent);margin-top:48px;padding:48px 0 32px;">
+    <div class="container">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+            <span style="display:inline-block;background:var(--accent);color:var(--bg-primary);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;padding:5px 12px;border-radius:4px;">QA</span>
+            <span style="font-size:20px;font-weight:700;color:var(--white);">QA Review &mdash; jz-qa-reviewer</span>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 32px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+                <div>
+                    <span style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);">Fecha</span>
+                    <p style="font-size:14px;color:var(--text-secondary);margin-top:4px;">2026-04-16</p>
+                </div>
+                <div>
+                    <span style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);">Basado en</span>
+                    <p style="font-size:14px;color:var(--text-secondary);margin-top:4px;">Jeferson Zambrano (CDO &amp; CMO, Land of Nomads Group)</p>
+                </div>
+            </div>
+            <div style="background:var(--accent-dim);border:1px solid var(--border-accent);border-radius:var(--radius-sm);padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;gap:16px;">
+                <span style="font-size:32px;font-weight:800;color:var(--accent);">8.7<span style="font-size:16px;font-weight:600;">/10</span></span>
+                <span style="font-size:14px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;">Aprobado con observaciones</span>
+            </div>
+            <div style="font-size:16px;font-weight:700;color:var(--white);margin-bottom:16px;">Cambios realizados:</div>
+            <div style="display:flex;flex-direction:column;gap:20px;">
+                <!-- Cambio 1: Subject lines -->
+                <div style="background:var(--bg-primary);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px 20px;">
+                    <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:8px;">1. Subject lines recortados a &le;50 caracteres</div>
+                    <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;">
+                        <p><strong style="color:var(--white);">E2-A:</strong> &ldquo;De una idea en Barcelona a 400 inversores en 14 pa&iacute;ses&rdquo; (55 chars) &rarr; &ldquo;De Barcelona a 400 inversores en 14 pa&iacute;ses&rdquo; (44 chars)</p>
+                        <p><strong style="color:var(--white);">E2-B:</strong> &ldquo;C&oacute;mo naci&oacute; Land of Nomads (y por qu&eacute; seguimos aqu&iacute;)&rdquo; (52 chars) &rarr; &ldquo;C&oacute;mo naci&oacute; LON (y por qu&eacute; seguimos)&rdquo; (38 chars)</p>
+                        <p><strong style="color:var(--white);">E3-A:</strong> &ldquo;Leasehold en Filipinas: lo que tu asesor no te explica&rdquo; (55 chars) &rarr; &ldquo;Leasehold en Filipinas: lo que no te dicen&rdquo; (42 chars)</p>
+                        <p><strong style="color:var(--white);">E3-B:</strong> &ldquo;&iquest;Invertir en Asia siendo europeo? As&iacute; funciona el marco legal&rdquo; (61 chars) &rarr; &ldquo;&iquest;Invertir en Asia siendo europeo? As&iacute; es&rdquo; (39 chars)</p>
+                        <p><strong style="color:var(--white);">E4-A:</strong> &ldquo;Carlos invirti&oacute; 85.000&euro; desde Madrid &mdash; esto fue lo que pas&oacute;&rdquo; (59 chars) &rarr; &ldquo;Invirti&oacute; 85.000&euro; desde Madrid &mdash; resultado&rdquo; (42 chars)</p>
+                        <p><strong style="color:var(--white);">E4-B:</strong> &ldquo;Un inversor real nos cuenta su experiencia (con n&uacute;meros)&rdquo; (56 chars) &rarr; &ldquo;Un inversor real cuenta su experiencia&rdquo; (38 chars)</p>
+                        <p><strong style="color:var(--white);">E5-A:</strong> &ldquo;Te invitamos al pr&oacute;ximo webinar de inversi&oacute;n &mdash; plazas limitadas&rdquo; (64 chars) &rarr; &ldquo;Webinar de inversi&oacute;n &mdash; plazas limitadas&rdquo; (42 chars)</p>
+                        <p><strong style="color:var(--white);">E5-B:</strong> &ldquo;Pregunta lo que quieras en directo a nuestro equipo&rdquo; (52 chars) &rarr; &ldquo;Pregunta lo que quieras en directo&rdquo; (34 chars)</p>
+                        <p><strong style="color:var(--white);">E6-A:</strong> &ldquo;12.4% de ocupaci&oacute;n en Q1: as&iacute; se desglosa el modelo LON&rdquo; (57 chars) &rarr; &ldquo;As&iacute; se desglosa el modelo LON (datos)&rdquo; (38 chars)</p>
+                        <p><strong style="color:var(--white);">E6-B:</strong> &ldquo;Rentabilidad real: 3 escenarios que deber&iacute;as conocer&rdquo; (53 chars) &rarr; &ldquo;Rentabilidad real: 3 escenarios clave&rdquo; (37 chars)</p>
+                    </div>
+                    <p style="font-size:12px;color:var(--text-muted);margin-top:10px;border-left:3px solid var(--accent);padding-left:10px;"><strong>Raz&oacute;n:</strong> Subject lines &gt;50 chars se truncan en mobile, reduciendo tasa de apertura.</p>
+                </div>
+                <!-- Cambio 2: Disclaimer -->
+                <div style="background:var(--bg-primary);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px 20px;">
+                    <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:8px;">2. Disclaimer Email 6: Verificado</div>
+                    <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;">
+                        <p>La nota de disclaimer ya estaba presente en el body copy del Email 6 (&ldquo;N&uacute;meros sin humo&rdquo;), incluyendo advertencia sobre rentabilidad pasada, riesgos de p&eacute;rdida de capital y recomendaci&oacute;n de asesor financiero independiente. No se requiri&oacute; acci&oacute;n adicional.</p>
+                    </div>
+                    <p style="font-size:12px;color:var(--text-muted);margin-top:10px;border-left:3px solid var(--accent);padding-left:10px;"><strong>Raz&oacute;n:</strong> Pol&iacute;tica LON &mdash; todo dato financiero requiere disclaimer.</p>
+                </div>
+                <!-- Cambio 3: Frecuencia -->
+                <div style="background:var(--bg-primary);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px 20px;">
+                    <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:8px;">3. Frecuencia: Verificada</div>
+                    <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;">
+                        <p>Cadencia verificada (m&aacute;x 3 emails/semana). Espaciado actual:</p>
+                        <p style="margin-top:6px;font-family:'SF Mono','Fira Code',monospace;font-size:12px;color:var(--accent);">D0&rarr;D2 (2d) &middot; D2&rarr;D5 (3d) &middot; D5&rarr;D8 (3d) &middot; D8&rarr;D12 (4d) &middot; D12&rarr;D16 (4d) &middot; D16&rarr;D21 (5d)</p>
+                        <p style="margin-top:6px;">Semana 1: 3 emails (D0, D2, D5). Semana 2: 2 emails (D8, D12). Semana 3: 2 emails (D16, D21). Conforme al l&iacute;mite.</p>
+                    </div>
+                    <p style="font-size:12px;color:var(--text-muted);margin-top:10px;border-left:3px solid var(--accent);padding-left:10px;"><strong>Raz&oacute;n:</strong> Respetar l&iacute;mite de frecuencia para evitar fatiga y unsubs.</p>
+                </div>
+                <!-- Cambio 4: Reskin visual -->
+                <div style="background:var(--bg-primary);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px 20px;">
+                    <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:8px;">4. Reskin visual a identidad LON real</div>
+                    <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;">
+                        <p>Se aplic&oacute; la paleta oficial LON sustituyendo el esquema oscuro/teal gen&eacute;rico por los colores de marca:</p>
+                        <ul style="margin:8px 0 8px 20px;">
+                            <li><strong style="color:var(--accent);">Terracota #B83E25</strong> &mdash; color primario</li>
+                            <li><strong style="color:#8A7A68;">Beige #D9C8B1</strong> &mdash; bordes y acentos</li>
+                            <li><strong style="color:#8A7A68;">Crema #F3EBE1</strong> &mdash; fondo principal</li>
+                            <li><strong style="color:#C97F3E;">Melocot&oacute;n #FFBC7D</strong> &mdash; destacados</li>
+                        </ul>
+                        <p style="margin-top:6px;">Tipograf&iacute;a: <strong>Outfit</strong> (con Galano Grotesque como fallback). Tema cambiado de <em>dark</em> a <em>light</em>.</p>
+                    </div>
+                    <p style="font-size:12px;color:var(--text-muted);margin-top:10px;border-left:3px solid var(--accent);padding-left:10px;"><strong>Raz&oacute;n:</strong> Se aplic&oacute; paleta oficial (terracota, beige, crema, melocot&oacute;n) y tipograf&iacute;a Outfit tras an&aacute;lisis de landofnomadsgroup.com. Tema cambiado de dark a light.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

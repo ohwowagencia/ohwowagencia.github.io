@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sketch — Carrusel Before/After 20 Abr | Agencia OH WOW!</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #e8e4df; font-family: 'Segoe UI', system-ui, sans-serif; color: #1c1c1c; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
+  .sketch-container { background: #fff; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.12); padding: 32px; max-width: 620px; width: 100%; }
+  .sketch-header { margin-bottom: 20px; }
+  .sketch-header h1 { font-family: Georgia, serif; font-size: 18px; color: #1c1c1c; }
+  .sketch-header p { font-size: 13px; color: #888; margin-top: 4px; }
+  .sketch-svg-wrap { display: flex; justify-content: center; margin-bottom: 24px; }
+  .notas { border-left: 4px solid #c8f135; padding: 16px 20px; background: #fafaf5; border-radius: 0 8px 8px 0; margin-top: 16px; }
+  .notas h3 { font-family: Georgia, serif; font-size: 15px; margin-bottom: 10px; color: #1c1c1c; }
+  .notas ul { font-size: 13px; line-height: 1.7; color: #444; padding-left: 18px; }
+  .notas ul li { margin-bottom: 4px; }
+  .sketch-footer { text-align: center; margin-top: 32px; font-size: 12px; color: #aaa; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .sketch-container { box-shadow: none; border: 1px solid #ddd; }
+    .sketch-footer { color: #666; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sketch-container">
+  <div class="sketch-header">
+    <h1>Entry 06 — Instagram Carousel Cover</h1>
+    <p>1080 &times; 1080 px &bull; 20 de abril 2026 &bull; Before/After: redise&ntilde;o UX restaurante</p>
+  </div>
+
+  <div class="sketch-svg-wrap">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="540" height="540" role="img" aria-label="Sketch de composición: carrusel before/after">
+      <defs>
+        <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#1c1c1c"/>
+          <stop offset="100%" stop-color="#2a2a2a"/>
+        </linearGradient>
+        <!-- Decorative circles at low opacity -->
+        <radialGradient id="glowPink" cx="25%" cy="50%" r="40%">
+          <stop offset="0%" stop-color="#e85d8a" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#e85d8a" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="glowLima" cx="75%" cy="50%" r="40%">
+          <stop offset="0%" stop-color="#c8f135" stop-opacity="0.10"/>
+          <stop offset="100%" stop-color="#c8f135" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Background -->
+      <rect width="1080" height="1080" fill="url(#bgGrad)"/>
+
+      <!-- Decorative glow backgrounds -->
+      <rect x="0" y="0" width="540" height="1080" fill="url(#glowPink)"/>
+      <rect x="540" y="0" width="540" height="1080" fill="url(#glowLima)"/>
+
+      <!-- Subtle decorative elements -->
+      <circle cx="120" cy="920" r="180" fill="#e85d8a" opacity="0.06"/>
+      <circle cx="960" cy="160" r="200" fill="#c8f135" opacity="0.06"/>
+
+      <!-- ANTES label — left side -->
+      <text x="270" y="160" font-family="Georgia, serif" font-size="42" fill="#e85d8a" text-anchor="middle" opacity="0.7">ANTES</text>
+
+      <!-- DESPUES label — right side -->
+      <text x="810" y="160" font-family="Georgia, serif" font-size="42" fill="#c8f135" text-anchor="middle" opacity="0.7">DESPU&Eacute;S</text>
+
+      <!-- Left screenshot placeholder -->
+      <rect x="60" y="220" width="420" height="480" rx="8" fill="none" stroke="#e85d8a" stroke-width="2.5" stroke-dasharray="14 8" opacity="0.55"/>
+      <line x1="175" y1="420" x2="375" y2="420" stroke="#e85d8a" stroke-width="1" opacity="0.25"/>
+      <text x="270" y="468" font-family="'Segoe UI', system-ui, sans-serif" font-size="22" fill="#e85d8a" text-anchor="middle" opacity="0.4">Captura anterior</text>
+
+      <!-- Right screenshot placeholder -->
+      <rect x="600" y="220" width="420" height="480" rx="8" fill="none" stroke="#c8f135" stroke-width="2.5" stroke-dasharray="14 8" opacity="0.55"/>
+      <line x1="715" y1="420" x2="915" y2="420" stroke="#c8f135" stroke-width="1" opacity="0.25"/>
+      <text x="810" y="468" font-family="'Segoe UI', system-ui, sans-serif" font-size="22" fill="#c8f135" text-anchor="middle" opacity="0.4">Captura nueva</text>
+
+      <!-- Central vertical dashed divider -->
+      <line x1="540" y1="100" x2="540" y2="980" stroke="#ffffff" stroke-width="2" stroke-dasharray="16 10" opacity="0.3"/>
+
+      <!-- Arrow between sides -->
+      <g transform="translate(540, 460)" opacity="0.8">
+        <circle r="36" fill="#1c1c1c" stroke="#fff" stroke-width="2"/>
+        <path d="M-14,-1 L10,-1 L10,-9 L22,0 L10,9 L10,1 L-14,1 Z" fill="#c8f135"/>
+      </g>
+
+      <!-- Headline -->
+      <text x="540" y="810" font-family="Georgia, serif" font-size="56" fill="#c8f135" text-anchor="middle" font-weight="bold">Transformaci&oacute;n UX</text>
+
+      <!-- Subtitle -->
+      <text x="540" y="868" font-family="'Segoe UI', system-ui, sans-serif" font-size="28" fill="#ffffff" text-anchor="middle" opacity="0.75">Restaurante — Tasa de rebote -54%</text>
+
+      <!-- Swipe indicator bottom-right -->
+      <g transform="translate(980, 1020)" opacity="0.5">
+        <rect x="-70" y="-18" width="70" height="36" rx="18" fill="#fff" opacity="0.15"/>
+        <text x="-55" y="6" font-family="'Segoe UI', system-ui, sans-serif" font-size="16" fill="#fff">Swipe</text>
+        <path d="M-8,-4 L4,0 L-8,4" fill="none" stroke="#fff" stroke-width="1.5"/>
+      </g>
+
+      <!-- Logo placeholder bottom-center -->
+      <circle cx="540" cy="1010" r="30" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="6 4" opacity="0.4"/>
+      <text x="540" y="1016" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#fff" text-anchor="middle" opacity="0.4">Logo</text>
+
+      <!-- Corner decorative squares -->
+      <rect x="20" y="20" width="40" height="4" rx="2" fill="#c8f135" opacity="0.3"/>
+      <rect x="20" y="20" width="4" height="40" rx="2" fill="#c8f135" opacity="0.3"/>
+      <rect x="1020" y="1056" width="40" height="4" rx="2" fill="#e85d8a" opacity="0.3"/>
+      <rect x="1056" y="1016" width="4" height="40" rx="2" fill="#e85d8a" opacity="0.3"/>
+    </svg>
+  </div>
+
+  <div class="notas">
+    <h3>Notas para el dise&ntilde;ador</h3>
+    <ul>
+      <li>Formato: Instagram Carousel Cover — 1080 &times; 1080 px</li>
+      <li>Reemplazar los rect&aacute;ngulos punteados con capturas reales del sitio anterior y el redise&ntilde;o</li>
+      <li>El fondo oscuro con gradiente debe mantener la legibilidad del texto lima</li>
+      <li>La l&iacute;nea divisoria central puede ser s&oacute;lida o animada seg&uacute;n el formato final</li>
+      <li>La flecha central debe ser prominente para reforzar la narrativa de transformaci&oacute;n</li>
+      <li>Tipograf&iacute;as: t&iacute;tulo en Georgia Bold, subtexto en Segoe UI Regular</li>
+      <li>El indicador &ldquo;Swipe&rdquo; invita a ver las siguientes slides del carrusel</li>
+      <li>Paleta: Lima #c8f135, Rosa #e85d8a, Negro #1c1c1c, Beige #f5f0eb</li>
+    </ul>
+  </div>
+</div>
+
+<p class="sketch-footer">Sketch generado por Agencia OH WOW!</p>
+
+</body>
+</html>

@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jairo Prado — Guía de Voz y Tono</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #fafafa;
+    --teal: #068d9d;
+    --purple: #3a3afe;
+    --rose: #e5446d;
+    --text: #1a1a1a;
+    --text-light: #555;
+    --text-muted: #888;
+    --border: #e8e8e8;
+    --card-bg: #fff;
+    --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
+    --shadow-hover: 0 2px 6px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06);
+    --radius: 12px;
+    --green: #2d8a4e;
+    --green-bg: #edf7f0;
+    --yellow: #b8860b;
+    --yellow-bg: #fef9ec;
+    --red: #c0392b;
+    --red-bg: #fdf0ef;
+    --black: #1a1a1a;
+    --black-bg: #f0f0f0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* HEADER */
+  header {
+    padding: 48px 0 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .header-text h1 {
+    font-size: clamp(28px, 4vw, 42px);
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  .header-text p {
+    font-size: 15px;
+    color: var(--text-light);
+    margin-top: 6px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  .header-text .date {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .btn-export {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--teal);
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-export:hover {
+    background: #057a89;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(6,141,157,0.25);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 56px 0;
+  }
+
+  section + section {
+    border-top: 1px solid var(--border);
+  }
+
+  .section-title {
+    font-size: clamp(24px, 3vw, 32px);
+    margin-bottom: 32px;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  .section-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 32px;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-hover);
+  }
+
+  /* INTRO */
+  .intro-card {
+    border-left: 3px solid var(--teal);
+  }
+
+  .intro-card p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-light);
+    font-weight: 300;
+  }
+
+  /* KPIs */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .kpi-card {
+    text-align: center;
+    padding: 36px 24px;
+  }
+
+  .kpi-number {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: 56px;
+    color: var(--teal);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .kpi-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+
+  /* PILLAR CARDS */
+  .pillar-grid {
+    display: grid;
+    gap: 24px;
+  }
+
+  .pillar-card {
+    padding: 36px;
+  }
+
+  .pillar-number {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .pillar-card h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .pillar-desc {
+    color: var(--text-light);
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+
+  .pillar-examples {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .example-box {
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .example-si {
+    background: var(--green-bg);
+    border-left: 3px solid var(--green);
+  }
+
+  .example-no {
+    background: var(--red-bg);
+    border-left: 3px solid var(--red);
+  }
+
+  .example-label {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .example-si .example-label { color: var(--green); }
+  .example-no .example-label { color: var(--red); }
+
+  /* SENSITIVITY SCALE */
+  .sensitivity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .sensitivity-card {
+    padding: 28px;
+    border-radius: var(--radius);
+    border-top: 4px solid;
+  }
+
+  .sensitivity-card.green { background: var(--green-bg); border-color: var(--green); }
+  .sensitivity-card.yellow { background: var(--yellow-bg); border-color: var(--yellow); }
+  .sensitivity-card.red { background: var(--red-bg); border-color: var(--red); }
+  .sensitivity-card.black { background: var(--black-bg); border-color: var(--black); }
+
+  .sensitivity-level {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+
+  .sensitivity-card.green .sensitivity-level { color: var(--green); }
+  .sensitivity-card.yellow .sensitivity-level { color: var(--yellow); }
+  .sensitivity-card.red .sensitivity-level { color: var(--red); }
+  .sensitivity-card.black .sensitivity-level { color: var(--black); }
+
+  .sensitivity-desc {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 12px;
+  }
+
+  .sensitivity-action {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .sensitivity-card.green .sensitivity-action { color: var(--green); }
+  .sensitivity-card.yellow .sensitivity-action { color: var(--yellow); }
+  .sensitivity-card.red .sensitivity-action { color: var(--red); }
+  .sensitivity-card.black .sensitivity-action { color: var(--red); }
+
+  /* TABLES */
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    font-size: 14px;
+  }
+
+  thead th {
+    background: #f4f4f4;
+    padding: 14px 20px;
+    text-align: left;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-light);
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+
+  tbody tr:hover { background: #fafafa; }
+
+  .tag-prohibido {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* GLOSSARY TWO-COL */
+  .glossary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* PHRASE CARDS */
+  .phrase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  .phrase-card {
+    padding: 20px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .phrase-prohibited {
+    background: var(--red-bg);
+    border-left: 3px solid var(--red);
+    color: var(--red);
+  }
+
+  .phrase-model {
+    background: var(--green-bg);
+    border-left: 3px solid var(--green);
+    color: var(--green);
+  }
+
+  /* CHART */
+  .chart-container {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  /* CHECKLIST */
+  .checklist-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: none;
+    border: none;
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    color: var(--text);
+    cursor: pointer;
+    padding: 8px 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .checklist-toggle .arrow {
+    transition: transform 0.3s ease;
+    font-size: 14px;
+    color: var(--teal);
+  }
+
+  .checklist-toggle.open .arrow {
+    transform: rotate(90deg);
+  }
+
+  .checklist-list {
+    list-style: none;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .checklist-list.open {
+    max-height: 600px;
+  }
+
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text-light);
+  }
+
+  .checklist-item:last-child { border-bottom: none; }
+
+  .checklist-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--teal);
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  footer span { color: var(--teal); font-weight: 500; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .pillar-examples { grid-template-columns: 1fr; }
+    .glossary-grid { grid-template-columns: 1fr; }
+    .phrase-grid { grid-template-columns: 1fr; }
+    header .container { flex-direction: column; }
+    section { padding: 40px 0; }
+  }
+
+  /* PRINT / PDF */
+  @media print {
+    body {
+      font-size: 12px;
+      background: #fff;
+    }
+
+    .btn-export { display: none !important; }
+
+    .card, .table-wrapper {
+      box-shadow: none;
+      border: 1px solid #ddd;
+      break-inside: avoid;
+    }
+
+    section { padding: 24px 0; }
+
+    .pillar-card, .sensitivity-card, .phrase-card {
+      break-inside: avoid;
+    }
+
+    .checklist-list {
+      max-height: none !important;
+      overflow: visible !important;
+    }
+
+    header { padding: 24px 0; }
+
+    .chart-container {
+      max-width: 440px;
+    }
+
+    h1 { font-size: 28px !important; }
+    .section-title { font-size: 22px !important; }
+
+    .no-print { display: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container">
+    <div class="header-text">
+      <h1>Jairo Prado — Guía de Voz y Tono</h1>
+      <p>Documento de referencia para la preservación del legado</p>
+      <p class="date">16 de abril de 2026</p>
+    </div>
+    <button class="btn-export" onclick="window.print()">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Exportar PDF
+    </button>
+  </div>
+</header>
+
+<!-- INTRODUCTION -->
+<section>
+  <div class="container">
+    <div class="card intro-card">
+      <p>Este documento define las reglas de voz, tono y sensibilidad para todo contenido generado en nombre de Jairo Prado Roldán. Como proyecto póstumo, cada pieza de comunicación debe tratarse con máxima dignidad y respeto. El objetivo no es explotar una pérdida, sino celebrar un mensaje que trasciende. Estas directrices son obligatorias para escritores, community managers, diseñadores y cualquier persona que cree contenido para la marca Jairo Prado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KPIs -->
+<section>
+  <div class="container">
+    <p class="section-subtitle">Vista general</p>
+    <div class="kpi-grid">
+      <div class="card kpi-card">
+        <div class="kpi-number">5</div>
+        <div class="kpi-label">Pilares de voz</div>
+      </div>
+      <div class="card kpi-card">
+        <div class="kpi-number">4</div>
+        <div class="kpi-label">Niveles de sensibilidad</div>
+      </div>
+      <div class="card kpi-card">
+        <div class="kpi-number">14</div>
+        <div class="kpi-label">Palabras del glosario</div>
+      </div>
+      <div class="card kpi-card">
+        <div class="kpi-number">4</div>
+        <div class="kpi-label">Reglas de tiempo verbal</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 VOICE PILLARS -->
+<section>
+  <div class="container">
+    <p class="section-subtitle">Fundamentos</p>
+    <h2 class="section-title">Los 5 pilares de voz</h2>
+    <div class="pillar-grid">
+
+      <div class="card pillar-card">
+        <div class="pillar-number">Pilar 1</div>
+        <h3>Profundo pero accesible</h3>
+        <p class="pillar-desc">Ideas complejas (ciencia cuántica, conciencia, manifestación) explicadas con claridad y calidez. Sin jerga esotérica innecesaria.</p>
+        <div class="pillar-examples">
+          <div class="example-box example-si">
+            <span class="example-label">Así sí</span>
+            "La realidad que experimentas comienza como una frecuencia interna. Cuando cambias tu estado, cambias tu campo."
+          </div>
+          <div class="example-box example-no">
+            <span class="example-label">Así no</span>
+            "La decoherencia cuántica del observador colapsa la función de onda en un estado determinado."
+          </div>
+        </div>
+      </div>
+
+      <div class="card pillar-card">
+        <div class="pillar-number">Pilar 2</div>
+        <h3>Contemplativo pero activo</h3>
+        <p class="pillar-desc">Invita a la reflexión Y a la acción práctica. No se queda en la teoría.</p>
+        <div class="pillar-examples">
+          <div class="example-box example-si">
+            <span class="example-label">Así sí</span>
+            "Observa sin juzgar lo que sientes ahora mismo. Esa observación ya es el primer paso."
+          </div>
+          <div class="example-box example-no">
+            <span class="example-label">Así no</span>
+            "La contemplación del ser en su esencia revela la verdad última."
+          </div>
+        </div>
+      </div>
+
+      <div class="card pillar-card">
+        <div class="pillar-number">Pilar 3</div>
+        <h3>Espiritual pero no dogmático</h3>
+        <p class="pillar-desc">Abierto, inclusivo, no sectario. "Jesús" en el libro es un nombre propio/guía, no referencia cristiana convencional.</p>
+        <div class="pillar-examples">
+          <div class="example-box example-si">
+            <span class="example-label">Así sí</span>
+            "No importa cómo nombres a esa fuerza mayor. Lo que importa es que la sientas."
+          </div>
+          <div class="example-box example-no">
+            <span class="example-label">Así no</span>
+            "Solo a través de la fe verdadera encontrarás la salvación."
+          </div>
+        </div>
+      </div>
+
+      <div class="card pillar-card">
+        <div class="pillar-number">Pilar 4</div>
+        <h3>Íntimo pero universal</h3>
+        <p class="pillar-desc">Habla como si le hablara a UNA persona, pero resuena con todos. Usa "tú" directo.</p>
+        <div class="pillar-examples">
+          <div class="example-box example-si">
+            <span class="example-label">Así sí</span>
+            "Cuando te despiertas a las 3am con esa angustia que no sabes nombrar... ahí está la invitación."
+          </div>
+          <div class="example-box example-no">
+            <span class="example-label">Así no</span>
+            "Las personas suelen experimentar momentos de angustia existencial."
+          </div>
+        </div>
+      </div>
+
+      <div class="card pillar-card">
+        <div class="pillar-number">Pilar 5</div>
+        <h3>Esperanzador pero honesto</h3>
+        <p class="pillar-desc">Sin promesas mágicas, con verdad compasiva. Reconoce el dolor como parte del proceso.</p>
+        <div class="pillar-examples">
+          <div class="example-box example-si">
+            <span class="example-label">Así sí</span>
+            "El camino no es fácil. Pero cada paso que das en conciencia te acerca a quien realmente eres."
+          </div>
+          <div class="example-box example-no">
+            <span class="example-label">Así no</span>
+            "Con estos 3 pasos tu vida cambiará para siempre y nunca más sufrirás."
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SENSITIVITY SCALE -->
+<section>
+  <div class="container">
+    <p class="section-subtitle">Protocolo</p>
+    <h2 class="section-title">Escala de sensibilidad póstuma</h2>
+    <div class="sensitivity-grid">
+
+      <div class="sensitivity-card green">
+        <div class="sensitivity-level">Verde</div>
+        <p class="sensitivity-desc">Contenido sobre enseñanzas, libro, reflexiones sin referencia a fallecimiento.</p>
+        <p class="sensitivity-action">Publicar libremente</p>
+      </div>
+
+      <div class="sensitivity-card yellow">
+        <div class="sensitivity-level">Amarillo</div>
+        <p class="sensitivity-desc">Menciona legado, impacto, "lo que dejó".</p>
+        <p class="sensitivity-action">Revisar tono, evitar sentimentalismo</p>
+      </div>
+
+      <div class="sensitivity-card red">
+        <div class="sensitivity-level">Rojo</div>
+        <p class="sensitivity-desc">Referencia directa a su fallecimiento.</p>
+        <p class="sensitivity-action">Solo con aprobación de la familia. Máximo respeto</p>
+      </div>
+
+      <div class="sensitivity-card black">
+        <div class="sensitivity-level">Prohibido</div>
+        <p class="sensitivity-desc">Usa muerte como gancho, urgencia o manipulación emocional.</p>
+        <p class="sensitivity-action">NUNCA publicar. Rechazar inmediatamente</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VERB TENSE RULES -->
+<section>
+  <div class="container">
+    <p class="section-subtitle">Gramática</p>
+    <h2 class="section-title">Reglas de tiempo verbal</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Contexto</th>
+            <th>Tiempo</th>
+            <th>Ejemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mensaje / enseñanza</td>
+            <td><strong>Presente</strong></td>
+            <td>"Jairo nos enseña que..."</td>
+          </tr>
+          <tr>
+            <td>Biografía</td>
+            <td><strong>Pasado</strong></td>
+            <td>"Jairo vivió en Madrid..."</td>
+          </tr>
+          <tr>
+            <td>Legado</td>
+            <td><strong>Presente</strong></td>
+            <td>"Su obra sigue inspirando..."</td>
+          </tr>
+          <tr>
+            <td>Especulación <span class="tag-prohibido">Prohibido</span></td>
+            <td><strong>Nunca</strong></td>
+            <td>"Jairo habría querido..." — PROHIBIDO</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND GLOSSARY -->
+<section>
+  <div class="container">
+    <p class="section-subtitle">Vocabulario</p>
+    <h2 class="section-title">Glosario de marca</h2>
+    <div class="glossary-grid">
+
+      <div>
+        <h3 style="font-size:18px; margin-bottom:16px; color:var(--green);">Palabras que sí usar</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th>Palabra</th><th>Contexto</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Expansión</strong></td><td>"Expansión de conciencia" — concepto central</td></tr>
+              <tr><td><strong>Presencia</strong></td><td>Estado de atención consciente</td></tr>
+              <tr><td><strong>Claridad</strong></td><td>Resultado del proceso</td></tr>
+              <tr><td><strong>Transformación</strong></td><td>Cambio profundo y duradero</td></tr>
+              <tr><td><strong>Manifestación</strong></td><td>Crear realidad desde la conciencia (NO magia)</td></tr>
+              <tr><td><strong>Conciencia</strong></td><td>Awareness, no moralidad</td></tr>
+              <tr><td><strong>Legado</strong></td><td>Su obra y mensaje</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-size:18px; margin-bottom:16px; color:var(--red);">Palabras a evitar</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th>Palabra</th><th>Por qué</th><th>Alternativa</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Gurú</strong></td><td>Connotación sectaria</td><td>Guía, referente</td></tr>
+              <tr><td><strong>Maestro iluminado</strong></td><td>Pretencioso</td><td>Explorador de la conciencia</td></tr>
+              <tr><td><strong>Religión</strong></td><td>No es proyecto religioso</td><td>Espiritualidad, conciencia</td></tr>
+              <tr><td><strong>Muerte/morir</strong></td><td>En marketing</td><td>Legado, trascendencia</td></tr>
+              <tr><td><strong>Milagro</strong></td><td>Promesa mágica</td><td>Transformación</td></tr>
+              <tr><td><strong>Secreto</strong></td><td>Manipulativo</td><td>Enseñanza, perspectiva</td></tr>
+              <tr><td><strong>Garantía</strong></td><td>En resultados espirituales</td><td>Camino, proceso</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROHIBITED PHRASES -->
+<section>
+  <div class="container">
+    <p class="section-subtitle">Lenguaje prohibido</p>
+    <h2 class="section-title">Frases prohibidas</h2>
+    <div class="phrase-grid">
+      <div class="phrase-card phrase-prohibited">"Sus últimas palabras fueron..."</div>
+      <div class="phrase-card phrase-prohibited">"Lo que no pudo decir en vida"</div>
+      <div class="phrase-card phrase-prohibited">"Antes de morir, Jairo..."</div>
+      <div class="phrase-card phrase-prohibited">"En honor a su trágica partida"</div>
+      <div class="phrase-card phrase-prohibited">"Aprovecha esta oportunidad única para..."</div>
+      <div class="phrase-card phrase-prohibited">"No dejes pasar el legado de..."</div>
+    </div>
+  </div>
+</section>
+
+<!-- MODEL PHRASES -->
+<section>
+  <div class="container">
+    <p class="section-subtitle">Lenguaje modelo</p>
+    <h2 class="section-title">Frases de referencia</h2>
+    <div class="phrase-grid">
+      <div class="phrase-card phrase-model">"Un mensaje que trasciende."</div>
+      <div class="phrase-card phrase-model">"Expansión de conciencia para el mundo hispanohablante."</div>
+      <div class="phrase-card phrase-model">"Las enseñanzas de Jairo Prado siguen transformando vidas."</div>
+      <div class="phrase-card phrase-model">"Un libro nacido de la experiencia profunda de la vida."</div>
+      <div class="phrase-card phrase-model">"Su legado es un camino abierto para quien quiera transitarlo."</div>
+    </div>
+  </div>
+</section>
+
+<!-- RADAR CHART -->
+<section>
+  <div class="container">
+    <p class="section-subtitle">Tono por contexto</p>
+    <h2 class="section-title">Mapa de tono</h2>
+    <div class="card">
+      <div class="chart-container">
+        <canvas id="radarChart"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section>
+  <div class="container">
+    <div class="card">
+      <button class="checklist-toggle" id="checklistToggle" onclick="toggleChecklist()">
+        <span class="arrow">&#9654;</span>
+        Checklist de referencia rápida
+      </button>
+      <ul class="checklist-list" id="checklistList">
+        <li class="checklist-item"><input type="checkbox"><span>¿El contenido pasa el test de sensibilidad (verde/amarillo)?</span></li>
+        <li class="checklist-item"><input type="checkbox"><span>¿Se usan tiempos verbales correctos?</span></li>
+        <li class="checklist-item"><input type="checkbox"><span>¿No hay palabras del glosario "a evitar"?</span></li>
+        <li class="checklist-item"><input type="checkbox"><span>¿Las citas de Jairo son extractos REALES (no inventadas)?</span></li>
+        <li class="checklist-item"><input type="checkbox"><span>¿La familia se sentiría orgullosa al leer esto?</span></li>
+        <li class="checklist-item"><input type="checkbox"><span>¿El tono es celebratorio, no explotativo?</span></li>
+        <li class="checklist-item"><input type="checkbox"><span>¿Los CTAs son suaves e invitacionales?</span></li>
+        <li class="checklist-item"><input type="checkbox"><span>¿Se evita toda urgencia basada en su fallecimiento?</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    Generado por <span>Agencia OH WOW!</span> — Legado Jairo Prado
+  </div>
+</footer>
+
+<script>
+  // Checklist toggle
+  function toggleChecklist() {
+    const btn = document.getElementById('checklistToggle');
+    const list = document.getElementById('checklistList');
+    btn.classList.toggle('open');
+    list.classList.toggle('open');
+  }
+
+  // Radar Chart
+  const ctx = document.getElementById('radarChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: ['Profundidad', 'Calidez', 'Energía', 'Formalidad', 'Emoción'],
+      datasets: [
+        {
+          label: 'Redes Sociales',
+          data: [6, 9, 8, 3, 8],
+          borderColor: '#068d9d',
+          backgroundColor: 'rgba(6,141,157,0.08)',
+          borderWidth: 2,
+          pointBackgroundColor: '#068d9d',
+          pointRadius: 3,
+        },
+        {
+          label: 'Blog / Artículos',
+          data: [8, 7, 5, 6, 6],
+          borderColor: '#3a3afe',
+          backgroundColor: 'rgba(58,58,254,0.06)',
+          borderWidth: 2,
+          pointBackgroundColor: '#3a3afe',
+          pointRadius: 3,
+        },
+        {
+          label: 'Libro / Extractos',
+          data: [10, 8, 4, 7, 9],
+          borderColor: '#e5446d',
+          backgroundColor: 'rgba(229,68,109,0.06)',
+          borderWidth: 2,
+          pointBackgroundColor: '#e5446d',
+          pointRadius: 3,
+        },
+        {
+          label: 'Marketing / Ventas',
+          data: [5, 7, 7, 4, 5],
+          borderColor: '#888',
+          backgroundColor: 'rgba(136,136,136,0.05)',
+          borderWidth: 2,
+          pointBackgroundColor: '#888',
+          pointRadius: 3,
+          borderDash: [4, 4],
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            font: { family: 'Inter', size: 12 },
+            padding: 20,
+            usePointStyle: true,
+            pointStyle: 'circle',
+          }
+        }
+      },
+      scales: {
+        r: {
+          beginAtZero: true,
+          max: 10,
+          ticks: {
+            stepSize: 2,
+            font: { size: 10 },
+            backdropColor: 'transparent',
+            color: '#aaa',
+          },
+          grid: { color: '#e8e8e8' },
+          angleLines: { color: '#e8e8e8' },
+          pointLabels: {
+            font: { family: 'Inter', size: 13, weight: '500' },
+            color: '#555',
+          }
+        }
+      }
+    }
+  });
+</script>
+
+<!-- QA REVIEW -->
+<section class="no-print" style="padding:48px 0 56px; border-top: 2px solid var(--border);">
+  <div class="container">
+    <div style="max-width:740px; margin:0 auto;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+        <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--teal);"></span>
+        <span style="font-size:12px; text-transform:uppercase; letter-spacing:0.12em; font-weight:600; color:var(--teal);">QA Review</span>
+      </div>
+      <h2 style="font-family:'Instrument Serif',Georgia,serif; font-size:28px; font-weight:400; color:var(--text); margin-bottom:4px;">jz-qa-reviewer</h2>
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:24px;">Fecha: 2026-04-16 &nbsp;&middot;&nbsp; Basado en: Jeferson Zambrano (CDO & CMO, Land of Nomads Group)</p>
+
+      <div style="background:var(--card-bg); border-radius:var(--radius); box-shadow:var(--shadow); padding:32px; border-left:3px solid var(--teal);">
+        <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:24px;">
+          <span style="font-family:'Instrument Serif',Georgia,serif; font-size:48px; color:var(--teal); line-height:1;">9.1</span>
+          <span style="font-size:14px; color:var(--text-muted); font-weight:400;">/10 &mdash; EXCELENTE</span>
+        </div>
+
+        <p style="font-size:12px; text-transform:uppercase; letter-spacing:0.1em; font-weight:600; color:var(--text-muted); margin-bottom:16px;">Cambios realizados</p>
+
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <div>
+            <p style="font-size:14px; color:var(--text); font-weight:500; margin-bottom:4px;">1. Escala de sensibilidad</p>
+            <p style="font-size:14px; color:var(--text-light); font-weight:300; line-height:1.7;">Verificados los 4 niveles (Verde, Amarillo, Rojo, Prohibido) con descripciones y acciones claras.</p>
+            <p style="font-size:13px; color:var(--text-muted); font-style:italic; margin-top:4px;">Raz&oacute;n: Este documento es la referencia obligatoria para todo el equipo &mdash; debe ser inequ&iacute;voco.</p>
+          </div>
+          <div>
+            <p style="font-size:14px; color:var(--text); font-weight:500; margin-bottom:4px;">2. Frases prohibidas</p>
+            <p style="font-size:14px; color:var(--text-light); font-weight:300; line-height:1.7;">Verificada lista completa de frases que nunca deben usarse en marketing.</p>
+            <p style="font-size:13px; color:var(--text-muted); font-style:italic; margin-top:4px;">Raz&oacute;n: Proteger la dignidad del legado de Jairo y de su familia.</p>
+          </div>
+          <div>
+            <p style="font-size:14px; color:var(--text); font-weight:500; margin-bottom:4px;">3. Reglas de tiempo verbal</p>
+            <p style="font-size:14px; color:var(--text-light); font-weight:300; line-height:1.7;">Verificadas las 4 reglas (presente para ense&ntilde;anzas, pasado para biograf&iacute;a, presente para legado, NUNCA especulaci&oacute;n).</p>
+            <p style="font-size:13px; color:var(--text-muted); font-style:italic; margin-top:4px;">Raz&oacute;n: Coherencia ling&uuml;&iacute;stica preserva la autenticidad del mensaje.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

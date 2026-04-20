@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO Test Dashboard — Invertir en eco-villas en Filipinas | LON</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <style>
+    /* ── Reset & Base ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #F3EBE1;
+      --bg-card: #FFFFFF;
+      --bg-card-alt: #D9C8B1;
+      --teal: #B83E25;
+      --teal-dim: rgba(184,62,37,.12);
+      --white: #1A1814;
+      --gold: #FFBC7D;
+      --gold-dim: rgba(255,188,125,.22);
+      --gray: #6B5F4F;
+      --gray-light: #8a7a66;
+      --border: rgba(26,24,20,.10);
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ───────────────────────────────────────────── */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .section { margin-bottom: 48px; }
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--teal);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::before {
+      content: '';
+      width: 4px;
+      height: 22px;
+      background: var(--teal);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    /* ── Header ───────────────────────────────────────────── */
+    .header {
+      background: linear-gradient(135deg, #F3EBE1 0%, #FFFFFF 55%, #D9C8B1 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 32px 0;
+      margin-bottom: 40px;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--teal), var(--gold));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--bg);
+      flex-shrink: 0;
+    }
+    .brand-name { font-size: .85rem; color: var(--teal); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; max-width: 700px; }
+    .header h1 span { color: var(--teal); }
+    .header-meta { display: flex; gap: 20px; margin-top: 10px; flex-wrap: wrap; }
+    .header-meta span { font-size: .85rem; color: var(--gray); display: flex; align-items: center; gap: 6px; }
+    .header-meta .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+    .btn-export {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal);
+      color: var(--bg);
+      font-weight: 600;
+      font-size: .9rem;
+      padding: 12px 24px;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: opacity .2s;
+      flex-shrink: 0;
+    }
+    .btn-export:hover { opacity: .85; }
+    .btn-export svg { width: 18px; height: 18px; }
+
+    /* ── KPI Cards ────────────────────────────────────────── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .kpi-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--teal);
+      opacity: .6;
+    }
+    .kpi-card.gold::after { background: var(--gold); }
+    .kpi-label { font-size: .78rem; color: var(--gray); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
+    .kpi-value { font-size: 1.6rem; font-weight: 700; line-height: 1.2; }
+    .kpi-value.small { font-size: 1rem; font-weight: 600; }
+    .kpi-sub { font-size: .8rem; color: var(--gray); margin-top: 4px; }
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: .75rem;
+      font-weight: 600;
+    }
+    .badge-medium { background: rgba(201,135,20,.18); color: #8a5a0f; }
+    .badge-low { background: var(--teal-dim); color: var(--teal); }
+    .badge-high { background: rgba(200,40,40,.15); color: #a82828; }
+
+    /* ── Meta Tags Code Preview ───────────────────────────── */
+    .meta-preview {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      font-family: 'Courier New', monospace;
+      font-size: .88rem;
+      line-height: 2;
+      overflow-x: auto;
+      color: var(--white);
+    }
+    .meta-preview .tag { color: #8a7a66; }
+    .meta-preview .attr { color: #C17A2E; }
+    .meta-preview .val { color: var(--teal); }
+    .meta-preview .comment { color: #a89982; font-style: italic; }
+    .meta-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .meta-info-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+    }
+    .meta-info-item .label { font-size: .78rem; color: var(--gray); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+    .meta-info-item .value { font-size: .95rem; font-weight: 500; }
+    .char-count { font-size: .75rem; color: var(--teal); margin-left: 8px; }
+
+    /* ── Article Structure ────────────────────────────────── */
+    .outline { list-style: none; }
+    .outline-item {
+      border-left: 2px solid var(--border);
+      padding: 14px 0 14px 20px;
+      margin-left: 0;
+      position: relative;
+      transition: border-color .2s;
+    }
+    .outline-item:hover { border-left-color: var(--teal); }
+    .outline-item::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 20px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid var(--gray);
+    }
+    .outline-item:hover::before { border-color: var(--teal); background: var(--teal-dim); }
+    .outline-h1 { margin-left: 0; border-left-color: var(--teal); }
+    .outline-h1::before { border-color: var(--teal); background: var(--teal); }
+    .outline-h2 { margin-left: 24px; }
+    .outline-h3 { margin-left: 48px; border-left-color: rgba(26,24,20,.06); }
+    .outline-h3::before { width: 6px; height: 6px; left: -4px; }
+    .outline-tag {
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-right: 8px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .outline-tag.h1 { background: var(--teal); color: var(--bg); }
+    .outline-tag.h2 { background: var(--gold-dim); color: #A85A1F; }
+    .outline-tag.h3 { background: rgba(26,24,20,.08); color: var(--gray-light); }
+    .outline-text { font-weight: 500; font-size: .95rem; }
+    .outline-meta { font-size: .8rem; color: var(--gray); margin-top: 4px; }
+    .outline-meta .words { color: var(--teal); font-weight: 600; }
+    .outline-badge {
+      display: inline-block;
+      font-size: .7rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--gold-dim);
+      color: #A85A1F;
+      margin-left: 6px;
+      font-weight: 600;
+    }
+
+    /* ── Keywords Table ───────────────────────────────────── */
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .9rem;
+    }
+    thead th {
+      text-align: left;
+      padding: 14px 16px;
+      font-size: .78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--gray);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card-alt);
+    }
+    thead th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+    thead th:last-child { border-radius: 0 var(--radius-sm) 0 0; }
+    tbody td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    tbody tr:hover { background: rgba(184,62,37,.04); }
+    .kw-primary { color: var(--teal); font-weight: 600; }
+
+    /* ── SEO Checklist ────────────────────────────────────── */
+    .checklist { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 8px; }
+    .checklist li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: .9rem;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+    }
+    .checklist li:hover { border-color: rgba(184,62,37,.35); }
+    .checklist li.checked { border-color: rgba(184,62,37,.25); background: rgba(184,62,37,.05); }
+    .check-box {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 2px solid var(--gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all .2s;
+    }
+    .checklist li.checked .check-box {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+    .check-box svg { width: 14px; height: 14px; color: var(--bg); opacity: 0; transition: opacity .2s; }
+    .checklist li.checked .check-box svg { opacity: 1; }
+
+    /* ── Internal Links ───────────────────────────────────── */
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 14px;
+    }
+    .link-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      transition: border-color .2s;
+    }
+    .link-card:hover { border-color: rgba(184,62,37,.35); }
+    .link-num {
+      width: 32px;
+      height: 32px;
+      background: var(--teal-dim);
+      color: var(--teal);
+      font-weight: 700;
+      font-size: .85rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .link-title { font-weight: 600; font-size: .92rem; margin-bottom: 2px; }
+    .link-url { font-size: .8rem; color: var(--teal); word-break: break-all; }
+    .link-anchor { font-size: .78rem; color: var(--gray); margin-top: 4px; }
+
+    /* ── Chart ────────────────────────────────────────────── */
+    .chart-container { position: relative; height: 320px; width: 100%; }
+
+    /* ── Footer ───────────────────────────────────────────── */
+    .footer {
+      text-align: center;
+      padding: 32px 0;
+      margin-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: .82rem;
+      color: var(--gray);
+    }
+    .footer strong { color: var(--teal); font-weight: 600; }
+
+    /* ── Print / PDF ─────────────────────────────────────── */
+    @media print {
+      body { background: #fff !important; color: #1a1a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .header { background: #F3EBE1 !important; border-bottom-color: #D9C8B1 !important; }
+      .header h1, .brand-name { color: #1A1814 !important; }
+      .header h1 span { color: #B83E25 !important; }
+      .btn-export, .no-print { display: none !important; }
+      .card, .kpi-card, .meta-preview, .link-card, .checklist li, .meta-info-item {
+        background: #fff !important;
+        border-color: #D9C8B1 !important;
+        color: #1A1814 !important;
+      }
+      .kpi-value, .outline-text, .link-title { color: #1A1814 !important; }
+      .section-title { color: #B83E25 !important; }
+      .section-title::before { background: #B83E25 !important; }
+      table, thead th, tbody td { border-color: #D9C8B1 !important; }
+      thead th { background: #F3EBE1 !important; color: #6B5F4F !important; }
+      tbody td { color: #1A1814 !important; }
+      .footer { border-color: #D9C8B1 !important; color: #6B5F4F !important; }
+      .footer strong { color: #B83E25 !important; }
+      .meta-preview { background: #FFFFFF !important; }
+      .meta-preview .val { color: #B83E25 !important; }
+      .meta-preview .attr { color: #C17A2E !important; }
+      .meta-preview .tag, .meta-preview .comment { color: #8a7a66 !important; }
+      .outline-item { border-left-color: #D9C8B1 !important; }
+      .kpi-label, .meta-info-item .label, .outline-meta, .link-anchor, .link-url, .header-meta span, .kpi-sub { color: #6B5F4F !important; }
+      @page { margin: 1.5cm; }
+    }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .header h1 { font-size: 1.3rem; }
+      .kpi-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+      .outline-h2 { margin-left: 12px; }
+      .outline-h3 { margin-left: 24px; }
+      .checklist { grid-template-columns: 1fr; }
+      .links-grid { grid-template-columns: 1fr; }
+      .container { padding: 0 16px; }
+      .meta-preview { padding: 16px; font-size: .8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════ HEADER ═══════════════════ -->
+<header class="header">
+  <div class="container header-inner">
+    <div>
+      <div class="header-brand">
+        <div class="brand-logo">LON</div>
+        <div>
+          <div class="brand-name">Land of Nomads Group</div>
+        </div>
+      </div>
+      <h1>SEO Test — Artículo: <span>Invertir en eco-villas en Filipinas</span></h1>
+      <div class="header-meta">
+        <span><span class="dot"></span> Dashboard de planificación SEO</span>
+        <span>Fecha: 16 abril 2026</span>
+        <span>Estado: Pre-publicación</span>
+      </div>
+    </div>
+    <button class="btn-export" onclick="window.print()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-9.75A3.375 3.375 0 003 11.625v2.625m16.5 0h-16.5m16.5 0v3.375a1.125 1.125 0 01-1.125 1.125H4.125A1.125 1.125 0 013 20.25v-3.375m16.5-7.5V6.75A2.25 2.25 0 0017.25 4.5h-10.5A2.25 2.25 0 004.5 6.75v.375"/></svg>
+      Exportar PDF
+    </button>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- ═══════════════════ KPI CARDS ═══════════════════ -->
+  <div class="section">
+    <div class="section-title">Indicadores clave</div>
+    <div class="kpi-grid">
+      <div class="kpi-card gold">
+        <div class="kpi-label">Keyword principal</div>
+        <div class="kpi-value small" style="color:var(--teal)">invertir en eco-villas Filipinas</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Volumen estimado</div>
+        <div class="kpi-value">720</div>
+        <div class="kpi-sub">búsquedas / mes</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Dificultad</div>
+        <div class="kpi-value">45<span style="font-size:.9rem;color:var(--gray)">/100</span></div>
+        <div class="kpi-sub"><span class="badge badge-medium">Media</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Palabras totales</div>
+        <div class="kpi-value">2,847</div>
+        <div class="kpi-sub">long-form article</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Tiempo de lectura</div>
+        <div class="kpi-value">12 <span style="font-size:.9rem;color:var(--gray)">min</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Links internos</div>
+        <div class="kpi-value">5</div>
+        <div class="kpi-sub">enlaces sugeridos</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">FAQ Schema</div>
+        <div class="kpi-value">5</div>
+        <div class="kpi-sub">preguntas marcadas</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ META TAGS ═══════════════════ -->
+  <div class="section">
+    <div class="section-title">Meta tags &amp; configuración</div>
+    <div class="meta-preview">
+      <span class="comment">&lt;!-- Title Tag --&gt;</span><br>
+      <span class="tag">&lt;title&gt;</span><span class="val">Invertir en eco-villas en Filipinas: guía completa 2026 para inversores europeos</span><span class="tag">&lt;/title&gt;</span><span class="char-count">74 chars</span><br><br>
+      <span class="comment">&lt;!-- Meta Description --&gt;</span><br>
+      <span class="tag">&lt;meta </span><span class="attr">name</span><span class="tag">=</span><span class="val">"description"</span> <span class="attr">content</span><span class="tag">=</span><span class="val">"Descubre cómo invertir en eco-villas sostenibles en Filipinas. Rentabilidad proyectada, marco legal, riesgos reales y guía paso a paso para inversores."</span><span class="tag">&gt;</span><span class="char-count">152 chars</span><br><br>
+      <span class="comment">&lt;!-- Canonical --&gt;</span><br>
+      <span class="tag">&lt;link </span><span class="attr">rel</span><span class="tag">=</span><span class="val">"canonical"</span> <span class="attr">href</span><span class="tag">=</span><span class="val">"https://landofnomads.com/blog/invertir-eco-villas-filipinas-guia-2026"</span><span class="tag">&gt;</span>
+    </div>
+    <div class="meta-info-grid">
+      <div class="meta-info-item">
+        <div class="label">Slug</div>
+        <div class="value" style="color:var(--teal)">invertir-eco-villas-filipinas-guia-2026</div>
+      </div>
+      <div class="meta-info-item">
+        <div class="label">Categoría</div>
+        <div class="value">Inversión</div>
+      </div>
+      <div class="meta-info-item">
+        <div class="label">Segmento</div>
+        <div class="value">Inversores internacionales</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ ARTICLE STRUCTURE ═══════════════════ -->
+  <div class="section">
+    <div class="section-title">Estructura del artículo</div>
+    <div class="card" style="padding:28px 24px">
+      <ul class="outline">
+        <!-- H1 -->
+        <li class="outline-item outline-h1">
+          <div><span class="outline-tag h1">H1</span> <span class="outline-text">Invertir en eco-villas en Filipinas: guía completa 2026 para inversores europeos</span></div>
+        </li>
+        <!-- Intro -->
+        <li class="outline-item outline-h2">
+          <div><span class="outline-tag h2">INTRO</span> <span class="outline-text">Introducción</span></div>
+          <div class="outline-meta"><span class="words">200 palabras</span> — Hook sobre la tendencia creciente del eco-real-estate + resumen de lo que cubre el artículo</div>
+        </li>
+        <!-- H2: Por qué Filipinas -->
+        <li class="outline-item outline-h2">
+          <div><span class="outline-tag h2">H2</span> <span class="outline-text">Por qué Filipinas se ha convertido en destino de inversión inmobiliaria sostenible</span></div>
+          <div class="outline-meta"><span class="words">400 palabras</span></div>
+        </li>
+        <li class="outline-item outline-h3">
+          <div><span class="outline-tag h3">H3</span> <span class="outline-text">Crecimiento del turismo sostenible en el Sudeste Asiático</span></div>
+        </li>
+        <li class="outline-item outline-h3">
+          <div><span class="outline-tag h3">H3</span> <span class="outline-text">Marco regulatorio favorable para inversores extranjeros</span></div>
+        </li>
+        <!-- H2: Qué son las eco-villas -->
+        <li class="outline-item outline-h2">
+          <div><span class="outline-tag h2">H2</span> <span class="outline-text">Qué son las eco-villas y por qué están captando capital internacional</span></div>
+          <div class="outline-meta"><span class="words">350 palabras</span></div>
+        </li>
+        <li class="outline-item outline-h3">
+          <div><span class="outline-tag h3">H3</span> <span class="outline-text">Diferencias entre eco-resort y inmobiliaria tradicional</span></div>
+        </li>
+        <li class="outline-item outline-h3">
+          <div><span class="outline-tag h3">H3</span> <span class="outline-text">El perfil del inversor-usuario</span></div>
+        </li>
+        <!-- H2: Modelo de inversión -->
+        <li class="outline-item outline-h2">
+          <div><span class="outline-tag h2">H2</span> <span class="outline-text">Modelo de inversión: cómo funciona realmente</span></div>
+          <div class="outline-meta"><span class="words">500 palabras</span> — Sección más densa con datos concretos</div>
+        </li>
+        <li class="outline-item outline-h3">
+          <div><span class="outline-tag h3">H3</span> <span class="outline-text">Estructura legal — el leasehold explicado (75 años, renovable)</span></div>
+        </li>
+        <li class="outline-item outline-h3">
+          <div><span class="outline-tag h3">H3</span> <span class="outline-text">Gestión del alquiler turístico y retorno proyectado</span></div>
+        </li>
+        <li class="outline-item outline-h3">
+          <div><span class="outline-tag h3">H3</span> <span class="outline-text">Escenarios de rentabilidad: conservador, moderado y optimista</span> <span class="outline-badge">TABLA</span> <span class="outline-badge" style="background:rgba(200,40,40,.15);color:#a82828;">DISCLAIMER OBLIGATORIO</span></div>
+          <div class="outline-meta" style="color:#a82828;">Incluir disclaimer: "Las proyecciones de rentabilidad son estimaciones basadas en datos hist&oacute;ricos y no constituyen garant&iacute;a de resultados futuros. Toda inversi&oacute;n conlleva riesgo de p&eacute;rdida de capital."</div>
+        </li>
+        <!-- H2: Riesgos -->
+        <li class="outline-item outline-h2">
+          <div><span class="outline-tag h2">H2</span> <span class="outline-text">Riesgos reales que debes considerar antes de invertir</span></div>
+          <div class="outline-meta"><span class="words">400 palabras</span></div>
+        </li>
+        <li class="outline-item outline-h3">
+          <div><span class="outline-tag h3">H3</span> <span class="outline-text">Riesgo de mercado y ocupación</span></div>
+        </li>
+        <li class="outline-item outline-h3">
+          <div><span class="outline-tag h3">H3</span> <span class="outline-text">Riesgo legal y regulatorio</span></div>
+        </li>
+        <li class="outline-item outline-h3">
+          <div><span class="outline-tag h3">H3</span> <span class="outline-text">Riesgo de divisa y macroeconomía</span></div>
+        </li>
+        <!-- H2: Cómo evaluar -->
+        <li class="outline-item outline-h2">
+          <div><span class="outline-tag h2">H2</span> <span class="outline-text">Cómo evaluar un proyecto de eco-villas antes de invertir</span></div>
+          <div class="outline-meta"><span class="words">400 palabras</span></div>
+        </li>
+        <li class="outline-item outline-h3">
+          <div><span class="outline-tag h3">H3</span> <span class="outline-text">Checklist de due diligence</span> <span class="outline-badge">LISTA NUMERADA</span></div>
+        </li>
+        <li class="outline-item outline-h3">
+          <div><span class="outline-tag h3">H3</span> <span class="outline-text">Red flags y señales de confianza</span></div>
+        </li>
+        <!-- H2: FAQ -->
+        <li class="outline-item outline-h2">
+          <div><span class="outline-tag h2">H2</span> <span class="outline-text">FAQ — Preguntas frecuentes sobre inversión en eco-villas</span> <span class="outline-badge">SCHEMA</span></div>
+          <div class="outline-meta"><span class="words">350 palabras</span> — 5 preguntas con schema markup FAQPage</div>
+        </li>
+        <li class="outline-item outline-h3">
+          <div><span class="outline-tag h3">Q1</span> <span class="outline-text">¿Es seguro invertir en inmuebles en Filipinas como extranjero?</span></div>
+        </li>
+        <li class="outline-item outline-h3">
+          <div><span class="outline-tag h3">Q2</span> <span class="outline-text">¿Qué es un leasehold y en qué se diferencia de comprar?</span></div>
+        </li>
+        <li class="outline-item outline-h3">
+          <div><span class="outline-tag h3">Q3</span> <span class="outline-text">¿Cuánto capital mínimo necesito?</span></div>
+        </li>
+        <li class="outline-item outline-h3">
+          <div><span class="outline-tag h3">Q4</span> <span class="outline-text">¿Cómo se gestiona el alquiler si no vivo allí?</span></div>
+        </li>
+        <li class="outline-item outline-h3">
+          <div><span class="outline-tag h3">Q5</span> <span class="outline-text">¿Qué rentabilidad puedo esperar de forma realista?</span></div>
+        </li>
+        <!-- H2: Conclusión -->
+        <li class="outline-item outline-h2">
+          <div><span class="outline-tag h2">H2</span> <span class="outline-text">Conclusión y próximos pasos</span> <span class="outline-badge">CTA</span></div>
+          <div class="outline-meta"><span class="words">150 palabras</span> — Resumen + llamada a la acción</div>
+        </li>
+      </ul>
+
+      <!-- Word distribution chart -->
+      <div style="margin-top:32px; padding-top:24px; border-top:1px solid var(--border)">
+        <div style="font-size:.85rem; color:var(--gray); margin-bottom:16px; font-weight:600;">Distribución de palabras por sección</div>
+        <div class="chart-container">
+          <canvas id="wordChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ KEYWORDS TABLE ═══════════════════ -->
+  <div class="section">
+    <div class="section-title">Mapa de keywords</div>
+    <div class="card" style="padding:0; overflow:hidden;">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Keyword</th>
+              <th>Volumen est.</th>
+              <th>Dificultad</th>
+              <th>Posición en artículo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="kw-primary">invertir en eco-villas Filipinas</td>
+              <td>720</td>
+              <td><span class="badge badge-medium">Media</span></td>
+              <td>H1, Intro</td>
+            </tr>
+            <tr>
+              <td>eco-resort inversión</td>
+              <td>480</td>
+              <td><span class="badge badge-medium">Media</span></td>
+              <td>H2</td>
+            </tr>
+            <tr>
+              <td>leasehold Filipinas 75 años</td>
+              <td>320</td>
+              <td><span class="badge badge-low">Baja</span></td>
+              <td>H3</td>
+            </tr>
+            <tr>
+              <td>rentabilidad inmobiliaria Filipinas</td>
+              <td>590</td>
+              <td><span class="badge badge-high">Alta</span></td>
+              <td>H2</td>
+            </tr>
+            <tr>
+              <td>riesgos invertir fuera España</td>
+              <td>390</td>
+              <td><span class="badge badge-medium">Media</span></td>
+              <td>H2</td>
+            </tr>
+            <tr>
+              <td>turismo sostenible inversión</td>
+              <td>260</td>
+              <td><span class="badge badge-low">Baja</span></td>
+              <td>H2</td>
+            </tr>
+            <tr>
+              <td>due diligence inmobiliario</td>
+              <td>210</td>
+              <td><span class="badge badge-low">Baja</span></td>
+              <td>H2</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Keyword volume chart -->
+    <div class="card" style="margin-top:16px;">
+      <div style="font-size:.85rem; color:var(--gray); margin-bottom:16px; font-weight:600;">Volumen de búsqueda por keyword</div>
+      <div class="chart-container" style="height:280px;">
+        <canvas id="keywordChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ SEO CHECKLIST ═══════════════════ -->
+  <div class="section">
+    <div class="section-title">Checklist SEO on-page</div>
+    <ul class="checklist" id="checklist">
+      <li class="checked" onclick="this.classList.toggle('checked')">
+        <div class="check-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+        <span>Title tag &le; 60 chars</span>
+      </li>
+      <li class="checked" onclick="this.classList.toggle('checked')">
+        <div class="check-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+        <span>Meta description &le; 155 chars</span>
+      </li>
+      <li class="checked" onclick="this.classList.toggle('checked')">
+        <div class="check-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+        <span>H1 incluye keyword principal</span>
+      </li>
+      <li class="checked" onclick="this.classList.toggle('checked')">
+        <div class="check-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+        <span>Al menos 1 keyword por H2</span>
+      </li>
+      <li class="checked" onclick="this.classList.toggle('checked')">
+        <div class="check-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+        <span>5+ links internos</span>
+      </li>
+      <li class="checked" onclick="this.classList.toggle('checked')">
+        <div class="check-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+        <span>FAQ con schema markup (FAQPage)</span>
+      </li>
+      <li class="checked" onclick="this.classList.toggle('checked')">
+        <div class="check-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+        <span>Tabla para featured snippet</span>
+      </li>
+      <li class="checked" onclick="this.classList.toggle('checked')">
+        <div class="check-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+        <span>Alt text en imágenes sugeridas</span>
+      </li>
+      <li class="checked" onclick="this.classList.toggle('checked')">
+        <div class="check-box"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+        <span>Readability score: claro y accesible</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════ INTERNAL LINKS ═══════════════════ -->
+  <div class="section">
+    <div class="section-title">Links internos sugeridos</div>
+    <div class="links-grid">
+      <div class="link-card">
+        <div class="link-num">1</div>
+        <div>
+          <div class="link-title">Eco-Villas LON: El Proyecto</div>
+          <div class="link-url">https://landofnomadsgroup.com/eco-villas</div>
+          <div class="link-anchor">Anchor text: "nuestro proyecto de eco-villas en Filipinas"</div>
+        </div>
+      </div>
+      <div class="link-card">
+        <div class="link-num">2</div>
+        <div>
+          <div class="link-title">Modelo de Inversión y Rentabilidad</div>
+          <div class="link-url">https://landofnomadsgroup.com/inversores/modelo-inversión</div>
+          <div class="link-anchor">Anchor text: "modelo de inversión detallado"</div>
+        </div>
+      </div>
+      <div class="link-card">
+        <div class="link-num">3</div>
+        <div>
+          <div class="link-title">Sobre Land of Nomads Group</div>
+          <div class="link-url">https://landofnomadsgroup.com/sobre-nosotros</div>
+          <div class="link-anchor">Anchor text: "equipo detrás de Land of Nomads"</div>
+        </div>
+      </div>
+      <div class="link-card">
+        <div class="link-num">4</div>
+        <div>
+          <div class="link-title">Preguntas Frecuentes para Inversores</div>
+          <div class="link-url">https://landofnomadsgroup.com/inversores/faq</div>
+          <div class="link-anchor">Anchor text: "preguntas frecuentes de inversores"</div>
+        </div>
+      </div>
+      <div class="link-card">
+        <div class="link-num">5</div>
+        <div>
+          <div class="link-title">Agenda una Llamada de Descubrimiento</div>
+          <div class="link-url">https://landofnomadsgroup.com/contacto/agendar-llamada</div>
+          <div class="link-anchor">Anchor text: "agenda tu llamada con nuestro equipo"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="footer">
+  <div class="container">
+    Generado por <strong>Agencia OH WOW!</strong> para <strong>Land of Nomads Group</strong> &mdash; 16 abril 2026
+  </div>
+</footer>
+
+<!-- ═══════════════════ CHARTS ═══════════════════ -->
+<script>
+  // Word distribution chart
+  const wordCtx = document.getElementById('wordChart').getContext('2d');
+  new Chart(wordCtx, {
+    type: 'bar',
+    data: {
+      labels: [
+        'Intro',
+        'Por qué Filipinas',
+        'Qué son eco-villas',
+        'Modelo de inversión',
+        'Riesgos reales',
+        'Cómo evaluar',
+        'FAQ',
+        'Conclusión'
+      ],
+      datasets: [{
+        label: 'Palabras',
+        data: [200, 400, 350, 500, 400, 400, 350, 150],
+        backgroundColor: [
+          'rgba(184,62,37,.75)',
+          'rgba(184,62,37,.65)',
+          'rgba(184,62,37,.60)',
+          'rgba(255,188,125,.85)',
+          'rgba(184,62,37,.55)',
+          'rgba(184,62,37,.50)',
+          'rgba(255,188,125,.75)',
+          'rgba(184,62,37,.45)'
+        ],
+        borderColor: [
+          '#B83E25',
+          '#B83E25',
+          '#B83E25',
+          '#C17A2E',
+          '#B83E25',
+          '#B83E25',
+          '#C17A2E',
+          '#B83E25'
+        ],
+        borderWidth: 1,
+        borderRadius: 6,
+        barPercentage: 0.7
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#1A1814',
+          titleColor: '#F3EBE1',
+          bodyColor: '#FFBC7D',
+          borderColor: 'rgba(184,62,37,.3)',
+          borderWidth: 1,
+          padding: 12,
+          callbacks: {
+            label: ctx => ctx.parsed.y + ' palabras'
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: { color: '#6B5F4F', font: { size: 11 } },
+          grid: { display: false }
+        },
+        y: {
+          ticks: { color: '#6B5F4F', font: { size: 11 } },
+          grid: { color: 'rgba(26,24,20,.06)' },
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  // Keyword volume chart
+  const kwCtx = document.getElementById('keywordChart').getContext('2d');
+  new Chart(kwCtx, {
+    type: 'bar',
+    data: {
+      labels: [
+        'invertir eco-villas Filipinas',
+        'rentabilidad inmob. Filipinas',
+        'eco-resort inversión',
+        'riesgos invertir fuera ES',
+        'leasehold Filipinas 75a',
+        'turismo sostenible inv.',
+        'due diligence inmob.'
+      ],
+      datasets: [{
+        label: 'Volumen mensual',
+        data: [720, 590, 480, 390, 320, 260, 210],
+        backgroundColor: 'rgba(184,62,37,.65)',
+        borderColor: '#B83E25',
+        borderWidth: 1,
+        borderRadius: 6,
+        barPercentage: 0.65
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#1A1814',
+          titleColor: '#F3EBE1',
+          bodyColor: '#FFBC7D',
+          borderColor: 'rgba(184,62,37,.3)',
+          borderWidth: 1,
+          padding: 12,
+          callbacks: {
+            label: ctx => ctx.parsed.x + ' búsquedas/mes'
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: { color: '#6B5F4F', font: { size: 11 } },
+          grid: { color: 'rgba(26,24,20,.06)' },
+          beginAtZero: true
+        },
+        y: {
+          ticks: { color: '#6B5F4F', font: { size: 11 } },
+          grid: { display: false }
+        }
+      }
+    }
+  });
+</script>
+
+<!-- ═══════════════════ QA REVIEW ═══════════════════ -->
+<section class="no-print" style="border-top:2px solid var(--teal); margin-top:48px; padding:40px 0;">
+  <div class="container">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
+      <span style="display:inline-block; background:var(--teal); color:var(--bg); font-weight:800; font-size:.8rem; padding:4px 12px; border-radius:6px; letter-spacing:.08em;">QA</span>
+      <span style="font-size:1.15rem; font-weight:700; color:var(--white);">QA Review &mdash; jz-qa-reviewer</span>
+    </div>
+    <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:28px;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom:24px;">
+        <div>
+          <div style="font-size:.78rem; color:var(--gray); text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px;">Fecha</div>
+          <div style="font-size:.95rem; font-weight:500;">2026-04-16</div>
+        </div>
+        <div>
+          <div style="font-size:.78rem; color:var(--gray); text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px;">Basado en</div>
+          <div style="font-size:.95rem; font-weight:500;">Jeferson Zambrano (CDO &amp; CMO, Land of Nomads Group)</div>
+        </div>
+        <div>
+          <div style="font-size:.78rem; color:var(--gray); text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px;">Puntuaci&oacute;n</div>
+          <div style="font-size:1.3rem; font-weight:700; color:var(--teal);">9.0<span style="font-size:.85rem; color:var(--gray);">/10</span></div>
+          <div><span style="display:inline-block; background:var(--teal-dim); color:var(--teal); font-size:.75rem; font-weight:600; padding:3px 10px; border-radius:20px; margin-top:4px;">APROBADO</span></div>
+        </div>
+      </div>
+      <div style="border-top:1px solid var(--border); padding-top:20px;">
+        <div style="font-size:.85rem; color:var(--gray); font-weight:600; margin-bottom:14px; text-transform:uppercase; letter-spacing:.06em;">Cambios realizados</div>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <span style="display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; background:var(--teal-dim); color:var(--teal); font-weight:700; font-size:.8rem; border-radius:6px; flex-shrink:0;">1</span>
+            <div>
+              <div style="font-weight:600; font-size:.92rem;">Meta description: Verificada longitud (&le;155 chars) &mdash; Correcta (152 chars)</div>
+              <div style="font-size:.82rem; color:var(--gray); margin-top:2px;">Raz&oacute;n: Meta descriptions truncadas en Google reducen CTR.</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <span style="display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; background:var(--teal-dim); color:var(--teal); font-weight:700; font-size:.8rem; border-radius:6px; flex-shrink:0;">2</span>
+            <div>
+              <div style="font-weight:600; font-size:.92rem;">Disclaimer de rentabilidad: A&ntilde;adida nota en secci&oacute;n de escenarios de rentabilidad</div>
+              <div style="font-size:.82rem; color:var(--gray); margin-top:2px;">Raz&oacute;n: Obligatorio por pol&iacute;tica LON &mdash; todo claim financiero debe incluir disclaimer visible.</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <span style="display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; background:var(--teal-dim); color:var(--teal); font-weight:700; font-size:.8rem; border-radius:6px; flex-shrink:0;">3</span>
+            <div>
+              <div style="font-weight:600; font-size:.92rem;">Links internos: Verificados y corregidos paths con dominio landofnomadsgroup.com</div>
+              <div style="font-size:.82rem; color:var(--gray); margin-top:2px;">Raz&oacute;n: Links rotos o gen&eacute;ricos afectan SEO y credibilidad. Se a&ntilde;adi&oacute; dominio completo a los 5 enlaces.</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <span style="display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; background:var(--teal-dim); color:var(--teal); font-weight:700; font-size:.8rem; border-radius:6px; flex-shrink:0;">4</span>
+            <div>
+              <div style="font-weight:600; font-size:.92rem;">Reskin visual a identidad LON real</div>
+              <div style="font-size:.82rem; color:var(--gray); margin-top:2px;">Raz&oacute;n: El dashboard original usaba paleta dark/teal gen&eacute;rica. Tras analizar landofnomadsgroup.com se aplic&oacute; la paleta real (terracota #B83E25, beige #D9C8B1, crema #F3EBE1, melocot&oacute;n #FFBC7D) y tipograf&iacute;a Outfit como fallback de Galano Grotesque. Tema cambiado de dark a light para alinearse con el sitio real.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

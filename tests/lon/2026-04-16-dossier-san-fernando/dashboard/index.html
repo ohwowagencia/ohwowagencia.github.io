@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossier Test — San Fernando Eco-Villas | LON Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F3EBE1;--bg2:#FFFFFF;--bg3:#D9C8B1;--bg4:#EADFC9;
+  --teal:#B83E25;--teal-dim:rgba(184,62,37,.10);--teal-glow:rgba(184,62,37,.22);
+  --gold:#FFBC7D;--gold-dim:rgba(255,188,125,.18);
+  --white:#1A1814;--gray:#6B5F4F;--gray2:#5A5040;--gray3:#B8A88E;
+  --red:#B23A2A;--green:#5E8A4F;--amber:#C98A2B;
+  --radius:12px;--radius-sm:8px;--radius-xs:6px;
+  --shadow:0 4px 24px rgba(92,70,50,.14);
+  --shadow-sm:0 2px 12px rgba(92,70,50,.10);
+}
+html{font-size:15px;scroll-behavior:smooth}
+body{font-family: 'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--white);line-height:1.6;min-height:100vh}
+
+/* Utility */
+.container{max-width:1340px;margin:0 auto;padding:0 24px}
+.section-title{font-size:1.5rem;font-weight:700;margin-bottom:1.2rem;display:flex;align-items:center;gap:.6rem}
+.section-title .icon{width:32px;height:32px;border-radius:var(--radius-xs);background:var(--teal-dim);display:flex;align-items:center;justify-content:center;color:var(--teal);font-size:.9rem;font-weight:800;flex-shrink:0}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.badge-teal{background:var(--teal-dim);color:var(--teal)}
+.badge-gold{background:var(--gold-dim);color:var(--gold)}
+.badge-green{background:rgba(94,138,79,.14);color:var(--green)}
+.badge-amber{background:rgba(201,138,43,.14);color:var(--amber)}
+
+/* Header */
+.header{background:linear-gradient(135deg,var(--bg2),var(--bg));border-bottom:1px solid var(--gray3);padding:28px 0;position:sticky;top:0;z-index:100;backdrop-filter:blur(20px)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.header-brand{display:flex;align-items:center;gap:18px}
+.header-logo{width:52px;height:52px;border-radius:var(--radius);background:linear-gradient(135deg,var(--teal),#8C2A18);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1rem;color:var(--bg);letter-spacing:1px}
+.header-text h1{font-size:1.35rem;font-weight:800;letter-spacing:-.3px;line-height:1.2}
+.header-text p{font-size:.8rem;color:var(--gray);margin-top:2px}
+.header-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.header-date{font-size:.82rem;color:var(--gray);background:var(--bg2);padding:8px 16px;border-radius:var(--radius-sm);border:1px solid var(--gray3)}
+.btn-export{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:linear-gradient(135deg,var(--teal),#8C2A18);color:#FFFFFF;font-weight:700;font-size:.82rem;border:none;border-radius:var(--radius-sm);cursor:pointer;transition:all .2s;text-transform:uppercase;letter-spacing:.5px}
+.btn-export:hover{transform:translateY(-1px);box-shadow:0 6px 20px var(--teal-glow)}
+.btn-export svg{width:16px;height:16px}
+
+/* KPI Cards */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:14px;margin:32px 0}
+.kpi-card{background:var(--bg2);border:1px solid var(--gray3);border-radius:var(--radius);padding:20px;transition:all .25s;position:relative;overflow:hidden}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--gold));opacity:0;transition:opacity .25s}
+.kpi-card:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:var(--shadow)}
+.kpi-card:hover::before{opacity:1}
+.kpi-label{font-size:.7rem;color:var(--gray2);text-transform:uppercase;letter-spacing:.8px;font-weight:600;margin-bottom:6px}
+.kpi-value{font-size:1.15rem;font-weight:800;color:var(--white);line-height:1.2}
+.kpi-value.teal{color:var(--teal)}
+.kpi-value.gold{color:var(--gold)}
+
+/* Section Cards */
+.sections-grid{display:flex;flex-direction:column;gap:20px;margin:32px 0}
+.sec-card{background:var(--bg2);border:1px solid var(--gray3);border-radius:var(--radius);overflow:hidden;transition:all .25s}
+.sec-card:hover{border-color:rgba(184,62,37,.35);box-shadow:var(--shadow)}
+.sec-header{display:flex;align-items:center;gap:14px;padding:20px 24px;background:linear-gradient(135deg,var(--bg),var(--bg2));border-bottom:1px solid var(--gray3);cursor:pointer}
+.sec-num{width:40px;height:40px;border-radius:var(--radius-xs);background:linear-gradient(135deg,var(--teal),#8C2A18);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.95rem;color:#FFFFFF;flex-shrink:0}
+.sec-header-text{flex:1;min-width:0}
+.sec-header-text h3{font-size:1.05rem;font-weight:700;letter-spacing:-.2px}
+.sec-header-text p{font-size:.75rem;color:var(--gray);margin-top:2px}
+.sec-pages{background:var(--bg2);padding:5px 12px;border-radius:20px;font-size:.7rem;color:var(--gray);font-weight:600;white-space:nowrap;border:1px solid var(--gray3)}
+.sec-body{padding:24px;line-height:1.75;color:var(--gray)}
+.sec-body p{margin-bottom:12px}
+.sec-body p:last-child{margin-bottom:0}
+.sec-body strong{color:var(--white);font-weight:600}
+.sec-body ul{list-style:none;padding:0;margin:12px 0}
+.sec-body ul li{padding:6px 0 6px 22px;position:relative;color:var(--gray)}
+.sec-body ul li::before{content:'';position:absolute;left:0;top:14px;width:8px;height:8px;border-radius:50%;background:var(--teal)}
+.sec-body .design-note{background:var(--bg);border:1px dashed var(--teal);border-radius:var(--radius-sm);padding:14px 18px;margin-top:14px;font-size:.82rem;color:var(--gray2);font-style:italic}
+.sec-body .design-note::before{content:'DISEÑO: ';font-weight:700;color:var(--gold);font-style:normal}
+.sec-body .cifras-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:16px}
+.sec-body .cifra-item{background:var(--bg);border:1px solid var(--gray3);border-radius:var(--radius-sm);padding:14px;text-align:center;border-top:3px solid var(--teal)}
+.sec-body .cifra-item .num{font-size:1.3rem;font-weight:900;color:var(--teal);display:block}
+.sec-body .cifra-item .label{font-size:.72rem;color:var(--gray2);text-transform:uppercase;letter-spacing:.5px;margin-top:4px;display:block}
+.sec-body .disclaimer{background:rgba(178,58,42,.08);border:2px solid rgba(178,58,42,.55);border-radius:var(--radius-sm);padding:20px 22px;margin-top:20px;font-size:.88rem;color:var(--red);line-height:1.7;box-shadow:0 0 16px rgba(178,58,42,.10)}
+.sec-body .disclaimer::before{content:'\\26A0  AVISO LEGAL \u2014 LEASE ATENTAMENTE';display:block;font-weight:800;margin-bottom:8px;font-size:.78rem;letter-spacing:.6px}
+.sec-body .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:16px}
+.sec-body .step-item{background:var(--bg);border:1px solid var(--gray3);border-radius:var(--radius-sm);padding:18px;text-align:center}
+.sec-body .step-item .step-num{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--teal),#8C2A18);display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:.85rem;color:#FFFFFF;margin-bottom:10px}
+.sec-body .step-item .step-title{font-weight:700;color:var(--white);font-size:.9rem;margin-bottom:4px}
+
+/* Tables */
+.table-wrap{overflow-x:auto;margin:16px 0}
+.data-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.data-table th{background:var(--bg3);color:var(--teal);font-weight:700;text-transform:uppercase;font-size:.7rem;letter-spacing:.8px;padding:12px 16px;text-align:left;border-bottom:2px solid var(--teal);white-space:nowrap}
+.data-table td{padding:12px 16px;border-bottom:1px solid var(--gray3);color:var(--gray)}
+.data-table tr:hover td{background:rgba(184,62,37,.05)}
+.data-table td:first-child{color:var(--white);font-weight:500}
+
+/* Charts */
+.charts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:20px;margin:32px 0}
+.chart-card{background:var(--bg2);border:1px solid var(--gray3);border-radius:var(--radius);padding:24px}
+.chart-card h3{font-size:1rem;font-weight:700;margin-bottom:18px;color:var(--white)}
+.chart-container{position:relative;max-height:320px;display:flex;justify-content:center}
+
+/* Design Notes */
+.design-notes-section{background:var(--bg2);border:1px solid var(--gray3);border-radius:var(--radius);padding:28px;margin:32px 0}
+.design-notes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:18px}
+.design-note-card{background:var(--bg);border:1px solid var(--gray3);border-radius:var(--radius-sm);padding:18px;border-left:3px solid var(--gold)}
+.design-note-card h4{font-size:.9rem;font-weight:700;color:var(--gold);margin-bottom:8px}
+.design-note-card p{font-size:.82rem;color:var(--gray);line-height:1.6}
+
+/* Checklist */
+.checklist-section{background:var(--bg2);border:1px solid var(--gray3);border-radius:var(--radius);margin:32px 0;overflow:hidden}
+.checklist-toggle{width:100%;padding:20px 24px;background:var(--bg3);border:none;color:var(--white);font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:background .2s}
+.checklist-toggle:hover{background:var(--bg4)}
+
+.checklist-toggle .arrow{transition:transform .3s;font-size:1.2rem;color:var(--teal)}
+.checklist-toggle.open .arrow{transform:rotate(180deg)}
+.checklist-items{padding:0 24px;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease}
+.checklist-items.open{max-height:600px;padding:20px 24px}
+.checklist-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--gray3)}
+.checklist-item:last-child{border-bottom:none}
+.checklist-item input[type="checkbox"]{width:20px;height:20px;accent-color:var(--teal);cursor:pointer;flex-shrink:0}
+.checklist-item label{font-size:.88rem;color:var(--gray);cursor:pointer;transition:color .2s}
+.checklist-item input:checked+label{color:var(--teal);text-decoration:line-through;text-decoration-color:var(--gray3)}
+
+/* Testimonial cards */
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:14px}
+.testimonial-card{background:var(--bg);border:1px solid var(--gray3);border-radius:var(--radius-sm);padding:18px;border-top:3px solid var(--gold)}
+.testimonial-card .quote{font-size:.85rem;color:var(--gray);font-style:italic;line-height:1.7;margin-bottom:12px}
+.testimonial-card .author{font-size:.78rem;font-weight:700;color:var(--gold)}
+
+/* Contact grid */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:14px}
+.contact-item{background:var(--bg);border:1px solid var(--gray3);border-radius:var(--radius-sm);padding:16px;text-align:center}
+.contact-item .c-label{font-size:.7rem;color:var(--gray2);text-transform:uppercase;letter-spacing:.5px;font-weight:600;margin-bottom:4px}
+.contact-item .c-value{font-size:.88rem;color:var(--teal);font-weight:600}
+
+/* Footer */
+.footer{border-top:1px solid var(--gray3);padding:28px 0;margin-top:48px;text-align:center}
+.footer p{font-size:.78rem;color:var(--gray2)}
+.footer .brand-line{color:var(--gold);font-weight:600}
+
+/* QA Section */
+.qa-section{border-top:3px solid var(--teal);margin-top:48px;padding:32px 0}
+.qa-header{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.qa-badge{display:inline-flex;align-items:center;justify-content:center;padding:6px 16px;background:var(--teal);color:#FFFFFF;font-weight:900;font-size:.75rem;border-radius:var(--radius-xs);letter-spacing:1px;text-transform:uppercase}
+.qa-title{font-size:1.15rem;font-weight:700;color:var(--white)}
+.qa-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;font-size:.82rem;color:var(--gray)}
+.qa-score{display:inline-block;padding:6px 16px;background:rgba(184,62,37,.10);border:1px solid var(--teal);border-radius:var(--radius-sm);font-size:.95rem;font-weight:800;color:var(--teal);margin-bottom:20px}
+.qa-changes{list-style:none;padding:0;margin:0}
+.qa-changes li{padding:14px 18px;background:var(--bg2);border:1px solid var(--gray3);border-radius:var(--radius-sm);margin-bottom:10px;font-size:.85rem;color:var(--gray);line-height:1.7}
+.qa-changes li strong{color:var(--white);font-weight:600}
+.qa-changes li .qa-reason{display:block;margin-top:6px;font-size:.78rem;color:var(--gray2);font-style:italic}
+
+/* Print */
+@media print{
+  .header{position:static}
+  .btn-export,.checklist-toggle,.checklist-items,.no-print{display:none}
+  body{background:#fff;color:#000}
+  .kpi-card,.sec-card,.chart-card,.design-note-card,.checklist-section{break-inside:avoid}
+}
+
+/* Responsive */
+@media(max-width:768px){
+  html{font-size:14px}
+  .header-inner{flex-direction:column;align-items:flex-start}
+  .kpi-grid{grid-template-columns:repeat(2,1fr)}
+  .charts-grid{grid-template-columns:1fr}
+  .sec-header{flex-wrap:wrap}
+  .steps-grid{grid-template-columns:1fr!important}
+}
+@media(max-width:480px){
+  .kpi-grid{grid-template-columns:1fr}
+  .container{padding:0 14px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+<div class="container header-inner">
+  <div class="header-brand">
+    <div class="header-logo">LON</div>
+    <div class="header-text">
+      <h1>Dossier Test &mdash; San Fernando Eco-Villas</h1>
+      <p>Land of Nomads Group &middot; Eco-Resort Developer &middot; Philippines</p>
+    </div>
+  </div>
+  <div class="header-meta">
+    <span class="badge badge-teal">Dossier QA</span>
+    <span class="badge badge-gold">San Fernando</span>
+    <span class="header-date">16 abril 2026</span>
+    <button class="btn-export" onclick="window.print()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      Exportar PDF
+    </button>
+  </div>
+</div>
+</header>
+
+<main class="container">
+
+<!-- KPI CARDS -->
+<section class="kpi-grid">
+  <div class="kpi-card"><div class="kpi-label">Proyecto</div><div class="kpi-value">San Fernando</div></div>
+  <div class="kpi-card"><div class="kpi-label">Ubicacion</div><div class="kpi-value">Camarines Sur, Filipinas</div></div>
+  <div class="kpi-card"><div class="kpi-label">Unidades</div><div class="kpi-value teal">368 eco-villas</div></div>
+  <div class="kpi-card"><div class="kpi-label">Estado</div><div class="kpi-value"><span class="badge badge-green">Fase 1 y 2 en construccion</span></div></div>
+  <div class="kpi-card"><div class="kpi-label">Inversión minima</div><div class="kpi-value gold">~85.000 EUR</div></div>
+  <div class="kpi-card"><div class="kpi-label">ROI proyectado</div><div class="kpi-value teal">12-18% anual</div></div>
+  <div class="kpi-card"><div class="kpi-label">Idiomas</div><div class="kpi-value">Español + Ingles</div></div>
+</section>
+
+<!-- DOSSIER SECTIONS -->
+<h2 class="section-title"><span class="icon">13</span> Estructura del Dossier &mdash; 13 Secciones</h2>
+
+<div class="sections-grid">
+
+  <!-- SECTION 1 -->
+  <div class="sec-card">
+    <div class="sec-header">
+      <div class="sec-num">1</div>
+      <div class="sec-header-text"><h3>PORTADA</h3><p>Página de impacto visual</p></div>
+      <span class="sec-pages">1 pag</span>
+    </div>
+    <div class="sec-body">
+      <p><strong>Render hero de San Fernando</strong>, logo LON, ubicacion destacada. La portada es la primera impresion del inversor: debe transmitir exclusividad, naturaleza y confianza.</p>
+      <div class="design-note">Render de villa premium a sangre completa, overlay oscuro 30%, título en blanco, logo esquina superior. Formato A4 vertical, resolucion minima 300 DPI para impresion.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="sec-card">
+    <div class="sec-header">
+      <div class="sec-num">2</div>
+      <div class="sec-header-text"><h3>INDICE</h3><p>Navegacion del documento</p></div>
+      <span class="sec-pages">1 pag</span>
+    </div>
+    <div class="sec-body">
+      <p><strong>Navegacion de 13 secciones</strong> con numero de página. Diseño limpio, tipografia jerarquica, numeros de sección alineados con numeros de página.</p>
+      <p>El indice debe funcionar como mapa visual del dossier, con los títulos de cada sección claramente diferenciados y alineados a la derecha con el numero de página correspondiente.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="sec-card">
+    <div class="sec-header">
+      <div class="sec-num">3</div>
+      <div class="sec-header-text"><h3>LON GROUP: QUIENES SOMOS</h3><p>Presentacion corporativa</p></div>
+      <span class="sec-pages">2 pags</span>
+    </div>
+    <div class="sec-body">
+      <p>Land of Nomads Group nace de una visión simple pero ambiciosa: <strong>crear espacios donde la inversión inteligente y la vida con propósito se encuentren</strong>. Desde nuestra fundacion, hemos reunido a más de 400 inversores de 14 países que comparten una idea: es posible generar rentabilidad sin renunciar al impacto positivo.</p>
+      <p>Disenamos, construimos y gestionamos complejos residenciales turisticos sostenibles en destinos de alto potencial en Filipinas. Nuestro modelo integra <strong>inversión inmobiliaria, gestión de alquiler turistico y comunidad internacional</strong> &mdash; un ecosistema completo donde cada pieza refuerza a las demas.</p>
+      <p>No somos una inmobiliaria tradicional. Somos un equipo multidisciplinar (arquitectos, gestores, especialistas legales, expertos en sostenibilidad) que acompana al inversor <strong>desde la primera llamada hasta la primera ocupación de su propiedad</strong>.</p>
+      <div class="cifras-grid">
+        <div class="cifra-item"><span class="num">+400</span><span class="label">Inversores</span></div>
+        <div class="cifra-item"><span class="num">14</span><span class="label">Paises</span></div>
+        <div class="cifra-item"><span class="num">+300</span><span class="label">Unidades vendidas</span></div>
+        <div class="cifra-item"><span class="num">3</span><span class="label">Proyectos en desarrollo</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="sec-card">
+    <div class="sec-header">
+      <div class="sec-num">4</div>
+      <div class="sec-header-text"><h3>EL DESTINO: CAMARINES SUR</h3><p>Contexto geografico y económico</p></div>
+      <span class="sec-pages">2 pags</span>
+    </div>
+    <div class="sec-body">
+      <p>San Fernando se ubica en la provincia de <strong>Camarines Sur</strong>, en la region de Bicol, Filipinas. Un destino emergente que combina playas virgenes, biodiversidad excepcional y una infraestructura turistica en rápido crecimiento.</p>
+      <p><strong>Por que Filipinas?</strong></p>
+      <ul>
+        <li>7.a economía más grande de Asia, con crecimiento del PIB sostenido (6-7% anual)</li>
+        <li>7.641 islas con potencial turistico masivo aún sin explotar</li>
+        <li>Marco legal favorable para inversores extranjeros (leasehold de 50+25 años)</li>
+        <li>Coste de construccion 40-60% menor que en Europa</li>
+        <li>Poblacion joven, anglofona y hospitalaria</li>
+        <li>Turismo internacional en recuperacion acelerada post-pandemia</li>
+      </ul>
+      <div class="design-note">Mapa de Filipinas con pin en Camarines Sur, fotos del entorno natural, datos en iconos. Usar paleta verde/azul para transmitir naturaleza y mar.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="sec-card">
+    <div class="sec-header">
+      <div class="sec-num">5</div>
+      <div class="sec-header-text"><h3>EL PROYECTO: SAN FERNANDO</h3><p>Master plan y especificaciones</p></div>
+      <span class="sec-pages">3 pags</span>
+    </div>
+    <div class="sec-body">
+      <p><strong>San Fernando es el proyecto insignia de LON Group</strong>: un complejo de 368 eco-villas disenado para combinar rentabilidad turistica con vida sostenible. El master plan integra naturaleza, comunidad y tecnología en un entorno privilegiado de Camarines Sur.</p>
+      <p><strong>Construccion sostenible (Superadobe 2.0):</strong> Técnica constructiva de bajo impacto ambiental que utiliza materiales locales, reduce la huella de carbono un 60% y ofrece un aislamiento termico superior. Las villas estan disenadas para resistir tifones de categoria 5.</p>
+      <p><strong>Infraestructura y amenidades:</strong></p>
+      <ul>
+        <li>Energia solar fotovoltaica con almacenamiento en bateria</li>
+        <li>Sistema de recogida y purificacion de agua de lluvia</li>
+        <li>Piscina comunitaria infinity con vistas al mar</li>
+        <li>Espacio de coworking con Internet de alta velocidad (fibra optica)</li>
+        <li>Restaurante con cocina local e internacional</li>
+        <li>Gimnasio al aire libre y zona de yoga</li>
+        <li>Zonas verdes y senderos ecologicos</li>
+      </ul>
+      <p><strong>Tipos de villa:</strong></p>
+      <ul>
+        <li><strong>Villa Standard</strong> &mdash; 1 dormitorio, ~45 m2, desde 70.000 EUR</li>
+        <li><strong>Villa Premium</strong> &mdash; 2 dormitorios, ~75 m2, desde 110.000 EUR</li>
+      </ul>
+      <div class="design-note">Master plan render aereo, planos de villas Standard y Premium, grid de 3 columnas con iconos de amenidades. Cada amenidad con icono lineal y descripcion corta.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="sec-card">
+    <div class="sec-header">
+      <div class="sec-num">6</div>
+      <div class="sec-header-text"><h3>TIPOS DE UNIDADES</h3><p>Comparativa detallada</p></div>
+      <span class="sec-pages">2 pags</span>
+    </div>
+    <div class="sec-body">
+      <p><strong>Dos tipologias disenadas para perfiles de inversión diferentes.</strong> La Villa Standard ofrece un punto de entrada accesible con alta rotacion turistica; la Villa Premium maximiza el ticket medio por noche y permite uso personal extendido.</p>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Caracteristica</th><th>Villa Standard</th><th>Villa Premium</th></tr></thead>
+          <tbody>
+            <tr><td>Dormitorios</td><td>1</td><td>2</td></tr>
+            <tr><td>Superficie</td><td>~45 m2</td><td>~75 m2</td></tr>
+            <tr><td>Precio desde</td><td>70.000 EUR</td><td>110.000 EUR</td></tr>
+            <tr><td>Capacidad huespedes</td><td>2-3</td><td>4-6</td></tr>
+            <tr><td>Terraza privada</td><td>Si</td><td>Si (ampliada)</td></tr>
+            <tr><td>Piscina privada</td><td>No</td><td>Si</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="sec-card">
+    <div class="sec-header">
+      <div class="sec-num">7</div>
+      <div class="sec-header-text"><h3>MODELO DE INVERSION</h3><p>Como funciona el ecosistema</p></div>
+      <span class="sec-pages">2 pags</span>
+    </div>
+    <div class="sec-body">
+      <p>El modelo de inversión de LON esta disenado para ser <strong>100% pasivo</strong>. El inversor adquiere su eco-villa y LON se encarga de todo lo demas: gestión de alquiler, mantenimiento, experiencia del huesped y optimización de ocupación.</p>
+      <p><strong>Como funciona paso a paso:</strong></p>
+      <ul>
+        <li><strong>Compra:</strong> El inversor adquiere la propiedad (pago fraccionado disponible)</li>
+        <li><strong>Gestión integral:</strong> La plataforma Eco Rentals de LON gestiona reservas, check-in/check-out, limpieza, mantenimiento preventivo y atención al huesped 24/7</li>
+        <li><strong>Ingresos pasivos:</strong> El inversor recibe rendimientos mensuales de la ocupación turistica, con informes detallados en la LON App</li>
+        <li><strong>Uso personal:</strong> El propietario puede disfrutar de su villa un numero de semanas al año (segun plan), combinando inversión y estilo de vida</li>
+      </ul>
+      <p>La plataforma <strong>Eco Rentals</strong> es la pieza central del modelo: tecnología propia que conecta la villa con plataformas de reserva globales (Airbnb, Booking, directo), optimiza precios dinamicamente y garantiza una experiencia 5 estrellas al huesped.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="sec-card">
+    <div class="sec-header">
+      <div class="sec-num">8</div>
+      <div class="sec-header-text"><h3>RENTABILIDAD Y ESCENARIOS</h3><p>Proyecciones financieras</p></div>
+      <span class="sec-pages">2 pags</span>
+    </div>
+    <div class="sec-body">
+      <p><strong>Tres escenarios de rentabilidad</strong> basados en tasas de ocupación reales del mercado turistico de Filipinas y benchmarks de proyectos similares en el sudeste asiatico:</p>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Escenario</th><th>Ocupacion</th><th>Rentabilidad bruta</th><th>Rentabilidad neta</th></tr></thead>
+          <tbody>
+            <tr><td><span class="badge badge-amber">Conservador</span></td><td>55%</td><td>10%</td><td>8%</td></tr>
+            <tr><td><span class="badge badge-green">Moderado</span></td><td>70%</td><td>15%</td><td>12%</td></tr>
+            <tr><td><span class="badge badge-teal">Optimista</span></td><td>85%</td><td>21%</td><td>18%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="disclaimer">Las cifras presentadas son proyecciones basadas en modelos de ocupación y precios de mercado actuales. No constituyen una garantía de retorno. La inversión inmobiliaria conlleva riesgos inherentes. Se recomienda consultar con un asesor financiero independiente.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 9 -->
+  <div class="sec-card" style="border:2px solid var(--teal);box-shadow:0 0 24px rgba(184,62,37,.14)">
+    <div class="sec-header" style="background:linear-gradient(135deg,rgba(184,62,37,.10),var(--bg2))">
+      <div class="sec-num">9</div>
+      <div class="sec-header-text"><h3>TRANSPARENCIA Y RIESGOS <span class="badge badge-teal" style="margin-left:8px;font-size:.65rem">LECTURA OBLIGATORIA</span></h3><p>Gestión de riesgos y mitigacion &mdash; Hechos por encima del hype</p></div>
+      <span class="sec-pages">2 pags</span>
+    </div>
+    <div class="sec-body">
+      <p>LON cree que <strong>la transparencia es la base de la confianza</strong>. A diferencia de muchas promotoras, dedicamos una sección completa del dossier a los riesgos reales de la inversión y como los mitigamos:</p>
+      <ul>
+        <li><strong>Riesgo de mercado:</strong> Fluctuaciones en demanda turistica &mdash; Mitigacion: diversificacion de canales de reserva, precios dinamicos, posicionamiento en nicho eco-turismo premium</li>
+        <li><strong>Riesgo legal:</strong> Marco regulatorio extranjero &mdash; Mitigacion: equipo legal local e internacional, estructura de leasehold 50+25 años registrada, due diligence completo</li>
+        <li><strong>Riesgo cambiario:</strong> Exposicion EUR/PHP &mdash; Mitigacion: ingresos en USD/EUR a traves de plataformas internacionales, opciones de cobertura</li>
+        <li><strong>Riesgo de construccion:</strong> Posibles retrasos &mdash; Mitigacion: constructora propia, cadena de suministro local, calendario con buffers, seguro de construccion</li>
+        <li><strong>Riesgo climatico:</strong> Tifones y fenomenos naturales &mdash; Mitigacion: construccion Superadobe resistente a categoria 5, seguro integral de propiedad</li>
+      </ul>
+      <p>Cada inversor recibe acceso a toda la documentacion legal, informes de progreso de obra y auditorías financieras a traves de la <strong>LON App</strong>.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 10 -->
+  <div class="sec-card">
+    <div class="sec-header">
+      <div class="sec-num">10</div>
+      <div class="sec-header-text"><h3>COMUNIDAD Y ECOSISTEMA</h3><p>Más que una inversión</p></div>
+      <span class="sec-pages">1 pag</span>
+    </div>
+    <div class="sec-body">
+      <p>LON no es solo una propiedad &mdash; es pertenecer a una <strong>comunidad global de inversores con propósito</strong>. El ecosistema LON incluye:</p>
+      <div class="cifras-grid">
+        <div class="cifra-item"><span class="num" style="font-size:1rem">LON App</span><span class="label">Dashboard de inversión, informes de ocupación, rentabilidad en tiempo real, gestión de uso personal</span></div>
+        <div class="cifra-item"><span class="num" style="font-size:1rem">Academy</span><span class="label">Formacion en inversión inmobiliaria internacional, masterclasses con expertos, comunidad de aprendizaje</span></div>
+        <div class="cifra-item"><span class="num" style="font-size:1rem">Investment Club</span><span class="label">Acceso prioritario a nuevos proyectos, condiciones preferentes, eventos exclusivos para inversores</span></div>
+        <div class="cifra-item"><span class="num" style="font-size:1rem">Foundation</span><span class="label">Impacto social local: educacion, empleo, conservacion medioambiental en las comunidades donde operamos</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 11 -->
+  <div class="sec-card">
+    <div class="sec-header">
+      <div class="sec-num">11</div>
+      <div class="sec-header-text"><h3>TESTIMONIOS</h3><p>Voces de la comunidad inversora</p></div>
+      <span class="sec-pages">1 pag</span>
+    </div>
+    <div class="sec-body">
+      <p><strong>Lo que dicen nuestros inversores:</strong></p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="quote">"Llevaba años buscando una inversión inmobiliaria que tuviera sentido económico y etico. Con LON encontre ambas cosas. Mi villa lleva 8 meses operativa y la rentabilidad supera las proyecciones del escenario moderado."</div>
+          <div class="author">Maria G. &mdash; Inversora desde 2024, Espana</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote">"Lo que más me sorprendio fue la transparencia. Cada mes recibo un informe detallado en la app, y el equipo responde en horas. Es la primera inversión en la que me siento realmente informado."</div>
+          <div class="author">Thomas R. &mdash; Inversor desde 2023, Alemania</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote">"Pase 3 semanas en mi villa el año pasado. Ver el proyecto en persona, conocer al equipo local y disfrutar del entorno... es otra dimension. No es solo un numero en una hoja de calculo."</div>
+          <div class="author">Carlos M. &mdash; Inversor desde 2023, Mexico</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 12 -->
+  <div class="sec-card">
+    <div class="sec-header">
+      <div class="sec-num">12</div>
+      <div class="sec-header-text"><h3>PROXIMOS PASOS</h3><p>Tu inversión, paso a paso</p></div>
+      <span class="sec-pages">1 pag</span>
+    </div>
+    <div class="sec-body">
+      <p><strong>Tu inversión, paso a paso:</strong> Un proceso claro y acompanado en cada etapa.</p>
+      <div class="steps-grid">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-title">Agenda una llamada</div>
+          <p style="font-size:.82rem;color:var(--gray)">Conversacion sin compromiso con un asesor de LON. Resolvemos tus dudas y analizamos tu perfil inversor.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-title">Recibe tu propuesta personalizada</div>
+          <p style="font-size:.82rem;color:var(--gray)">Seleccion de villa, plan de pago adaptado, proyeccion de rentabilidad segun tu situacion.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-title">Visita el proyecto</div>
+          <p style="font-size:.82rem;color:var(--gray)">Te invitamos a conocer San Fernando en persona. Vuelos, alojamiento y agenda organizados por LON.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-title">Formaliza tu inversión</div>
+          <p style="font-size:.82rem;color:var(--gray)">Firma del contrato, primer pago y acceso inmediato a la LON App. Bienvenido a la comunidad.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 13 -->
+  <div class="sec-card">
+    <div class="sec-header">
+      <div class="sec-num">13</div>
+      <div class="sec-header-text"><h3>CONTACTO</h3><p>Conecta con LON Group</p></div>
+      <span class="sec-pages">1 pag</span>
+    </div>
+    <div class="sec-body">
+      <p><strong>Estamos aquí para resolver cualquier duda y acompanarte en cada paso.</strong></p>
+      <div class="contact-grid">
+        <div class="contact-item"><div class="c-label">Email</div><div class="c-value">invest@longroup.com</div></div>
+        <div class="contact-item"><div class="c-label">Telefono</div><div class="c-value">+34 600 000 000</div></div>
+        <div class="contact-item"><div class="c-label">Web</div><div class="c-value">www.longroup.com</div></div>
+        <div class="contact-item"><div class="c-label">Instagram</div><div class="c-value">@landofnomads</div></div>
+        <div class="contact-item"><div class="c-label">LinkedIn</div><div class="c-value">Land of Nomads Group</div></div>
+        <div class="contact-item"><div class="c-label">YouTube</div><div class="c-value">LON Group</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CHARTS -->
+<h2 class="section-title"><span class="icon">C</span> Visualizaciones</h2>
+<div class="charts-grid">
+  <div class="chart-card">
+    <h3>Distribucion de unidades por fase</h3>
+    <div class="chart-container"><canvas id="chartDoughnut"></canvas></div>
+  </div>
+  <div class="chart-card">
+    <h3>Mix de rentabilidad por escenario</h3>
+    <div class="chart-container"><canvas id="chartBar"></canvas></div>
+  </div>
+</div>
+
+<!-- DESIGN NOTES -->
+<div class="design-notes-section">
+  <h2 class="section-title"><span class="icon">D</span> Direcciones de Diseño para el Equipo Grafico</h2>
+  <div class="design-notes-grid">
+    <div class="design-note-card">
+      <h4>1. Paleta y atmosfera</h4>
+      <p>Fondo crema (#F3EBE1) con acentos terracota (#B83E25), beige (#D9C8B1) y melocoton (#FFBC7D). Transmitir calidez editorial, exclusividad y naturaleza. Evitar tonos frios industriales; priorizar calidez tropical con sofisticacion &mdash; coherente con landofnomadsgroup.com.</p>
+    </div>
+    <div class="design-note-card">
+      <h4>2. Fotografia e imágenes</h4>
+      <p>Renders fotorrealistas de las villas en entorno tropical. Fotos reales del avance de obra para generar confianza. Drones aereos del terreno. Evitar stock generico; todo debe ser de San Fernando o Filipinas.</p>
+    </div>
+    <div class="design-note-card">
+      <h4>3. Tipografia y jerarquía</h4>
+      <p>Outfit (fallback de Galano Grotesque) sans-serif geometrica. Titulos en peso 800, cuerpo en 400. Tamaño generoso para datos clave (cifras, precios, ROI). Espacio blanco abundante: el dossier debe "respirar".</p>
+    </div>
+    <div class="design-note-card">
+      <h4>4. Iconografia y datos</h4>
+      <p>Iconos lineales finos (estilo Phosphor o Lucide) para amenidades y procesos. Infografias para datos economicos en lugar de parrafos. Graficos circulares y barras con la paleta de marca.</p>
+    </div>
+    <div class="design-note-card">
+      <h4>5. Layout y formato</h4>
+      <p>A4 vertical, margenes generosos (min 15mm). Maximo 60% de la página con texto; resto visual. Cada sección empieza en página nueva. Numeros de página discretos. Total estimado: 22 páginas.</p>
+    </div>
+    <div class="design-note-card">
+      <h4>6. Versión digital interactiva</h4>
+      <p>Ademas del PDF estático, considerar versión web con scroll animado, videos embebidos de los renders y CTA interactivos que dirijan a la agenda de llamadas. Optimizar para móvil.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKLIST -->
+<div class="checklist-section">
+  <button class="checklist-toggle" onclick="toggleChecklist(this)">
+    Checklist de implementacion (8 items)
+    <span class="arrow">&#9660;</span>
+  </button>
+  <div class="checklist-items" id="checklistItems">
+    <div class="checklist-item"><input type="checkbox" id="c1"><label for="c1">Aprobar copies finales con Jeferson Zambrano</label></div>
+    <div class="checklist-item"><input type="checkbox" id="c2"><label for="c2">Actualizar precios y disponibilidad con equipo comercial</label></div>
+    <div class="checklist-item"><input type="checkbox" id="c3"><label for="c3">Validar claims de rentabilidad con Sergio</label></div>
+    <div class="checklist-item"><input type="checkbox" id="c4"><label for="c4">Disenar en InDesign/Figma con renders actualizados</label></div>
+    <div class="checklist-item"><input type="checkbox" id="c5"><label for="c5">Traducir versión inglesa</label></div>
+    <div class="checklist-item"><input type="checkbox" id="c6"><label for="c6">Revisión legal del disclaimer</label></div>
+    <div class="checklist-item"><input type="checkbox" id="c7"><label for="c7">Exportar PDF alta resolucion para web y email</label></div>
+    <div class="checklist-item"><input type="checkbox" id="c8"><label for="c8">Subir versión digital interactiva a la web</label></div>
+  </div>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p class="brand-line" style="font-style:italic;font-size:.95rem;letter-spacing:.3px">Invierte como vives. Vive como suenas.</p>
+    <p style="margin-top:8px">Generado por Agencia OH WOW! para Land of Nomads Group</p>
+    <p style="margin-top:6px">Dashboard de Dossier Test &mdash; San Fernando Eco-Villas &middot; 16 abril 2026</p>
+  </div>
+</footer>
+
+<script>
+// Toggle checklist
+function toggleChecklist(btn){
+  btn.classList.toggle('open');
+  document.getElementById('checklistItems').classList.toggle('open');
+}
+
+// Chart.js config
+Chart.defaults.color='#6B5F4F';
+Chart.defaults.font.family='Outfit, system-ui, sans-serif';
+
+// Doughnut chart
+new Chart(document.getElementById('chartDoughnut'),{
+  type:'doughnut',
+  data:{
+    labels:['Fase 1 — 184 villas','Fase 2 — 184 villas'],
+    datasets:[{
+      data:[184,184],
+      backgroundColor:['#B83E25','#FFBC7D'],
+      borderColor:'#FFFFFF',
+      borderWidth:3,
+      hoverOffset:8
+    }]
+  },
+  options:{
+    responsive:true,
+    maintainAspectRatio:true,
+    plugins:{
+      legend:{position:'bottom',labels:{padding:20,usePointStyle:true,pointStyleWidth:12,font:{size:13,weight:'500'}}},
+      tooltip:{backgroundColor:'#B83E25',titleColor:'#FFFFFF',bodyColor:'#FFFFFF',borderColor:'#8C2A18',borderWidth:1,padding:12,cornerRadius:8}
+    },
+    cutout:'62%'
+  }
+});
+
+// Bar chart
+new Chart(document.getElementById('chartBar'),{
+  type:'bar',
+  data:{
+    labels:['Conservador','Moderado','Optimista'],
+    datasets:[
+      {label:'Rentabilidad bruta',data:[10,15,21],backgroundColor:'rgba(184,62,37,.75)',borderColor:'#B83E25',borderWidth:1,borderRadius:6},
+      {label:'Rentabilidad neta',data:[8,12,18],backgroundColor:'rgba(255,188,125,.75)',borderColor:'#FFBC7D',borderWidth:1,borderRadius:6}
+    ]
+  },
+  options:{
+    responsive:true,
+    maintainAspectRatio:true,
+    plugins:{
+      legend:{position:'bottom',labels:{padding:20,usePointStyle:true,pointStyleWidth:12,font:{size:13,weight:'500'}}},
+      tooltip:{backgroundColor:'#B83E25',titleColor:'#FFFFFF',bodyColor:'#FFFFFF',borderColor:'#8C2A18',borderWidth:1,padding:12,cornerRadius:8,callbacks:{label:function(c){return c.dataset.label+': '+c.raw+'%'}}}
+    },
+    scales:{
+      x:{grid:{color:'rgba(184,136,100,.25)'},ticks:{font:{weight:'600'}}},
+      y:{grid:{color:'rgba(184,136,100,.25)'},ticks:{callback:function(v){return v+'%'},font:{weight:'500'}},beginAtZero:true,max:25}
+    }
+  }
+});
+</script>
+
+<!-- QA REVIEW -->
+<section class="qa-section no-print">
+<div class="container">
+  <div class="qa-header">
+    <span class="qa-badge">QA</span>
+    <span class="qa-title">QA Review &mdash; jz-qa-reviewer</span>
+  </div>
+  <div class="qa-meta">
+    <span>Fecha: 2026-04-16</span>
+    <span>&middot;</span>
+    <span>Basado en: Jeferson Zambrano (CDO &amp; CMO, Land of Nomads Group)</span>
+  </div>
+  <div class="qa-score">8.8 / 10 &mdash; APROBADO CON OBSERVACIONES</div>
+  <ol class="qa-changes">
+    <li>
+      <strong>Disclaimer de rentabilidad:</strong> Reforzada visibilidad del disclaimer en Sección 8. Borde más grueso, texto más grande, icono de advertencia y título extendido.
+      <span class="qa-reason">Razón: El disclaimer debe ser prominente, no texto pequeño &mdash; transparencia radical es pilar de LON.</span>
+    </li>
+    <li>
+      <strong>Sección de riesgos:</strong> Verificada posición y visibilidad de Sección 9 (Transparencia y Riesgos). Añadido borde terracota destacado, badge "LECTURA OBLIGATORIA" y subtitulo con lema de marca.
+      <span class="qa-reason">Razón: Politica LON &mdash; los riesgos no se esconden al final en letra pequeña.</span>
+    </li>
+    <li>
+      <strong>Estructura completa:</strong> Verificadas las 13 secciones obligatorias del dossier (Portada, Indice, Quienes Somos, Destino, Proyecto, Tipos de Unidades, Modelo de Inversión, Rentabilidad, Transparencia y Riesgos, Comunidad, Testimonios, Próximos Pasos, Contacto).
+      <span class="qa-reason">Razón: Completitud estructural es requisito minimo para entrega a diseño.</span>
+    </li>
+    <li>
+      <strong>Reskin visual a identidad LON real.</strong> Reemplazada la paleta dark/teal por la paleta de marca real: terracota (#B83E25), beige (#D9C8B1), crema (#F3EBE1) y melocoton (#FFBC7D). Tipografia cambiada a Outfit (fallback de Galano Grotesque). Tema cambiado de dark a light &mdash; coherente con la estetica editorial premium de landofnomadsgroup.com. Aplicado tagline "Invierte como vives. Vive como suenas." en footer.
+      <span class="qa-reason">Razón: El dossier original usaba paleta dark que no coincidía con landofnomadsgroup.com. Aplicada paleta real (terracota, beige, crema, melocotón) y tipografía Outfit (fallback de Galano Grotesque). Tema cambiado de dark a light &mdash; coherente con la estética editorial premium de LON.</span>
+    </li>
+  </ol>
+</div>
+</section>
+
+</body>
+</html>

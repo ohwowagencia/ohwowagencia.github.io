@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QA Dashboards — OH WOW! Agentes IA</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f4f4f8;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+    header {
+      background: #1a1a2e;
+      color: white;
+      padding: 24px 40px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    header h1 { font-size: 1.5rem; font-weight: 700; }
+    header span { font-size: 0.85rem; opacity: 0.6; }
+    main { padding: 40px; max-width: 1100px; margin: 0 auto; }
+
+    .filters { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+    .filter-btn {
+      padding: 6px 16px; border-radius: 20px; border: 1.5px solid #ddd;
+      background: white; cursor: pointer; font-size: 0.85rem; font-weight: 500;
+      transition: all 0.15s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: #1a1a2e; color: white; border-color: #1a1a2e;
+    }
+
+    /* Campaign section */
+    .campana-section { margin-bottom: 36px; }
+    .campana-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 12px;
+    }
+    .campana-title {
+      font-size: 0.95rem; font-weight: 700; color: #1a1a2e;
+    }
+    .campana-count {
+      font-size: 0.75rem; background: #e8e8f0; color: #666;
+      padding: 2px 8px; border-radius: 20px; font-weight: 500;
+    }
+
+    table { width: 100%; border-collapse: collapse; background: white;
+            border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    thead { background: #f9f9fb; }
+    th { text-align: left; padding: 12px 18px; font-size: 0.75rem; font-weight: 600;
+         color: #888; text-transform: uppercase; letter-spacing: 0.06em; }
+    td { padding: 12px 18px; font-size: 0.9rem; border-top: 1px solid #f0f0f4; }
+    tr:hover td { background: #fafafa; }
+
+    /* Proyecto badges */
+    .badge {
+      display: inline-block; padding: 3px 10px; border-radius: 20px;
+      font-size: 0.75rem; font-weight: 600;
+    }
+    .badge-ohwow  { background: #fde8ff; color: #8b00b5; }
+    .badge-lon    { background: #e8f0ff; color: #1a4db5; }
+    .badge-jairo-prado { background: #e8fff0; color: #0a7a3a; }
+
+    /* Tipo badges */
+    .tipo {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 9px; border-radius: 6px;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em;
+    }
+    .tipo-dashboard { background: #1a1a2e; color: white; }
+    .tipo-sketch    { background: #ede9fe; color: #5b21b6; }
+    .tipo-imagen    { background: #d1fae5; color: #065f46; }
+
+    .btn-view {
+      display: inline-block; padding: 5px 14px; background: #1a1a2e; color: white;
+      border-radius: 6px; font-size: 0.82rem; text-decoration: none; font-weight: 500;
+      transition: opacity 0.15s;
+    }
+    .btn-view:hover { opacity: 0.75; }
+
+    .empty { text-align: center; padding: 60px; color: #aaa; font-size: 0.95rem; }
+    .no-results { display: none; text-align: center; padding: 60px; color: #aaa; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>QA Dashboards</h1>
+    <span>Control de calidad — Agentes IA</span>
+  </div>
+</header>
+
+<main>
+  <div class="filters">
+    <button type="button" class="filter-btn active" onclick="filterTable('all', this)">Todos</button>
+    <button type="button" class="filter-btn" onclick="filterTable('ohwow', this)">OH WOW!</button>
+    <button type="button" class="filter-btn" onclick="filterTable('lon', this)">LON</button>
+    <button type="button" class="filter-btn" onclick="filterTable('jairo-prado', this)">Jairo Prado</button>
+    <button type="button" class="filter-btn" onclick="filterTipo('dashboard', this)">Dashboard</button>
+    <button type="button" class="filter-btn" onclick="filterTipo('sketch', this)">Sketch</button>
+    <button type="button" class="filter-btn" onclick="filterTipo('imagen', this)">Imagen</button>
+  </div>
+
+  <div id="campanas-container"></div>
+  <div class="no-results" id="no-results">No hay resultados para este filtro.</div>
+</main>
+
+<script src="tests.js"></script>
+<script>
+  const TIPO_LABELS = {
+    dashboard: 'Dashboard',
+    sketch:    'Sketch',
+    imagen:    'Imagen'
+  };
+
+  function groupByCampana(data) {
+    const map = new Map();
+    data.forEach(t => {
+      if (!map.has(t.campana_id)) {
+        map.set(t.campana_id, { campana: t.campana, proyecto: t.proyecto, items: [] });
+      }
+      map.get(t.campana_id).items.push(t);
+    });
+    return map;
+  }
+
+  function renderCampanas(data) {
+    const container = document.getElementById('campanas-container');
+    const noResults = document.getElementById('no-results');
+    container.innerHTML = '';
+
+    if (!data.length) {
+      noResults.style.display = 'block';
+      return;
+    }
+    noResults.style.display = 'none';
+
+    const groups = groupByCampana(data);
+    groups.forEach(({ campana, proyecto, items }) => {
+      const proyBadge = `badge-${proyecto.toLowerCase().replace(/\s+/g, '-')}`;
+      const rows = items.map(t => `
+        <tr>
+          <td><span class="tipo tipo-${t.tipo}">${TIPO_LABELS[t.tipo]}</span></td>
+          <td>${t.descripcion}</td>
+          <td>${t.fecha}</td>
+          <td><a class="btn-view" href="${t.archivo}" target="_blank">Abrir</a></td>
+        </tr>`).join('');
+
+      container.innerHTML += `
+        <div class="campana-section">
+          <div class="campana-header">
+            <span class="badge ${proyBadge}">${proyecto}</span>
+            <span class="campana-title">${campana}</span>
+            <span class="campana-count">${items.length} archivo${items.length !== 1 ? 's' : ''}</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Descripcion</th>
+                <th>Fecha</th>
+                <th>Ver</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>`;
+    });
+  }
+
+  let activeProyecto = 'all';
+  let activeTipo     = 'all';
+
+  function getFiltered() {
+    return window.QA_TESTS.filter(t => {
+      const proy = t.proyecto.toLowerCase().replace(/\s+/g, '-');
+      const matchProyecto = activeProyecto === 'all' || proy === activeProyecto;
+      const matchTipo     = activeTipo     === 'all' || t.tipo === activeTipo;
+      return matchProyecto && matchTipo;
+    });
+  }
+
+  function filterTable(proyecto, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeProyecto = proyecto;
+    activeTipo     = 'all';
+    renderCampanas(getFiltered());
+  }
+
+  function filterTipo(tipo, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeTipo     = tipo;
+    activeProyecto = 'all';
+    renderCampanas(getFiltered());
+  }
+
+  if (typeof window.QA_TESTS !== 'undefined') {
+    renderCampanas(window.QA_TESTS);
+  } else {
+    document.getElementById('no-results').style.display = 'block';
+    document.getElementById('no-results').innerText = 'Carga tests.js con los archivos disponibles.';
+  }
+</script>
+
+</body>
+</html>

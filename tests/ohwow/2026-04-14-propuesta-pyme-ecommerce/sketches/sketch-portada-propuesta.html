@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sketch — Portada Propuesta | Dulce Raíz</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #e8e4df; font-family: 'Segoe UI', system-ui, sans-serif; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
+  .sketch-container { background: #fff; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); padding: 40px; max-width: 880px; width: 100%; }
+  .notes { max-width: 880px; width: 100%; margin-top: 32px; padding: 20px 24px; border-left: 4px solid #c8f135; background: #fff; border-radius: 0 8px 8px 0; }
+  .notes h3 { font-family: Georgia, serif; font-size: 16px; color: #1c1c1c; margin-bottom: 10px; }
+  .notes ul { padding-left: 20px; color: #555; font-size: 14px; line-height: 1.8; }
+  .footer { max-width: 880px; width: 100%; text-align: center; margin-top: 24px; font-size: 12px; color: #999; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .sketch-container { box-shadow: none; border-radius: 0; padding: 0; }
+    .notes, .footer { display: none; }
+    svg { width: 100%; height: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sketch-container">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1132" width="100%" height="auto" style="display:block;">
+    <defs>
+      <filter id="shadow1" x="-5%" y="-5%" width="110%" height="110%">
+        <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.08"/>
+      </filter>
+    </defs>
+
+    <!-- Background -->
+    <rect width="800" height="1132" fill="#ffffff" rx="4"/>
+
+    <!-- Beige top band -->
+    <rect x="0" y="0" width="800" height="180" fill="#f5f0eb" rx="4"/>
+
+    <!-- Rosa decorative circle top-right -->
+    <circle cx="740" cy="60" r="45" fill="none" stroke="#e85d8a" stroke-width="2.5" opacity="0.6"/>
+    <circle cx="740" cy="60" r="28" fill="#e85d8a" opacity="0.12"/>
+    <circle cx="760" cy="38" r="8" fill="#e85d8a" opacity="0.25"/>
+
+    <!-- Small lima dots decoration top-left -->
+    <circle cx="40" cy="40" r="4" fill="#c8f135" opacity="0.5"/>
+    <circle cx="56" cy="40" r="4" fill="#c8f135" opacity="0.35"/>
+    <circle cx="72" cy="40" r="4" fill="#c8f135" opacity="0.2"/>
+
+    <!-- OH WOW! Logo circle placeholder -->
+    <circle cx="400" cy="100" r="48" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-dasharray="6,4"/>
+    <text x="400" y="96" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#999">LOGO</text>
+    <text x="400" y="110" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#999">OH WOW!</text>
+
+    <!-- Agency name -->
+    <text x="400" y="185" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#1c1c1c" letter-spacing="6" font-weight="bold">AGENCIA OH WOW!</text>
+
+    <!-- Lima divider line -->
+    <line x1="200" y1="210" x2="600" y2="210" stroke="#c8f135" stroke-width="3"/>
+
+    <!-- Main headline -->
+    <text x="400" y="320" text-anchor="middle" font-family="Georgia, serif" font-size="42" fill="#1c1c1c" font-weight="bold">Propuesta de</text>
+    <text x="400" y="375" text-anchor="middle" font-family="Georgia, serif" font-size="42" fill="#1c1c1c" font-weight="bold">Rediseño Web</text>
+    <text x="400" y="430" text-anchor="middle" font-family="Georgia, serif" font-size="42" fill="#e85d8a" font-weight="bold">+ Ecommerce</text>
+
+    <!-- Lima accent underline below headline -->
+    <line x1="300" y1="455" x2="500" y2="455" stroke="#c8f135" stroke-width="2.5"/>
+
+    <!-- Subheadline -->
+    <text x="400" y="510" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="22" fill="#1c1c1c" opacity="0.7">Preparada para</text>
+    <text x="400" y="548" text-anchor="middle" font-family="Georgia, serif" font-size="32" fill="#1c1c1c" font-weight="bold">Dulce Raíz</text>
+
+    <!-- Dulce Raíz logo/photo placeholder dashed circle -->
+    <circle cx="400" cy="660" r="72" fill="#f5f0eb" stroke="#1c1c1c" stroke-width="1.5" stroke-dasharray="8,5"/>
+    <text x="400" y="652" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#999">Logo / Foto</text>
+    <text x="400" y="670" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="12" fill="#999">Dulce Raíz</text>
+
+    <!-- Small rosa dots around client logo -->
+    <circle cx="330" cy="610" r="4" fill="#e85d8a" opacity="0.3"/>
+    <circle cx="470" cy="610" r="4" fill="#e85d8a" opacity="0.3"/>
+    <circle cx="330" cy="710" r="4" fill="#e85d8a" opacity="0.3"/>
+    <circle cx="470" cy="710" r="4" fill="#e85d8a" opacity="0.3"/>
+
+    <!-- Lima horizontal rule -->
+    <line x1="250" y1="780" x2="550" y2="780" stroke="#c8f135" stroke-width="2"/>
+
+    <!-- Contact person + date -->
+    <text x="400" y="830" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#1c1c1c">María García</text>
+    <text x="400" y="858" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="14" fill="#1c1c1c" opacity="0.6">CEO y Fundadora</text>
+    <text x="400" y="895" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="16" fill="#1c1c1c" opacity="0.5">Abril 2026</text>
+
+    <!-- Beige bottom band -->
+    <rect x="0" y="940" width="800" height="192" fill="#f5f0eb" rx="0"/>
+
+    <!-- Quote -->
+    <text x="400" y="985" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#1c1c1c" font-style="italic" opacity="0.75">"Tu socio digital, no tu proveedor."</text>
+
+    <!-- Lima accent line under quote -->
+    <line x1="320" y1="1000" x2="480" y2="1000" stroke="#c8f135" stroke-width="1.5"/>
+
+    <!-- Contact info -->
+    <text x="400" y="1050" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#1c1c1c" opacity="0.55">www.agenciaohwow.com</text>
+    <text x="400" y="1072" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="13" fill="#1c1c1c" opacity="0.55">hola@agenciaohwow.com</text>
+
+    <!-- Decorative lima corner lines bottom-left -->
+    <line x1="30" y1="1100" x2="30" y2="1060" stroke="#c8f135" stroke-width="2" opacity="0.4"/>
+    <line x1="30" y1="1100" x2="70" y2="1100" stroke="#c8f135" stroke-width="2" opacity="0.4"/>
+
+    <!-- Decorative rosa corner lines bottom-right -->
+    <line x1="770" y1="1100" x2="770" y2="1060" stroke="#e85d8a" stroke-width="2" opacity="0.3"/>
+    <line x1="770" y1="1100" x2="730" y2="1100" stroke="#e85d8a" stroke-width="2" opacity="0.3"/>
+
+  </svg>
+</div>
+
+<div class="notes">
+  <h3>Notas para el diseñador</h3>
+  <ul>
+    <li>Sustituir el circulo punteado superior por el logotipo real de Agencia OH WOW!</li>
+    <li>Sustituir el circulo punteado central por el logotipo o foto de fachada de Dulce Raiz</li>
+    <li>La tipografia de titulares es Georgia serif; revisar si se usa la versión de marca</li>
+    <li>El circulo rosa decorativo superior derecho puede llevar un patron de panaderia sutil</li>
+    <li>Considerar textura de papel artesanal en la zona beige para reforzar el concepto artesano</li>
+    <li>Paleta: Lima #c8f135, Negro #1c1c1c, Rosa #e85d8a, Beige #f5f0eb</li>
+    <li>Formato final: A4 vertical (210 x 297 mm), exportar a PDF de alta resolucion</li>
+  </ul>
+</div>
+
+<div class="footer">Sketch generado por Agencia OH WOW!</div>
+
+</body>
+</html>
