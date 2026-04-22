@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ideas y Variaciones — LON Mayo 2026 | OH WOW!</title>
+<meta name="description" content="Sistema de ideas con 3 variaciones por concepto. Marca las que uses, el sistema recuerda tu selección.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style id="back-to-hub-styles">
+.back-to-hub {
+  position: fixed; top: 16px; left: 16px; z-index: 9999;
+  background: #0f1219; color: #c8f135;
+  padding: 9px 14px; border-radius: 8px;
+  font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 600;
+  text-decoration: none; border: 1px solid rgba(255,255,255,0.1);
+  display: inline-flex; align-items: center; gap: 7px;
+  box-shadow: 0 6px 20px rgba(15,18,25,0.25);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.back-to-hub:hover { transform: translateX(-3px); background: #1a1d26; color: #d4f54a; }
+@media print { .back-to-hub { display: none !important; } }
+@media (max-width: 640px) { .back-to-hub { top: 10px; left: 10px; padding: 7px 11px; font-size: 11.5px; } }
+</style>
+<style>
+:root {
+  --bg:         #F3EBE1;
+  --bg-white:   #FFFFFF;
+  --bg-cream:   #FAF5EE;
+  --terracota:  #B83E25;
+  --terracota-d:#9A3420;
+  --beige:      #D9C8B1;
+  --peach:      #FFBC7D;
+  --text:       #1A1814;
+  --text-muted: #6B5F4F;
+  --text-soft:  #A89982;
+  --border:     #D9C8B1;
+  --green:      #2d7a4a;
+  --radius:     12px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Top nav ───────────────── */
+.top-nav {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 32px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.top-nav a.nav-back {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+.top-nav a.nav-back:hover { color: var(--terracota); }
+.project-badge {
+  background: var(--terracota);
+  color: #fff;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* ── Hero ──────────────────── */
+header.hero {
+  max-width: 1280px;
+  margin: 40px auto 32px;
+  padding: 0 32px;
+}
+.hero-tag {
+  display: inline-block;
+  background: var(--bg-white);
+  color: var(--terracota);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  border: 1px solid var(--border);
+}
+h1 {
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 14px;
+  max-width: 900px;
+}
+.hero-sub {
+  font-size: 17px;
+  color: var(--text-muted);
+  max-width: 720px;
+  line-height: 1.55;
+}
+
+/* ── Progress bar ─────────── */
+.progress-section {
+  max-width: 1280px;
+  margin: 32px auto;
+  padding: 0 32px;
+}
+.progress-card {
+  background: var(--bg-white);
+  border-radius: var(--radius);
+  padding: 22px 28px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(184,62,37,0.05);
+}
+.progress-main { flex: 1; }
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.progress-label strong { color: var(--terracota); font-weight: 700; }
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: var(--bg-cream);
+  border-radius: 100px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--terracota) 0%, var(--peach) 100%);
+  border-radius: 100px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reset-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.reset-btn:hover {
+  border-color: var(--terracota);
+  color: var(--terracota);
+}
+
+/* ── Filters ───────────────── */
+.filters-section {
+  max-width: 1280px;
+  margin: 0 auto 24px;
+  padding: 0 32px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.filter-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-right: 4px;
+}
+.filter-btn {
+  background: var(--bg-white);
+  border: 1.5px solid var(--border);
+  color: var(--text-muted);
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.filter-btn:hover { border-color: var(--terracota); color: var(--terracota); }
+.filter-btn.active {
+  background: var(--terracota);
+  border-color: var(--terracota);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ── Ideas grid ────────────── */
+.ideas-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 24px;
+}
+
+.idea-card {
+  background: var(--bg-white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(184,62,37,0.04);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.idea-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(184,62,37,0.1);
+}
+.idea-card.all-used {
+  opacity: 0.75;
+}
+
+.idea-header {
+  padding: 22px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(135deg, var(--bg-cream) 0%, var(--bg-white) 100%);
+}
+.idea-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pillar-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.pillar-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+}
+.pillar-progreso { background: rgba(184,62,37,.12); color: var(--terracota-d); }
+.pillar-progreso::before { background: var(--terracota); }
+.pillar-educacion { background: rgba(255,188,125,.28); color: #a86a2e; }
+.pillar-educacion::before { background: var(--peach); }
+.pillar-personas  { background: rgba(217,200,177,.6); color: #6b5b3d; }
+.pillar-personas::before { background: var(--beige); }
+.pillar-numeros   { background: rgba(45,122,74,.14); color: var(--green); }
+.pillar-numeros::before { background: var(--green); }
+.pillar-transparencia { background: rgba(26,24,20,.08); color: var(--text); }
+.pillar-transparencia::before { background: var(--text); }
+
+.idea-status {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.idea-status strong { color: var(--terracota); font-weight: 700; }
+
+.idea-title {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.idea-concept {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.variations {
+  padding: 16px 24px 20px;
+}
+
+.variation {
+  position: relative;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  background: var(--bg-cream);
+  border: 1.5px solid transparent;
+  transition: all 0.2s;
+}
+.variation:last-child { margin-bottom: 0; }
+.variation:hover { border-color: var(--border); }
+
+.variation.used {
+  background: var(--bg-white);
+  border-color: var(--green);
+  opacity: 0.78;
+}
+.variation.used .variation-title { text-decoration: line-through; color: var(--text-muted); }
+
+.variation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.variation-main { flex: 1; min-width: 0; }
+
+.variation-format {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  padding: 3px 9px;
+  background: rgba(26,24,20,.05);
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.variation-title {
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.variation-detail {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.variation-detail strong { color: var(--text); font-weight: 600; }
+
+.variation-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.mark-btn {
+  background: var(--terracota);
+  color: #fff;
+  border: none;
+  padding: 7px 12px;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+.mark-btn:hover { background: var(--terracota-d); }
+.mark-btn.marked {
+  background: var(--green);
+  color: #fff;
+}
+.mark-btn.marked:hover { background: #1f5832; }
+
+.date-input {
+  font-family: inherit;
+  font-size: 11.5px;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  background: #fff;
+  max-width: 115px;
+}
+.date-input:focus { outline: none; border-color: var(--terracota); }
+
+.used-info {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: rgba(45,122,74,.08);
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.used-info strong { font-weight: 700; }
+
+/* ── Info box ──────────────── */
+.info-box {
+  max-width: 1280px;
+  margin: 0 auto 24px;
+  padding: 0 32px;
+}
+.info-box-inner {
+  background: linear-gradient(135deg, rgba(184,62,37,.06) 0%, rgba(255,188,125,.1) 100%);
+  border: 1px solid rgba(184,62,37,.15);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.info-box-icon {
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  background: var(--terracota);
+  color: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 16px;
+}
+.info-box-content {
+  flex: 1;
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.6;
+}
+.info-box-content strong { color: var(--terracota); }
+
+/* ── Footer ─────────────── */
+footer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+footer a { color: var(--terracota); text-decoration: none; font-weight: 600; }
+footer a:hover { text-decoration: underline; }
+
+/* Mobile */
+@media (max-width: 640px) {
+  h1 { font-size: 30px; }
+  .hero-sub { font-size: 15px; }
+  .top-nav, header.hero, .progress-section, .filters-section, .ideas-grid, .info-box, footer { padding-left: 16px; padding-right: 16px; }
+  .ideas-grid { grid-template-columns: 1fr; gap: 16px; }
+  .progress-card { grid-template-columns: 1fr; }
+}
+
+@media print { .back-to-hub, .reset-btn, .mark-btn, .filter-btn, .top-nav { display: none !important; } }
+</style>
+</head>
+<body>
+
+<a href="../../../../index.html" class="back-to-hub" aria-label="Volver al Panel QA">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+  Panel QA
+</a>
+
+<nav class="top-nav">
+  <a class="nav-back" href="index.html">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Volver al dashboard
+  </a>
+  <span class="project-badge">LON · Mayo 2026</span>
+</nav>
+
+<header class="hero">
+  <span class="hero-tag">Sistema de ideas</span>
+  <h1>10 ideas · 3 variaciones cada una</h1>
+  <p class="hero-sub">En vez de asignar un contenido distinto para cada día, aquí tienes <strong>10 ideas core</strong> con 3 formatos cada una (story, carrusel, reel, post, video largo...). Elige qué variación usas, márcala con la fecha, y el sistema recuerda tu selección la próxima vez que abras esta página.</p>
+</header>
+
+<div class="info-box">
+  <div class="info-box-inner">
+    <div class="info-box-icon">i</div>
+    <div class="info-box-content">
+      <strong>Cómo funciona:</strong> Cada idea tiene 3 variaciones. Cuando decidas usar una, pulsa <em>"Marcar como usada"</em> y selecciona la fecha. El estado se guarda localmente en tu navegador (no requiere login). Si usas otro dispositivo, los datos no se sincronizan — es una preferencia personal por sesión. Usa el botón <em>"Reiniciar"</em> arriba para empezar de cero.
+    </div>
+  </div>
+</div>
+
+<section class="progress-section">
+  <div class="progress-card">
+    <div class="progress-main">
+      <div class="progress-label">
+        <span>Progreso del mes · <strong id="used-count">0</strong>/30 variaciones usadas</span>
+        <span id="percent">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar-fill" id="progress-bar" style="width:0%"></div>
+      </div>
+    </div>
+    <button class="reset-btn" onclick="resetAll()" aria-label="Reiniciar estado">↻ Reiniciar</button>
+  </div>
+</section>
+
+<div class="filters-section">
+  <span class="filter-label">Pilar</span>
+  <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">Todas</button>
+  <button class="filter-btn" data-filter="progreso" onclick="setFilter('progreso')">Progreso real (40%)</button>
+  <button class="filter-btn" data-filter="educacion" onclick="setFilter('educacion')">Educación (20%)</button>
+  <button class="filter-btn" data-filter="personas" onclick="setFilter('personas')">Personas (20%)</button>
+  <button class="filter-btn" data-filter="numeros" onclick="setFilter('numeros')">Números (10%)</button>
+  <button class="filter-btn" data-filter="transparencia" onclick="setFilter('transparencia')">Transparencia (10%)</button>
+  <span style="margin-left:auto;font-size:12px;color:var(--text-muted);">
+    <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+      <input type="checkbox" id="hide-used" onchange="toggleHideUsed()" style="accent-color:var(--terracota);"> Ocultar usadas
+    </label>
+  </span>
+</div>
+
+<div class="ideas-grid" id="ideas-grid"></div>
+
+<footer>
+  <div>
+    Sistema de ideas LON · generado por <a href="https://agencia.ohwow.es" target="_blank" rel="noopener">OH WOW!</a>
+  </div>
+  <div>
+    <a href="index.html">← Dashboard calendario</a>
+  </div>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// DATOS: 10 ideas con 3 variaciones cada una
+// ═══════════════════════════════════════════════════════════════
+const IDEAS = [
+  {
+    id: 'progreso-fase2',
+    pillar: 'progreso',
+    pillarLabel: 'Progreso real',
+    title: 'Avance de obra San Fernando Fase 2',
+    concept: 'Mostrar progreso real de la construcción sin filtros. El activo más potente de LON: "no es render, es obra".',
+    variations: [
+      { format: 'Reel 60s · Instagram', title: 'Timelapse construcción', detail: '<strong>Hook:</strong> "Así avanza la Fase 2 — sin filtros"<br><strong>Contenido:</strong> Timelapse acelerado + audio trending + texto en pantalla con hitos semanales<br><strong>CTA:</strong> Link en bio a landing San Fernando' },
+      { format: 'Álbum · Facebook', title: 'Cronología fotográfica 5 fotos', detail: '<strong>Hook:</strong> "De terreno a hogar: el progreso que están viendo 400 inversores"<br><strong>Contenido:</strong> 5 fotos cronológicas con captions largos por cada una + testimonio de inversor que visitó<br><strong>CTA:</strong> Suscríbete al reporte mensual' },
+      { format: 'Artículo · LinkedIn', title: 'Por qué la transparencia en tiempo real es la ventaja competitiva', detail: '<strong>Hook:</strong> Educativo B2B para inversores sofisticados<br><strong>Contenido:</strong> 800 palabras sobre cómo LON hace reporting de obra distinto al resto del sector<br><strong>CTA:</strong> Descarga dossier completo' }
+    ]
+  },
+  {
+    id: 'educacion-rentabilidad',
+    pillar: 'educacion',
+    pillarLabel: 'Educación',
+    title: 'Cómo se calcula la rentabilidad real',
+    concept: 'Desmontar el mito del "12% garantizado". Educar sobre ocupación, costes, escenarios.',
+    variations: [
+      { format: 'Carrusel 5 slides · Instagram', title: '¿12% de rentabilidad? Así se desglosa', detail: '<strong>Hook:</strong> "El número que nadie te explica bien"<br><strong>Contenido:</strong> 5 slides con infografía — escenario conservador/moderado/optimista, disclaimer obligatorio<br><strong>CTA:</strong> Prueba el simulador de escenarios' },
+      { format: 'Video 45s · TikTok', title: '3 errores al invertir fuera de tu país', detail: '<strong>Hook:</strong> Edutainment con audio trending<br><strong>Contenido:</strong> 45s rápidos sobre errores comunes de inversores novatos — tono anti-hype<br><strong>CTA:</strong> Soft — "Si quieres los números completos, web en bio"' },
+      { format: 'Post técnico · LinkedIn', title: 'Disclaimer financiero + análisis de ocupación', detail: '<strong>Hook:</strong> "Rentabilidad real: 3 escenarios que deberías conocer"<br><strong>Contenido:</strong> Post largo con tabla comparativa + disclaimer legal completo<br><strong>CTA:</strong> Agenda llamada con Sergio (finanzas)' }
+    ]
+  },
+  {
+    id: 'personas-inversor',
+    pillar: 'personas',
+    pillarLabel: 'Personas y comunidad',
+    title: 'Historia de un inversor real',
+    concept: 'Caso real anonimizado o con permiso. "María invirtió 85k desde Madrid en enero. Esto pasó."',
+    variations: [
+      { format: 'Post + álbum · Facebook', title: 'Caso completo con foto y testimonial', detail: '<strong>Hook:</strong> "María, Barcelona, 42 años. Esta es su historia con LON"<br><strong>Contenido:</strong> 3-5 fotos (de ella en el proyecto, documento firmado anonimizado) + texto largo con cronología<br><strong>CTA:</strong> Newsletter mensual con más casos' },
+      { format: 'Story serie (5) · Instagram', title: 'Q&A con inversor real', detail: '<strong>Hook:</strong> Primera story: "Hoy hablamos con María. Le hicimos las 5 preguntas difíciles."<br><strong>Contenido:</strong> 5 stories con texto + emoji, formato entrevista rápida<br><strong>CTA:</strong> Swipe up → landing dossier' },
+      { format: 'Video largo · YouTube', title: 'Entrevista de 15 min completa', detail: '<strong>Hook:</strong> "Hablé con 3 inversores de LON sin edición. Esto dijeron."<br><strong>Contenido:</strong> 15 min con 3 inversores, preguntas difíciles (incluidas las críticas), sin edición marketing<br><strong>CTA:</strong> Descripción con link a dossier' }
+    ]
+  },
+  {
+    id: 'numeros-ocupacion',
+    pillar: 'numeros',
+    pillarLabel: 'Números sin humo',
+    title: 'Ocupación real Q1 2026',
+    concept: 'Datos reales de la operación. "12.4% ocupación Q1 — así se desglosa semana a semana."',
+    variations: [
+      { format: 'Infografía · Instagram post', title: 'Dashboard de ocupación Q1', detail: '<strong>Hook:</strong> Imagen estática tipo dashboard — números grandes<br><strong>Contenido:</strong> Gráfica de ocupación por semana, compara con el mercado, disclaimer<br><strong>CTA:</strong> "Reporte completo en el link"' },
+      { format: 'Post con gráfico · LinkedIn', title: '12.4% ocupación Q1 — el contexto', detail: '<strong>Hook:</strong> "Nadie del sector publica estos números. Nosotros sí."<br><strong>Contenido:</strong> Post técnico de Sergio con análisis del dato + comparativa con benchmark del sector<br><strong>CTA:</strong> Webinar de números' },
+      { format: 'Video corto · YouTube Short', title: 'Explicación de 60s', detail: '<strong>Hook:</strong> "Te enseño el dato real de Q1"<br><strong>Contenido:</strong> Sergio hablando a cámara durante 60s con gráfica sobreimpresa<br><strong>CTA:</strong> Link al reporte trimestral' }
+    ]
+  },
+  {
+    id: 'transparencia-legal',
+    pillar: 'transparencia',
+    pillarLabel: 'Transparencia',
+    title: 'Leasehold explicado sin humo',
+    concept: 'Abordar una de las dudas más comunes: "¿qué es el leasehold de 75 años?". Educación sin evadir.',
+    variations: [
+      { format: 'Reel 60s #LONRealTalk · Instagram', title: 'Leasehold en 60 segundos', detail: '<strong>Hook:</strong> "Leasehold: lo que ningún promotor te explica bien"<br><strong>Contenido:</strong> Mike (cara legal) explica el leasehold en 60s, con texto sobreimpreso<br><strong>CTA:</strong> "FAQ completa en la web"' },
+      { format: 'Carrusel educativo · Instagram', title: '7 slides sobre el marco legal', detail: '<strong>Hook:</strong> "Si vas a invertir en Filipinas, esto es lo primero que tienes que entender"<br><strong>Contenido:</strong> 7 slides desmenuzando el leasehold + ejemplos + disclaimer<br><strong>CTA:</strong> Descarga guía legal' },
+      { format: 'Artículo blog · Web', title: 'Leasehold Filipinas: guía 2026', detail: '<strong>Hook:</strong> SEO — targeting "leasehold Filipinas 75 años"<br><strong>Contenido:</strong> 1,800 palabras con FAQ schema, comparativa con freehold, casos<br><strong>CTA:</strong> Llamada legal gratis con Mike' }
+    ]
+  },
+  {
+    id: 'progreso-documentary',
+    pillar: 'progreso',
+    pillarLabel: 'Progreso real',
+    title: 'Serie "Camino a la inauguración"',
+    concept: 'Documental mensual tipo Netflix del proceso de obra. Activo reputacional de largo plazo.',
+    variations: [
+      { format: 'Episodio 10 min · YouTube', title: 'Capítulo mensual — El mes en obra', detail: '<strong>Hook:</strong> Apertura tipo documental con título de episodio<br><strong>Contenido:</strong> 10 min con entrevistas a trabajadores locales, Mike en Filipinas, problemas reales y cómo se resolvieron<br><strong>CTA:</strong> Suscríbete al canal' },
+      { format: 'Reel promo 30s · Instagram', title: 'Teaser del episodio', detail: '<strong>Hook:</strong> Los momentos más intensos del episodio en 30s<br><strong>Contenido:</strong> Cortes rápidos del video largo con música cinematográfica<br><strong>CTA:</strong> "Episodio completo en YouTube, link en bio"' },
+      { format: 'Short 60s · TikTok', title: 'Un momento específico del mes', detail: '<strong>Hook:</strong> Una anécdota del mes en obra (ej: "Esta semana se nos cayó el techo de la sala principal")<br><strong>Contenido:</strong> 60s honestos sobre un problema y su solución<br><strong>CTA:</strong> Historia completa en el canal' }
+    ]
+  },
+  {
+    id: 'educacion-visados',
+    pillar: 'educacion',
+    pillarLabel: 'Educación',
+    title: 'Visados para nómadas en Filipinas',
+    concept: 'Contenido evergreen de alto valor SEO. Responde una pregunta crítica que el sector evita.',
+    variations: [
+      { format: 'Carrusel 8 slides · Instagram', title: 'Visados Filipinas 2026 — qué necesitas', detail: '<strong>Hook:</strong> "¿Pensando mudarte a Filipinas? Empieza por aquí"<br><strong>Contenido:</strong> 8 slides con tipos de visado, duración, coste, documentación<br><strong>CTA:</strong> Guía PDF descargable' },
+      { format: 'Video explicativo 3 min · YouTube', title: 'Visados y fiscalidad para nómadas', detail: '<strong>Hook:</strong> Claim claro sobre qué resuelve el video<br><strong>Contenido:</strong> Mike explica los 3 visados más útiles para nómadas/inversores + implicaciones fiscales<br><strong>CTA:</strong> Consulta 1:1 gratuita' },
+      { format: 'Artículo blog · Web', title: 'Guía visados Filipinas (SEO pilar)', detail: '<strong>Hook:</strong> "visados filipinas nomadas digitales"<br><strong>Contenido:</strong> 2,200 palabras con tabla comparativa, casos, FAQ<br><strong>CTA:</strong> Lead magnet — checklist' }
+    ]
+  },
+  {
+    id: 'personas-equipo',
+    pillar: 'personas',
+    pillarLabel: 'Personas y comunidad',
+    title: 'Conoce al equipo en Filipinas',
+    concept: 'Humanizar el proyecto. Mostrar a las personas locales contratadas, no solo a los fundadores.',
+    variations: [
+      { format: 'Post fotográfico · Instagram', title: 'Retrato + historia breve', detail: '<strong>Hook:</strong> "Este es Rajiv. Lleva 3 meses como capataz en San Fernando."<br><strong>Contenido:</strong> Retrato profesional + caption con su historia, qué hace en LON<br><strong>CTA:</strong> Saga mensual — sigue al equipo' },
+      { format: 'Video entrevista 5 min · YouTube', title: 'Un día con Rajiv', detail: '<strong>Hook:</strong> Documental-style siguiendo a un miembro del equipo<br><strong>Contenido:</strong> 5 min siguiéndolo en su día de trabajo, entrevista al final<br><strong>CTA:</strong> Saga "personas detrás de LON"' },
+      { format: 'Story documental (10) · Instagram', title: 'El día a día en obra', detail: '<strong>Hook:</strong> "Hoy en stories: día completo con el equipo de Filipinas"<br><strong>Contenido:</strong> 10 stories siguiendo el día de un trabajador<br><strong>CTA:</strong> Highlight permanente "Equipo Filipinas"' }
+    ]
+  },
+  {
+    id: 'numeros-comparativa',
+    pillar: 'numeros',
+    pillarLabel: 'Números sin humo',
+    title: 'Comparativa con otros mercados',
+    concept: 'Poner los números de Filipinas en contexto. "Vs invertir en España, Portugal o Tailandia."',
+    variations: [
+      { format: 'Infografía carrusel · Instagram', title: 'Filipinas vs Europa vs Asia — 5 slides', detail: '<strong>Hook:</strong> "Antes de decidir dónde invertir, mira estos números"<br><strong>Contenido:</strong> Tabla comparativa rentabilidad, riesgo, entrada, regulación<br><strong>CTA:</strong> Dossier con análisis completo' },
+      { format: 'Post analítico · LinkedIn', title: 'Análisis macro del sector', detail: '<strong>Hook:</strong> "¿Por qué Filipinas y no Costa Rica? Los datos que lo explican"<br><strong>Contenido:</strong> Post de Sergio con 4-5 datos clave del macro, benchmark con alternativas<br><strong>CTA:</strong> Webinar para discutir los datos' },
+      { format: 'Video explicativo · YouTube', title: 'Panel comparativo 8 min', detail: '<strong>Hook:</strong> "Comparé invertir en 4 países. Esto fue lo que encontré."<br><strong>Contenido:</strong> 8 min con gráficas animadas, narrativa clara, disclaimer<br><strong>CTA:</strong> Link al dossier comparativo' }
+    ]
+  },
+  {
+    id: 'transparencia-riesgos',
+    pillar: 'transparencia',
+    pillarLabel: 'Transparencia',
+    title: 'Los 5 riesgos reales de invertir con LON',
+    concept: 'Publicar los riesgos TÚ, antes de que lo hagan los haters. Estrategia anti-defensiva.',
+    variations: [
+      { format: 'Post largo · LinkedIn', title: '5 riesgos de invertir con LON (yo mismo los cuento)', detail: '<strong>Hook:</strong> "Voy a hacer lo que ningún promotor hace: contarte los riesgos antes de cobrarte."<br><strong>Contenido:</strong> Sergio enumera 5 riesgos + cómo se mitigan, sin evasivas<br><strong>CTA:</strong> Pregúntame lo que no está aquí' },
+      { format: 'Reel #LONRealTalk 90s · Instagram', title: 'Los 5 en video directo', detail: '<strong>Hook:</strong> Primeros 3s directos — "Te voy a decir los riesgos"<br><strong>Contenido:</strong> 90s en cámara con texto sobreimpreso enumerando los 5 riesgos<br><strong>CTA:</strong> Detalle en FAQ de la web' },
+      { format: 'Página web dedicada · Web', title: '"Preguntas difíciles" (permanente)', detail: '<strong>Hook:</strong> Página propia en el sitio — activo SEO reputacional<br><strong>Contenido:</strong> Todos los riesgos con expansión detallada, fuentes, mitigaciones<br><strong>CTA:</strong> Agenda llamada para discutirlos' }
+    ]
+  }
+];
+
+// ═══════════════════════════════════════════════════════════════
+// Estado en localStorage
+// ═══════════════════════════════════════════════════════════════
+const STORAGE_KEY = 'lon-ideas-state-v1';
+
+function loadState() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch { return {}; }
+}
+
+function saveState(state) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+let state = loadState();
+let activeFilter = 'all';
+let hideUsed = false;
+
+// ═══════════════════════════════════════════════════════════════
+// Render
+// ═══════════════════════════════════════════════════════════════
+function variationKey(ideaId, varIdx) { return `${ideaId}::${varIdx}`; }
+
+function render() {
+  const grid = document.getElementById('ideas-grid');
+  grid.innerHTML = '';
+
+  const filtered = IDEAS.filter(i => activeFilter === 'all' || i.pillar === activeFilter);
+
+  filtered.forEach(idea => {
+    const usedCount = idea.variations.filter((_, idx) => state[variationKey(idea.id, idx)]?.used).length;
+    const allUsed = usedCount === idea.variations.length;
+
+    if (hideUsed && allUsed) return;
+
+    const card = document.createElement('div');
+    card.className = 'idea-card' + (allUsed ? ' all-used' : '');
+
+    const variationsHtml = idea.variations.map((v, idx) => {
+      const key = variationKey(idea.id, idx);
+      const usedData = state[key];
+      const isUsed = !!usedData?.used;
+      const usedDate = usedData?.date || '';
+
+      return `
+        <div class="variation ${isUsed ? 'used' : ''}">
+          <div class="variation-header">
+            <div class="variation-main">
+              <div class="variation-format">${escapeHtml(v.format)}</div>
+              <div class="variation-title">${escapeHtml(v.title)}</div>
+              <div class="variation-detail">${v.detail}</div>
+            </div>
+            <div class="variation-actions">
+              <input type="date" class="date-input" value="${usedDate}" onchange="setDate('${idea.id}', ${idx}, this.value)" aria-label="Fecha de uso">
+              <button class="mark-btn ${isUsed ? 'marked' : ''}" onclick="toggleUsed('${idea.id}', ${idx})" aria-pressed="${isUsed}">
+                ${isUsed ? '✓ Usada' : 'Marcar como usada'}
+              </button>
+            </div>
+          </div>
+          ${isUsed && usedDate ? `<div class="used-info">
+            <span>📅 Publicada el <strong>${formatDate(usedDate)}</strong></span>
+            <button onclick="toggleUsed('${idea.id}', ${idx})" style="background:transparent;border:none;color:var(--green);cursor:pointer;font-size:12px;font-weight:600;">Deshacer</button>
+          </div>` : ''}
+        </div>
+      `;
+    }).join('');
+
+    card.innerHTML = `
+      <div class="idea-header">
+        <div class="idea-meta">
+          <span class="pillar-badge pillar-${idea.pillar}">${escapeHtml(idea.pillarLabel)}</span>
+          <span class="idea-status"><strong>${usedCount}</strong>/${idea.variations.length} variaciones usadas</span>
+        </div>
+        <div class="idea-title">${escapeHtml(idea.title)}</div>
+        <div class="idea-concept">${escapeHtml(idea.concept)}</div>
+      </div>
+      <div class="variations">${variationsHtml}</div>
+    `;
+    grid.appendChild(card);
+  });
+
+  updateProgress();
+}
+
+function updateProgress() {
+  const totalVariations = IDEAS.reduce((sum, i) => sum + i.variations.length, 0);
+  const used = Object.values(state).filter(s => s?.used).length;
+  const pct = totalVariations > 0 ? Math.round((used / totalVariations) * 100) : 0;
+  document.getElementById('used-count').textContent = used;
+  document.getElementById('percent').textContent = `${pct}%`;
+  document.getElementById('progress-bar').style.width = `${pct}%`;
+}
+
+function escapeHtml(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function formatDate(iso) {
+  const d = new Date(iso + 'T00:00:00');
+  const m = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  return `${d.getDate()} ${m[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// Interacciones
+// ═══════════════════════════════════════════════════════════════
+function toggleUsed(ideaId, varIdx) {
+  const key = variationKey(ideaId, varIdx);
+  if (state[key]?.used) {
+    delete state[key];
+  } else {
+    const today = new Date().toISOString().split('T')[0];
+    state[key] = { used: true, date: state[key]?.date || today };
+  }
+  saveState(state);
+  render();
+}
+
+function setDate(ideaId, varIdx, value) {
+  const key = variationKey(ideaId, varIdx);
+  state[key] = { ...(state[key] || {}), date: value };
+  if (value && !state[key].used) state[key].used = true;
+  saveState(state);
+  render();
+}
+
+function setFilter(pillar) {
+  activeFilter = pillar;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === pillar));
+  render();
+}
+
+function toggleHideUsed() {
+  hideUsed = document.getElementById('hide-used').checked;
+  render();
+}
+
+function resetAll() {
+  if (!confirm('¿Seguro que quieres reiniciar el estado? Se borrarán todas las marcas de uso.')) return;
+  state = {};
+  saveState(state);
+  render();
+}
+
+// Init
+render();
+</script>
+
+</body>
+</html>

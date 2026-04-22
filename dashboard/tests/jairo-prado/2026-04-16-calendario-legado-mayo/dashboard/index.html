@@ -707,8 +707,55 @@
       section { break-inside: avoid; }
     }
   </style>
+
+<style id="back-to-hub-styles">
+.back-to-hub {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 9999;
+  background: #0f1219;
+  color: #c8f135;
+  padding: 9px 14px;
+  border-radius: 8px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.1);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  box-shadow: 0 6px 20px rgba(15,18,25,0.25);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: -0.1px;
+}
+.back-to-hub:hover {
+  transform: translateX(-3px);
+  background: #1a1d26;
+  color: #d4f54a;
+  box-shadow: 0 8px 24px rgba(15,18,25,0.35);
+}
+.back-to-hub svg { transition: transform 0.2s; }
+.back-to-hub:hover svg { transform: translateX(-2px); }
+@media print { .back-to-hub { display: none !important; } }
+@media (max-width: 640px) {
+  .back-to-hub {
+    top: 10px;
+    left: 10px;
+    padding: 7px 11px;
+    font-size: 11.5px;
+  }
+}
+</style>
 </head>
 <body>
+
+<a href="../../../../index.html" class="back-to-hub" aria-label="Volver al Panel QA">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+  Panel QA
+</a>
+
 
 <!-- ═══════════════════════ HEADER ═══════════════════════ -->
 <header>
@@ -980,6 +1027,10 @@
           </ul>
           <p style="margin-top:10px;font-size:0.82rem;color:var(--gray-mid)">SEO keyword: <strong>manifestaci&oacute;n consciente</strong></p>
           <p class="cta-line">Descarga extracto gratuito del libro</p>
+          <a href="articulo-manifestacion-consciente.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:8px 16px;background:var(--teal);color:#fff;border-radius:6px;text-decoration:none;font-size:0.82rem;font-weight:600;transition:all 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+            Ver art&iacute;culo completo
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
         </div>
       </div>
 
