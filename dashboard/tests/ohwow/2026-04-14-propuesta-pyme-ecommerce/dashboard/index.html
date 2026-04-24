@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta Dulce Raíz — Rediseño Web + Ecommerce | Agencia Oh Wow!</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --lima: #c8f135;
+    --negro: #1c1c1c;
+    --rosa: #e85d8a;
+    --beige: #f5f0eb;
+    --gris: #6b6b6b;
+    --gris-claro: #e0dbd5;
+    --blanco: #ffffff;
+    --rojo: #dc2626;
+    --verde: #16a34a;
+    --amarillo: #fbbf24;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--beige);
+    color: var(--negro);
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--negro);
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .badge {
+    background: var(--lima);
+    color: var(--negro);
+    font-weight: 800;
+    font-size: 14px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .header h1 { color: var(--blanco); font-size: 20px; font-weight: 600; }
+  .header h1 span { color: var(--lima); }
+  .btn-export {
+    background: var(--rosa);
+    color: var(--blanco);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .btn-export:hover { opacity: 0.85; }
+
+  /* TABS */
+  .tabs {
+    background: var(--blanco);
+    border-bottom: 1px solid var(--gris-claro);
+    padding: 0 32px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    position: sticky;
+    top: 80px;
+    z-index: 9;
+  }
+  .tab {
+    padding: 14px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gris);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'Inter', sans-serif;
+  }
+  .tab:hover { color: var(--negro); }
+  .tab.active { color: var(--negro); border-bottom-color: var(--lima); }
+  .tab-count {
+    display: inline-block;
+    background: var(--beige);
+    color: var(--gris);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 6px;
+    font-weight: 700;
+  }
+  .tab.active .tab-count { background: var(--lima); color: var(--negro); }
+
+  /* MAIN */
+  .main { max-width: 960px; margin: 0 auto; padding: 32px 20px 60px; }
+
+  .cliente-card {
+    background: linear-gradient(135deg, #fff 0%, #faf8f5 100%);
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 24px;
+    border-left: 4px solid var(--lima);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .cliente-card .cliente-label {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--rosa);
+    margin-bottom: 6px;
+  }
+  .cliente-card h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--negro);
+    margin-bottom: 6px;
+  }
+  .cliente-card .subtitle {
+    font-size: 14px;
+    color: var(--gris);
+    margin-bottom: 18px;
+  }
+  .cliente-card .meta { display: flex; gap: 10px; flex-wrap: wrap; }
+  .cliente-card .meta span {
+    font-size: 12px;
+    background: var(--beige);
+    padding: 5px 12px;
+    border-radius: 6px;
+    color: var(--negro);
+    font-weight: 500;
+  }
+  .cliente-card .quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--gris);
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--gris-claro);
+  }
+
+  /* SECTION PANE */
+  .section-pane { display: none; }
+  .section-pane.active { display: block; }
+  .section-intro {
+    background: linear-gradient(135deg, var(--negro), #2d2d2d);
+    color: var(--blanco);
+    padding: 20px 24px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+  .section-intro h3 { font-size: 15px; color: var(--lima); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .section-intro p { font-size: 14px; line-height: 1.7; }
+
+  /* GLOBAL ACTIONS */
+  .global-actions { display: flex; gap: 10px; justify-content: flex-end; margin-bottom: 16px; }
+  .btn-action {
+    background: var(--blanco);
+    color: var(--negro);
+    border: 1px solid var(--gris-claro);
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+  }
+  .btn-action:hover { background: var(--beige); }
+
+  /* CARDS */
+  .card {
+    background: var(--blanco);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    border: 1px solid var(--gris-claro);
+  }
+  .card-header {
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+    gap: 14px;
+  }
+  .card-header:hover { background: #faf8f5; }
+  .card-header-left { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
+  .card-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--lima);
+    color: var(--negro);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .card-number.rosa { background: var(--rosa); color: var(--blanco); }
+  .card-number.negro { background: var(--negro); color: var(--lima); }
+  .card-title-wrap { flex: 1; min-width: 0; }
+  .card-header h3 { font-size: 16px; font-weight: 700; }
+  .card-header .subtitle {
+    font-size: 12px;
+    color: var(--gris);
+    margin-top: 2px;
+  }
+  .card-meta-pills { display: flex; gap: 6px; flex-shrink: 0; flex-wrap: wrap; }
+  .meta-pill {
+    font-size: 11px;
+    background: var(--beige);
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: var(--negro);
+    font-weight: 600;
+  }
+  .meta-pill.lima { background: var(--lima); }
+  .meta-pill.rosa { background: var(--rosa); color: var(--blanco); }
+  .toggle-icon {
+    font-size: 18px;
+    color: var(--gris);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .card.open .toggle-icon { transform: rotate(180deg); }
+  .card-body { display: none; padding: 0 22px 22px; }
+  .card.open .card-body { display: block; }
+
+  /* INNER SECTIONS */
+  .inner-section-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--gris);
+    margin: 22px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--gris-claro);
+  }
+  .inner-section-title:first-child { margin-top: 0; }
+
+  .content-block {
+    background: #faf8f5;
+    border: 1px solid var(--gris-claro);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  .content-block strong { color: var(--negro); }
+  .content-block p { margin-bottom: 10px; }
+  .content-block p:last-child { margin-bottom: 0; }
+  .content-block ul, .content-block ol { margin: 6px 0 10px 22px; }
+  .content-block li { margin-bottom: 5px; }
+
+  /* BIG HERO QUOTE */
+  .hero-quote {
+    background: linear-gradient(135deg, var(--negro) 0%, #2d2d2d 100%);
+    color: var(--blanco);
+    padding: 32px;
+    border-radius: 14px;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+  .hero-quote p {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--lima);
+  }
+
+  /* PROBLEMA ITEM */
+  .problema-item {
+    background: #fff1f5;
+    border-left: 4px solid var(--rosa);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+  .problema-item strong { color: var(--rosa); }
+
+  /* FASE */
+  .fase-detail {
+    margin-top: 12px;
+  }
+  .fase-label {
+    display: inline-block;
+    background: var(--lima);
+    color: var(--negro);
+    font-weight: 700;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+  .fase-label.rosa { background: var(--rosa); color: var(--blanco); }
+  .entregable {
+    background: #ecfdf5;
+    border-left: 4px solid var(--verde);
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 13.5px;
+  }
+  .entregable strong { color: var(--verde); }
+
+  /* INCLUDED LIST */
+  .incluido-list {
+    background: #faf8f5;
+    border: 1px solid var(--gris-claro);
+    border-radius: 8px;
+    padding: 18px;
+    columns: 2;
+    column-gap: 32px;
+  }
+  .incluido-list li {
+    list-style: none;
+    padding: 6px 0 6px 24px;
+    position: relative;
+    font-size: 13.5px;
+    break-inside: avoid;
+  }
+  .incluido-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--lima);
+    font-weight: 800;
+    background: var(--negro);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    top: 8px;
+  }
+  @media (max-width: 640px) { .incluido-list { columns: 1; } }
+
+  /* TABLA */
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 12px;
+    font-size: 13px;
+  }
+  table.data-table th {
+    text-align: left;
+    padding: 9px 12px;
+    background: var(--negro);
+    color: var(--blanco);
+    font-weight: 600;
+    font-size: 12px;
+  }
+  table.data-table th:first-child { border-radius: 6px 0 0 0; }
+  table.data-table th:last-child { border-radius: 0 6px 0 0; }
+  table.data-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--gris-claro);
+    vertical-align: top;
+  }
+  table.data-table tr:last-child td { border-bottom: none; }
+  table.data-table tr.highlight { background: #fffbe6; }
+  table.data-table tr.highlight td { font-weight: 700; }
+
+  /* INVERSION */
+  .inversion-total {
+    background: var(--lima);
+    color: var(--negro);
+    padding: 20px 24px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px 0;
+  }
+  .inversion-total .label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; }
+  .inversion-total .amount { font-size: 32px; font-weight: 900; }
+
+  /* TIMELINE BAR */
+  .timeline-bar {
+    background: #faf8f5;
+    border: 1px solid var(--gris-claro);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 12px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.9;
+    white-space: pre;
+    overflow-x: auto;
+  }
+  .tl-fase1 { color: var(--lima); background: var(--negro); padding: 2px 4px; border-radius: 3px; }
+  .tl-fase2 { color: var(--blanco); background: var(--rosa); padding: 2px 4px; border-radius: 3px; }
+  .tl-fase3 { color: var(--negro); background: var(--lima); padding: 2px 4px; border-radius: 3px; }
+
+  /* METRIC CARD */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin: 14px 0;
+  }
+  .metric {
+    background: var(--negro);
+    color: var(--blanco);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .metric .value {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--lima);
+  }
+  .metric .label {
+    font-size: 11px;
+    color: #bbb;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .metric .change {
+    font-size: 12px;
+    color: var(--lima);
+    margin-top: 6px;
+    font-weight: 700;
+  }
+
+  /* TESTIMONIAL */
+  .testimonial {
+    background: linear-gradient(135deg, var(--beige), #fff);
+    border-left: 4px solid var(--rosa);
+    padding: 24px 28px;
+    border-radius: 12px;
+    margin: 14px 0;
+  }
+  .testimonial blockquote {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--negro);
+    margin-bottom: 12px;
+  }
+  .testimonial cite {
+    font-size: 13px;
+    color: var(--gris);
+    font-style: normal;
+  }
+  .testimonial cite strong { color: var(--negro); }
+
+  /* GARANTIA */
+  .garantia {
+    background: #ecfdf5;
+    border: 1px solid var(--verde);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 10px;
+  }
+  .garantia h4 { font-size: 15px; color: var(--verde); margin-bottom: 8px; }
+  .garantia p { font-size: 13.5px; line-height: 1.7; }
+  .garantia ul { margin: 8px 0 0 20px; font-size: 13.5px; }
+
+  /* EMAIL */
+  .email-wrap {
+    background: var(--blanco);
+    border: 2px solid var(--gris-claro);
+    border-radius: 10px;
+    padding: 22px;
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .email-wrap .email-meta {
+    background: #faf8f5;
+    margin: -22px -22px 18px;
+    padding: 14px 22px;
+    border-bottom: 1px solid var(--gris-claro);
+    font-size: 12px;
+    color: var(--gris);
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .email-wrap .email-meta strong { color: var(--negro); }
+  .email-wrap .email-subject { font-weight: 700; font-size: 15px; margin-bottom: 10px; }
+  .email-wrap .email-body {
+    white-space: pre-wrap;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .email-wrap .email-body strong { color: var(--negro); }
+  .option {
+    background: var(--beige);
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border-left: 3px solid var(--lima);
+  }
+  .option-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--rosa);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .option-text { font-size: 14px; font-weight: 600; color: var(--negro); }
+
+  code {
+    background: #f1ede7;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 32px 20px;
+    font-size: 12px;
+    color: var(--gris);
+  }
+  .footer a { color: var(--rosa); text-decoration: none; }
+
+  /* PRINT */
+  @media print {
+    @page { size: A4; margin: 1.5cm; }
+    .no-print { display: none !important; }
+    body { background: white; }
+    .header { background: white; border-bottom: 2px solid var(--negro); padding: 12px 0; position: static; }
+    .header h1 { color: var(--negro); }
+    .tabs { display: none; }
+    .section-pane { display: block !important; page-break-before: always; }
+    .section-pane:first-of-type { page-break-before: auto; }
+    .card { break-inside: avoid; box-shadow: none; }
+    .card-body { display: block !important; }
+    .toggle-icon { display: none; }
+    .card-header { cursor: default; }
+    .hero-quote, .section-intro, .inversion-total, .metric { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  }
+
+  @media (max-width: 640px) {
+    .header { padding: 16px; }
+    .header h1 { font-size: 16px; }
+    .tabs { padding: 0 16px; top: 72px; }
+    .main { padding: 20px 12px 40px; }
+    .card-header { padding: 14px 16px; }
+    .card-body { padding: 0 16px 16px; }
+    .card-meta-pills { display: none; }
+    .cliente-card h2 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header no-print">
+  <div class="header-left">
+    <span class="badge">Agencia Oh Wow!</span>
+    <h1>Propuesta &mdash; <span>Dulce Raíz</span></h1>
+  </div>
+  <button class="btn-export" onclick="exportPDF()">Exportar PDF</button>
+</div>
+
+<!-- TABS -->
+<div class="tabs no-print">
+  <button class="tab active" data-tab="propuesta" onclick="switchTab('propuesta')">📄 Propuesta <span class="tab-count">8 secciones</span></button>
+  <button class="tab" data-tab="caso" onclick="switchTab('caso')">🏆 Caso de éxito <span class="tab-count">La Masa Madre</span></button>
+  <button class="tab" data-tab="emails" onclick="switchTab('emails')">✉️ Seguimiento <span class="tab-count">3 emails</span></button>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- CLIENTE CARD -->
+  <div class="cliente-card">
+    <div class="cliente-label">Propuesta preparada para</div>
+    <h2>Dulce Raíz</h2>
+    <div class="subtitle">María García, CEO y Fundadora &middot; Panadería artesanal · 4 locales en Madrid</div>
+    <div class="meta">
+      <span>📅 14 abril 2026</span>
+      <span>⏱ 8 semanas</span>
+      <span>💰 9.800 €</span>
+      <span>📍 Madrid</span>
+      <span>Validez: 30 días</span>
+    </div>
+    <p class="quote">"Tu socio digital, no tu proveedor."</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- TAB 1: PROPUESTA                                                 -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <div class="section-pane active" id="pane-propuesta">
+
+    <!-- RESUMEN EJECUTIVO (siempre abierto, es el hero) -->
+    <div class="hero-quote">
+      <p>"Dulce Raíz ha construido algo especial. En 8 semanas, vamos a darle la presencia digital que se merece."</p>
+    </div>
+
+    <div class="section-intro">
+      <h3>📄 Documento comercial completo</h3>
+      <p>Propuesta estructurada en 8 secciones: resumen ejecutivo, análisis de la situación, solución en 3 fases, alcance incluido, inversión, timeline, diferenciadores y garantías. Pensada para que María pueda revisarla sola y tomar una decisión informada.</p>
+    </div>
+
+    <div class="global-actions no-print">
+      <button class="btn-action" onclick="openAll('pane-propuesta')">Expandir todo</button>
+      <button class="btn-action" onclick="closeAll('pane-propuesta')">Colapsar todo</button>
+    </div>
+
+    <!-- SEC 0: RESUMEN EJECUTIVO -->
+    <div class="card open">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number negro">✧</div>
+          <div class="card-title-wrap">
+            <h3>Resumen ejecutivo</h3>
+            <div class="subtitle">La propuesta en un párrafo</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="content-block">
+          <p>María, Dulce Raíz ha construido algo especial: una panadería artesanal con <strong>cuatro locales en Madrid</strong> y una clientela fiel que valora la calidad de tu producto. Pero tu web actual —diseñada en 2019, sin pedidos online y con una experiencia móvil deficiente— está frenando el crecimiento de tu negocio justo cuando <strong>el 70% de tus visitantes llega desde el móvil</strong>.</p>
+          <p>En Oh Wow! vamos a transformar tu presencia digital en una herramienta que trabaje tan duro como tú: un sitio rápido, moderno y optimizado para móvil, con una tienda online integrada que permita a tus clientes pedir desde cualquier lugar, y un posicionamiento SEO que te ponga donde tu público te busca.</p>
+          <p><strong>En 8 semanas, Dulce Raíz tendrá la web que se merece.</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 1: ANALISIS -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number rosa">1</div>
+          <div class="card-title-wrap">
+            <h3>Análisis de la situación actual</h3>
+            <div class="subtitle">5 puntos críticos en dulceraiz.es</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="content-block">
+          <p>Hemos revisado <code>dulceraiz.es</code> y hemos identificado los siguientes puntos críticos:</p>
+        </div>
+
+        <div class="problema-item">
+          <strong>📱 Experiencia móvil rota</strong><br>
+          El 70% de tu tráfico llega desde dispositivos móviles, pero el sitio no es responsive. Los textos se cortan, las imágenes no se adaptan y los botones son difíciles de pulsar. Cada visitante móvil que rebota es un cliente que no vuelve.
+        </div>
+        <div class="problema-item">
+          <strong>🛒 Sin capacidad de pedidos online</strong><br>
+          Tus competidores directos ya ofrecen pedidos online con recogida en tienda y envío a domicilio. Cada día sin esta funcionalidad es facturación que se queda en la mesa.
+        </div>
+        <div class="problema-item">
+          <strong>⏱ Velocidad de carga deficiente</strong><br>
+          Tiempos de carga superiores a 6 segundos en móvil (el estándar aceptable es menos de 3). Google penaliza los sitios lentos tanto en posicionamiento como en experiencia de usuario.
+        </div>
+        <div class="problema-item">
+          <strong>🔍 SEO con brechas importantes</strong><br>
+          Sin estructura de encabezados coherente, meta descripciones ausentes en la mayoría de páginas, imágenes sin optimizar ni atributos alt. Las búsquedas locales tipo <em>"panadería artesanal Madrid"</em> no devuelven Dulce Raíz en los primeros resultados.
+        </div>
+        <div class="problema-item">
+          <strong>🎨 Diseño desactualizado</strong><br>
+          La estética de 2019 no refleja la calidad artesanal del producto. La primera impresión digital importa: un sitio anticuado genera desconfianza, especialmente en alimentación.
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 2: SOLUCION 3 FASES -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">2</div>
+          <div class="card-title-wrap">
+            <h3>Solución propuesta &mdash; 3 fases</h3>
+            <div class="subtitle">Descubrimiento · Diseño · Lanzamiento</div>
+          </div>
+        </div>
+        <div class="card-meta-pills"><span class="meta-pill">8 semanas</span></div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+
+        <!-- FASE 1 -->
+        <div class="fase-detail">
+          <span class="fase-label">Fase 1 · Semanas 1-2</span>
+          <h4 style="font-size:17px; margin-bottom:10px;">Descubrimiento y estrategia</h4>
+          <table class="data-table">
+            <thead><tr><th>Actividad</th><th>Detalle</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Auditoría UX completa</strong></td><td>Análisis de comportamiento de usuarios en el sitio actual (mapas de calor, flujos de navegación, puntos de abandono)</td></tr>
+              <tr><td><strong>Análisis competitivo</strong></td><td>Estudio de los 5 principales competidores digitales en Madrid para identificar oportunidades de diferenciación</td></tr>
+              <tr><td><strong>Wireframes</strong></td><td>Diseño de la arquitectura de información y estructura de cada página clave (home, carta/menú, tienda online, locales, sobre nosotros)</td></tr>
+              <tr><td><strong>Estrategia de contenidos</strong></td><td>Definición del tono, mensajes clave, fotografía necesaria y contenido por página</td></tr>
+              <tr><td><strong>Mapa del customer journey</strong></td><td>Desde que alguien busca "panadería artesanal" hasta que completa un pedido online</td></tr>
+            </tbody>
+          </table>
+          <div class="entregable"><strong>📦 Entregable:</strong> Documento de estrategia + wireframes aprobados para avanzar al diseño.</div>
+        </div>
+
+        <!-- FASE 2 -->
+        <div class="fase-detail" style="margin-top:32px;">
+          <span class="fase-label rosa">Fase 2 · Semanas 3-6</span>
+          <h4 style="font-size:17px; margin-bottom:10px;">Diseño y desarrollo</h4>
+          <table class="data-table">
+            <thead><tr><th>Actividad</th><th>Detalle</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Diseño visual personalizado</strong></td><td>Maquetas de alta fidelidad que reflejen la identidad artesanal de Dulce Raíz, adaptadas a móvil, tablet y escritorio</td></tr>
+              <tr><td><strong>Desarrollo WordPress + Elementor</strong></td><td>Construcción del sitio sobre WordPress con Elementor Pro, garantizando que el equipo pueda gestionarlo sin conocimientos técnicos</td></tr>
+              <tr><td><strong>Tienda online con WooCommerce</strong></td><td>Catálogo de productos, carrito, pasarela de pago (Stripe/Redsys), opciones de recogida en tienda y envío, gestión de pedidos</td></tr>
+              <tr><td><strong>Integración con sistemas</strong></td><td>Conexión con herramientas de gestión existentes, Google Business Profile, y plataformas de reparto si se requiere</td></tr>
+              <tr><td><strong>Optimización de velocidad</strong></td><td>Compresión de imágenes, caché avanzado, CDN, lazy loading — objetivo: menos de 2,5 segundos de carga</td></tr>
+              <tr><td><strong>Rondas de revisión</strong></td><td>2 rondas de feedback en diseño + 1 ronda en desarrollo, para asegurar que el resultado sea exactamente lo que esperáis</td></tr>
+            </tbody>
+          </table>
+          <div class="entregable"><strong>📦 Entregable:</strong> Sitio web completo en entorno de pruebas para revisión final.</div>
+        </div>
+
+        <!-- FASE 3 -->
+        <div class="fase-detail" style="margin-top:32px;">
+          <span class="fase-label">Fase 3 · Semanas 7-8</span>
+          <h4 style="font-size:17px; margin-bottom:10px;">Lanzamiento y optimización</h4>
+          <table class="data-table">
+            <thead><tr><th>Actividad</th><th>Detalle</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Testing exhaustivo</strong></td><td>Pruebas en 12+ dispositivos y navegadores, test de formularios, pasarela de pago, flujo de pedido completo</td></tr>
+              <tr><td><strong>SEO on-page</strong></td><td>Optimización de títulos, meta descripciones, encabezados, imágenes, schema markup para negocio local y productos</td></tr>
+              <tr><td><strong>Migración y lanzamiento</strong></td><td>Migración del dominio, redirecciones 301, configuración de SSL, verificación post-lanzamiento</td></tr>
+              <tr><td><strong>Formación del equipo</strong></td><td>Sesión de 2 horas (grabada) para que tu equipo aprenda a gestionar productos, pedidos, contenidos y métricas básicas</td></tr>
+              <tr><td><strong>Configuración de analytics</strong></td><td>Google Analytics 4 + Search Console configurados con eventos de conversión</td></tr>
+            </tbody>
+          </table>
+          <div class="entregable"><strong>📦 Entregable:</strong> Sitio en producción + documentación + vídeo de formación.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 3: QUE INCLUYE -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">3</div>
+          <div class="card-title-wrap">
+            <h3>Qué incluye esta propuesta</h3>
+            <div class="subtitle">14 conceptos cerrados + 3 meses de soporte</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <ul class="incluido-list">
+          <li>Diseño web 100% personalizado y responsive (mobile-first)</li>
+          <li>Desarrollo sobre WordPress + Elementor Pro (última versión)</li>
+          <li>Tienda online completa con WooCommerce (hasta 50 productos iniciales)</li>
+          <li>Pasarela de pago integrada (Stripe y/o Redsys)</li>
+          <li>Opciones de recogida en tienda (4 locales) y envío a domicilio</li>
+          <li>Optimización SEO on-page de todas las páginas</li>
+          <li>Optimización de velocidad (Core Web Vitals en verde)</li>
+          <li>Schema markup para negocio local + productos</li>
+          <li>Integración con Google Business Profile</li>
+          <li>Configuración de Google Analytics 4 y Search Console</li>
+          <li>Certificado SSL y configuración de seguridad</li>
+          <li>Sesión de formación de 2 horas (presencial o remota) + grabación</li>
+          <li>Manual de usuario básico en PDF</li>
+          <li><strong>3 meses de soporte post-lanzamiento incluidos</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SEC 4: INVERSION -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number rosa">4</div>
+          <div class="card-title-wrap">
+            <h3>Inversión &mdash; 9.800 €</h3>
+            <div class="subtitle">Desglose por fase · pago 40/40/20</div>
+          </div>
+        </div>
+        <div class="card-meta-pills"><span class="meta-pill lima">IVA no incluido</span></div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Desglose por fase</div>
+        <table class="data-table">
+          <thead><tr><th>Concepto</th><th style="text-align:right;">Importe</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Fase 1</strong> — Descubrimiento, auditoría UX, wireframes y estrategia</td><td style="text-align:right;">1.960 €</td></tr>
+            <tr><td><strong>Fase 2</strong> — Diseño, desarrollo WordPress + WooCommerce</td><td style="text-align:right;">5.880 €</td></tr>
+            <tr><td><strong>Fase 3</strong> — Testing, SEO, lanzamiento y formación</td><td style="text-align:right;">1.960 €</td></tr>
+          </tbody>
+        </table>
+
+        <div class="inversion-total">
+          <span class="label">Total del proyecto</span>
+          <span class="amount">9.800 €</span>
+        </div>
+
+        <div class="inner-section-title">Condiciones de pago</div>
+        <table class="data-table">
+          <thead><tr><th>Momento</th><th>%</th><th style="text-align:right;">Importe</th></tr></thead>
+          <tbody>
+            <tr><td>Al firmar la propuesta (inicio Fase 1)</td><td><strong>40%</strong></td><td style="text-align:right;">3.920 €</td></tr>
+            <tr><td>Al aprobar el diseño (inicio Fase 2 desarrollo)</td><td><strong>40%</strong></td><td style="text-align:right;">3.920 €</td></tr>
+            <tr><td>Al lanzar el sitio (entrega final)</td><td><strong>20%</strong></td><td style="text-align:right;">1.960 €</td></tr>
+          </tbody>
+        </table>
+        <div class="content-block">
+          <em>Aceptamos transferencia bancaria y pago con tarjeta.</em>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 5: TIMELINE -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">5</div>
+          <div class="card-title-wrap">
+            <h3>Timeline &mdash; 8 semanas</h3>
+            <div class="subtitle">Kickoff 21 abril · lanzamiento 16 junio 2026</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="timeline-bar">Semana 1-2  <span class="tl-fase1">████████░░░░░░░░</span>  Fase 1: Descubrimiento y estrategia
+Semana 3-6  <span>░░░░</span><span class="tl-fase2">████████████</span>  Fase 2: Diseño y desarrollo
+Semana 7-8  <span>░░░░░░░░░░░░</span><span class="tl-fase3">████</span>  Fase 3: Testing, SEO y lanzamiento</div>
+
+        <div class="content-block">
+          <p><strong>Duración total:</strong> 8 semanas desde el kickoff.</p>
+          <p>La fecha estimada de lanzamiento, iniciando el 21 de abril, sería el <strong>16 de junio de 2026</strong>.</p>
+        </div>
+
+        <div class="problema-item">
+          <strong>Nota importante:</strong> El cumplimiento del timeline depende de la entrega puntual de contenidos (textos, fotografías, accesos) por parte del cliente. Los retrasos en feedback o materiales pueden extender los plazos.
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 6: POR QUE OH WOW -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">6</div>
+          <div class="card-title-wrap">
+            <h3>Por qué Oh Wow!</h3>
+            <div class="subtitle">3 diferenciadores clave</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="content-block">
+          <h4 style="margin-bottom:8px;">💻 Somos especialistas en WordPress, no generalistas</h4>
+          <p>Llevamos años construyendo exclusivamente sobre WordPress + Elementor + WooCommerce. No es una herramienta más de nuestra lista: <strong>es nuestra especialidad</strong>. Conocemos sus límites, sus trucos y cómo sacarle el máximo rendimiento sin código innecesario. Para Dulce Raíz, esto se traduce en un sitio que podréis gestionar vosotros mismos sin depender de nadie.</p>
+        </div>
+        <div class="content-block">
+          <h4 style="margin-bottom:8px;">🤝 Trabajamos como socios, no como proveedores</h4>
+          <p>Con <strong>26+ proyectos activos en 14 países</strong>, hemos aprendido que los mejores resultados nacen de relaciones donde el cliente se siente parte del proceso. Tendrás un interlocutor dedicado, comunicación transparente y decisiones que se toman juntos. No desaparecemos después de entregar: los 3 meses de soporte están para demostrarlo.</p>
+        </div>
+        <div class="content-block">
+          <h4 style="margin-bottom:8px;">📊 Nos importan los resultados, no solo el diseño</h4>
+          <p>Un sitio bonito que no convierte es un gasto. Un sitio que genera pedidos es una inversión. Cada decisión de diseño que tomamos está fundamentada en datos, buenas prácticas de conversión y experiencia real con negocios como Dulce Raíz. <strong>Medimos lo que hacemos y te enseñamos a medirlo también.</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 7: GARANTIAS -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">7</div>
+          <div class="card-title-wrap">
+            <h3>Garantías</h3>
+            <div class="subtitle">3 meses de soporte + satisfacción Fase 1</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="garantia">
+          <h4>✓ 3 meses de soporte post-lanzamiento</h4>
+          <p>Desde el día del lanzamiento, nuestro equipo estará disponible para resolver incidencias técnicas, dudas de gestión y ajustes menores. Esto incluye:</p>
+          <ul>
+            <li>Corrección de bugs</li>
+            <li>Ajustes de contenido menores</li>
+            <li>Soporte por email y videollamada</li>
+            <li>Actualizaciones de seguridad de WordPress y plugins</li>
+          </ul>
+        </div>
+        <div class="garantia">
+          <h4>✓ Garantía de satisfacción</h4>
+          <p>Si en cualquier punto de la Fase 1 consideras que no somos el equipo adecuado para Dulce Raíz, te devolvemos el <strong>100% de lo pagado</strong>. Sin preguntas. Creemos en nuestro trabajo y queremos que tú también lo hagas antes de comprometerte con el desarrollo completo.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEC 8: PROXIMOS PASOS -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number rosa">8</div>
+          <div class="card-title-wrap">
+            <h3>Próximos pasos</h3>
+            <div class="subtitle">3 acciones para arrancar</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="content-block">
+          <ol style="margin-left:22px;">
+            <li style="margin-bottom:12px;"><strong>Responde a esta propuesta</strong> con cualquier duda o ajuste — estamos abiertos a adaptar el alcance a tus necesidades.</li>
+            <li style="margin-bottom:12px;"><strong>Agenda una llamada de kickoff</strong> — 30 minutos para conocernos, resolver preguntas y definir el arranque. [Reservar aquí →]</li>
+            <li><strong>Firma la propuesta</strong> — Te enviaremos el contrato y la factura del primer pago para iniciar la Fase 1.</li>
+          </ol>
+        </div>
+
+        <div class="testimonial">
+          <blockquote>"María, Dulce Raíz merece una presencia digital a la altura de lo que horneáis cada día. Estamos listos para construirla contigo."</blockquote>
+        </div>
+
+        <div class="inner-section-title">Contacto</div>
+        <div class="content-block">
+          <p><strong>Oh Wow!</strong> · <a href="https://agencia.ohwow.es">agencia.ohwow.es</a> · <code>hola@ohwow.es</code></p>
+          <p><em>Esta propuesta tiene validez de 30 días a partir de la fecha de emisión.</em></p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /pane-propuesta -->
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- TAB 2: CASO DE EXITO                                             -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <div class="section-pane" id="pane-caso">
+
+    <div class="section-intro">
+      <h3>🏆 Caso de éxito · La Masa Madre</h3>
+      <p>Panadería artesanal en Barcelona (3 locales, 22 empleados). Proyecto de 9 semanas con resultado: <strong>de 0 a 45 pedidos online diarios</strong> en 4 meses, ROI recuperado al 4º mes. Mismo sector que Dulce Raíz — prueba social directa.</p>
+    </div>
+
+    <div class="global-actions no-print">
+      <button class="btn-action" onclick="openAll('pane-caso')">Expandir todo</button>
+      <button class="btn-action" onclick="closeAll('pane-caso')">Colapsar todo</button>
+    </div>
+
+    <!-- FICHA TECNICA -->
+    <div class="card open">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number negro">i</div>
+          <div class="card-title-wrap">
+            <h3>Ficha técnica del proyecto</h3>
+            <div class="subtitle">Sector · ubicación · duración · tecnología</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <table class="data-table">
+          <tbody>
+            <tr><td><strong>Sector</strong></td><td>Panadería artesanal / Alimentación</td></tr>
+            <tr><td><strong>Tamaño</strong></td><td>3 locales, 22 empleados</td></tr>
+            <tr><td><strong>Ubicación</strong></td><td>Barcelona (Gràcia, Eixample, Poblenou)</td></tr>
+            <tr><td><strong>Tecnología</strong></td><td>WordPress + Elementor + WooCommerce</td></tr>
+            <tr><td><strong>Duración del proyecto</strong></td><td>9 semanas</td></tr>
+            <tr class="highlight"><td><strong>Resultado principal</strong></td><td>De 0 a 45 pedidos online diarios en 4 meses</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SITUACION -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">1</div>
+          <div class="card-title-wrap">
+            <h3>La situación de partida</h3>
+            <div class="subtitle">Producto top · presencia digital deficiente</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="content-block">
+          <p>La Masa Madre es una panadería artesanal con tres locales en Barcelona, conocida por su pan de masa madre fermentado durante 48 horas y su bollería de temporada. Fundada en 2017, habían crecido de boca en boca hasta consolidar una clientela fiel en el barrio de Gràcia, el Eixample y Poblenou.</p>
+          <p>Su problema no estaba en el producto —eso lo tenían resuelto— sino en su presencia digital. <strong>Su web, creada en 2018, era poco más que una tarjeta de visita:</strong> un diseño genérico con la dirección de los tres locales, una galería de fotos desactualizadas y un formulario de contacto que casi nadie usaba.</p>
+          <p>Mientras tanto, sus competidores directos ya aceptaban pedidos online con recogida en tienda y envío a domicilio. La Masa Madre estaba <strong>perdiendo ventas que ni siquiera sabía que existían</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RETO EN NUMEROS -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number rosa">2</div>
+          <div class="card-title-wrap">
+            <h3>El reto en números</h3>
+            <div class="subtitle">Las métricas antes de empezar</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <table class="data-table">
+          <thead><tr><th>Métrica</th><th>Antes de Oh Wow!</th></tr></thead>
+          <tbody>
+            <tr><td>Tráfico móvil</td><td>80% del total</td></tr>
+            <tr><td>Tasa de conversión móvil</td><td>0,3%</td></tr>
+            <tr><td>Pedidos online</td><td>0 / día</td></tr>
+            <tr><td>Tasa de rebote</td><td>74%</td></tr>
+            <tr><td>Tiempo medio de carga (móvil)</td><td>7,2 segundos</td></tr>
+            <tr><td>Posición media en búsquedas locales</td><td>No aparecía en top 20</td></tr>
+          </tbody>
+        </table>
+        <div class="content-block" style="margin-top:12px;">
+          <p>La paradoja era clara: la inmensa mayoría de sus visitantes llegaba desde el móvil — buscando "pan artesanal cerca" o "panadería Gràcia" — pero el sitio no estaba preparado para recibirlos. <strong>No podían pedir, no podían ver el menú del día fácilmente</strong>, y la experiencia era tan frustrante que 3 de cada 4 visitantes se iban sin hacer nada.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- LA SOLUCION -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">3</div>
+          <div class="card-title-wrap">
+            <h3>La solución &mdash; 9 semanas en 3 fases</h3>
+            <div class="subtitle">Descubrimiento · Build · SEO + launch</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">1. Descubrimiento y estrategia</div>
+        <div class="content-block">
+          <p>Empezamos por entender cómo sus clientes reales usaban (o intentaban usar) el sitio. Instalamos herramientas de análisis durante dos semanas y descubrimos que <strong>el 62% de las visitas móviles intentaban encontrar "cómo pedir"</strong> — una opción que no existía.</p>
+          <p>Diseñamos la arquitectura del nuevo sitio alrededor de un objetivo:</p>
+          <p style="background:var(--lima); padding:12px 16px; border-radius:8px; font-weight:700; font-size:15px; margin-top:8px;">🎯 Que cualquier persona pudiera completar un pedido en menos de 90 segundos desde el móvil.</p>
+        </div>
+
+        <div class="inner-section-title">2. Diseño y desarrollo</div>
+        <div class="content-block">
+          <p>Construimos un sitio completamente nuevo sobre WordPress + Elementor con WooCommerce como motor de la tienda online:</p>
+          <ul>
+            <li><strong>Diseño mobile-first</strong> que reflejaba la estética artesanal de la marca: texturas naturales, fotografía real del obrador, tipografías con carácter</li>
+            <li><strong>Tienda online con WooCommerce</strong> organizada por categorías (panes, bollería, tartas por encargo, cestas regalo) con fotografía profesional de cada producto</li>
+            <li><strong>Sistema de pedidos con recogida en tienda</strong> que permitía seleccionar el local y la franja horaria</li>
+            <li><strong>Integración con Glovo y Stuart</strong> para envío a domicilio en Barcelona ciudad</li>
+            <li><strong>Página "Hoy horneamos"</strong> actualizable por el equipo cada mañana, mostrando disponibilidad en tiempo real</li>
+            <li><strong>Optimización de velocidad radical</strong>: compresión de imágenes, caché, CDN y lazy loading para bajar el tiempo de carga a menos de 2 segundos</li>
+          </ul>
+        </div>
+
+        <div class="inner-section-title">3. SEO y lanzamiento</div>
+        <div class="content-block">
+          <p>Optimizamos cada página para búsquedas locales relevantes, implementamos schema markup de negocio local y productos, y reclamamos y optimizamos sus fichas de Google Business Profile para los tres locales.</p>
+          <p>Formamos al equipo de La Masa Madre para gestionar productos, pedidos y contenidos sin depender de nosotros.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULTADOS -->
+    <div class="card open">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number rosa">4</div>
+          <div class="card-title-wrap">
+            <h3>Los resultados &mdash; 4 meses después</h3>
+            <div class="subtitle">ROI recuperado al 4º mes</div>
+          </div>
+        </div>
+        <div class="card-meta-pills"><span class="meta-pill rosa">★ Destacado</span></div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+
+        <div class="metric-grid">
+          <div class="metric">
+            <div class="value">+210%</div>
+            <div class="label">Conversión móvil</div>
+            <div class="change">de 0,3% a 0,93%</div>
+          </div>
+          <div class="metric">
+            <div class="value">45/día</div>
+            <div class="label">Pedidos online</div>
+            <div class="change">antes: 0</div>
+          </div>
+          <div class="metric">
+            <div class="value">-75%</div>
+            <div class="label">Tiempo de carga</div>
+            <div class="change">de 7,2s a 1,8s</div>
+          </div>
+          <div class="metric">
+            <div class="value">Top 5</div>
+            <div class="label">Búsquedas locales</div>
+            <div class="change">antes: +20</div>
+          </div>
+          <div class="metric">
+            <div class="value">-62%</div>
+            <div class="label">Tasa de rebote</div>
+            <div class="change">de 74% a 28%</div>
+          </div>
+          <div class="metric">
+            <div class="value">~24.840 €</div>
+            <div class="label">Facturación online /mes</div>
+            <div class="change">nuevo canal</div>
+          </div>
+        </div>
+
+        <div class="inner-section-title">Tabla completa comparativa</div>
+        <table class="data-table">
+          <thead><tr><th>Métrica</th><th>Antes</th><th>Después</th><th>Cambio</th></tr></thead>
+          <tbody>
+            <tr><td>Tasa de conversión móvil</td><td>0,3%</td><td>0,93%</td><td><strong>+210%</strong></td></tr>
+            <tr><td>Pedidos online / día</td><td>0</td><td>45</td><td><strong>de 0 a 45/día</strong></td></tr>
+            <tr><td>Tasa de rebote</td><td>74%</td><td>28%</td><td><strong>-62%</strong></td></tr>
+            <tr><td>Tiempo de carga móvil</td><td>7,2s</td><td>1,8s</td><td><strong>-75%</strong></td></tr>
+            <tr><td>Posición media búsquedas locales</td><td>+20</td><td>3,2</td><td><strong>Top 5</strong></td></tr>
+            <tr><td>Ticket medio online</td><td>—</td><td>18,40 €</td><td><strong>Nueva fuente</strong></td></tr>
+            <tr class="highlight"><td><strong>Facturación online mensual</strong></td><td>0 €</td><td>~24.840 €</td><td><strong>Nuevo canal</strong></td></tr>
+          </tbody>
+        </table>
+
+        <div class="entregable" style="margin-top:14px;">
+          <strong>💰 ROI:</strong> El retorno del proyecto se alcanzó en el <strong>cuarto mes</strong> desde el lanzamiento. A partir de ahí, cada pedido online es beneficio neto sobre la inversión en el sitio.
+        </div>
+      </div>
+    </div>
+
+    <!-- TESTIMONIAL -->
+    <div class="card open">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">5</div>
+          <div class="card-title-wrap">
+            <h3>Lo que más valoraron</h3>
+            <div class="subtitle">Testimonio del cliente</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="testimonial">
+          <blockquote>"Teníamos miedo de que la tienda online fuera complicada de gestionar y nos creara más trabajo del que podíamos asumir. Lo mejor fue que nos enseñaron a gestionar todo nosotros mismos. Ahora actualizamos los productos del día en 5 minutos cada mañana y los pedidos llegan solos. Ojalá lo hubiéramos hecho hace dos años."</blockquote>
+          <cite>— <strong>Jordi Mas</strong>, chef propietario de La Masa Madre</cite>
+        </div>
+        <div class="content-block" style="margin-top:14px;">
+          <p><em>Caso documentado con autorización del cliente. Datos correspondientes al periodo octubre 2025 — febrero 2026.</em></p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /pane-caso -->
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- TAB 3: SECUENCIA EMAILS                                          -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <div class="section-pane" id="pane-emails">
+
+    <div class="section-intro">
+      <h3>✉️ Secuencia de seguimiento a María &mdash; 3 emails</h3>
+      <p>Tono profesional pero cercano. Sin presión artificial. María es la fundadora y decide ella: hay que hablarle como a una igual que tiene mucho en la cabeza, no como a un "lead". Secuencia de 7 días con 3 contactos.</p>
+    </div>
+
+    <div class="global-actions no-print">
+      <button class="btn-action" onclick="openAll('pane-emails')">Expandir todo</button>
+      <button class="btn-action" onclick="closeAll('pane-emails')">Colapsar todo</button>
+    </div>
+
+    <!-- RESUMEN -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number negro">Σ</div>
+          <div class="card-title-wrap">
+            <h3>Resumen de la secuencia</h3>
+            <div class="subtitle">3 emails en 7 días</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <table class="data-table">
+          <thead><tr><th>Email</th><th>Día</th><th>Objetivo</th><th>Adjunto</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1 — Entrega</strong></td><td>0</td><td>Enviar propuesta + resumen de valor</td><td>propuesta.pdf</td></tr>
+            <tr><td><strong>2 — Caso de éxito</strong></td><td>+3</td><td>Aportar prueba social + insight de sector</td><td>caso-de-exito.pdf</td></tr>
+            <tr><td><strong>3 — Cierre suave</strong></td><td>+7</td><td>Crear urgencia legítima + facilitar respuesta</td><td>—</td></tr>
+          </tbody>
+        </table>
+        <div class="problema-item" style="margin-top:14px;">
+          <strong>Si no hay respuesta después del Email 3:</strong> Esperar 2-3 semanas y enviar un email breve, no relacionado con la venta (un artículo relevante, una noticia del sector, una felicitación si es fecha señalada). Mantener la relación sin presionar. Algunas ventas tardan meses — y el hecho de no haber sido insistente es lo que las cierra.
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 1 -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">1</div>
+          <div class="card-title-wrap">
+            <h3>Email 1 &mdash; Entrega de la propuesta</h3>
+            <div class="subtitle">Día 0 · directo, conciso</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Asuntos A/B</div>
+        <div class="option">
+          <div class="option-label">Asunto A</div>
+          <div class="option-text">Tu propuesta para Dulce Raíz — rediseño web + tienda online</div>
+        </div>
+        <div class="option">
+          <div class="option-label">Asunto B</div>
+          <div class="option-text">María, aquí tienes la propuesta para la nueva web de Dulce Raíz</div>
+        </div>
+
+        <div class="inner-section-title">Cuerpo completo del email</div>
+        <div class="email-wrap">
+          <div class="email-meta">
+            <span><strong>Para:</strong> María García (Dulce Raíz)</span>
+            <span><strong>Adjunto:</strong> propuesta.pdf</span>
+          </div>
+          <div class="email-subject">Tu propuesta para Dulce Raíz — rediseño web + tienda online</div>
+          <div class="email-body">Hola María,
+
+Ha sido un placer conocer mejor Dulce Raíz y entender hacia dónde quieres llevar el negocio. Adjunto la propuesta que hemos preparado para el rediseño web y la tienda online.
+
+Te resumo los tres puntos clave:
+
+• <strong>Tienda online completa con WooCommerce</strong> — tus clientes podrán pedir desde el móvil, elegir recogida en tienda o envío, y pagar en segundos. De 0 pedidos online a un canal de ventas nuevo.
+
+• <strong>Diseño mobile-first de verdad</strong> — el 70% de tu tráfico llega desde el móvil. Cada pantalla del nuevo sitio está pensada para esa experiencia primero.
+
+• <strong>Todo listo en 8 semanas</strong> — desde el kickoff hasta el lanzamiento, con formación incluida para que tu equipo gestione todo sin depender de nadie.
+
+La inversión total es de <strong>9.800 €</strong>, con un esquema de pago en tres tramos (40/40/20) vinculados a hitos del proyecto.
+
+Tómate el tiempo que necesites para revisarla. Si te surge cualquier duda o quieres que ajustemos algo, estoy a una llamada.
+
+Un saludo,
+
+[Nombre]
+Oh Wow! — agencia.ohwow.es</div>
+        </div>
+
+        <div class="inner-section-title">CTA · Notas sobre tono</div>
+        <div class="content-block">
+          <p><strong>CTA:</strong> Enlace a agendar llamada o responder al email.</p>
+          <ul>
+            <li>Directo y conciso. María gestiona 4 locales, no tiene tiempo para emails largos.</li>
+            <li>Los tres bullets resumen el valor sin que tenga que abrir el PDF para entender la oferta.</li>
+            <li>"Tómate el tiempo que necesites" es importante: <strong>no hay presión en este primer contacto</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 2 -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">2</div>
+          <div class="card-title-wrap">
+            <h3>Email 2 &mdash; Seguimiento con caso de éxito</h3>
+            <div class="subtitle">Día 3 · prueba social + insight</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Asuntos A/B</div>
+        <div class="option">
+          <div class="option-label">Asunto A</div>
+          <div class="option-text">Cómo una panadería pasó de 0 a 45 pedidos online al día</div>
+        </div>
+        <div class="option">
+          <div class="option-label">Asunto B</div>
+          <div class="option-text">María, esto hicimos con una panadería como Dulce Raíz</div>
+        </div>
+
+        <div class="inner-section-title">Cuerpo completo del email</div>
+        <div class="email-wrap">
+          <div class="email-meta">
+            <span><strong>Para:</strong> María García (Dulce Raíz)</span>
+            <span><strong>Adjunto:</strong> caso-de-exito.pdf</span>
+            <span><strong>Trigger:</strong> +3 días</span>
+          </div>
+          <div class="email-subject">Cómo una panadería pasó de 0 a 45 pedidos online al día</div>
+          <div class="email-body">Hola María,
+
+Quería compartirte algo que creo que te va a resultar útil mientras valoras la propuesta.
+
+Adjunto el caso de <strong>La Masa Madre</strong>, una panadería artesanal en Barcelona con 3 locales. Su situación era muy parecida a la de Dulce Raíz: web desactualizada, sin pedidos online, y el grueso de su tráfico llegaba desde el móvil a un sitio que no estaba preparado.
+
+Los resultados que consiguieron después del rediseño:
+
+• De <strong>0 a 45 pedidos online al día</strong>
+• <strong>+210% de conversión</strong> en móvil
+• <strong>ROI recuperado en 4 meses</strong>
+
+Lo que más me gusta de este caso es un dato que no está en el documento: Jordi, el propietario, nos contó que el canal online no solo generó ventas nuevas, sino que redujo las llamadas al obrador en un 40%. Su equipo pasó menos tiempo al teléfono atendiendo pedidos y más tiempo horneando.
+
+Para el sector panadería/alimentación artesanal, el momento es ahora. El consumidor ya espera poder pedir online — incluso al negocio de barrio. <strong>La pregunta no es si Dulce Raíz necesita venta online, sino cuánta facturación está dejando pasar cada mes sin ella.</strong>
+
+¿Te parece si hablamos 15 minutos esta semana para resolver cualquier duda sobre la propuesta?
+
+Un saludo,
+
+[Nombre]
+Oh Wow! — agencia.ohwow.es</div>
+        </div>
+
+        <div class="inner-section-title">CTA · Notas sobre tono</div>
+        <div class="content-block">
+          <p><strong>CTA:</strong> Proponer 2-3 franjas horarias concretas o enlace a calendario.</p>
+          <ul>
+            <li>Este email aporta valor, no solo "hace seguimiento". El caso de éxito es el gancho, pero el insight sobre las llamadas al obrador es lo que lo hace memorable.</li>
+            <li>El dato del sector ("el momento es ahora") posiciona la urgencia sin ser agresivo: es una observación de mercado, no una táctica de presión.</li>
+            <li>La pregunta final es concreta: <strong>15 minutos, esta semana, para resolver dudas</strong>. Fácil de decir que sí.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 3 -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number rosa">3</div>
+          <div class="card-title-wrap">
+            <h3>Email 3 &mdash; Cierre suave</h3>
+            <div class="subtitle">Día 7 · última señal · salida elegante</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Asuntos A/B</div>
+        <div class="option">
+          <div class="option-label">Asunto A</div>
+          <div class="option-text">Una última cosa sobre la propuesta de Dulce Raíz</div>
+        </div>
+        <div class="option">
+          <div class="option-label">Asunto B</div>
+          <div class="option-text">María, ¿te queda alguna duda?</div>
+        </div>
+
+        <div class="inner-section-title">Cuerpo completo del email</div>
+        <div class="email-wrap">
+          <div class="email-meta">
+            <span><strong>Para:</strong> María García (Dulce Raíz)</span>
+            <span><strong>Trigger:</strong> +7 días</span>
+          </div>
+          <div class="email-subject">Una última cosa sobre la propuesta de Dulce Raíz</div>
+          <div class="email-body">Hola María,
+
+No quiero saturarte el buzón, así que este es el último seguimiento que hago sobre la propuesta. Solo quería comentarte dos cosas:
+
+<strong>Sobre disponibilidad:</strong> En mayo arrancamos dos proyectos ya confirmados, y nuestro equipo de desarrollo trabaja en bloques dedicados (no en paralelo con 10 proyectos a la vez, que es como se hacen las chapuzas). Si quisiéramos empezar con Dulce Raíz en la segunda quincena de abril, necesitaríamos confirmar esta semana para reservar el bloque. Si prefieres empezar más adelante, el siguiente hueco disponible sería a finales de mayo.
+
+<strong>Sobre la propuesta:</strong> Si hay algo que no encaja — el alcance, el presupuesto, los plazos, lo que sea — prefiero que me lo digas directamente. Ajustar una propuesta es parte del proceso. Lo que no quiero es que Dulce Raíz se quede sin la web que necesita porque no hablamos de lo que hay que hablar.
+
+¿Tienes 15 minutos esta semana para una llamada rápida? Sin compromiso. Si después de hablar decides que no somos el equipo adecuado, perfecto — al menos nos conocemos para el futuro.
+
+Un saludo,
+
+[Nombre]
+Oh Wow! — agencia.ohwow.es
+
+<strong>P.D.</strong> — Si simplemente no es el momento, lo entiendo perfectamente. Dímelo y no te molesto más. Dulce Raíz seguirá estando en mi radar para cuando sea el momento.</div>
+        </div>
+
+        <div class="inner-section-title">CTA · Notas sobre tono</div>
+        <div class="content-block">
+          <p><strong>CTA:</strong> Responder al email o agendar llamada de 15 minutos.</p>
+          <ul>
+            <li>La escasez es real y está explicada (<strong>bloques de desarrollo dedicados</strong>), no es un "solo quedan 2 plazas" genérico. María, que gestiona un negocio con producción limitada, entiende perfectamente el concepto de capacidad finita.</li>
+            <li>"Prefiero que me lo digas directamente" rompe la dinámica vendedor-comprador y establece confianza. Demuestra seguridad en el servicio.</li>
+            <li>La P.D. es crucial: <strong>da una salida elegante</strong>. Paradójicamente, esto aumenta la tasa de respuesta porque elimina la presión de tener que decir que sí o inventar una excusa.</li>
+            <li>No se menciona descuento ni oferta especial. El valor de la propuesta ya está claro; bajar el precio en el tercer email <strong>devalúa todo lo anterior</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /pane-emails -->
+
+</div><!-- /main -->
+
+<footer class="footer">
+  Generado por <strong>Agencia Oh Wow!</strong> · <a href="https://agencia.ohwow.es">agencia.ohwow.es</a> · Abril 2026 · <em>Propuesta confidencial para Dulce Raíz</em>
+</footer>
+
+<script>
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+  document.querySelectorAll('.section-pane').forEach(p => p.classList.toggle('active', p.id === 'pane-' + name));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function toggleCard(headerEl) { headerEl.closest('.card').classList.toggle('open'); }
+function openAll(paneId) { document.querySelectorAll('#' + paneId + ' .card').forEach(c => c.classList.add('open')); }
+function closeAll(paneId) { document.querySelectorAll('#' + paneId + ' .card').forEach(c => c.classList.remove('open')); }
+function exportPDF() {
+  document.querySelectorAll('.card').forEach(c => c.classList.add('open'));
+  window.print();
+}
+</script>
+
+</body>
+</html>

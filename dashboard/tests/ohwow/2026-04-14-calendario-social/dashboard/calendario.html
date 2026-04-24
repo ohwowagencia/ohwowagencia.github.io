@@ -3,726 +3,1254 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calendario Interactivo — OH WOW! | Abril 2026</title>
+<title>Calendario Social 14-27 abril | Agencia Oh Wow!</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f5f0eb;--lime:#c8f135;--dark:#1c1c1c;--pink:#e85d8a;--white:#fff;--gray:#6b7280;--light:#e5e7eb;--ig:#E4405F;--li:#0A66C2;--radius:12px}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--dark);line-height:1.6}
-header{background:var(--dark);color:var(--white);padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem}
-.header-left h1{font-size:1.2rem;font-weight:800}
-.header-left p{color:#a1a1aa;font-size:.8rem}
-.badge{background:var(--lime);color:var(--dark);padding:.2rem .6rem;border-radius:99px;font-weight:700;font-size:.7rem;display:inline-block}
-.header-right{display:flex;gap:.6rem;align-items:center}
-.btn{padding:.5rem 1.2rem;border-radius:99px;font-weight:700;font-size:.8rem;border:none;cursor:pointer;text-decoration:none;display:inline-block}
-.btn-lime{background:var(--lime);color:var(--dark)}
-.btn-outline{background:transparent;border:1.5px solid var(--lime);color:var(--lime)}
-.btn:hover{opacity:.85}
-.container{max-width:1200px;margin:0 auto;padding:1.2rem}
-.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.2rem;align-items:center}
-.filters label{font-size:.75rem;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:.5px}
-.filter-btn{padding:.35rem .8rem;border-radius:99px;font-size:.78rem;font-weight:600;border:1.5px solid var(--light);background:var(--white);cursor:pointer;transition:all .15s}
-.filter-btn:hover,.filter-btn.active{background:var(--dark);color:var(--white);border-color:var(--dark)}
-.filter-btn.active-ig{background:var(--ig);color:#fff;border-color:var(--ig)}
-.filter-btn.active-li{background:var(--li);color:#fff;border-color:var(--li)}
-.week-header{font-size:.9rem;font-weight:700;margin:1.5rem 0 .75rem;padding:.4rem .8rem;background:var(--dark);color:var(--lime);border-radius:8px;display:inline-block}
-.card{background:var(--white);border-radius:var(--radius);margin-bottom:1rem;box-shadow:0 1px 4px rgba(0,0,0,.06);overflow:hidden;transition:all .2s}
-.card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
-.card-header{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.2rem;cursor:pointer;gap:.75rem;flex-wrap:wrap}
-.card-meta{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
-.card-date{font-weight:700;font-size:.9rem}
-.card-time{color:var(--gray);font-size:.8rem}
-.platform-badge{padding:.2rem .55rem;border-radius:99px;font-size:.7rem;font-weight:700;color:#fff}
-.platform-badge.ig{background:var(--ig)}
-.platform-badge.li{background:var(--li)}
-.format-badge{padding:.2rem .5rem;border-radius:6px;font-size:.7rem;font-weight:600;background:#f3f0ec;color:var(--dark)}
-.pillar-badge{padding:.2rem .5rem;border-radius:6px;font-size:.68rem;font-weight:600}
-.pillar-edu{background:#dbeafe;color:#1e40af}
-.pillar-port{background:#dcfce7;color:#166534}
-.pillar-bts{background:#fef9c3;color:#854d0e}
-.pillar-social{background:#fce7f3;color:#9d174d}
-.pillar-culture{background:#e0e7ff;color:#3730a3}
-.toggle-icon{font-size:1.2rem;color:var(--gray);transition:transform .2s;flex-shrink:0}
-.card.open .toggle-icon{transform:rotate(180deg)}
-.card-body{display:none;padding:0 1.2rem 1.2rem;border-top:1px solid #f3f0ec}
-.card.open .card-body{display:block}
-.copy-block{background:#faf8f5;border-left:3px solid var(--lime);padding:.8rem 1rem;margin:.75rem 0;border-radius:0 8px 8px 0;font-size:.85rem;white-space:pre-wrap}
-.script-block{background:#1c1c1c;color:#e0e0e0;padding:.8rem 1rem;margin:.75rem 0;border-radius:8px;font-size:.82rem;white-space:pre-wrap}
-.script-block strong{color:var(--lime)}
-.section-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gray);margin-top:1rem;margin-bottom:.3rem}
-.hashtags{font-size:.8rem;color:var(--ig);margin:.5rem 0}
-.design-notes{font-size:.82rem;color:var(--gray);background:#f9f7f4;padding:.6rem .8rem;border-radius:8px;margin-top:.5rem}
-.design-notes strong{color:var(--dark)}
-footer{text-align:center;padding:2rem 1rem;color:var(--gray);font-size:.78rem;border-top:1px solid var(--light);margin-top:1.5rem}
-@media print{.no-print{display:none!important}body{background:#fff!important}.card{break-inside:avoid}.card-body{display:block!important}@page{margin:1.5cm;size:A4}}
-@media(max-width:640px){header{flex-direction:column;text-align:center}.card-header{flex-direction:column;align-items:flex-start}}
-.qa-section{max-width:1200px;margin:2rem auto;padding:1.5rem;background:var(--bg);border:2px solid var(--dark);border-radius:var(--radius);font-family:'Inter',sans-serif;color:var(--dark)}
-.qa-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem}
-.qa-badge{background:var(--lime);color:var(--dark);padding:.3rem .8rem;border-radius:99px;font-weight:800;font-size:.75rem}
-.qa-reviewer{font-size:.85rem;color:var(--gray)}
-.qa-meta{margin-bottom:.3rem}
-.qa-score{margin-bottom:1rem}
-.qa-body{background:var(--white);border-radius:8px;padding:1rem;margin-top:.5rem}
-.qa-body p.qa-heading{font-weight:700;margin-bottom:.6rem;font-size:.85rem}
-.qa-body ol,.qa-body ul{font-size:.84rem;line-height:1.7;padding-left:1.2rem}
-.qa-obs-heading{font-weight:700;margin-top:1rem;margin-bottom:.6rem;font-size:.85rem}
-</style>
-
-<style id="back-to-hub-styles">
-.back-to-hub {
-  position: fixed;
-  top: 16px;
-  left: 16px;
-  z-index: 9999;
-  background: #0f1219;
-  color: #c8f135;
-  padding: 9px 14px;
-  border-radius: 8px;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 12.5px;
-  font-weight: 600;
-  text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.1);
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  box-shadow: 0 6px 20px rgba(15,18,25,0.25);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  letter-spacing: -0.1px;
-}
-.back-to-hub:hover {
-  transform: translateX(-3px);
-  background: #1a1d26;
-  color: #d4f54a;
-  box-shadow: 0 8px 24px rgba(15,18,25,0.35);
-}
-.back-to-hub svg { transition: transform 0.2s; }
-.back-to-hub:hover svg { transform: translateX(-2px); }
-@media print { .back-to-hub { display: none !important; } }
-@media (max-width: 640px) {
-  .back-to-hub {
-    top: 10px;
-    left: 10px;
-    padding: 7px 11px;
-    font-size: 11.5px;
+  :root {
+    --lima:#c8f135; --negro:#1c1c1c; --rosa:#e85d8a; --beige:#f5f0eb;
+    --gris:#6b6b6b; --gris-claro:#e0dbd5; --blanco:#ffffff;
+    --ig:#e1306c; --li:#0a66c2;
+    --pilar-edu:#fef3c7; --pilar-port:#dbeafe; --pilar-bts:#e9d5ff;
+    --pilar-social:#fecdd3; --pilar-cult:#bbf7d0;
   }
-}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;background:var(--beige);color:var(--negro);line-height:1.6;}
+
+  .header{background:var(--negro);padding:22px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;position:sticky;top:0;z-index:10;}
+  .header-left{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .badge{background:var(--lima);color:var(--negro);font-weight:800;font-size:13px;padding:5px 12px;border-radius:16px;text-transform:uppercase;letter-spacing:0.5px;}
+  .header h1{color:var(--blanco);font-size:19px;font-weight:600;}
+  .header h1 span{color:var(--lima);}
+  .btn-export{background:var(--rosa);color:var(--blanco);border:none;padding:9px 18px;border-radius:7px;font-weight:600;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;}
+  .btn-export:hover{opacity:.85;}
+
+  /* Filters */
+  .filters{background:var(--blanco);padding:14px 32px;border-bottom:1px solid var(--gris-claro);display:flex;gap:8px;flex-wrap:wrap;align-items:center;position:sticky;top:72px;z-index:9;}
+  .filters-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--gris);margin-right:6px;}
+  .filter-btn{background:var(--beige);color:var(--negro);border:1px solid var(--gris-claro);padding:6px 12px;border-radius:14px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;}
+  .filter-btn:hover{background:#eae2d6;}
+  .filter-btn.active{background:var(--negro);color:var(--blanco);border-color:var(--negro);}
+  .filter-btn.active-ig{background:var(--ig);color:var(--blanco);border-color:var(--ig);}
+  .filter-btn.active-li{background:var(--li);color:var(--blanco);border-color:var(--li);}
+  .filter-actions{margin-left:auto;display:flex;gap:8px;}
+  .btn-action{background:var(--blanco);color:var(--negro);border:1px solid var(--gris-claro);padding:6px 12px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;}
+  .btn-action:hover{background:var(--beige);}
+
+  .main{max-width:960px;margin:0 auto;padding:28px 20px 60px;}
+
+  .intro-card{background:var(--blanco);border-radius:12px;padding:22px 26px;margin-bottom:24px;border-left:4px solid var(--lima);box-shadow:0 1px 3px rgba(0,0,0,.05);}
+  .intro-card h2{font-size:17px;font-weight:700;margin-bottom:6px;}
+  .intro-card p{font-size:14px;color:var(--gris);line-height:1.7;}
+  .intro-meta{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;}
+  .intro-meta span{background:var(--beige);padding:4px 10px;border-radius:6px;font-size:12px;font-weight:500;}
+
+  /* Week header */
+  .week-header{background:var(--negro);color:var(--lima);padding:10px 18px;border-radius:8px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;margin:28px 0 14px;}
+
+  /* Card */
+  .card{background:var(--blanco);border-radius:12px;margin-bottom:14px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06);border:1px solid var(--gris-claro);}
+  .card-header{padding:16px 20px;cursor:pointer;user-select:none;display:flex;justify-content:space-between;align-items:center;gap:14px;transition:background .15s;}
+  .card-header:hover{background:#faf8f5;}
+  .card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px;flex:1;min-width:0;}
+  .card-number{width:32px;height:32px;border-radius:8px;background:var(--beige);color:var(--negro);font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .card-date{font-weight:700;color:var(--negro);font-size:13px;}
+  .card-time{color:var(--gris);font-size:12px;}
+  .platform-badge{padding:3px 10px;border-radius:12px;color:var(--blanco);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.3px;}
+  .platform-badge.ig{background:var(--ig);}
+  .platform-badge.li{background:var(--li);}
+  .format-badge{background:var(--gris-claro);color:var(--negro);padding:3px 10px;border-radius:12px;font-weight:600;font-size:11px;}
+  .pillar-badge{padding:3px 10px;border-radius:12px;font-weight:700;font-size:11px;}
+  .pillar-edu{background:var(--pilar-edu);color:#92400e;}
+  .pillar-port{background:var(--pilar-port);color:#1e40af;}
+  .pillar-bts{background:var(--pilar-bts);color:#6b21a8;}
+  .pillar-social{background:var(--pilar-social);color:#991b1b;}
+  .pillar-cult{background:var(--pilar-cult);color:#166534;}
+  .toggle-icon{font-size:16px;color:var(--gris);transition:transform .3s;flex-shrink:0;}
+  .card.open .toggle-icon{transform:rotate(180deg);}
+
+  .card-body{display:none;padding:0 20px 20px;}
+  .card.open .card-body{display:block;}
+
+  .tema{background:var(--negro);color:var(--lima);padding:10px 14px;border-radius:8px;font-size:14px;font-weight:700;margin-bottom:14px;}
+
+  .section-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.8px;color:var(--gris);margin:18px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--gris-claro);display:flex;align-items:center;gap:8px;}
+  .section-label:first-child{margin-top:0;}
+  .section-label .icon{color:var(--rosa);}
+
+  /* Copy block */
+  .copy-block{background:#faf8f5;border:1px solid var(--gris-claro);border-radius:8px;padding:14px 16px;margin-bottom:8px;font-size:14px;line-height:1.75;white-space:pre-wrap;}
+  .copy-block strong{color:var(--negro);}
+  .copy-hashtags{color:var(--li);font-weight:600;font-size:13px;}
+
+  /* Reel script block */
+  .script-block{background:#1c1c1c;color:#f0f0f0;border-radius:8px;padding:16px 18px;margin-bottom:8px;font-size:13.5px;line-height:1.75;white-space:pre-wrap;font-family:'Inter',sans-serif;}
+  .script-block strong{color:var(--lima);display:inline-block;margin-top:4px;}
+  .script-section{background:rgba(200,241,53,.1);border-left:3px solid var(--lima);padding:8px 12px;margin:8px 0;border-radius:0 6px 6px 0;}
+  .script-label{color:var(--lima);font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;display:block;}
+  .script-note{color:#bbb;font-style:italic;font-size:12.5px;}
+
+  /* Slide list (carousel) */
+  .slide-list{display:flex;flex-direction:column;gap:8px;}
+  .slide-item{background:var(--blanco);border:1px solid var(--gris-claro);border-radius:8px;padding:12px 14px;display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.65;}
+  .slide-num{width:30px;height:30px;background:var(--lima);color:var(--negro);border-radius:6px;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .slide-num.cta{background:var(--rosa);color:var(--blanco);}
+  .slide-num.portada{background:var(--negro);color:var(--lima);}
+  .slide-content{flex:1;}
+  .slide-title{font-weight:700;color:var(--negro);margin-bottom:3px;}
+  .slide-desc{color:var(--gris);font-size:13px;}
+
+  /* Design notes */
+  .design-notes{background:#faf8f5;border:1px solid var(--gris-claro);border-radius:8px;padding:14px 16px;margin-bottom:8px;font-size:13.5px;line-height:1.7;}
+  .design-notes ul{margin:0;list-style:none;padding:0;}
+  .design-notes li{padding:4px 0 4px 16px;position:relative;}
+  .design-notes li::before{content:"•";position:absolute;left:4px;color:var(--rosa);font-weight:800;}
+  .design-notes strong{color:var(--negro);}
+
+  /* Hashtags tiers */
+  .hashtag-tiers{display:flex;flex-direction:column;gap:6px;}
+  .hashtag-tier{background:var(--beige);padding:10px 14px;border-radius:8px;font-size:13px;line-height:1.6;}
+  .hashtag-tier .tier-label{font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:0.6px;color:var(--rosa);margin-right:8px;}
+  .hashtag-tier.medio .tier-label{color:var(--li);}
+  .hashtag-tier.amplio .tier-label{color:var(--gris);}
+
+  /* Story sequence */
+  .story-seq{display:flex;flex-direction:column;gap:10px;}
+  .story-item{background:var(--blanco);border:1px solid var(--gris-claro);border-radius:10px;padding:14px 16px;}
+  .story-item-header{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .story-num{width:26px;height:26px;background:var(--ig);color:var(--blanco);border-radius:50%;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;}
+  .story-type{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--rosa);}
+  .story-body{font-size:13.5px;line-height:1.7;}
+  .story-body strong{color:var(--negro);}
+
+  /* Stats / resumen */
+  .stats-section{background:var(--blanco);border-radius:12px;padding:24px;margin-top:32px;box-shadow:0 1px 3px rgba(0,0,0,.06);border:1px solid var(--gris-claro);}
+  .stats-section h3{font-size:16px;font-weight:700;margin-bottom:14px;}
+  .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:8px;}
+  .stat-block h4{font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:var(--gris);margin-bottom:10px;}
+  table.mini-table{width:100%;font-size:13px;border-collapse:collapse;}
+  table.mini-table td{padding:6px 8px;border-bottom:1px solid var(--gris-claro);}
+  table.mini-table td:last-child{text-align:right;font-weight:700;}
+  .notas-equipo{margin-top:16px;}
+  .notas-equipo ol{padding-left:22px;font-size:13.5px;line-height:1.75;}
+  .notas-equipo li{margin-bottom:10px;}
+  .notas-equipo li strong{color:var(--negro);}
+
+  footer{text-align:center;padding:32px 20px;font-size:12px;color:var(--gris);}
+  footer a{color:var(--rosa);text-decoration:none;}
+
+  @media print{
+    @page{size:A4;margin:1.5cm;}
+    .no-print{display:none!important;}
+    body{background:white;}
+    .header{background:white;border-bottom:2px solid var(--negro);padding:12px 0;position:static;}
+    .header h1{color:var(--negro);}
+    .filters{display:none;}
+    .card{break-inside:avoid;box-shadow:none;}
+    .card-body{display:block!important;}
+    .toggle-icon{display:none;}
+    .card-header{cursor:default;}
+    .script-block,.tema{print-color-adjust:exact;-webkit-print-color-adjust:exact;}
+  }
+
+  @media (max-width:640px){
+    .header{padding:16px;}.header h1{font-size:16px;}
+    .filters{padding:12px 16px;top:72px;overflow-x:auto;flex-wrap:nowrap;}
+    .main{padding:20px 12px 40px;}
+    .card-header{padding:12px 14px;}
+    .card-body{padding:0 14px 14px;}
+  }
 </style>
 </head>
 <body>
 
-<a href="../../../../index.html" class="back-to-hub" aria-label="Volver al Panel QA">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-  Panel QA
-</a>
-
-<header>
-<div class="header-left">
-<span class="badge">AGENCIA OH WOW!</span>
-<h1>Calendario Interactivo — Abril 2026</h1>
-<p>14 piezas | Instagram + LinkedIn | 14-27 Abril</p>
+<div class="header no-print">
+  <div class="header-left">
+    <span class="badge">Agencia Oh Wow!</span>
+    <h1>Calendario Social &mdash; <span>14 al 27 abril 2026</span></h1>
+  </div>
+  <button class="btn-export" onclick="exportPDF()">Exportar PDF</button>
 </div>
-<div class="header-right no-print">
-<a href="index.html" class="btn btn-outline">&#8592; Dashboard</a>
-<button onclick="exportPDF()" class="btn btn-lime">Exportar PDF</button>
-</div>
-</header>
 
-<div class="container">
-
-<!-- Filters -->
+<!-- Filtros -->
 <div class="filters no-print">
-<label>Plataforma:</label>
-<button class="filter-btn active" onclick="filterPlatform('all',this)">Todas</button>
-<button class="filter-btn" onclick="filterPlatform('ig',this)">Instagram</button>
-<button class="filter-btn" onclick="filterPlatform('li',this)">LinkedIn</button>
-<label style="margin-left:1rem">Formato:</label>
-<button class="filter-btn active" onclick="filterFormat('all',this)">Todos</button>
-<button class="filter-btn" onclick="filterFormat('carousel',this)">Carousel</button>
-<button class="filter-btn" onclick="filterFormat('reel',this)">Reel</button>
-<button class="filter-btn" onclick="filterFormat('post',this)">Post</button>
-<button class="filter-btn" onclick="filterFormat('story',this)">Story</button>
+  <span class="filters-label">Plataforma:</span>
+  <button class="filter-btn active" onclick="filterPlatform('all',this)">Todas</button>
+  <button class="filter-btn" onclick="filterPlatform('ig',this)">📷 Instagram</button>
+  <button class="filter-btn" onclick="filterPlatform('li',this)">💼 LinkedIn</button>
+
+  <span class="filters-label" style="margin-left:14px;">Formato:</span>
+  <button class="filter-btn active" onclick="filterFormat('all',this)">Todos</button>
+  <button class="filter-btn" onclick="filterFormat('carousel',this)">Carousel</button>
+  <button class="filter-btn" onclick="filterFormat('reel',this)">Reel</button>
+  <button class="filter-btn" onclick="filterFormat('post',this)">Post</button>
+  <button class="filter-btn" onclick="filterFormat('story',this)">Stories</button>
+
+  <div class="filter-actions">
+    <button class="btn-action" onclick="openAllCards()">Expandir todo</button>
+    <button class="btn-action" onclick="closeAllCards()">Colapsar todo</button>
+  </div>
 </div>
 
-<!-- WEEK 1 -->
-<div class="week-header">Semana 1 — 14 al 20 de Abril</div>
+<div class="main">
 
-<!-- Entry 01 -->
-<div class="card" data-platform="ig" data-format="carousel">
-<div class="card-header" onclick="toggleCard(this)">
-<div class="card-meta">
-<span class="card-date">14 Abr, Mar</span>
-<span class="card-time">12:30h</span>
-<span class="platform-badge ig">Instagram</span>
-<span class="format-badge">Carousel</span>
-<span class="pillar-badge pillar-edu">Educación</span>
-</div>
-<span class="toggle-icon">&#9660;</span>
-</div>
-<div class="card-body">
-<strong>5 errores que matan tu web antes de que termine de cargar</strong>
-<div class="section-label">Copy completo</div>
-<div class="copy-block">Tu web tiene 3 segundos para convencer.
+  <div class="intro-card">
+    <h2>📅 Calendario de contenidos &mdash; 14 entradas</h2>
+    <p>Periodo del 14 al 27 de abril de 2026 · 9 posts en Instagram (primaria) + 5 posts en LinkedIn (secundaria). Frecuencia: IG 4-5/sem, LinkedIn 3/sem. Cada entrada incluye <strong>copy completo, slide-by-slide para carruseles, guion íntegro para Reels, hashtags en 3 niveles, hora de publicación y notas de diseño detalladas</strong>.</p>
+    <div class="intro-meta">
+      <span>14 entradas totales</span>
+      <span>2 semanas</span>
+      <span>4 carousels · 3 reels · 4 posts · 1 stories · 1 mini-carousel · 1 post texto</span>
+      <span>5 pilares</span>
+    </div>
+  </div>
+
+  <!-- ══════════════ WEEK 1 ══════════════ -->
+  <div class="week-header">Semana 1 · 14 al 20 de abril</div>
+
+  <!-- ENTRADA 01 -->
+  <div class="card open" data-platform="ig" data-format="carousel">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-meta">
+        <span class="card-number">01</span>
+        <span class="card-date">14 Abr, Mar</span>
+        <span class="card-time">12:30h</span>
+        <span class="platform-badge ig">Instagram</span>
+        <span class="format-badge">Carousel · 5 slides</span>
+        <span class="pillar-badge pillar-edu">Educación 25%</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="card-body">
+      <div class="tema">🎯 5 errores que matan tu web antes de que termine de cargar</div>
+
+      <div class="section-label"><span class="icon">📝</span> Copy / Caption completo</div>
+      <div class="copy-block">Tu web tiene 3 segundos para convencer.
 Tres.
-El tiempo que tardas en decidir si ese yogur del super va al carrito o no.
+El tiempo que tardas en decidir si ese yogur del súper va al carrito o no.
 
 Y en esos 3 segundos, la mayoría de las webs se disparan en el pie con errores que parecen inofensivos pero que funcionan como agujeros negros de clientes.
 
-Desliza para ver los 5 más comunes (el 4to es el que más vemos en auditorías).
+Desliza para ver los 5 más comunes (el 4to es el que más vemos en auditorías) -->
 
-¿Quieres saber si tu web comete alguno? Te hacemos una auditoría gratuita. Link en bio.
+<span class="copy-hashtags">#DiseñoWeb #UXDesign #OptimizacionWeb #AgenciaDigital #WebDesignSpain #MarketingDigital #ErroresWeb #ConversionRate #OhWow</span></div>
 
-#DisenoWeb #UXDesign #OptimizacionWeb #AgenciaDigital #WebDesignSpain #MarketingDigital</div>
-<div class="section-label">Slides</div>
-<div class="design-notes">
-<strong>Slide 1:</strong> "5 errores que matan tu web" — fondo negro, título lima, icono calavera pixelada<br>
-<strong>Slide 2:</strong> Imágenes sin comprimir — cada segundo extra = -7% conversión<br>
-<strong>Slide 3:</strong> Sin jerarquía visual — todo grita, nada comunica<br>
-<strong>Slide 4:</strong> CTA invisible o inexistente<br>
-<strong>Slide 5:</strong> No responsive (72% tráfico móvil) + CTA auditoría gratuita
-</div>
-<div class="section-label">Notas de diseño</div>
-<div class="design-notes"><strong>Paleta:</strong> Negro fondo + Lima acentos + Blanco texto | <strong>Formato:</strong> 1080x1080px | <strong>Estilo:</strong> Flat, minimal, tech | Logo OH WOW! esquina inferior derecha</div>
-</div>
-</div>
+      <div class="section-label"><span class="icon">🎞</span> Contenido slide-by-slide</div>
+      <div class="slide-list">
+        <div class="slide-item"><div class="slide-num portada">1</div><div class="slide-content"><div class="slide-title">Portada</div><div class="slide-desc">"5 errores que matan tu web antes de que cargue" · fondo negro (#1c1c1c), título en lima (#c8f135), icono de calavera pixelada.</div></div></div>
+        <div class="slide-item"><div class="slide-num">2</div><div class="slide-content"><div class="slide-title">1. Imágenes sin comprimir</div><div class="slide-desc">"Tu web pesa como un PDF de 2004." Dato destacado: cada segundo extra de carga = −7% conversión.</div></div></div>
+        <div class="slide-item"><div class="slide-num">3</div><div class="slide-content"><div class="slide-title">2. Sin jerarquía visual</div><div class="slide-desc">"Todo grita, nada comunica." Ejemplo visual de web saturada vs limpia, comparativa lado a lado.</div></div></div>
+        <div class="slide-item"><div class="slide-num">4</div><div class="slide-content"><div class="slide-title">3. CTA invisible o inexistente</div><div class="slide-desc">"Tienes visitas pero no leads." Mostrar heatmap simulado destacando dónde NO está el botón de acción.</div></div></div>
+        <div class="slide-item"><div class="slide-num cta">5</div><div class="slide-content"><div class="slide-title">CTA — errores 4 + 5</div><div class="slide-desc">"4. No es responsive — y el 72% de tu tráfico viene del móvil" + "5. Cero velocidad" + CTA: "¿Quieres saber cómo está tu web? Auditoría gratuita en bio."</div></div></div>
+      </div>
 
-<!-- Entry 02 -->
-<div class="card" data-platform="li" data-format="post">
-<div class="card-header" onclick="toggleCard(this)">
-<div class="card-meta">
-<span class="card-date">15 Abr, Mie</span>
-<span class="card-time">09:00h</span>
-<span class="platform-badge li">LinkedIn</span>
-<span class="format-badge">Post</span>
-<span class="pillar-badge pillar-port">Portfolio</span>
-</div>
-<span class="toggle-icon">&#9660;</span>
-</div>
-<div class="card-body">
-<strong>Caso de éxito: Rediseño ecommerce +187% conversión</strong>
-<div class="section-label">Copy completo</div>
-<div class="copy-block">Un cliente llegó con esto:
+      <div class="section-label"><span class="icon">🏷</span> Hashtags en 3 niveles</div>
+      <div class="hashtag-tiers">
+        <div class="hashtag-tier"><span class="tier-label">Nicho</span>#DiseñoWebEspaña #UXUIMadrid #WebPerformance</div>
+        <div class="hashtag-tier medio"><span class="tier-label">Medio</span>#MarketingDigitalEspaña #EcommerceSpain #AgenciaCreativa</div>
+        <div class="hashtag-tier amplio"><span class="tier-label">Amplio</span>#DiseñoWeb #Emprendedores #NegocioDigital</div>
+      </div>
+
+      <div class="section-label"><span class="icon">🎨</span> Notas de diseño</div>
+      <div class="design-notes">
+        <ul>
+          <li><strong>Tipografía:</strong> sans-serif bold para títulos, regular para cuerpo</li>
+          <li><strong>Paleta dominante:</strong> negro (#1c1c1c) fondo + lima (#c8f135) acentos + blanco texto</li>
+          <li><strong>Iconografía:</strong> flat/minimal, estilo tech</li>
+          <li><strong>Tamaño:</strong> 1080 × 1080 px por slide</li>
+          <li>Incluir logo Oh Wow! pequeño en esquina inferior derecha de cada slide</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENTRADA 02 -->
+  <div class="card" data-platform="li" data-format="post">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-meta">
+        <span class="card-number">02</span>
+        <span class="card-date">15 Abr, Mié</span>
+        <span class="card-time">09:00h</span>
+        <span class="platform-badge li">LinkedIn</span>
+        <span class="format-badge">Post imagen</span>
+        <span class="pillar-badge pillar-port">Portfolio 30%</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="card-body">
+      <div class="tema">🎯 Caso de éxito — Rediseño ecommerce con +187% en conversión</div>
+
+      <div class="section-label"><span class="icon">📝</span> Copy / Caption completo</div>
+      <div class="copy-block">Un cliente llegó con esto:
 "Tenemos tráfico, pero nadie compra."
 
 Su tienda online era como un supermercado donde todos los pasillos llevan al parking.
 Bonita fachada. Cero recorrido lógico.
 
-Lo que hicimos:
-→ Auditoría UX completa (heatmaps, grabaciones de sesion, embudos)
+<strong>Lo que hicimos:</strong>
+→ Auditoría UX completa (heatmaps, grabaciones de sesión, embudos)
 → Rediseño del flujo de compra: de 7 pasos a 3
 → Fichas de producto con copy orientado a beneficio, no a especificación
-→ Optimización de velocidad: de 4.8s a 1.2s en carga
+→ Implementación de urgencia real (stock limitado + envío express)
+→ Optimización de velocidad: de 4,8s a 1,2s en carga
 
-Resultado: +187% en conversión en 90 días.
+<strong>Resultado en 90 días:</strong>
++187% en tasa de conversión
++43% en ticket medio
+−62% en tasa de abandono de carrito
 
-No fue magia. Fue escuchar los datos, simplificar la experiencia y quitar todo lo que estorbaba.
+La web no es un escaparate.
+Es tu mejor comercial.
+Y tiene que cerrar ventas, no solo enseñar el catálogo.
 
-Si tu tienda online recibe visitas pero no ventas, el problema no es el tráfico. Es el camino.
+Si tu ecommerce recibe visitas pero no vende, algo está roto.
+Y probablemente no es el producto.
 
-#Ecommerce #UXDesign #ConversionRate #DisenoWeb #ResultadosReales</div>
-<div class="section-label">Notas de diseño</div>
-<div class="design-notes"><strong>Imagen:</strong> Before/after de la tienda (mockup) con métricas superpuestas | <strong>Paleta:</strong> Lima + Negro | <strong>Formato:</strong> 1200x627px (LinkedIn optimal)</div>
-</div>
-</div>
+<span class="copy-hashtags">#Ecommerce #DiseñoUX #ConversionRate #ResultadosReales #TransformacionDigital #AgenciaDigital</span></div>
 
-<!-- Entry 03 -->
-<div class="card" data-platform="ig" data-format="reel">
-<div class="card-header" onclick="toggleCard(this)">
-<div class="card-meta">
-<span class="card-date">16 Abr, Jue</span>
-<span class="card-time">18:00h</span>
-<span class="platform-badge ig">Instagram</span>
-<span class="format-badge">Reel</span>
-<span class="pillar-badge pillar-bts">Behind the scenes</span>
-</div>
-<span class="toggle-icon">&#9660;</span>
-</div>
-<div class="card-body">
-<strong>Un día en la agencia (time-lapse + narracion)</strong>
-<div class="section-label">Guion del Reel (30-45s)</div>
-<div class="script-block"><strong>[HOOK — 0-3s]</strong>
-Texto en pantalla: "Esto pasa en una agencia de diseño en un día normal"
-(Time-lapse acelerado de pantallas, cafe, reuniones)
+      <div class="section-label"><span class="icon">🏷</span> Hashtags en 3 niveles</div>
+      <div class="hashtag-tiers">
+        <div class="hashtag-tier"><span class="tier-label">Nicho</span>#EcommerceEspaña #TiendaOnline #UXEcommerce</div>
+        <div class="hashtag-tier medio"><span class="tier-label">Medio</span>#MarketingDigitalEspaña #DiseñoWeb #AgenciaDigital</div>
+        <div class="hashtag-tier amplio"><span class="tier-label">Amplio</span>#Ecommerce #Resultados #CrecimientoDigital</div>
+      </div>
 
-<strong>[DESARROLLO — 3-25s]</strong>
-Voz en off: "A las 9 arrancamos con cafe y Figma. A las 11 ya vamos por la tercera iteracion de un wireframe. A las 13 un cliente nos dice 'es justo lo que tenia en la cabeza'. A las 16 testeamos en móvil y rompemos algo. A las 17 lo arreglamos. A las 18... seguimos aquí porque nos encanta esto."
-(Cortes rápidos: pantalla Figma, reunion, mensaje de cliente, testing, celebracion)
+      <div class="section-label"><span class="icon">🎨</span> Notas de diseño</div>
+      <div class="design-notes">
+        <ul>
+          <li><strong>Imagen tipo "caso de estudio":</strong> layout dividido antes/después con métricas destacadas</li>
+          <li><strong>Fondo:</strong> beige (#f5f0eb) con acentos en rosa (#e85d8a) para las métricas</li>
+          <li><strong>Gráficos:</strong> minimalistas mostrando las curvas de mejora</li>
+          <li>Logo del cliente difuminado/anonimizado si no hay permiso</li>
+          <li><strong>Tamaño:</strong> 1200 × 627 px (formato LinkedIn)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-<strong>[CTA — 25-30s]</strong>
-"Esto es OH WOW!. Proyectos reales, gente real. Síguenos para ver más."
-(Logo + handle)</div>
-<div class="section-label">Copy para caption</div>
-<div class="copy-block">Detras de cada web que lanzamos hay cafe frio, 47 versiones del mismo boton y al menos una discusion sana sobre tipografias.
+  <!-- ENTRADA 03 -->
+  <div class="card" data-platform="ig" data-format="reel">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-meta">
+        <span class="card-number">03</span>
+        <span class="card-date">16 Abr, Jue</span>
+        <span class="card-time">13:00h</span>
+        <span class="platform-badge ig">Instagram</span>
+        <span class="format-badge">Reel · 60s</span>
+        <span class="pillar-badge pillar-bts">Behind the scenes 20%</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="card-body">
+      <div class="tema">🎯 Un día en Oh Wow! — detrás de las pantallas</div>
 
-Esto es lo que pasa en un día normal en @agency.ohwow
+      <div class="section-label"><span class="icon">🎬</span> Guion completo del Reel (45-60s)</div>
+      <div class="script-block"><div class="script-section"><span class="script-label">[HOOK · 0-3s]</span><em>Plano cenital de un escritorio con café, tablet, post-its de colores.</em>
+<strong>TEXTO EN PANTALLA:</strong> "Esto es lo que NO ves cuando tu web sale perfecta"
+<strong>AUDIO:</strong> sonido trending / lo-fi suave</div>
 
-#AgenciaDigital #BehindTheScenes #DisenoWeb #VidaDeAgencia #OhWow</div>
-<div class="design-notes"><strong>Audio:</strong> Musica lo-fi trending | <strong>Subtitulos:</strong> Obligatorios, blanco con sombra | <strong>Formato:</strong> 9:16 vertical</div>
-</div>
-</div>
+<div class="script-section"><span class="script-label">[DESARROLLO · 3-50s]</span><em>Time-lapse acelerado del equipo trabajando, intercalado con planos detalle.</em>
 
-<!-- Entry 04 -->
-<div class="card" data-platform="ig" data-format="post">
-<div class="card-header" onclick="toggleCard(this)">
-<div class="card-meta">
-<span class="card-date">17 Abr, Vie</span>
-<span class="card-time">19:00h</span>
-<span class="platform-badge ig">Instagram</span>
-<span class="format-badge">Post</span>
-<span class="pillar-badge pillar-social">Social Proof</span>
-</div>
-<span class="toggle-icon">&#9660;</span>
-</div>
-<div class="card-body">
-<strong>Muro de clientes: logos + cifras</strong>
-<div class="section-label">Copy completo</div>
-<div class="copy-block">+26 proyectos activos.
-14 países.
-8 sectores diferentes.
-1 obsesion: que tu web trabaje tan duro como tu.
+<strong>VOZ EN OFF</strong> (o texto en pantalla secuencial):
 
-Estos son algunos de los negocios que han confiado en nosotros para construir su presencia digital. De autonomos a empresas internacionales.
+<strong>9:00</strong> — "Daily del equipo. Café obligatorio. Buenas ideas, opcionales pero frecuentes."
+<span class="script-note">(Plano de reunión rápida de pie, pizarra con post-its)</span>
 
-No somos proveedores. Somos socios digitales.
+<strong>10:00</strong> — "Wireframes. Aquí es donde tu web empieza a existir."
+<span class="script-note">(Pantalla de Figma con manos moviendo componentes)</span>
 
-¿Quieres ser el próximo? Link en bio.
+<strong>12:00</strong> — "Revisión con el cliente. Feedback real, no 'está bonito, pero…'"
+<span class="script-note">(Videollamada en pantalla, gestos de aprobación)</span>
 
-#ClientesOhWow #Portfolio #DisenoWeb #AgenciaDigital #ResultadosReales</div>
-<div class="design-notes"><strong>Imagen:</strong> Grid 4x4 con logos de clientes (pedir permiso) sobre fondo beige | <strong>Cifras:</strong> Superpuestas en lima (#c8f135) | <strong>Formato:</strong> 1080x1080px</div>
-</div>
-</div>
+<strong>14:00</strong> — "Desarrollo. Aquí el diseño deja de ser un dibujo y empieza a respirar."
+<span class="script-note">(Pantalla de código + preview de web en tiempo real)</span>
 
-<!-- Entry 05 -->
-<div class="card" data-platform="li" data-format="post">
-<div class="card-header" onclick="toggleCard(this)">
-<div class="card-meta">
-<span class="card-date">18 Abr, Sab</span>
-<span class="card-time">10:00h</span>
-<span class="platform-badge li">LinkedIn</span>
-<span class="format-badge">Post</span>
-<span class="pillar-badge pillar-culture">Cultura</span>
-</div>
-<span class="toggle-icon">&#9660;</span>
-</div>
-<div class="card-body">
-<strong>Por que no nos llamamos "consultora"</strong>
-<div class="section-label">Copy completo</div>
-<div class="copy-block">Podriamos habernos llamado "consultora digital" o "estudio creativo premium".
+<strong>16:00</strong> — "Testing. Si tu web carga lento en un móvil de 2019, no sale."
+<span class="script-note">(Varias pantallas de móviles con la misma web)</span>
 
-Pero elegimos OH WOW!.
+<strong>18:00</strong> — "Última revisión. Los detalles que el 95% no ve pero el 100% siente."
+<span class="script-note">(Plano de pantalla con ajustes de 1px, tipografía, colores)</span></div>
 
-Porque eso es exactamente lo que queremos que digas cuando veas tu web terminada.
+<div class="script-section"><span class="script-label">[CTA · 50-60s]</span><em>Plano del equipo mirando a cámara, sonriendo, logo Oh Wow! aparece.</em>
+<strong>TEXTO EN PANTALLA:</strong> "Detrás de cada web que funciona hay un equipo que no para. Ese es el nuestro."
+<strong>TEXTO FINAL:</strong> "Síguenos para ver cómo se hacen las cosas bien."</div></div>
 
-No somos los más baratos. No somos los más grandes. Pero somos los que se sientan contigo a entender tu negocio antes de abrir Figma.
+      <div class="section-label"><span class="icon">📝</span> Copy para caption</div>
+      <div class="copy-block">Lo que ves: una web que carga rápido, convierte y se ve increíble.
 
-Hace 3 años empezamos con una idea simple: ser el socio digital que nosotros mismos hubieramos querido encontrar. Sin jerga, sin humo, sin "le pasamos presupuesto".
+Lo que no ves: 47 versiones del botón de "Comprar ahora", 3 debates sobre si el verde lima es DEMASIADO lima, y un CTO que no duerme hasta que el PageSpeed da 95+.
 
-Hoy, 26 proyectos activos después, seguimos con la misma filosofia: hacemos webs que trabajan tan duro como las personas detras de ellas.
+Esto es Oh Wow! por dentro.
+Donde cada píxel tiene un propósito y cada línea de código tiene una razón.
 
-¿Que significa "OH WOW!" para ti?
+¿Quieres un equipo así detrás de tu proyecto?
+Link en bio.
 
-#AgenciaDigital #Cultura #Branding #SocioDigital #OhWow</div>
-<div class="design-notes"><strong>Formato:</strong> Post solo texto (LinkedIn nativo, sin imagen — mayor alcance orgánico) | <strong>Alternativa:</strong> Foto del equipo en modo casual</div>
-</div>
-</div>
+<span class="copy-hashtags">#AgenciaDigital #BehindTheScenes #DiseñoWeb #EquipoCreativo #WebDesign #OhWow</span></div>
 
-<!-- Entry 06 -->
-<div class="card" data-platform="ig" data-format="carousel">
-<div class="card-header" onclick="toggleCard(this)">
-<div class="card-meta">
-<span class="card-date">20 Abr, Lun</span>
-<span class="card-time">12:30h</span>
-<span class="platform-badge ig">Instagram</span>
-<span class="format-badge">Carousel</span>
-<span class="pillar-badge pillar-port">Portfolio</span>
-</div>
-<span class="toggle-icon">&#9660;</span>
-</div>
-<div class="card-body">
-<strong>Before/After: rediseño UX restaurante</strong>
-<div class="section-label">Copy completo</div>
-<div class="copy-block">Desliza y dime: ¿cual de las dos webs te da más ganas de reservar mesa?
+      <div class="section-label"><span class="icon">🏷</span> Hashtags en 3 niveles</div>
+      <div class="hashtag-tiers">
+        <div class="hashtag-tier"><span class="tier-label">Nicho</span>#AgenciaWebEspaña #EquipoDigital #VidaDeAgencia</div>
+        <div class="hashtag-tier medio"><span class="tier-label">Medio</span>#BehindTheScenes #AgenciaCreativa #TrabajoEnEquipo</div>
+        <div class="hashtag-tier amplio"><span class="tier-label">Amplio</span>#WebDesign #Creatividad #WorkLife</div>
+      </div>
 
-Este restaurante tenia una web de 2019 que parecia un PDF con enlace.
-Menu en imagen. Sin reservas online. Sin fotos de platos.
+      <div class="section-label"><span class="icon">🎨</span> Notas de diseño / producción</div>
+      <div class="design-notes">
+        <ul>
+          <li><strong>Estética:</strong> real, no overproduced — que se sienta auténtico</li>
+          <li><strong>Subtítulos:</strong> siempre en pantalla (accesibilidad + consumo sin sonido)</li>
+          <li>Colores del branding presentes de forma sutil: post-its lima, tazas con logo</li>
+          <li><strong>Ratio:</strong> 9:16 vertical</li>
+          <li><strong>Duración final:</strong> 45-60 segundos idealmente</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-Resultado: el 68% del tráfico se iba antes de 10 segundos.
+  <!-- ENTRADA 04 -->
+  <div class="card" data-platform="ig" data-format="post">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-meta">
+        <span class="card-number">04</span>
+        <span class="card-date">17 Abr, Vie</span>
+        <span class="card-time">11:00h</span>
+        <span class="platform-badge ig">Instagram</span>
+        <span class="format-badge">Post imagen</span>
+        <span class="pillar-badge pillar-social">Social Proof 15%</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="card-body">
+      <div class="tema">🎯 Muro de confianza — logos de clientes + cifras</div>
 
-Lo que cambiamos:
-→ Fotos profesionales con carga optimizada
-→ Menu interactivo con filtros (alergenos, vegano, etc.)
-→ Boton de reserva siempre visible
-→ Google Maps integrado + horarios en tiempo real
+      <div class="section-label"><span class="icon">📝</span> Copy / Caption completo</div>
+      <div class="copy-block">No vendemos humo.
+Vendemos resultados que se miden, se sienten y se facturan.
 
-Ahora: tasa de rebote -54%, reservas online +230%.
++50 proyectos entregados
++30 clientes activos
+98% de satisfacción
+"Repetiríamos sin dudarlo" — frase más escuchada en nuestras encuestas
 
-A veces un rediseño no es estetica. Es supervivencia.
+Estas marcas ya confiaron en nosotros.
+La siguiente podría ser la tuya.
 
-#DisenoWeb #UXRestaurantes #BeforeAfter #WebDesign #Conversion #OhWow</div>
-<div class="design-notes"><strong>Slides:</strong> S1: Portada "Before → After" | S2-3: Capturas before con X roja | S4-5: Capturas after con check verde | S6: Métricas + CTA | <strong>Formato:</strong> 1080x1080px</div>
-</div>
-</div>
+¿Hablamos? Link en bio o DM directo.
 
-<!-- WEEK 2 -->
-<div class="week-header">Semana 2 — 21 al 27 de Abril</div>
+<span class="copy-hashtags">#ResultadosReales #AgenciaDigital #Clientes #Confianza #DiseñoWeb #WebDesign #OhWow</span></div>
 
-<!-- Entry 07 -->
-<div class="card" data-platform="li" data-format="carousel">
-<div class="card-header" onclick="toggleCard(this)">
-<div class="card-meta">
-<span class="card-date">21 Abr, Mar</span>
-<span class="card-time">09:30h</span>
-<span class="platform-badge li">LinkedIn</span>
-<span class="format-badge">Carousel</span>
-<span class="pillar-badge pillar-edu">Educación</span>
-</div>
-<span class="toggle-icon">&#9660;</span>
-</div>
-<div class="card-body">
-<strong>SEO para PyMEs: la guia que nadie te da (AI Drugs style)</strong>
-<div class="section-label">Copy completo</div>
-<div class="copy-block">El SEO es como ir al gimnasio.
+      <div class="section-label"><span class="icon">🏷</span> Hashtags en 3 niveles</div>
+      <div class="hashtag-tiers">
+        <div class="hashtag-tier"><span class="tier-label">Nicho</span>#ClientesSatisfechos #PortfolioDigital #AgenciaWebEspaña</div>
+        <div class="hashtag-tier medio"><span class="tier-label">Medio</span>#SocialProof #ResultadosDigitales #CasosDeExito</div>
+        <div class="hashtag-tier amplio"><span class="tier-label">Amplio</span>#MarketingDigital #Emprendedores #Confianza</div>
+      </div>
 
-Todo el mundo sabe que deberia hacerlo.
+      <div class="section-label"><span class="icon">🎨</span> Notas de diseño</div>
+      <div class="design-notes">
+        <ul>
+          <li><strong>Layout:</strong> logo wall limpio (cuadrícula 3×3 o 4×3) con logos en escala de grises sobre fondo beige (#f5f0eb)</li>
+          <li><strong>Franja superior:</strong> cifras clave en grande (tipografía bold) con acentos rosa (#e85d8a)</li>
+          <li><strong>Franja inferior:</strong> claim "Resultados que hablan. Clientes que repiten."</li>
+          <li><strong>Efecto:</strong> un logo en color (el más reconocible) para romper la monotonía</li>
+          <li><strong>Tamaño:</strong> 1080 × 1080 px</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENTRADA 05 -->
+  <div class="card" data-platform="li" data-format="post">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-meta">
+        <span class="card-number">05</span>
+        <span class="card-date">18 Abr, Sáb</span>
+        <span class="card-time">10:00h</span>
+        <span class="platform-badge li">LinkedIn</span>
+        <span class="format-badge">Post texto</span>
+        <span class="pillar-badge pillar-cult">Cultura 10%</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="card-body">
+      <div class="tema">🎯 Por qué no somos una "consultora" — manifiesto Oh Wow!</div>
+
+      <div class="section-label"><span class="icon">📝</span> Copy / Caption completo (post de texto puro)</div>
+      <div class="copy-block">No somos una consultora.
+No somos un proveedor.
+No somos "los de la web".
+
+Somos el equipo que se sienta a tu lado, entiende tu negocio y construye lo que necesitas para crecer online.
+
+<strong>Cuando fundamos Oh Wow!, teníamos claro lo que NO queríamos ser:</strong>
+→ La agencia que entrega un PDF de 80 páginas y desaparece.
+→ El freelance que promete la luna y entrega un PowerPoint.
+→ El "experto" que habla en jerga para que no entiendas que no está haciendo nada.
+
+<strong>Lo que SÍ queríamos:</strong>
+→ Ser el socio digital que tu negocio necesita pero no sabía que existía.
+→ Hablar claro. Siempre.
+→ Medir todo. Celebrar lo que funciona. Corregir lo que no.
+→ Construir webs que no solo se vean bien, sino que trabajen por ti 24/7.
+
+Ocho personas. Cero ego. Mucho café.
+Y una obsesión: que cada proyecto salga mejor que el anterior.
+
+Eso es Oh Wow!
+
+Si buscas un socio digital (no un proveedor), hablemos.
+
+<span class="copy-hashtags">#CulturaDeAgencia #ValoresEmpresariales #SocioDigital #AgenciaDigital #TransformacionDigital</span></div>
+
+      <div class="section-label"><span class="icon">🏷</span> Hashtags en 3 niveles</div>
+      <div class="hashtag-tiers">
+        <div class="hashtag-tier"><span class="tier-label">Nicho</span>#AgenciaWebEspaña #CulturaDigital #SocioDigital</div>
+        <div class="hashtag-tier medio"><span class="tier-label">Medio</span>#ValoresDeEmpresa #AgenciaCreativa #TransformacionDigital</div>
+        <div class="hashtag-tier amplio"><span class="tier-label">Amplio</span>#Liderazgo #Emprendimiento #Negocios</div>
+      </div>
+
+      <div class="section-label"><span class="icon">🎨</span> Notas de diseño</div>
+      <div class="design-notes">
+        <ul>
+          <li><strong>Sin imagen principal</strong> — post de texto puro para maximizar alcance orgánico en LinkedIn</li>
+          <li>Si se decide añadir imagen: foto real del equipo en ambiente informal pero profesional, con overlay sutil del logo</li>
+          <li><strong>No usar stock photos</strong> bajo ningún concepto</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENTRADA 06 -->
+  <div class="card" data-platform="ig" data-format="carousel">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-meta">
+        <span class="card-number">06</span>
+        <span class="card-date">20 Abr, Lun</span>
+        <span class="card-time">12:00h</span>
+        <span class="platform-badge ig">Instagram</span>
+        <span class="format-badge">Carousel · 4 slides</span>
+        <span class="pillar-badge pillar-port">Portfolio 30%</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="card-body">
+      <div class="tema">🎯 Before/After — Rediseño UX para restaurante</div>
+
+      <div class="section-label"><span class="icon">📝</span> Copy / Caption completo</div>
+      <div class="copy-block">La web anterior de este restaurante era como un menú sin precios, sin fotos y con tipografía Comic Sans del alma.
+
+Sabías que estaba ahí. Pero no te daban ganas de entrar.
+
+Desliza para ver la transformación completa -->
+
+<strong>Lo que cambiamos:</strong>
+✦ Navegación: de laberinto a 3 clics hasta reserva
+✦ Fotografía: de "foto de móvil con flash" a food styling profesional
+✦ Reservas: de "llama por teléfono" a sistema integrado en la web
+✦ SEO local: de invisible a top 3 en "restaurante + barrio"
+
+<strong>Resultado:</strong> +230% en reservas online en 60 días.
+
+Tu negocio se merece una web que trabaje tan duro como tú.
+
+<span class="copy-hashtags">#Restaurantes #DiseñoWeb #BeforeAfter #UXDesign #WebDesignSpain #ReservasOnline #OhWow</span></div>
+
+      <div class="section-label"><span class="icon">🎞</span> Contenido slide-by-slide</div>
+      <div class="slide-list">
+        <div class="slide-item"><div class="slide-num portada">1</div><div class="slide-content"><div class="slide-title">Portada</div><div class="slide-desc">"ANTES vs DESPUÉS" en grande, preview borroso de las dos versiones, fondo negro.</div></div></div>
+        <div class="slide-item"><div class="slide-num">2</div><div class="slide-content"><div class="slide-title">Antes</div><div class="slide-desc">Captura "ANTES" con anotaciones en rojo de los problemas (flechas, círculos). Sensación de caos.</div></div></div>
+        <div class="slide-item"><div class="slide-num">3</div><div class="slide-content"><div class="slide-title">Después</div><div class="slide-desc">Captura "DESPUÉS" con anotaciones en lima (#c8f135) de las mejoras. Sensación de orden.</div></div></div>
+        <div class="slide-item"><div class="slide-num cta">4</div><div class="slide-content"><div class="slide-title">CTA</div><div class="slide-desc">Métricas de resultado + "¿Tu web necesita un glow up? Hablemos. Link en bio."</div></div></div>
+      </div>
+
+      <div class="section-label"><span class="icon">🏷</span> Hashtags en 3 niveles</div>
+      <div class="hashtag-tiers">
+        <div class="hashtag-tier"><span class="tier-label">Nicho</span>#WebParaRestaurantes #DiseñoGastronomico #HorecaDigital</div>
+        <div class="hashtag-tier medio"><span class="tier-label">Medio</span>#BeforeAndAfter #RediseñoWeb #UXDesign</div>
+        <div class="hashtag-tier amplio"><span class="tier-label">Amplio</span>#DiseñoWeb #MarketingDigital #Transformacion</div>
+      </div>
+
+      <div class="section-label"><span class="icon">🎨</span> Notas de diseño</div>
+      <div class="design-notes">
+        <ul>
+          <li>Las capturas before/after deben ser <strong>reales o mockups hiperrealistas</strong></li>
+          <li><strong>Slide "antes":</strong> desaturado, anotaciones en rojo, sensación de caos</li>
+          <li><strong>Slide "después":</strong> colores vivos, anotaciones en lima, sensación de orden</li>
+          <li><strong>Tamaño:</strong> 1080 × 1080 px</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ WEEK 2 ══════════════ -->
+  <div class="week-header">Semana 2 · 21 al 27 de abril</div>
+
+  <!-- ENTRADA 07 -->
+  <div class="card" data-platform="li" data-format="carousel">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-meta">
+        <span class="card-number">07</span>
+        <span class="card-date">21 Abr, Mar</span>
+        <span class="card-time">08:30h</span>
+        <span class="platform-badge li">LinkedIn</span>
+        <span class="format-badge">Carousel PDF · 6 slides</span>
+        <span class="pillar-badge pillar-edu">Educación 25%</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="card-body">
+      <div class="tema">🎯 SEO para PyMEs: la guía honesta que nadie te da</div>
+
+      <div class="section-label"><span class="icon">📝</span> Copy / Caption completo</div>
+      <div class="copy-block">El SEO es como ir al gimnasio.
+
+Todo el mundo sabe que debería hacerlo.
 Nadie quiere escuchar que los resultados tardan meses.
-Y la mitad abandona después de 3 semanas sin ver abdominales en Google.
+Y siempre hay alguien vendiendo una pastilla mágica que no funciona.
 
-Pero aquí esta la verdad incomoda: las empresas que invierten en SEO hoy son las que no pagaran Google Ads mañana.
+Llevo años viendo a PyMEs quemar dinero en "expertos SEO" que prometen primera página en 30 días. Spoiler: si alguien te garantiza eso, está mintiendo o haciendo cosas que Google va a penalizar.
 
-Desliza para la guia de supervivencia SEO para PyMEs — sin tecnicismos, sin humo, solo lo que funciona.
+Hemos preparado esta guía con lo que DE VERDAD funciona para un negocio pequeño que quiere posicionarse en Google sin vender un riñón.
 
-#SEO #PyMEs #MarketingDigital #PosicionamientoWeb #GoogleRanking</div>
-<div class="design-notes"><strong>Slides:</strong> 6 slides tipo infografia | Fondo beige, texto negro, acentos lima | <strong>Temas:</strong> Keywords, contenido, velocidad, mobile, enlaces, medicion | <strong>Formato:</strong> PDF carousel LinkedIn</div>
-</div>
-</div>
+Desliza -->
 
-<!-- Entry 08 -->
-<div class="card" data-platform="ig" data-format="reel">
-<div class="card-header" onclick="toggleCard(this)">
-<div class="card-meta">
-<span class="card-date">22 Abr, Mie</span>
-<span class="card-time">18:30h</span>
-<span class="platform-badge ig">Instagram</span>
-<span class="format-badge">Reel</span>
-<span class="pillar-badge pillar-edu">Educación</span>
-</div>
-<span class="toggle-icon">&#9660;</span>
-</div>
-<div class="card-body">
-<strong>"Tu web es un vendedor que trabaja 24h" (AI Drugs style)</strong>
-<div class="section-label">Guion del Reel (25-35s)</div>
-<div class="script-block"><strong>[HOOK — 0-3s]</strong>
-Texto bold en pantalla: "Tu web es un empleado."
-(Persona sentada frente al ordenador, gesto serio)
+Y si después de leerla tienes preguntas, los comentarios están abiertos.
 
-<strong>[DESARROLLO — 3-22s]</strong>
-"Piensalo. Tu web es un vendedor que trabaja 24 horas. No pide vacaciones. No se queja del cafe. No llega tarde un lunes.
+<span class="copy-hashtags">#SEO #PyMEs #MarketingDigital #PosicionamientoWeb #GoogleRanking #EstrategiaDigital</span></div>
 
-Pero... ¿y si ese vendedor tartamudea? ¿Y si tarda 6 segundos en abrir la boca? ¿Y si cuando por fin habla, dice cosas que nadie entiende?
+      <div class="section-label"><span class="icon">🎞</span> Contenido slide-by-slide</div>
+      <div class="slide-list">
+        <div class="slide-item"><div class="slide-num portada">1</div><div class="slide-content"><div class="slide-title">Portada</div><div class="slide-desc">"SEO para PyMEs: la guía honesta" · fondo lima (#c8f135), texto negro.</div></div></div>
+        <div class="slide-item"><div class="slide-num">2</div><div class="slide-content"><div class="slide-title">Google My Business es tu mejor amigo gratuito</div><div class="slide-desc">Pasos concretos para reclamar, optimizar y rankear con GMB.</div></div></div>
+        <div class="slide-item"><div class="slide-num">3</div><div class="slide-content"><div class="slide-title">Contenido &gt; cantidad de keywords</div><div class="slide-desc">Explicación de intención de búsqueda: por qué 1 artículo bien hecho vale más que 10 rellenos de keywords.</div></div></div>
+        <div class="slide-item"><div class="slide-num">4</div><div class="slide-content"><div class="slide-title">Tu web tiene que cargar en menos de 3 segundos</div><div class="slide-desc">Herramientas gratuitas para medir: PageSpeed Insights, GTmetrix, Lighthouse.</div></div></div>
+        <div class="slide-item"><div class="slide-num">5</div><div class="slide-content"><div class="slide-title">Los backlinks importan, pero los buenos</div><div class="slide-desc">"No compres enlaces basura." Ejemplos de qué contar como backlink de calidad.</div></div></div>
+        <div class="slide-item"><div class="slide-num cta">6</div><div class="slide-content"><div class="slide-title">Mide o muere + CTA</div><div class="slide-desc">"Google Search Console es gratis y te dice TODO" + CTA: "¿Quieres una auditoría SEO gratuita? Comenta AUDITORIA y te contactamos."</div></div></div>
+      </div>
 
-Eso es lo que pasa con una web lenta, confusa o sin un CTA claro. Tienes un vendedor en coma."
+      <div class="section-label"><span class="icon">🏷</span> Hashtags en 3 niveles</div>
+      <div class="hashtag-tiers">
+        <div class="hashtag-tier"><span class="tier-label">Nicho</span>#SEOEspaña #SEOParaPymes #PosicionamientoLocal</div>
+        <div class="hashtag-tier medio"><span class="tier-label">Medio</span>#MarketingDigitalEspaña #EstrategiaSEO #GoogleMyBusiness</div>
+        <div class="hashtag-tier amplio"><span class="tier-label">Amplio</span>#SEO #MarketingDigital #Emprendedores</div>
+      </div>
 
-<strong>[CTA — 22-30s]</strong>
-"¿Tu vendedor digital esta despierto o en coma? Te hacemos una auditoría gratuita. Link en bio."</div>
-<div class="section-label">Copy para caption</div>
-<div class="copy-block">Tu web no es una tarjeta de visita.
-Es un vendedor con turno de 24 horas que nunca duerme, nunca come y nunca pide aumento.
+      <div class="section-label"><span class="icon">🎨</span> Notas de diseño</div>
+      <div class="design-notes">
+        <ul>
+          <li><strong>Formato:</strong> PDF subido como documento de LinkedIn (para deslizar)</li>
+          <li><strong>Tipografía:</strong> grande y legible (LinkedIn se consume mucho en móvil)</li>
+          <li><strong>Paleta:</strong> lima (#c8f135) + negro (#1c1c1c) + blanco</li>
+          <li>Iconos simples para cada punto</li>
+          <li><strong>Tamaño slides:</strong> 1080 × 1350 px (vertical, mejor engagement en LinkedIn)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-El problema es que la mayoría de las webs son vendedores en estado vegetativo.
+  <!-- ENTRADA 08 -->
+  <div class="card" data-platform="ig" data-format="reel">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-meta">
+        <span class="card-number">08</span>
+        <span class="card-date">22 Abr, Mié</span>
+        <span class="card-time">18:00h</span>
+        <span class="platform-badge ig">Instagram</span>
+        <span class="format-badge">Reel · 45s</span>
+        <span class="pillar-badge pillar-edu">Educación 25%</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="card-body">
+      <div class="tema">🎯 "Tu web es un vendedor que trabaja 24 horas" (metáfora extendida)</div>
 
-¿La tuya esta despierta?
+      <div class="section-label"><span class="icon">🎬</span> Guion completo del Reel (45s)</div>
+      <div class="script-block"><div class="script-section"><span class="script-label">[HOOK · 0-3s]</span><em>Persona durmiendo plácidamente en la cama. Suena un "ka-ching" de caja registradora.</em>
+<strong>TEXTO EN PANTALLA:</strong> "Son las 3AM y alguien acaba de comprarte."
+<strong>AUDIO:</strong> sonido de caja registradora + música suave</div>
 
-#DisenoWeb #VendedorDigital #WebMarketing #Conversion #OhWow</div>
-<div class="design-notes"><strong>Estilo:</strong> Talking head + texto sobreimpreso | <strong>Audio:</strong> Voz propia (no IA) | <strong>Subtitulos:</strong> Obligatorios, bold en palabras clave | <strong>Formato:</strong> 9:16</div>
-</div>
-</div>
+<div class="script-section"><span class="script-label">[DESARROLLO · 3-35s]</span><em>Corte a: pantalla de móvil con una notificación de venta.</em>
 
-<!-- Entry 09 -->
-<div class="card" data-platform="ig" data-format="carousel">
-<div class="card-header" onclick="toggleCard(this)">
-<div class="card-meta">
-<span class="card-date">23 Abr, Jue</span>
-<span class="card-time">13:00h</span>
-<span class="platform-badge ig">Instagram</span>
-<span class="format-badge">Carousel</span>
-<span class="pillar-badge pillar-culture">Cultura</span>
-</div>
-<span class="toggle-icon">&#9660;</span>
-</div>
-<div class="card-body">
-<strong>Presentacion del equipo — caras detras del wow</strong>
-<div class="section-label">Copy completo</div>
-<div class="copy-block">Detras de cada pixel, cada linea de codigo y cada "¿y si lo hacemos así?" hay personas reales.
+<strong>VOZ EN OFF:</strong>
 
-Somos 8+. Algunos llevamos cafe en las venas y Figma en los sueños. Otros viven entre WordPress y hojas de calculo. Todos compartimos una cosa: la obsesion por hacer webs que funcionen de verdad.
+"Tu web no es una tarjeta de visita digital.
+Tu web es un vendedor.
+El mejor vendedor que puedes tener.
 
-Desliza para conocer a quien hace posible el wow.
+No pide vacaciones.
+No tiene un mal día.
+No se pone nervioso en la llamada fría.
 
-(Spoiler: el de SEO y el de UX discuten a diario. Es sano.)
+Pero como cualquier vendedor…
+si no lo formas, no vende.
+Si no le das herramientas, fracasa.
+Si no lo cuidas, se va.
 
-¿Quieres que este equipo trabaje en tu proyecto? Escríbenos por DM o link en bio.
+Y 'se va' en lenguaje web significa:
+carga lenta, diseño anticuado, cero SEO, y un botón de contacto que parece un acertijo."
 
-#EquipoOhWow #AgenciaDigital #PeopleFirst #Teamwork #OhWow</div>
-<div class="design-notes"><strong>Imagen:</strong> Foto grupal del equipo (casual, no corporativa) o grid individual | <strong>Paleta:</strong> Beige fondo + texto negro | <strong>Alternativa:</strong> Carousel con 1 persona por slide + su rol + dato curioso</div>
-</div>
-</div>
+<span class="script-note">(Mientras habla: secuencia rápida de ejemplos visuales de webs malas vs buenas, pantallas de métricas subiendo)</span></div>
 
-<!-- Entry 10 -->
-<div class="card" data-platform="li" data-format="post">
-<div class="card-header" onclick="toggleCard(this)">
-<div class="card-meta">
-<span class="card-date">24 Abr, Vie</span>
-<span class="card-time">10:00h</span>
-<span class="platform-badge li">LinkedIn</span>
-<span class="format-badge">Post</span>
-<span class="pillar-badge pillar-social">Social Proof</span>
-</div>
-<span class="toggle-icon">&#9660;</span>
-</div>
-<div class="card-body">
-<strong>Testimonio de cliente: caso real</strong>
-<div class="section-label">Copy completo</div>
-<div class="copy-block">"Llevabamos dos años con una web que nos daba verguenza compartir."
+<div class="script-section"><span class="script-label">[CTA · 35-45s]</span><strong>TEXTO EN PANTALLA:</strong> "Forma a tu vendedor digital."
+<strong>VOZ EN OFF:</strong> "En Oh Wow! construimos vendedores que no duermen. Link en bio."
+<em>(Logo Oh Wow! + call to action visual)</em></div></div>
 
-Eso nos dijo un cliente en la primera reunion.
+      <div class="section-label"><span class="icon">📝</span> Copy para caption</div>
+      <div class="copy-block">Tu web trabaja mientras duermes.
+O al menos debería.
 
-Hoy, 4 meses después del lanzamiento de su nueva web:
-→ +340% tráfico orgánico
-→ 12 leads cualificados al mes (antes: 2)
-→ Tiempo medio en página: de 0:45 a 3:12
+Porque si tu web es lenta, confusa o fea (perdón, pero alguien tenía que decírtelo), no es un vendedor.
 
-Lo más importante no son los numeros. Es que ahora comparten su web con orgullo en cada reunion comercial.
+Es un portero de discoteca que ahuyenta clientes.
 
-Ese es el efecto de un buen diseño web: no solo vende más. Te da confianza para vender.
+Nosotros convertimos porteros en vendedores estrella.
+¿Hablamos?
 
-¿Tienes una web que te avergüenza? Hablemos.
+<span class="copy-hashtags">#DiseñoWeb #VendedorDigital #Ecommerce #WebQueVende #MarketingDigital #OhWow</span></div>
 
-#Testimonio #DisenoWeb #ResultadosReales #CasoDeExito #WebDesign</div>
-<div class="design-notes"><strong>Imagen:</strong> Tarjeta de testimonio con comillas, métricas y foto del cliente (con permiso) | <strong>Paleta:</strong> Blanco fondo + negro texto + lima métricas</div>
-</div>
-</div>
+      <div class="section-label"><span class="icon">🏷</span> Hashtags en 3 niveles</div>
+      <div class="hashtag-tiers">
+        <div class="hashtag-tier"><span class="tier-label">Nicho</span>#WebQueConvierte #VentasOnline #DiseñoWebEspaña</div>
+        <div class="hashtag-tier medio"><span class="tier-label">Medio</span>#MarketingDigitalEspaña #EcommerceSpain #Automatizacion</div>
+        <div class="hashtag-tier amplio"><span class="tier-label">Amplio</span>#DiseñoWeb #Emprendedores #NegocioOnline</div>
+      </div>
 
-<!-- Entry 11 -->
-<div class="card" data-platform="ig" data-format="carousel">
-<div class="card-header" onclick="toggleCard(this)">
-<div class="card-meta">
-<span class="card-date">25 Abr, Sab</span>
-<span class="card-time">11:00h</span>
-<span class="platform-badge ig">Instagram</span>
-<span class="format-badge">Carousel</span>
-<span class="pillar-badge pillar-port">Portfolio</span>
-</div>
-<span class="toggle-icon">&#9660;</span>
-</div>
-<div class="card-body">
-<strong>Anatomia de una landing que convierte al 8% (AI Drugs style)</strong>
-<div class="section-label">Copy completo</div>
-<div class="copy-block">Una landing page es una droga de diseño.
+      <div class="section-label"><span class="icon">🎨</span> Notas de diseño / producción</div>
+      <div class="design-notes">
+        <ul>
+          <li><strong>Tono visual:</strong> cinematico pero accesible</li>
+          <li><strong>Subtítulos:</strong> obligatorios, tipografía bold blanca con sombra</li>
+          <li><strong>Transiciones:</strong> rápidas en la parte de "ejemplos"</li>
+          <li><strong>Color dominante:</strong> oscuro con destellos lima en los momentos clave</li>
+          <li><strong>Ratio:</strong> 9:16</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-El headline es el espresso que te despierta en 2 segundos.
-Los beneficios son la dopamina que te hace seguir leyendo.
-El social proof es el FOMO bioquimico que te dice "otros ya lo tienen".
-Y el CTA... el CTA es la aguja en la vena del funnel.
+  <!-- ENTRADA 09 -->
+  <div class="card" data-platform="ig" data-format="post">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-meta">
+        <span class="card-number">09</span>
+        <span class="card-date">23 Abr, Jue</span>
+        <span class="card-time">14:00h</span>
+        <span class="platform-badge ig">Instagram</span>
+        <span class="format-badge">Post / Mini-carousel</span>
+        <span class="pillar-badge pillar-cult">Cultura 10%</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="card-body">
+      <div class="tema">🎯 Presentación del equipo — las caras detrás del wow</div>
 
-Suena agresivo? Puede.
-Pero así funciona la psicologia de conversión.
+      <div class="section-label"><span class="icon">📝</span> Copy / Caption completo</div>
+      <div class="copy-block">Detrás de cada web que lanzamos hay un equipo que discute sobre tipografías como si fuera la final del Mundial.
 
-Desliza para ver la anatomia de una landing que convierte al 8% (la media es 2.35%).
+Somos 8+ personas con una cosa en común: nos obsesiona hacer las cosas bien.
 
-Cada elemento tiene una razón de ser. Ninguno esta ahí por decoracion.
+<strong>Tenemos:</strong>
+→ Un CTO que habla con las máquinas (y a veces les gana)
+→ Una CDO/CMO que ve oportunidades donde otros ven problemas
+→ Un especialista SEO que sueña con algoritmos de Google
+→ Content strategists que convierten ideas en historias que venden
 
-#LandingPage #CRO #DisenoUX #ConversionRate #WebDesign #OhWow</div>
-<div class="design-notes"><strong>Slides:</strong> S1: "Anatomia de una landing" (título impactante) | S2: Hero + headline | S3: Beneficios + iconos | S4: Social proof | S5: CTA + urgencia | S6: Métricas reales | <strong>Estilo:</strong> Wireframe anotado con flechas explicativas</div>
-</div>
-</div>
+Y todos compartimos algo: creemos que tu negocio se merece una presencia digital que dé WOW.
 
-<!-- Entry 12 -->
-<div class="card" data-platform="ig" data-format="reel">
-<div class="card-header" onclick="toggleCard(this)">
-<div class="card-meta">
-<span class="card-date">27 Abr, Lun</span>
-<span class="card-time">12:00h</span>
-<span class="platform-badge ig">Instagram</span>
-<span class="format-badge">Reel</span>
-<span class="pillar-badge pillar-bts">Behind the scenes</span>
-</div>
-<span class="toggle-icon">&#9660;</span>
-</div>
-<div class="card-body">
-<strong>Como nace un proyecto: del brief al wireframe</strong>
-<div class="section-label">Guion del Reel (30-40s)</div>
-<div class="script-block"><strong>[HOOK — 0-3s]</strong>
-"Así es como una idea se convierte en una web."
-(Pantalla de Figma en blanco → zoom out rápido)
+No somos una agencia más.
+Somos TU equipo digital.
 
-<strong>[DESARROLLO — 3-30s]</strong>
-"Todo empieza con una conversacion. El cliente nos cuenta su negocio, sus objetivos, lo que le frustra de su web actual.
+Conócenos --> link en bio
 
-Después viene la investigación: competencia, audiencia, referencias.
+<span class="copy-hashtags">#Equipo #AgenciaDigital #OhWow #SomosOhWow #WebDesign #GenteReal</span></div>
 
-Luego: wireframes. Cajas grises que parecen aburridas pero son la estructura de todo.
+      <div class="section-label"><span class="icon">🏷</span> Hashtags en 3 niveles</div>
+      <div class="hashtag-tiers">
+        <div class="hashtag-tier"><span class="tier-label">Nicho</span>#EquipoOhWow #AgenciaWebMadrid #GenteReal</div>
+        <div class="hashtag-tier medio"><span class="tier-label">Medio</span>#TeamWork #AgenciaCreativa #CulturaDigital</div>
+        <div class="hashtag-tier amplio"><span class="tier-label">Amplio</span>#Equipo #TrabajoEnEquipo #Personas</div>
+      </div>
 
-Después: diseño visual. Aquí es donde la marca cobra vida.
+      <div class="section-label"><span class="icon">🎨</span> Notas de diseño</div>
+      <div class="design-notes">
+        <ul>
+          <li><strong>Foto grupal real</strong> del equipo, casual pero profesional (no stock)</li>
+          <li><strong>Alternativa:</strong> collage de fotos individuales tipo "tarjetas de futbolista" con nombre + rol</li>
+          <li><strong>Fondo:</strong> beige (#f5f0eb) para el marco/collage</li>
+          <li><strong>Acento:</strong> rosa (#e85d8a) en los nombres/roles</li>
+          <li>Si es mini-carousel: slide 1 = foto grupal, slide 2 = nombres y roles</li>
+          <li><strong>Tamaño:</strong> 1080 × 1080 px</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-Y por último: desarrollo. Codigo, testeo, ajustes, y... lanzamiento."
-(Transiciones rápidas entre cada fase con screen recordings reales)
+  <!-- ENTRADA 10 -->
+  <div class="card" data-platform="li" data-format="post">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-meta">
+        <span class="card-number">10</span>
+        <span class="card-date">24 Abr, Vie</span>
+        <span class="card-time">09:30h</span>
+        <span class="platform-badge li">LinkedIn</span>
+        <span class="format-badge">Post imagen</span>
+        <span class="pillar-badge pillar-social">Social Proof 15%</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="card-body">
+      <div class="tema">🎯 Testimonio real de cliente</div>
 
-<strong>[CTA — 30-35s]</strong>
-"¿Quieres ver como sería TU proceso? Hablemos."</div>
-<div class="section-label">Copy para caption</div>
-<div class="copy-block">De la idea al pixel. De la reunion al lanzamiento.
+      <div class="section-label"><span class="icon">📝</span> Copy / Caption completo</div>
+      <div class="copy-block">"Habíamos trabajado con 3 agencias antes. Con Oh Wow! fue la primera vez que sentimos que alguien entendía nuestro negocio antes de tocar un solo píxel."
 
-Cada proyecto pasa por 5 fases y cero improvisacion. Bueno, un poco de improvisacion controlada.
+Esto nos lo dijo un cliente después de 6 meses trabajando juntos.
 
-Así trabajamos en OH WOW!. ¿Te gustaria ver tu proyecto aquí?
+Y resume exactamente lo que hacemos diferente:
 
-#ProcesoCreativo #DisenoWeb #Wireframe #UXDesign #BehindTheScenes</div>
-<div class="design-notes"><strong>Audio:</strong> Beat cinematico suave | <strong>Necesario:</strong> Screen recording de Figma, fotos de reunion, captura de codigo | <strong>Formato:</strong> 9:16</div>
-</div>
-</div>
+<strong>Antes de diseñar, escuchamos.
+Antes de desarrollar, entendemos.
+Antes de lanzar, probamos.</strong>
 
-<!-- Entry 13 -->
-<div class="card" data-platform="li" data-format="post">
-<div class="card-header" onclick="toggleCard(this)">
-<div class="card-meta">
-<span class="card-date">27 Abr, Lun</span>
-<span class="card-time">09:00h</span>
-<span class="platform-badge li">LinkedIn</span>
-<span class="format-badge">Post</span>
-<span class="pillar-badge pillar-port">Portfolio</span>
-</div>
-<span class="toggle-icon">&#9660;</span>
-</div>
-<div class="card-body">
-<strong>Lanzamiento web app: caso técnico</strong>
-<div class="section-label">Copy completo</div>
-<div class="copy-block">La semana pasada lanzamos algo que no es "solo una web".
+No empezamos por la solución.
+Empezamos por el problema.
 
-Un cliente necesitaba una plataforma con:
-→ Area de usuario con dashboard personalizado
-→ Sistema de reservas con disponibilidad en tiempo real
-→ Pasarela de pago integrada
-→ Panel de administracion a medida
+Porque una web bonita que no resuelve el problema de tu cliente es solo eso: bonita.
+Y bonita no paga nóminas.
 
-WordPress + desarrollo custom. 14 semanas de trabajo. 3 iteraciones de UX. 1 equipo que no para hasta que funciona.
+Si buscas un equipo que primero entienda y después construya, hablemos.
+DM abiertos o enlace en el perfil.
 
-Lo que aprendi de este proyecto:
-1. Las webs más complejas necesitan los wireframes más simples
-2. El 80% del presupuesto debe ir a UX, no a "que quede bonito"
-3. Testear con usuarios reales desde la semana 2 ahorra meses
+<span class="copy-hashtags">#Testimonio #ClientesFelices #AgenciaDigital #DiseñoWeb #ResultadosReales #SocioDigital</span></div>
 
-El resultado: una plataforma que los usuarios del cliente usan sin manual de instrucciones.
+      <div class="section-label"><span class="icon">🏷</span> Hashtags en 3 niveles</div>
+      <div class="hashtag-tiers">
+        <div class="hashtag-tier"><span class="tier-label">Nicho</span>#TestimonioReal #ClientesOhWow #AgenciaWebEspaña</div>
+        <div class="hashtag-tier medio"><span class="tier-label">Medio</span>#SocialProof #CasosDeExito #AgenciaDigital</div>
+        <div class="hashtag-tier amplio"><span class="tier-label">Amplio</span>#Confianza #Resultados #Negocios</div>
+      </div>
 
-Eso es buen diseño.
+      <div class="section-label"><span class="icon">🎨</span> Notas de diseño</div>
+      <div class="design-notes">
+        <ul>
+          <li><strong>Formato "quote card":</strong> fondo beige (#f5f0eb), comillas grandes en rosa (#e85d8a), texto del testimonio en negro</li>
+          <li><strong>Foto del cliente</strong> (con permiso) o icono abstracto si es anónimo</li>
+          <li><strong>Logo Oh Wow!</strong> en la parte inferior</li>
+          <li><strong>Diseño:</strong> limpio, elegante, nada recargado</li>
+          <li><strong>Tamaño:</strong> 1200 × 627 px</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-#DesarrolloWeb #WebApp #UXDesign #WordPress #CasoDeExito #OhWow</div>
-<div class="design-notes"><strong>Imagen:</strong> Mockup de la plataforma en laptop + móvil | <strong>Paleta:</strong> Fondo oscuro, interfaz iluminada | <strong>Formato:</strong> 1200x627px</div>
-</div>
-</div>
+  <!-- ENTRADA 11 -->
+  <div class="card" data-platform="ig" data-format="carousel">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-meta">
+        <span class="card-number">11</span>
+        <span class="card-date">25 Abr, Sáb</span>
+        <span class="card-time">11:00h</span>
+        <span class="platform-badge ig">Instagram</span>
+        <span class="format-badge">Carousel · 6 slides</span>
+        <span class="pillar-badge pillar-port">Portfolio 30%</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="card-body">
+      <div class="tema">🎯 Anatomía de una landing page que convierte al 8%</div>
 
-<!-- Entry 14 -->
-<div class="card" data-platform="ig" data-format="story">
-<div class="card-header" onclick="toggleCard(this)">
-<div class="card-meta">
-<span class="card-date">27 Abr, Lun</span>
-<span class="card-time">17:00h</span>
-<span class="platform-badge ig">Instagram</span>
-<span class="format-badge">Story</span>
-<span class="pillar-badge pillar-social">Social Proof</span>
-</div>
-<span class="toggle-icon">&#9660;</span>
-</div>
-<div class="card-body">
-<strong>Encuesta + testimonio en stories (serie 5 slides)</strong>
-<div class="section-label">Secuencia de stories</div>
-<div class="design-notes">
-<strong>Story 1:</strong> Encuesta: "¿Cuando fue la última vez que actualizaste tu web?" → Opciones: "Este año" / "Hace más de 2 años" / "¿Actualizar?" 😅<br><br>
-<strong>Story 2:</strong> Dato: "El 38% de usuarios abandona una web si el diseño no es atractivo" — fuente: Adobe<br><br>
-<strong>Story 3:</strong> Testimonio de cliente en video (15s max) o captura de mensaje real<br><br>
-<strong>Story 4:</strong> Slider emoji: "¿Del 1 al 10, como de satisfecho estas con tu web actual?" (sticker slider)<br><br>
-<strong>Story 5:</strong> CTA: "Si tu respuesta fue menos de 7... tenemos que hablar" + link a auditoría gratuita
-</div>
-<div class="section-label">Notas</div>
-<div class="design-notes"><strong>Formato:</strong> 1080x1920px | <strong>Stickers:</strong> Encuesta, Slider, Link | <strong>Estilo:</strong> Fondo beige, texto negro, acentos lima y rosa | <strong>Publicar:</strong> 1 story cada 2-3 horas para mantener posición</div>
-</div>
-</div>
+      <div class="section-label"><span class="icon">📝</span> Copy / Caption completo</div>
+      <div class="copy-block">Una landing page es una droga de diseño.
 
-</div><!-- /container -->
+Escúchame.
+
+La primera dosis es el headline. Tiene que pegarte en la frente como un espresso doble a las 7 de la mañana. Si no sientes nada, cierras la pestaña. Fin de la historia.
+
+La segunda dosis es la prueba social. Esa sensación de "si 300 personas ya lo compraron, no puedo ser el único tonto que no". FOMO puro. Bioquímica del scroll.
+
+La tercera es el CTA. El botón. Ese rectángulo con bordes redondeados que separa a los que miran de los que compran. Es la aguja en la vena del funnel. O convierte o no existe.
+
+<strong>Hemos construido una landing que convierte al 8%.
+(La media del sector está en 2,3%).</strong>
+
+Desliza para ver exactamente por qué funciona. Cada elemento. Cada decisión. Sin secretos -->
+
+<span class="copy-hashtags">#LandingPage #ConversionRate #DiseñoWeb #UXDesign #MarketingDigital #OhWow</span></div>
+
+      <div class="section-label"><span class="icon">🎞</span> Contenido slide-by-slide</div>
+      <div class="slide-list">
+        <div class="slide-item"><div class="slide-num portada">1</div><div class="slide-content"><div class="slide-title">Portada</div><div class="slide-desc">"Anatomía de una landing que convierte al 8%" — screenshot parcial de la landing con overlay oscuro, cifra "8%" enorme en lima.</div></div></div>
+        <div class="slide-item"><div class="slide-num">2</div><div class="slide-content"><div class="slide-title">HERO: Headline que duele</div><div class="slide-desc">Zoom al header con anotaciones de por qué funciona (especificidad, beneficio, urgencia). Explicación del ángulo psicológico.</div></div></div>
+        <div class="slide-item"><div class="slide-num">3</div><div class="slide-content"><div class="slide-title">PRUEBA SOCIAL: números que hablan</div><div class="slide-desc">Zoom a la sección de logos/cifras/testimonios. Anotaciones sobre jerarquía visual y credibilidad.</div></div></div>
+        <div class="slide-item"><div class="slide-num">4</div><div class="slide-content"><div class="slide-title">BENEFICIOS &gt; CARACTERÍSTICAS</div><div class="slide-desc">Comparativa de cómo se presenta el valor: no "tenemos X", sino "consigues Y". Ejemplos lado a lado.</div></div></div>
+        <div class="slide-item"><div class="slide-num">5</div><div class="slide-content"><div class="slide-title">CTA: visible, claro, irresistible</div><div class="slide-desc">Zoom al botón con anotaciones (color, copy, posición, whitespace). Por qué cada decisión está tomada.</div></div></div>
+        <div class="slide-item"><div class="slide-num cta">6</div><div class="slide-content"><div class="slide-title">Resumen + CTA</div><div class="slide-desc">Resumen de métricas + "¿Necesitas una landing que trabaje así? Hablemos. Link en bio."</div></div></div>
+      </div>
+
+      <div class="section-label"><span class="icon">🏷</span> Hashtags en 3 niveles</div>
+      <div class="hashtag-tiers">
+        <div class="hashtag-tier"><span class="tier-label">Nicho</span>#LandingPageDesign #ConversionOptimization #CROEspaña</div>
+        <div class="hashtag-tier medio"><span class="tier-label">Medio</span>#DiseñoWebEspaña #MarketingDigitalEspaña #UXDesign</div>
+        <div class="hashtag-tier amplio"><span class="tier-label">Amplio</span>#LandingPage #MarketingDigital #DiseñoWeb</div>
+      </div>
+
+      <div class="section-label"><span class="icon">🎨</span> Notas de diseño</div>
+      <div class="design-notes">
+        <ul>
+          <li><strong>Estilo "disección":</strong> flechas, líneas de conexión, anotaciones tipo blueprint</li>
+          <li><strong>Fondo:</strong> negro (#1c1c1c), anotaciones en lima (#c8f135) y rosa (#e85d8a)</li>
+          <li><strong>Tipografía:</strong> técnica pero legible</li>
+          <li>Cada slide debe sentirse como abrir una capa de algo complejo — efecto "reveal"</li>
+          <li><strong>Tamaño:</strong> 1080 × 1080 px</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENTRADA 12 -->
+  <div class="card" data-platform="ig" data-format="reel">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-meta">
+        <span class="card-number">12</span>
+        <span class="card-date">27 Abr, Lun</span>
+        <span class="card-time">12:30h</span>
+        <span class="platform-badge ig">Instagram</span>
+        <span class="format-badge">Reel · 50s</span>
+        <span class="pillar-badge pillar-bts">Behind the scenes 20%</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="card-body">
+      <div class="tema">🎯 Cómo nace un proyecto — del brief al wireframe</div>
+
+      <div class="section-label"><span class="icon">🎬</span> Guion completo del Reel (50s)</div>
+      <div class="script-block"><div class="script-section"><span class="script-label">[HOOK · 0-3s]</span><em>Mano arrancando una hoja en blanco de un cuaderno. Corte brusco a una pantalla con wireframes complejos.</em>
+<strong>TEXTO EN PANTALLA:</strong> "De la nada a esto en 5 días"
+<strong>AUDIO:</strong> sonido satisfactorio de "whoosh" + beat</div>
+
+<div class="script-section"><span class="script-label">[DESARROLLO · 3-42s]</span><em>Secuencia cronológica con rótulos de día.</em>
+
+<strong>DÍA 1 — BRIEF</strong>
+<span class="script-note">(Pantalla de videollamada con cliente, toma de notas)</span>
+TEXTO: "Día 1: Escuchamos. Preguntamos. Callamos y pensamos."
+
+<strong>DÍA 2 — INVESTIGACIÓN</strong>
+<span class="script-note">(Pantalla con análisis de competencia, benchmarks abiertos)</span>
+TEXTO: "Día 2: Stalkeamos a tu competencia (legalmente) y analizamos tu mercado."
+
+<strong>DÍA 3 — ARQUITECTURA</strong>
+<span class="script-note">(Post-its en pared, diagrama de flujo en pizarra)</span>
+TEXTO: "Día 3: Decidimos qué va, dónde va y por qué va ahí."
+
+<strong>DÍA 4 — WIREFRAMES</strong>
+<span class="script-note">(Pantalla Figma, manos moviendo bloques, zoom in/out)</span>
+TEXTO: "Día 4: El esqueleto de tu web cobra forma. Sin colores. Sin distracciones. Solo estructura."
+
+<strong>DÍA 5 — PRESENTACIÓN</strong>
+<span class="script-note">(Equipo presentando al cliente, cliente asintiendo)</span>
+TEXTO: "Día 5: Te lo enseñamos. Lo discutimos. Lo mejoramos juntos."</div>
+
+<div class="script-section"><span class="script-label">[CTA · 42-50s]</span><em>Time-lapse del wireframe convirtiéndose en diseño final con colores.</em>
+<strong>TEXTO EN PANTALLA:</strong> "Cada gran web empezó con una hoja en blanco. Y un equipo que sabe qué hacer con ella."
+<strong>TEXTO FINAL:</strong> "Síguenos para ver el proceso completo"</div></div>
+
+      <div class="section-label"><span class="icon">📝</span> Copy para caption</div>
+      <div class="copy-block">5 días. De cero a wireframe.
+
+No es magia.
+Es método + café + un equipo que sabe que las mejores webs no nacen en Canva a las 2AM.
+
+Nacen de escuchar, investigar, pensar y construir.
+En ese orden.
+Siempre en ese orden.
+
+¿Quieres ver cómo nace tu próximo proyecto?
+Hablemos --> link en bio
+
+<span class="copy-hashtags">#ProcesoCreativo #Wireframe #DiseñoWeb #UXProcess #BehindTheScenes #WebDesign #OhWow</span></div>
+
+      <div class="section-label"><span class="icon">🏷</span> Hashtags en 3 niveles</div>
+      <div class="hashtag-tiers">
+        <div class="hashtag-tier"><span class="tier-label">Nicho</span>#ProcesoUX #WireframeDesign #DesignProcess</div>
+        <div class="hashtag-tier medio"><span class="tier-label">Medio</span>#BehindTheScenes #AgenciaCreativa #DiseñoWebEspaña</div>
+        <div class="hashtag-tier amplio"><span class="tier-label">Amplio</span>#WebDesign #Creatividad #ProcesoCreativo</div>
+      </div>
+
+      <div class="section-label"><span class="icon">🎨</span> Notas de diseño / producción</div>
+      <div class="design-notes">
+        <ul>
+          <li><strong>Estética:</strong> documental · planos reales de oficina, manos, pantallas</li>
+          <li><strong>Rótulos de día:</strong> tipografía bold en lima sobre fondo negro semitransparente</li>
+          <li><strong>Transiciones:</strong> suaves pero dinámicas (no cortes bruscos)</li>
+          <li><strong>Música:</strong> instrumental con build-up progresivo</li>
+          <li><strong>Ratio:</strong> 9:16, subtítulos integrados</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENTRADA 13 -->
+  <div class="card" data-platform="li" data-format="post">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-meta">
+        <span class="card-number">13</span>
+        <span class="card-date">27 Abr, Lun</span>
+        <span class="card-time">09:00h</span>
+        <span class="platform-badge li">LinkedIn</span>
+        <span class="format-badge">Post imagen</span>
+        <span class="pillar-badge pillar-port">Portfolio 30%</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="card-body">
+      <div class="tema">🎯 Lanzamiento de web app — caso técnico</div>
+
+      <div class="section-label"><span class="icon">📝</span> Copy / Caption completo</div>
+      <div class="copy-block">Hay proyectos que te encuentran.
+Y hay proyectos que te construyen.
+
+Este fue de los segundos.
+
+Un cliente llegó con una idea: una plataforma web para gestionar reservas de espacios de coworking. "Algo sencillo", dijo. Spoiler: nunca es sencillo. Pero eso está bien.
+
+<strong>Lo que entregamos:</strong>
+
+→ Web app responsive con sistema de reservas en tiempo real
+→ Panel de administración con métricas de ocupación y facturación
+→ Integración con pasarela de pago (Stripe)
+→ Notificaciones automatizadas (email + push)
+→ Dashboard de analytics propio
+
+<strong>Stack:</strong> WordPress headless + React + API custom
+<strong>Tiempo:</strong> 12 semanas de desarrollo
+<strong>Resultado:</strong> 200+ usuarios en el primer mes sin inversión en ads
+
+<strong>Lo que aprendimos:</strong>
+1. "Sencillo" es la palabra más peligrosa en un brief
+2. Un buen MVP no es una versión mala del producto — es la versión esencial
+3. Las reuniones semanales con el cliente no son un lujo, son la diferencia entre éxito y desastre
+
+Si tienes una idea que necesita manos que la construyan bien, estamos al otro lado del formulario.
+
+<span class="copy-hashtags">#WebApp #DesarrolloWeb #ProductoDigital #CasoDeExito #Tech #WordPress #React #OhWow</span></div>
+
+      <div class="section-label"><span class="icon">🏷</span> Hashtags en 3 niveles</div>
+      <div class="hashtag-tiers">
+        <div class="hashtag-tier"><span class="tier-label">Nicho</span>#WebAppDevelopment #DesarrolloWebEspaña #ProductoDigital</div>
+        <div class="hashtag-tier medio"><span class="tier-label">Medio</span>#TechSpain #StartupTools #DesarrolloWeb</div>
+        <div class="hashtag-tier amplio"><span class="tier-label">Amplio</span>#Tech #WebDevelopment #Innovation</div>
+      </div>
+
+      <div class="section-label"><span class="icon">🎨</span> Notas de diseño</div>
+      <div class="design-notes">
+        <ul>
+          <li><strong>Mockup del producto:</strong> en laptop + móvil, fondo oscuro con gradiente sutil</li>
+          <li><strong>Screenshots reales</strong> de la interfaz (con datos ficticios si es necesario)</li>
+          <li><strong>Métricas destacadas:</strong> números en rosa (#e85d8a) sobre fondo negro</li>
+          <li><strong>Estética:</strong> tech/product, no "agencia creativa" — aquí queremos proyectar competencia técnica</li>
+          <li><strong>Tamaño:</strong> 1200 × 627 px</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENTRADA 14 -->
+  <div class="card" data-platform="ig" data-format="story">
+    <div class="card-header" onclick="toggleCard(this)">
+      <div class="card-meta">
+        <span class="card-number">14</span>
+        <span class="card-date">27 Abr, Lun</span>
+        <span class="card-time">17:00h</span>
+        <span class="platform-badge ig">Instagram</span>
+        <span class="format-badge">Stories · 5 slides</span>
+        <span class="pillar-badge pillar-social">Social Proof 15%</span>
+      </div>
+      <span class="toggle-icon">▼</span>
+    </div>
+    <div class="card-body">
+      <div class="tema">🎯 Encuesta interactiva + testimonio en stories</div>
+
+      <div class="section-label"><span class="icon">📱</span> Secuencia de stories (5 pantallas)</div>
+      <div class="story-seq">
+        <div class="story-item">
+          <div class="story-item-header">
+            <span class="story-num">1</span>
+            <span class="story-type">Encuesta</span>
+          </div>
+          <div class="story-body">
+            <strong>Fondo:</strong> lima (#c8f135)<br>
+            <strong>Texto:</strong> "Pregunta honesta:"<br>
+            <strong>Sticker encuesta:</strong> "¿Tu web te genera clientes?" → SI / NO<br>
+            <em>Objetivo: engagement + diagnóstico de audiencia.</em>
+          </div>
+        </div>
+        <div class="story-item">
+          <div class="story-item-header">
+            <span class="story-num">2</span>
+            <span class="story-type">Dato</span>
+          </div>
+          <div class="story-body">
+            <strong>Fondo:</strong> negro (#1c1c1c)<br>
+            <strong>Texto en blanco:</strong> "El 73% de las PyMEs en España dicen que su web NO les genera clientes."<br>
+            <strong>Texto pequeño:</strong> "Fuente: estudio de adopción digital 2025"<br>
+            <em>Transición automática.</em>
+          </div>
+        </div>
+        <div class="story-item">
+          <div class="story-item-header">
+            <span class="story-num">3</span>
+            <span class="story-type">Testimonio · parte 1</span>
+          </div>
+          <div class="story-body">
+            <strong>Fondo:</strong> beige (#f5f0eb)<br>
+            <strong>Formato:</strong> captura de chat/email real (anonimizado) donde un cliente dice:<br>
+            <em>"Desde que lanzamos la nueva web, recibimos 3x más formularios de contacto. No me lo creo."</em><br>
+            <strong>Sticker:</strong> emoji de fuego 🔥
+          </div>
+        </div>
+        <div class="story-item">
+          <div class="story-item-header">
+            <span class="story-num">4</span>
+            <span class="story-type">Testimonio · parte 2</span>
+          </div>
+          <div class="story-body">
+            <strong>Fondo:</strong> beige (#f5f0eb)<br>
+            <strong>Texto:</strong> "Esto nos escribió un cliente 30 días después de lanzar su nueva web con nosotros."<br>
+            <strong>Texto destacado en rosa:</strong> "3x más leads. Mismo presupuesto en ads."<br>
+            <strong>Sticker:</strong> flecha hacia arriba ⬆
+          </div>
+        </div>
+        <div class="story-item">
+          <div class="story-item-header">
+            <span class="story-num">5</span>
+            <span class="story-type">CTA</span>
+          </div>
+          <div class="story-body">
+            <strong>Fondo:</strong> negro con logo Oh Wow!<br>
+            <strong>Texto:</strong> "¿Quieres resultados así?"<br>
+            <strong>Sticker link:</strong> "Pide tu auditoría gratuita" → <code>agencia.ohwow.es/contacto</code><br>
+            <strong>Sticker pregunta:</strong> "¿Qué es lo que más te frustra de tu web?" (para generar respuestas y conversación)
+          </div>
+        </div>
+      </div>
+
+      <div class="section-label"><span class="icon">🏷</span> Copy complementario</div>
+      <div class="copy-block">Serie de stories para highlight "RESULTADOS" — combinar con futuros testimonios para construir prueba social acumulativa.</div>
+
+      <div class="section-label"><span class="icon">🎨</span> Notas de diseño / publicación</div>
+      <div class="design-notes">
+        <ul>
+          <li>Cada story debe sentirse nativa: no sobrecargada, tipografía grande, <strong>1 idea por pantalla</strong></li>
+          <li>Usar los stickers nativos de Instagram (encuesta, pregunta, enlace, emoji slider)</li>
+          <li>Colores de marca rotando por story para variedad</li>
+          <li>Si se usa captura de chat: <strong>difuminar nombre/foto del cliente</strong> a menos que haya permiso explícito</li>
+          <li>Publicar con <strong>10-15 minutos entre cada story</strong> para maximizar alcance</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ RESUMEN DE DISTRIBUCIÓN ══════════════ -->
+  <div class="stats-section">
+    <h3>📊 Resumen de distribución</h3>
+    <div class="stats-grid">
+      <div class="stat-block">
+        <h4>Por pilar de contenido</h4>
+        <table class="mini-table">
+          <tr><td>Portfolio &amp; Casos</td><td>4 · 29% <span style="color:var(--gris);font-weight:400;font-size:11px;">(obj 30%)</span></td></tr>
+          <tr><td>Educación</td><td>3 · 21% <span style="color:var(--gris);font-weight:400;font-size:11px;">(obj 25%)</span></td></tr>
+          <tr><td>Behind the scenes</td><td>2 · 14% <span style="color:var(--gris);font-weight:400;font-size:11px;">(obj 20%)</span></td></tr>
+          <tr><td>Social Proof</td><td>3 · 21% <span style="color:var(--gris);font-weight:400;font-size:11px;">(obj 15%)</span></td></tr>
+          <tr><td>Cultura</td><td>2 · 14% <span style="color:var(--gris);font-weight:400;font-size:11px;">(obj 10%)</span></td></tr>
+        </table>
+      </div>
+      <div class="stat-block">
+        <h4>Por plataforma</h4>
+        <table class="mini-table">
+          <tr><td>📷 Instagram</td><td>9 posts</td></tr>
+          <tr><td>💼 LinkedIn</td><td>5 posts</td></tr>
+        </table>
+      </div>
+      <div class="stat-block">
+        <h4>Por formato</h4>
+        <table class="mini-table">
+          <tr><td>Carousel</td><td>4</td></tr>
+          <tr><td>Reel</td><td>3</td></tr>
+          <tr><td>Post imagen</td><td>4</td></tr>
+          <tr><td>Post texto</td><td>1</td></tr>
+          <tr><td>Stories</td><td>1</td></tr>
+          <tr><td>Mini-carousel</td><td>1</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTAS PARA EL EQUIPO -->
+  <div class="stats-section notas-equipo">
+    <h3>📋 Notas para el equipo</h3>
+    <ol>
+      <li><strong>Fotografías reales:</strong> Mínimo 3 sesiones de fotos necesarias antes del lanzamiento — equipo, oficina/espacio de trabajo, pantallas de proyectos. <strong>NADA de stock.</strong></li>
+      <li><strong>Permiso de clientes:</strong> Confirmar autorización escrita de los clientes cuyos casos/logos/testimonios se usen. Preparar versiones anonimizadas como respaldo.</li>
+      <li><strong>Consistencia visual:</strong> Todos los assets deben usar exclusivamente la paleta de marca (<strong>Lima #c8f135, Negro #1c1c1c, Rosa #e85d8a, Beige #f5f0eb</strong>). Crear plantillas base en Figma/Canva antes de producir.</li>
+      <li><strong>Subtítulos en reels:</strong> El 85% del consumo de video en redes es sin sonido. Los subtítulos <strong>no son opcionales</strong>.</li>
+      <li><strong>Horarios de publicación:</strong> Basados en mejores prácticas para audiencia española B2B/B2C mixta. Ajustar según datos reales de Instagram Insights y LinkedIn Analytics tras las primeras 2 semanas.</li>
+      <li><strong>Engagement reactivo:</strong> Durante la primera hora post-publicación, alguien del equipo debe estar disponible para responder comentarios y DMs. El algoritmo premia la conversación temprana.</li>
+      <li><strong>KPIs a medir en estas 2 semanas:</strong>
+        <ul style="margin-top:6px;margin-left:18px;font-size:13px;line-height:1.7;">
+          <li>Alcance por publicación</li>
+          <li>Tasa de engagement (likes + comentarios + guardados + compartidos / alcance)</li>
+          <li>Clics al enlace en bio</li>
+          <li>Nuevos seguidores</li>
+          <li>DMs recibidos</li>
+          <li>Formularios de contacto atribuidos a redes sociales</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+</div><!-- /main -->
 
 <footer>
-Generado por Agencia OH WOW! | agencia.ohwow.es | Abril 2026
+  Generado por <strong>Agencia Oh Wow!</strong> · <a href="https://agencia.ohwow.es">agencia.ohwow.es</a> · Abril 2026 · Siguiente revisión: 28 abril 2026
 </footer>
 
 <script>
-let currentPlatform='all',currentFormat='all';
+let currentPlatform = 'all', currentFormat = 'all';
 
-function toggleCard(header){
-header.closest('.card').classList.toggle('open');
+function toggleCard(headerEl) { headerEl.closest('.card').classList.toggle('open'); }
+function openAllCards() { document.querySelectorAll('.card').forEach(c => c.classList.add('open')); }
+function closeAllCards() { document.querySelectorAll('.card').forEach(c => c.classList.remove('open')); }
+
+function filterPlatform(val, btn) {
+  currentPlatform = val;
+  document.querySelectorAll('.filters button').forEach(b => {
+    if (b.onclick && b.onclick.toString().includes('filterPlatform')) b.className = 'filter-btn';
+  });
+  btn.className = 'filter-btn ' + (val === 'ig' ? 'active-ig' : val === 'li' ? 'active-li' : 'active');
+  applyFilters();
 }
-
-function filterPlatform(val,btn){
-currentPlatform=val;
-document.querySelectorAll('.filters button').forEach(b=>{
-if(b.onclick&&b.onclick.toString().includes('filterPlatform'))b.className='filter-btn';
-});
-btn.className='filter-btn '+(val==='ig'?'active-ig':val==='li'?'active-li':'active');
-applyFilters();
+function filterFormat(val, btn) {
+  currentFormat = val;
+  document.querySelectorAll('.filters button').forEach(b => {
+    if (b.onclick && b.onclick.toString().includes('filterFormat')) b.className = 'filter-btn';
+  });
+  btn.className = 'filter-btn active';
+  applyFilters();
 }
-
-function filterFormat(val,btn){
-currentFormat=val;
-document.querySelectorAll('.filters button').forEach(b=>{
-if(b.onclick&&b.onclick.toString().includes('filterFormat'))b.className='filter-btn';
-});
-btn.className='filter-btn active';
-applyFilters();
+function applyFilters() {
+  document.querySelectorAll('.card').forEach(card => {
+    const p = card.dataset.platform;
+    const f = card.dataset.format;
+    const showP = currentPlatform === 'all' || p === currentPlatform;
+    const showF = currentFormat === 'all' || f === currentFormat;
+    card.style.display = (showP && showF) ? 'block' : 'none';
+  });
 }
-
-function applyFilters(){
-document.querySelectorAll('.card').forEach(card=>{
-const p=card.dataset.platform;
-const f=card.dataset.format;
-const showP=currentPlatform==='all'||p===currentPlatform;
-const showF=currentFormat==='all'||f===currentFormat;
-card.style.display=(showP&&showF)?'block':'none';
-});
-}
-
-function exportPDF(){
-document.querySelectorAll('.no-print').forEach(el=>el.style.display='none');
-document.querySelectorAll('.card').forEach(c=>c.classList.add('open'));
-window.print();
-setTimeout(()=>{
-document.querySelectorAll('.no-print').forEach(el=>el.style.display='');
-},1000);
+function exportPDF() {
+  document.querySelectorAll('.card').forEach(c => c.classList.add('open'));
+  window.print();
 }
 </script>
-
-<!-- QA Review Section -->
-<section class="no-print qa-section">
-<div class="qa-header">
-<span class="qa-badge">QA REVIEW</span>
-<span class="qa-reviewer">jz-qa-reviewer</span>
-</div>
-<p class="qa-meta"><strong>Fecha:</strong> 2026-04-16</p>
-<p class="qa-meta"><strong>Basado en:</strong> Jeferson Zambrano (CDO &amp; CMO, Land of Nomads Group)</p>
-<p class="qa-score"><strong>Puntuaci&oacute;n: 8.4/10 &mdash; APROBADO CON OBSERVACIONES</strong></p>
-<div class="qa-body">
-<p class="qa-heading">Cambios realizados:</p>
-<ol>
-<li><strong>Corregido acento en &ldquo;Educaci&oacute;n&rdquo;</strong> (Entries 01, 07, 08). Raz&oacute;n: faltaba tilde en las badges de pilar educativo, inconsistente con la ortograf&iacute;a del resto del documento.</li>
-<li><strong>Eliminado artefacto &ldquo;--&gt;&rdquo; del copy de Entry 01</strong> y a&ntilde;adido CTA expl&iacute;cito de auditor&iacute;a gratuita. Raz&oacute;n: el texto ten&iacute;a un fragmento de comentario HTML visible en el copy publicable, y el carousel carec&iacute;a de llamada a la acci&oacute;n directa.</li>
-<li><strong>Entry 09 cambiado de Post a Carousel</strong> (data-format y badge). Raz&oacute;n: el copy dice &ldquo;Desliza para conocer&rdquo; y las notas de dise&ntilde;o sugieren &ldquo;1 persona por slide&rdquo;, lo cual es formato carousel, no post est&aacute;tico.</li>
-<li><strong>A&ntilde;adido CTA a Entry 09</strong> (&ldquo;&iquest;Quieres que este equipo trabaje en tu proyecto?&rdquo;). Raz&oacute;n: era la &uacute;nica pieza de Instagram sin llamada a la acci&oacute;n expl&iacute;cita.</li>
-</ol>
-<p class="qa-obs-heading">Observaciones (sin cambio aplicado):</p>
-<ul>
-<li><strong>Entry 05 (18 Abr, S&aacute;bado, LinkedIn):</strong> Publicar en LinkedIn un s&aacute;bado a las 10:00h tiene menor alcance org&aacute;nico B2B. Considerar mover a viernes 17 Abr o lunes 20 Abr.</li>
-<li><strong>Diferenciaci&oacute;n tonal IG vs LI:</strong> Bien lograda en general. Los copies de LinkedIn (Entries 02, 05, 07, 10, 13) usan tono narrativo-profesional. Los de Instagram son m&aacute;s directos y coloquiales. Aprobado.</li>
-<li><strong>Todas las entradas</strong> tienen fecha, plataforma, formato, pilar, copy completo, hora de publicaci&oacute;n y CTA (tras correcciones). Entry 14 (Story) usa formato secuencial de stories con stickers interactivos, aceptable para el formato.</li>
-</ul>
-</div>
-</section>
 
 </body>
 </html>

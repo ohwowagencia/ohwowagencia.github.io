@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infoproducto — Guía Elegir Agencia Web | Agencia Oh Wow!</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --lima: #c8f135;
+    --negro: #1c1c1c;
+    --rosa: #e85d8a;
+    --beige: #f5f0eb;
+    --gris: #6b6b6b;
+    --gris-claro: #e0dbd5;
+    --blanco: #ffffff;
+    --rojo: #dc2626;
+    --verde: #16a34a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--beige);
+    color: var(--negro);
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--negro);
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .badge {
+    background: var(--lima);
+    color: var(--negro);
+    font-weight: 800;
+    font-size: 14px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .header h1 { color: var(--blanco); font-size: 20px; font-weight: 600; }
+  .header h1 span { color: var(--lima); }
+  .btn-export {
+    background: var(--rosa);
+    color: var(--blanco);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .btn-export:hover { opacity: 0.85; }
+
+  /* TABS */
+  .tabs {
+    background: var(--blanco);
+    border-bottom: 1px solid var(--gris-claro);
+    padding: 0 32px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    position: sticky;
+    top: 80px;
+    z-index: 9;
+  }
+  .tab {
+    padding: 14px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gris);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'Inter', sans-serif;
+  }
+  .tab:hover { color: var(--negro); }
+  .tab.active { color: var(--negro); border-bottom-color: var(--lima); }
+  .tab-count {
+    display: inline-block;
+    background: var(--beige);
+    color: var(--gris);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 6px;
+    font-weight: 700;
+  }
+  .tab.active .tab-count { background: var(--lima); color: var(--negro); }
+
+  /* MAIN */
+  .main { max-width: 960px; margin: 0 auto; padding: 32px 20px 60px; }
+  .intro {
+    background: var(--blanco);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 28px;
+    border-left: 4px solid var(--lima);
+  }
+  .intro h2 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .intro p { font-size: 14px; color: var(--gris); }
+  .intro .meta { display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+  .intro .meta span {
+    font-size: 12px;
+    background: var(--beige);
+    padding: 4px 10px;
+    border-radius: 6px;
+    color: var(--negro);
+    font-weight: 500;
+  }
+
+  /* SECTION (tab-pane) */
+  .section-pane { display: none; }
+  .section-pane.active { display: block; }
+
+  .section-intro {
+    background: linear-gradient(135deg, var(--negro), #2d2d2d);
+    color: var(--blanco);
+    padding: 20px 24px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+  .section-intro h3 { font-size: 15px; color: var(--lima); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .section-intro p { font-size: 14px; line-height: 1.7; }
+
+  /* CARDS */
+  .card {
+    background: var(--blanco);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    border: 1px solid var(--gris-claro);
+  }
+  .card-header {
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+    gap: 14px;
+  }
+  .card-header:hover { background: #faf8f5; }
+  .card-header-left { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
+  .card-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--lima);
+    color: var(--negro);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .card-number.rosa { background: var(--rosa); color: var(--blanco); }
+  .card-number.negro { background: var(--negro); color: var(--lima); }
+  .card-title-wrap { flex: 1; min-width: 0; }
+  .card-header h3 { font-size: 16px; font-weight: 700; }
+  .card-header .subtitle {
+    font-size: 12px;
+    color: var(--gris);
+    margin-top: 2px;
+  }
+  .card-meta-pills { display: flex; gap: 6px; flex-shrink: 0; flex-wrap: wrap; }
+  .meta-pill {
+    font-size: 11px;
+    background: var(--beige);
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: var(--negro);
+    font-weight: 600;
+  }
+  .meta-pill.lima { background: var(--lima); }
+  .meta-pill.rosa { background: var(--rosa); color: var(--blanco); }
+  .toggle-icon {
+    font-size: 18px;
+    color: var(--gris);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .card.open .toggle-icon { transform: rotate(180deg); }
+  .card-body { display: none; padding: 0 22px 22px; }
+  .card.open .card-body { display: block; }
+
+  /* INNER SECTIONS */
+  .inner-section-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--gris);
+    margin: 22px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--gris-claro);
+  }
+  .inner-section-title:first-child { margin-top: 0; }
+
+  /* BLOQUES DE CONTENIDO */
+  .content-block {
+    background: #faf8f5;
+    border: 1px solid var(--gris-claro);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  .content-block strong { color: var(--negro); }
+  .content-block p { margin-bottom: 10px; }
+  .content-block p:last-child { margin-bottom: 0; }
+  .content-block ul, .content-block ol { margin: 6px 0 10px 20px; }
+  .content-block li { margin-bottom: 5px; }
+
+  /* CALLOUT BOXES */
+  .callout {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 10px 0;
+    font-size: 13.5px;
+    line-height: 1.65;
+    border-left: 4px solid;
+  }
+  .callout.tip { background: #f3fce2; border-color: var(--lima); }
+  .callout.alert { background: #fff1f5; border-color: var(--rosa); }
+  .callout.dato { background: #1c1c1c; color: var(--blanco); border-color: var(--lima); }
+  .callout.dato strong { color: var(--lima); }
+  .callout.check { background: #ecfdf5; border-color: var(--verde); }
+  .callout-label {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    display: block;
+    margin-bottom: 4px;
+    color: var(--rosa);
+  }
+  .callout.tip .callout-label { color: #556b12; }
+  .callout.dato .callout-label { color: var(--lima); }
+  .callout.check .callout-label { color: var(--verde); }
+
+  /* OPTIONS (titles, subheadlines, CTAs) */
+  .option {
+    background: var(--beige);
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border-left: 3px solid var(--lima);
+  }
+  .option-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--rosa);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .option-text { font-size: 15px; font-weight: 600; color: var(--negro); }
+  .option-sub { font-size: 13px; color: var(--gris); margin-top: 6px; font-style: italic; }
+  .option.ai .option-label::after {
+    content: " · 🧪 AI Drugs";
+    color: #7b2ff7;
+  }
+
+  /* TABLA */
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 12px;
+    font-size: 13px;
+  }
+  table.data-table th {
+    text-align: left;
+    padding: 9px 12px;
+    background: var(--negro);
+    color: var(--blanco);
+    font-weight: 600;
+    font-size: 12px;
+  }
+  table.data-table th:first-child { border-radius: 6px 0 0 0; }
+  table.data-table th:last-child { border-radius: 0 6px 0 0; }
+  table.data-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--gris-claro);
+    vertical-align: top;
+  }
+  table.data-table tr:last-child td { border-bottom: none; }
+
+  /* EMAIL BODY */
+  .email-wrap {
+    background: var(--blanco);
+    border: 2px solid var(--gris-claro);
+    border-radius: 10px;
+    padding: 22px;
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .email-wrap .email-meta {
+    background: #faf8f5;
+    margin: -22px -22px 18px;
+    padding: 14px 22px;
+    border-bottom: 1px solid var(--gris-claro);
+    font-size: 12px;
+    color: var(--gris);
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .email-wrap .email-meta strong { color: var(--negro); }
+  .email-wrap .email-subject {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  .email-wrap .email-preview {
+    color: var(--gris);
+    font-style: italic;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--gris-claro);
+    font-size: 13px;
+  }
+  .email-wrap .email-body {
+    white-space: pre-wrap;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .email-wrap .email-body strong { color: var(--negro); }
+  .email-wrap .btn-inline {
+    display: inline-block;
+    background: var(--lima);
+    color: var(--negro);
+    font-weight: 700;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 8px 0;
+  }
+
+  /* INLINE CODE / URL */
+  code {
+    background: #f1ede7;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+  }
+
+  /* CTA */
+  .cta-list { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .cta-pill {
+    background: var(--lima);
+    color: var(--negro);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+  }
+
+  /* GLOBAL ACTIONS */
+  .global-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+  }
+  .btn-action {
+    background: var(--blanco);
+    color: var(--negro);
+    border: 1px solid var(--gris-claro);
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+  }
+  .btn-action:hover { background: var(--beige); }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 32px 20px;
+    font-size: 12px;
+    color: var(--gris);
+  }
+  .footer a { color: var(--rosa); text-decoration: none; }
+
+  /* PRINT */
+  @media print {
+    @page { size: A4; margin: 1.5cm; }
+    .no-print { display: none !important; }
+    body { background: white; }
+    .header { background: white; border-bottom: 2px solid var(--negro); padding: 12px 0; position: static; }
+    .header h1 { color: var(--negro); }
+    .tabs { display: none; }
+    .section-pane { display: block !important; page-break-before: always; }
+    .section-pane:first-of-type { page-break-before: auto; }
+    .card { break-inside: avoid; box-shadow: none; }
+    .card-body { display: block !important; }
+    .toggle-icon { display: none; }
+    .card-header { cursor: default; }
+    .callout.dato, .section-intro {
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .header { padding: 16px; }
+    .header h1 { font-size: 16px; }
+    .tabs { padding: 0 16px; top: 72px; }
+    .main { padding: 20px 12px 40px; }
+    .card-header { padding: 14px 16px; }
+    .card-body { padding: 0 16px 16px; }
+    .card-meta-pills { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header no-print">
+  <div class="header-left">
+    <span class="badge">Agencia Oh Wow!</span>
+    <h1>Infoproducto &mdash; <span>Guía elegir agencia web</span></h1>
+  </div>
+  <button class="btn-export" onclick="exportPDF()">Exportar PDF</button>
+</div>
+
+<!-- TABS -->
+<div class="tabs no-print">
+  <button class="tab active" data-tab="estructura" onclick="switchTab('estructura')">📘 Estructura del PDF <span class="tab-count">8 caps</span></button>
+  <button class="tab" data-tab="landing" onclick="switchTab('landing')">🎯 Landing Page <span class="tab-count">10 secciones</span></button>
+  <button class="tab" data-tab="emails" onclick="switchTab('emails')">✉️ Secuencia emails <span class="tab-count">5 emails</span></button>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <h2>Contexto del entregable</h2>
+    <p>Pack completo del lead magnet <strong>"La Guía Definitiva para Elegir tu Agencia de Diseño Web"</strong>. Incluye la estructura editorial del PDF descargable (8 capítulos · 22-24 páginas), el copy completo de la landing de captura, y la secuencia de nurturing de 5 emails.</p>
+    <div class="meta">
+      <span>14 abril 2026</span>
+      <span>Target: PyMEs España (28-55 años)</span>
+      <span>Tipo: Lead magnet (descarga)</span>
+      <span>agencia.ohwow.es/guia-elegir-agencia-web</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- TAB 1: ESTRUCTURA DEL PDF                                        -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <div class="section-pane active" id="pane-estructura">
+
+    <div class="section-intro">
+      <h3>📘 Estructura del infoproducto</h3>
+      <p>Guía de 22-24 páginas, formato A4 profesional. Ocho capítulos que llevan al lector desde el auto-diagnóstico ("¿realmente necesitas una web nueva?") hasta el checklist final imprimible, pasando por las 10 preguntas que debe hacer antes de firmar y las 10 red flags para detectar agencias poco profesionales.</p>
+    </div>
+
+    <div class="global-actions no-print">
+      <button class="btn-action" onclick="openAll('pane-estructura')">Expandir todo</button>
+      <button class="btn-action" onclick="closeAll('pane-estructura')">Colapsar todo</button>
+    </div>
+
+    <!-- OPCIONES DE TITULO -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number rosa">T</div>
+          <div class="card-title-wrap">
+            <h3>Título &mdash; 3 opciones a elegir</h3>
+            <div class="subtitle">Práctica · Provocativa · Emocional</div>
+          </div>
+        </div>
+        <div class="card-meta-pills"><span class="meta-pill">3 versiones</span></div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="option">
+          <div class="option-label">Opción A — Práctica</div>
+          <div class="option-text">"La Guía Definitiva para Elegir tu Agencia de Diseño Web (Sin Tirar el Dinero)"</div>
+          <div class="option-sub">Ángulo: utilidad directa + protección económica. Habla al miedo más común.</div>
+        </div>
+        <div class="option ai">
+          <div class="option-label">Opción B — Provocativa</div>
+          <div class="option-text">"Por Qué el 70% de las PyMEs se Arrepienten de su Agencia Web (y Cómo Evitarlo)"</div>
+          <div class="option-sub">Ángulo: dato impactante + curiosidad. Genera urgencia por saber si están en ese 70%.</div>
+        </div>
+        <div class="option">
+          <div class="option-label">Opción C — Emocional</div>
+          <div class="option-text">"Tu Web es la Primera Impresión de tu Negocio: Cómo Elegir a Quien la Construye"</div>
+          <div class="option-sub">Ángulo: conexión emocional con el orgullo del emprendedor por su negocio.</div>
+        </div>
+
+        <div class="inner-section-title">Declaración de promesa</div>
+        <div class="callout tip">
+          <span class="callout-label">Promesa de valor</span>
+          Después de leer esta guía, sabrás exactamente qué preguntar, qué exigir y qué evitar al contratar una agencia de diseño web. No necesitas saber de tecnología — solo necesitas saber hacer las preguntas correctas.
+        </div>
+        <div class="content-block">
+          <strong>Resultado tangible:</strong> El lector terminará la guía con un checklist de evaluación listo para usar, 10 preguntas concretas para entrevistas con agencias, y criterios claros de presupuesto según su tipo de negocio.
+        </div>
+      </div>
+    </div>
+
+    <!-- INDICE COMPLETO -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number negro">i</div>
+          <div class="card-title-wrap">
+            <h3>Índice completo de la guía</h3>
+            <div class="subtitle">8 capítulos · 20-25 páginas totales</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <table class="data-table">
+          <thead><tr><th>Cap.</th><th>Título</th><th>Páginas</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1</strong></td><td>¿Realmente necesitas una nueva web?</td><td>2-3</td></tr>
+            <tr><td><strong>2</strong></td><td>Freelance, agencia o page builder: ¿cuál es para ti?</td><td>2-3</td></tr>
+            <tr><td><strong>3</strong></td><td>Qué debería incluir una web profesional en 2026</td><td>3</td></tr>
+            <tr><td><strong>4</strong></td><td>Cómo evaluar el portfolio de una agencia</td><td>2-3</td></tr>
+            <tr><td><strong>5</strong></td><td>Las 10 preguntas que DEBES hacer antes de firmar</td><td>3</td></tr>
+            <tr><td><strong>6</strong></td><td>Presupuesto realista: cuánto invertir según tu negocio</td><td>3</td></tr>
+            <tr><td><strong>7</strong></td><td>Red flags: señales de que esa agencia no es para ti</td><td>2-3</td></tr>
+            <tr><td><strong>8</strong></td><td>Checklist final y tu próximo paso</td><td>2</td></tr>
+            <tr style="background:var(--lima);"><td colspan="2"><strong>Total estimado</strong></td><td><strong>20-25 pág.</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CAP 1 -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">1</div>
+          <div class="card-title-wrap">
+            <h3>¿Realmente necesitas una nueva web?</h3>
+            <div class="subtitle">Auto-diagnóstico honesto · 2-3 páginas</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Puntos clave</div>
+        <div class="content-block">
+          <ol>
+            <li>Señales objetivas de que tu web actual te está costando clientes (velocidad de carga &gt;3s, no responsive, sin SSL, tasa de rebote &gt;70%)</li>
+            <li>Diferencia entre "rediseño completo" y "optimización" — a veces no necesitas empezar de cero</li>
+            <li>El coste de oportunidad: cuánto dinero pierdes cada mes con una web que no convierte</li>
+            <li>Auto-diagnóstico honesto: ¿mi web representa el nivel de mi negocio hoy?</li>
+            <li>Cuándo NO necesitas una nueva web (y qué hacer en su lugar)</li>
+          </ol>
+        </div>
+
+        <div class="inner-section-title">Call-out boxes</div>
+        <div class="callout tip">
+          <span class="callout-label">🧪 Test rápido</span>
+          "Abre tu web en el móvil ahora mismo. Si tardas más de 3 segundos o tienes que hacer zoom para leer, sigue leyendo." <em>(recuadro interactivo)</em>
+        </div>
+        <div class="callout check">
+          <span class="callout-label">✓ Checklist auto-evaluación</span>
+          8 preguntas de sí/no. Si respondes "no" a 3 o más, es hora de actuar. <em>(página completa)</em>
+        </div>
+        <div class="callout dato">
+          <span class="callout-label">📊 Dato destacado</span>
+          <strong>El 88% de los usuarios no vuelven a una web después de una mala experiencia.</strong> <em>(cita destacada)</em>
+        </div>
+
+        <div class="inner-section-title">Outline narrativo del capítulo</div>
+        <div class="content-block">
+          <p><strong>Apertura:</strong> historia breve de un dueño de negocio que pensaba que su web estaba "bien" hasta que vio las analíticas.</p>
+          <p><strong>Sección A:</strong> Las 5 señales técnicas (velocidad, responsive, SSL, SEO básico, formularios funcionales).</p>
+          <p><strong>Sección B:</strong> Las 3 señales de negocio (la web no refleja tu posicionamiento actual, no genera leads, los clientes mencionan que "les costó encontrarte").</p>
+          <p><strong>Sección C:</strong> Checklist auto-evaluación con puntuación.</p>
+          <p><strong>Cierre:</strong> "Si has llegado a la conclusión de que sí necesitas un cambio, el siguiente capítulo te ayuda a decidir a quién recurrir."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAP 2 -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">2</div>
+          <div class="card-title-wrap">
+            <h3>Freelance, agencia o page builder: ¿cuál es para ti?</h3>
+            <div class="subtitle">Comparativa honesta · 2-3 páginas</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Puntos clave</div>
+        <div class="content-block">
+          <ol>
+            <li>Tabla comparativa honesta: freelance vs agencia boutique vs agencia grande vs DIY (Wix/Squarespace)</li>
+            <li>Ventajas y desventajas reales de cada opción (sin sesgo)</li>
+            <li>Para qué tipo de proyecto encaja cada opción</li>
+            <li>El factor "mantenimiento": ¿quién se encarga después del lanzamiento?</li>
+            <li>Rango de precios típico para cada opción en España (2026)</li>
+          </ol>
+        </div>
+
+        <div class="inner-section-title">Call-out boxes</div>
+        <div class="callout tip">
+          <span class="callout-label">📊 Tabla comparativa</span>
+          Matriz de 4 columnas (Freelance / Agencia Boutique / Agencia Grande / DIY) con filas: presupuesto típico, tiempo de entrega, personalización, soporte post-lanzamiento, escalabilidad.
+        </div>
+        <div class="callout check">
+          <span class="callout-label">💡 Consejo</span>
+          "Un freelance excelente puede ser mejor que una agencia mediocre. La clave no es el tamaño sino la profesionalidad del proceso."
+        </div>
+        <div class="callout alert">
+          <span class="callout-label">❓ Pregunta clave</span>
+          "Piensa en tu proyecto a 3 años. ¿Necesitas un socio a largo plazo o alguien que te haga una web y listo?"
+        </div>
+
+        <div class="inner-section-title">Outline narrativo del capítulo</div>
+        <div class="content-block">
+          <p><strong>Apertura:</strong> desmitificar la idea de que "agencia = caro" y "freelance = barato". La realidad es más matizada.</p>
+          <p><strong>Sección A — Freelance:</strong> ideal para proyectos pequeños, landing pages, rediseños simples. Riesgos: disponibilidad, dependencia de una sola persona.</p>
+          <p><strong>Sección B — Agencia boutique (5-15 personas):</strong> equilibrio entre personalización y estructura. Ideal para PyMEs que buscan un socio digital.</p>
+          <p><strong>Sección C — Agencia grande:</strong> para proyectos complejos, integraciones múltiples, multinacionales. Presupuestos altos.</p>
+          <p><strong>Sección D — DIY con page builders:</strong> honesto sobre cuándo tiene sentido (presupuesto muy limitado, proyecto temporal, MVP rápido) y cuándo es un error (negocio establecido que quiere crecer).</p>
+          <p><strong>Cierre:</strong> mini árbol de decisión tipo flowchart para que el lector identifique su perfil.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAP 3 -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">3</div>
+          <div class="card-title-wrap">
+            <h3>Qué debería incluir una web profesional en 2026</h3>
+            <div class="subtitle">Imprescindibles técnicos y de contenido · 3 páginas</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Puntos clave</div>
+        <div class="content-block">
+          <ol>
+            <li>Los imprescindibles técnicos: responsive, velocidad (Core Web Vitals), SSL, accesibilidad básica (WCAG)</li>
+            <li>Los imprescindibles de contenido: textos orientados a conversión, fotografías profesionales, llamadas a la acción claras</li>
+            <li>SEO on-page desde el día 1 (no como "fase 2" que nunca llega)</li>
+            <li>Integraciones clave: analytics, CRM, herramientas de email marketing</li>
+            <li>Tendencias 2026 que merecen la pena vs tendencias que son humo (IA generativa en web, chatbots, personalización)</li>
+          </ol>
+        </div>
+
+        <div class="inner-section-title">Call-out boxes</div>
+        <div class="callout check">
+          <span class="callout-label">✓ Lista de verificación</span>
+          "Los 15 elementos que toda web profesional debe tener en 2026" <em>(lista numerada destacada)</em>
+        </div>
+        <div class="callout alert">
+          <span class="callout-label">⚠️ Mito vs realidad</span>
+          "Las animaciones espectaculares impresionan" vs <strong>"Las animaciones excesivas ralentizan tu web y frustran al usuario"</strong>
+        </div>
+        <div class="callout dato">
+          <span class="callout-label">📊 Dato 2026</span>
+          <strong>El 65% del tráfico web en España viene del móvil.</strong> Si tu agencia no diseña mobile-first, están diseñando para el pasado.
+        </div>
+
+        <div class="inner-section-title">Outline narrativo del capítulo</div>
+        <div class="content-block">
+          <p><strong>Apertura:</strong> lo que ha cambiado en los últimos 2 años y por qué las webs de 2023 ya se sienten anticuadas.</p>
+          <p><strong>Sección A:</strong> La base técnica no negociable (hosting fiable, velocidad, seguridad, responsive).</p>
+          <p><strong>Sección B — UX:</strong> navegación intuitiva, jerarquía visual, formularios que no asustan.</p>
+          <p><strong>Sección C — Contenido estratégico:</strong> cada página tiene un objetivo, textos que hablan al cliente (no a la empresa).</p>
+          <p><strong>Sección D — SEO integrado:</strong> estructura de URLs, meta tags, schema markup, velocidad.</p>
+          <p><strong>Sección E — Lo que viene en 2026:</strong> valoración honesta de tendencias (qué adoptar ahora y qué puede esperar).</p>
+          <p><strong>Cierre:</strong> "Ahora que sabes qué debe tener tu web, el siguiente paso es saber evaluar a quien te la puede construir."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAP 4 -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">4</div>
+          <div class="card-title-wrap">
+            <h3>Cómo evaluar el portfolio de una agencia</h3>
+            <div class="subtitle">Mirar con ojos de negocio, no de diseñador · 2-3 páginas</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Puntos clave</div>
+        <div class="content-block">
+          <ol>
+            <li>Más allá de "qué bonito": cómo mirar un portfolio con ojos de negocio</li>
+            <li>Qué preguntar sobre cada proyecto del portfolio (resultados, no solo estética)</li>
+            <li>Señales de un buen portfolio vs un portfolio de humo</li>
+            <li>La importancia de ver proyectos similares a tu sector o tamaño</li>
+            <li>Cómo verificar que los proyectos del portfolio son reales y actuales</li>
+          </ol>
+        </div>
+
+        <div class="inner-section-title">Call-out boxes</div>
+        <div class="callout tip">
+          <span class="callout-label">🎯 Ejercicio práctico</span>
+          "Elige 3 proyectos del portfolio de cualquier agencia y hazte estas 5 preguntas sobre cada uno" <em>(recuadro interactivo)</em>
+        </div>
+        <div class="callout alert">
+          <span class="callout-label">👀 Ojo</span>
+          "Un portfolio lleno de webs visualmente impresionantes no significa nada si no sabes si esas webs generan resultados."
+        </div>
+        <div class="callout tip">
+          <span class="callout-label">💡 Truco</span>
+          "Busca las webs del portfolio en Google PageSpeed Insights. Si las webs que han hecho para otros son lentas, la tuya también lo será."
+        </div>
+
+        <div class="inner-section-title">Outline narrativo del capítulo</div>
+        <div class="content-block">
+          <p><strong>Apertura:</strong> "El portfolio es el CV de una agencia. Pero igual que un CV, puede estar inflado."</p>
+          <p><strong>Sección A:</strong> Los 5 criterios para evaluar un proyecto (diseño, funcionalidad, velocidad, resultados mencionados, similitud con tu proyecto).</p>
+          <p><strong>Sección B:</strong> Preguntas que hacer sobre proyectos específicos: "¿Cuál fue el objetivo de este proyecto? ¿Qué resultados obtuvo? ¿Cuánto tardó? ¿Sigue activo?"</p>
+          <p><strong>Sección C — Red flags:</strong> todos los proyectos se ven iguales, no hay proyectos recientes, no muestran URLs reales, solo mockups.</p>
+          <p><strong>Sección D:</strong> El portfolio que no se ve — pedir referencias directas de clientes anteriores.</p>
+          <p><strong>Cierre:</strong> plantilla de evaluación descargable (o incluida en la guía) con criterios ponderados.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAP 5 -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number rosa">5</div>
+          <div class="card-title-wrap">
+            <h3>Las 10 preguntas que DEBES hacer antes de firmar</h3>
+            <div class="subtitle">Capítulo estrella · imprimible · 3 páginas</div>
+          </div>
+        </div>
+        <div class="card-meta-pills"><span class="meta-pill rosa">★ Estrella</span></div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Puntos clave</div>
+        <div class="content-block">
+          <ol>
+            <li><strong>Preguntas sobre proceso:</strong> cómo trabajan, cuántas revisiones incluyen, quién será tu contacto directo</li>
+            <li><strong>Preguntas sobre tecnología:</strong> en qué plataforma construyen, ¿tienes acceso al código?, qué pasa si quieres cambiar de agencia</li>
+            <li><strong>Preguntas sobre plazos y entregables:</strong> cronograma realista, qué pasa si hay retrasos, hitos de entrega</li>
+            <li><strong>Preguntas sobre post-lanzamiento:</strong> mantenimiento, soporte, actualizaciones, formación</li>
+            <li><strong>La pregunta que nadie hace:</strong> "¿Puedo hablar con 2-3 clientes anteriores?"</li>
+          </ol>
+        </div>
+
+        <div class="inner-section-title">Call-out boxes</div>
+        <div class="callout tip">
+          <span class="callout-label">📋 Las 10 preguntas</span>
+          Listado destacado a página completa, tipo póster recortable/imprimible.
+        </div>
+        <div class="callout check">
+          <span class="callout-label">🧠 Por qué importa</span>
+          Debajo de cada pregunta, una explicación breve de qué revela la respuesta.
+        </div>
+        <div class="callout alert">
+          <span class="callout-label">🚦 Señal verde / Señal roja</span>
+          Para cada pregunta, ejemplos de buenas respuestas vs respuestas preocupantes.
+        </div>
+
+        <div class="inner-section-title">Outline narrativo del capítulo</div>
+        <div class="content-block">
+          <p><strong>Apertura:</strong> "La diferencia entre un proyecto web exitoso y un desastre suele estar en las conversaciones que se tuvieron ANTES de firmar."</p>
+          <p><strong>Preguntas 1-3:</strong> Sobre el proceso de trabajo (metodología, comunicación, revisiones).</p>
+          <p><strong>Preguntas 4-6:</strong> Sobre la tecnología y propiedad (plataforma, acceso, propiedad del dominio y hosting).</p>
+          <p><strong>Preguntas 7-8:</strong> Sobre plazos y dinero (cronograma, estructura de pagos, qué incluye y qué no).</p>
+          <p><strong>Preguntas 9-10:</strong> Sobre el después (soporte, formación, qué pasa si la relación no funciona).</p>
+          <p><strong>Cierre:</strong> "Cualquier agencia profesional responderá estas preguntas con transparencia. Si alguna pregunta les incomoda, esa es tu respuesta."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAP 6 -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">6</div>
+          <div class="card-title-wrap">
+            <h3>Presupuesto realista: cuánto invertir según tu negocio</h3>
+            <div class="subtitle">Rangos 2026 en España · ROI · 3 páginas</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Puntos clave</div>
+        <div class="content-block">
+          <ol>
+            <li>Rangos reales de precios en España en 2026 (no los de 2020)</li>
+            <li>Qué incluye y qué NO incluye un presupuesto típico (textos, fotos, dominio, hosting, mantenimiento)</li>
+            <li>La trampa del "presupuesto bajo": por qué lo barato sale caro (con ejemplos reales)</li>
+            <li>Cómo estructurar la inversión: pago inicial + fases vs todo de golpe</li>
+            <li>ROI: cómo calcular si la inversión merece la pena para tu negocio concreto</li>
+          </ol>
+        </div>
+
+        <div class="inner-section-title">Call-out boxes</div>
+        <div class="callout tip">
+          <span class="callout-label">💰 Tabla de rangos</span>
+          Landing page: <strong>800-2.000€</strong> · Web corporativa: <strong>2.500-8.000€</strong> · Tienda online básica: <strong>4.000-12.000€</strong> · Proyecto a medida: <strong>10.000€+</strong>
+        </div>
+        <div class="callout check">
+          <span class="callout-label">📈 Fórmula ROI</span>
+          "Si tu web genera 3 clientes nuevos al mes y cada cliente vale 500€, una inversión de 5.000€ se recupera en poco más de 3 meses."
+        </div>
+        <div class="callout alert">
+          <span class="callout-label">🚨 Alerta</span>
+          "Si alguien te ofrece una web profesional por 300€, no estás ahorrando. Estás pagando para tener un problema."
+        </div>
+
+        <div class="inner-section-title">Outline narrativo del capítulo</div>
+        <div class="content-block">
+          <p><strong>Apertura:</strong> "No existe un precio 'correcto' universal. Pero sí existen rangos lógicos, y saber cuáles son te protege de pagar de más — o de menos."</p>
+          <p><strong>Sección A:</strong> Desglose de costes reales — diseño, desarrollo, contenido, SEO básico, dominio, hosting.</p>
+          <p><strong>Sección B:</strong> Rangos por tipo de proyecto con explicación de qué justifica cada nivel de precio.</p>
+          <p><strong>Sección C:</strong> Costes ocultos que debes preguntar — fotos stock, textos, migración de contenido, formación, mantenimiento anual.</p>
+          <p><strong>Sección D:</strong> Cómo pensar en la inversión web como generadora de ingresos, no como un gasto.</p>
+          <p><strong>Sección E:</strong> Estructura de pagos saludable — nunca más del 50% por adelantado, hitos claros.</p>
+          <p><strong>Cierre:</strong> calculadora mental simple para que el lector estime su inversión ideal.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAP 7 -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number rosa">7</div>
+          <div class="card-title-wrap">
+            <h3>Red flags: señales de que esa agencia no es para ti</h3>
+            <div class="subtitle">Capítulo honesto · alto valor · 2-3 páginas</div>
+          </div>
+        </div>
+        <div class="card-meta-pills"><span class="meta-pill rosa">★ Estrella</span></div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Puntos clave</div>
+        <div class="content-block">
+          <ol>
+            <li>No hacen preguntas sobre tu negocio antes de dar un presupuesto</li>
+            <li>No tienen contrato o el contrato es vago</li>
+            <li>Prometen resultados mágicos ("primera página de Google en 1 mes")</li>
+            <li>No puedes ver ejemplos reales de su trabajo</li>
+            <li>Te presionan para decidir ya o usan tácticas de urgencia falsa</li>
+          </ol>
+        </div>
+
+        <div class="inner-section-title">Call-out boxes</div>
+        <div class="callout alert">
+          <span class="callout-label">🚩 Las 10 red flags</span>
+          Lista visual con iconos de alerta, tipo "recorta y pega en tu nevera".
+        </div>
+        <div class="callout dato">
+          <span class="callout-label">📖 Historia real (anonimizada)</span>
+          "Un cliente vino a nosotros después de que <strong>su agencia anterior desapareciera con el 100% del pago adelantado</strong> y sin entregar nada."
+        </div>
+        <div class="callout tip">
+          <span class="callout-label">👑 La regla de oro</span>
+          "Si algo suena demasiado bueno para ser verdad en diseño web, es porque lo es."
+        </div>
+
+        <div class="inner-section-title">Outline narrativo del capítulo</div>
+        <div class="content-block">
+          <p><strong>Apertura:</strong> "Este capítulo puede ahorrarte miles de euros y meses de frustración. Léelo con atención."</p>
+          <p><strong>Red flags 1-3 — Antes de firmar:</strong> no preguntan sobre tu negocio, no tienen proceso claro, presupuesto sin detallar.</p>
+          <p><strong>Red flags 4-6 — Durante el proyecto:</strong> desaparecen durante semanas, cambios constantes de persona de contacto, no cumplen plazos sin explicación.</p>
+          <p><strong>Red flags 7-8 — En el contrato:</strong> todo el pago por adelantado, cláusulas de permanencia abusivas, tú no eres dueño del dominio.</p>
+          <p><strong>Red flags 9-10 — En la comunicación:</strong> promesas irrealistas, jerga excesiva sin explicar, te hacen sentir que "no entiendes".</p>
+          <p><strong>Cierre:</strong> "Una buena agencia agradecerá que hagas estas comprobaciones. Les da la oportunidad de demostrar que son profesionales."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAP 8 -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">8</div>
+          <div class="card-title-wrap">
+            <h3>Checklist final y tu próximo paso</h3>
+            <div class="subtitle">Cierre accionable + CTA suave · 2 páginas</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Puntos clave</div>
+        <div class="content-block">
+          <ol>
+            <li>Resumen ejecutivo de toda la guía en una página</li>
+            <li>Checklist definitivo de evaluación (para imprimir y usar en reuniones con agencias)</li>
+            <li>Cronograma típico de un proyecto web (qué esperar y cuándo)</li>
+            <li>Tu próximo paso concreto: qué hacer mañana lunes</li>
+          </ol>
+        </div>
+
+        <div class="inner-section-title">Call-out boxes</div>
+        <div class="callout check">
+          <span class="callout-label">✓ Checklist definitivo</span>
+          Una página completa, diseñada para imprimir. Incluye todas las preguntas, criterios y red flags en formato check.
+        </div>
+        <div class="callout tip">
+          <span class="callout-label">📆 Tu plan de acción</span>
+          5 pasos concretos para la próxima semana: <strong>1.</strong> Define tus objetivos · <strong>2.</strong> Selecciona 3 agencias · <strong>3.</strong> Pide presupuesto con estas preguntas · <strong>4.</strong> Evalúa con el checklist · <strong>5.</strong> Decide.
+        </div>
+        <div class="callout dato">
+          <span class="callout-label">🚪 Una invitación (no un pitch)</span>
+          "Si después de leer esta guía quieres hablar de tu proyecto con un equipo que trabaja así, estamos a una llamada de distancia. Sin compromiso, 15 minutos." → <code>agencia.ohwow.es/contacto</code>
+        </div>
+
+        <div class="inner-section-title">Outline narrativo del capítulo</div>
+        <div class="content-block">
+          <p><strong>Apertura:</strong> "Has llegado al final. Ahora tienes más información que el 90% de las personas que contratan una agencia web."</p>
+          <p><strong>Sección A:</strong> Resumen de los puntos clave de cada capítulo (1 párrafo por capítulo).</p>
+          <p><strong>Sección B:</strong> Checklist definitivo integrado — combina auto-evaluación (Cap 1), preguntas para agencias (Cap 5), evaluación de portfolio (Cap 4), y red flags (Cap 7) en un único documento.</p>
+          <p><strong>Sección C:</strong> Cronograma tipo — semana 1: investigar, semana 2: reuniones, semana 3: evaluar propuestas, semana 4: decidir.</p>
+          <p><strong>Sección D:</strong> CTA suave a Oh Wow! — tono de "si necesitas ayuda, aquí estamos", nunca de "contrátanos ahora". El valor de la guía es el marketing.</p>
+          <p><strong>Cierre:</strong> frase motivadora sobre la importancia de la presencia digital para su negocio.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTAS DE PRODUCCION -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number negro">P</div>
+          <div class="card-title-wrap">
+            <h3>Notas de producción</h3>
+            <div class="subtitle">Diseño · formato · tono</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Longitud y formato</div>
+        <div class="content-block">
+          <p><strong>Longitud total estimada:</strong> 22-24 páginas (formato A4, tipografía legible).</p>
+          <p><strong>Formato de entrega:</strong> PDF descargable (optimizado para pantalla e impresión). Peso máximo: 5MB. Nombre: <code>ohwow-guia-elegir-agencia-web-2026.pdf</code>.</p>
+        </div>
+
+        <div class="inner-section-title">Elementos de diseño recurrentes</div>
+        <div class="content-block">
+          <ul>
+            <li>Header con logo Oh Wow! sutil en cada página</li>
+            <li>Colores de marca: <strong>Lima #c8f135</strong> para highlights y call-outs, <strong>Negro #1c1c1c</strong> para texto, <strong>Rosa #e85d8a</strong> para alertas/red flags, <strong>Beige #f5f0eb</strong> para fondo</li>
+            <li>Tipografía clara y profesional, tamaño mínimo 11pt</li>
+            <li>Iconos para cada tipo de call-out (tip, alerta, checklist, dato)</li>
+            <li>Cada capítulo empieza en página nueva</li>
+            <li>Footer con URL de Oh Wow! y número de página</li>
+          </ul>
+        </div>
+
+        <div class="inner-section-title">Tono general</div>
+        <div class="content-block">
+          <ul>
+            <li>Experto pero accesible</li>
+            <li>Honesto, incluso cuando eso signifique decir "quizá no necesitas una agencia"</li>
+            <li>Sin jerga técnica innecesaria (y cuando se use, se explica)</li>
+            <li>El lector debe sentir que alguien con experiencia le está dando <strong>consejo de amigo</strong>, no vendiéndole algo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /pane-estructura -->
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- TAB 2: LANDING PAGE                                              -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <div class="section-pane" id="pane-landing">
+
+    <div class="section-intro">
+      <h3>🎯 Landing page de captura</h3>
+      <p>Copy completo para la página de descarga del lead magnet. 10 secciones secuenciadas desde el headline hasta la nota de privacidad RGPD, pasando por el problema, beneficios, preview de capítulos, social proof, FAQ y bonus incluido.</p>
+    </div>
+
+    <div class="global-actions no-print">
+      <button class="btn-action" onclick="openAll('pane-landing')">Expandir todo</button>
+      <button class="btn-action" onclick="closeAll('pane-landing')">Colapsar todo</button>
+    </div>
+
+    <!-- HEADLINES -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number rosa">1</div>
+          <div class="card-title-wrap">
+            <h3>Headline &mdash; 3 opciones</h3>
+            <div class="subtitle">Directa · Metáfora · Provocativa con dato</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="option">
+          <div class="option-label">Opción A — Directa y protectora</div>
+          <div class="option-text">Vas a contratar una agencia web. Esta guía puede ahorrarte 5.000 € y 6 meses de dolores de cabeza.</div>
+        </div>
+        <div class="option ai">
+          <div class="option-label">Opción B — Metáfora inesperada</div>
+          <div class="option-text">Elegir agencia web es como elegir cirujano para tu negocio: no lo haces por el precio del bisturí.</div>
+          <div class="option-sub"><strong>Subtexto visual:</strong> tu web es el cuerpo vivo de tu negocio. Merece alguien que sepa lo que hace.</div>
+        </div>
+        <div class="option">
+          <div class="option-label">Opción C — Provocativa con dato</div>
+          <div class="option-text">7 de cada 10 PyMEs se arrepienten de su primera agencia web. Esta guía gratuita te pone en el otro 30%.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBHEADLINE -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">2</div>
+          <div class="card-title-wrap">
+            <h3>Subheadline</h3>
+            <div class="subtitle">Anti-ansiedad · accesible</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="option">
+          <div class="option-text">No necesitas saber de tecnología. Solo necesitas saber qué preguntas hacer.</div>
+        </div>
+        <div class="content-block">
+          <strong>Texto de apoyo:</strong> Una guía práctica de 24 páginas para dueños de negocio que quieren una web que funcione — sin rodeos, sin jerga y sin sorpresas desagradables.
+        </div>
+      </div>
+    </div>
+
+    <!-- PROBLEMA -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">3</div>
+          <div class="card-title-wrap">
+            <h3>Sección de problema</h3>
+            <div class="subtitle">Identificación emocional · 5 situaciones</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="content-block">
+          <p><strong>Elegir una agencia de diseño web es como...</strong></p>
+          <p>...entrar en un restaurante donde todos los platos suenan increíbles pero no puedes probar nada antes de pagar.</p>
+          <p><strong>¿Te suena alguna de estas situaciones?</strong></p>
+          <ul>
+            <li>Has pedido 3 presupuestos y van de 800 € a 12.000 €. No entiendes por qué.</li>
+            <li>Cada agencia dice que es "la mejor" pero no sabes cómo comprobarlo.</li>
+            <li>Tu cuñado te dice que lo hace un amigo por 500 € con Wix. Tu instinto dice que no, pero no sabes explicar por qué.</li>
+            <li>La última vez que contrataste a alguien para tu web, el proyecto tardó el doble y quedó a medias.</li>
+            <li>Sientes que si preguntas demasiado parecerás "difícil" o "que no sabes".</li>
+          </ul>
+          <p><strong>La realidad:</strong> No es que no sepas elegir. Es que nadie te ha enseñado los criterios correctos.</p>
+          <p><em>Hasta ahora.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BENEFICIOS -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">4</div>
+          <div class="card-title-wrap">
+            <h3>Qué vas a aprender &mdash; 8 beneficios</h3>
+            <div class="subtitle">Resultado concreto por capítulo</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="content-block">
+          <p><strong>Después de leer esta guía, vas a:</strong></p>
+          <ol>
+            <li><strong>Saber si realmente necesitas una web nueva</strong> (o si con optimizar la que tienes es suficiente) — para no gastar dinero que no necesitas gastar.</li>
+            <li><strong>Entender la diferencia real entre freelance, agencia boutique y page builder</strong> — y cuál encaja con TU proyecto y TU presupuesto.</li>
+            <li><strong>Tener claro qué debe incluir una web profesional en 2026</strong> — para que nadie te venda humo tecnológico ni te deje sin lo básico.</li>
+            <li><strong>Evaluar un portfolio como un profesional</strong> — mirando resultados, no solo diseño bonito.</li>
+            <li><strong>Hacer las 10 preguntas que separan a una agencia seria de una chapucera</strong> — imprimir la lista y llevarla a cada reunión.</li>
+            <li><strong>Conocer los rangos reales de precios en España</strong> — para que ningún presupuesto te pille desprevenido.</li>
+            <li><strong>Detectar las red flags antes de firmar nada</strong> — las señales de alarma que los que ya han tenido malas experiencias conocen demasiado bien.</li>
+            <li><strong>Tener un checklist listo para usar</strong> — un documento práctico para comparar agencias lado a lado.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- PREVIEW CAPITULOS -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">5</div>
+          <div class="card-title-wrap">
+            <h3>Preview de capítulos &mdash; Índice como beneficio</h3>
+            <div class="subtitle">Tabla con "lo que resuelve cada capítulo"</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <table class="data-table">
+          <thead><tr><th>#</th><th>Capítulo</th><th>Lo que resuelve</th></tr></thead>
+          <tbody>
+            <tr><td>01</td><td>¿Realmente necesitas una nueva web?</td><td>Deja de dudar. Un test rápido te dice si es el momento.</td></tr>
+            <tr><td>02</td><td>Freelance vs agencia vs DIY</td><td>Descubre qué tipo de proveedor necesita tu proyecto (no todos necesitan una agencia).</td></tr>
+            <tr><td>03</td><td>Qué debe tener tu web en 2026</td><td>La lista que tu futuro proveedor debería cumplir sí o sí.</td></tr>
+            <tr><td>04</td><td>Cómo leer un portfolio</td><td>Deja de mirar lo bonito y empieza a mirar lo que importa.</td></tr>
+            <tr><td>05</td><td>Las 10 preguntas imprescindibles</td><td>Imprímelas. Llévalas a cada reunión. Cambiarán la conversación.</td></tr>
+            <tr><td>06</td><td>Presupuesto sin sorpresas</td><td>Rangos reales, costes ocultos, y cómo calcular tu ROI.</td></tr>
+            <tr><td>07</td><td>Red flags de agencias</td><td>Las señales que ojalá alguien te hubiera contado antes.</td></tr>
+            <tr><td>08</td><td>Checklist final + próximo paso</td><td>Todo resumido en una hoja para tomar la mejor decisión.</td></tr>
+          </tbody>
+        </table>
+        <div class="callout tip" style="margin-top:14px">
+          <strong>24 páginas. Sin relleno. Solo lo que necesitas saber.</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOCIAL PROOF -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">6</div>
+          <div class="card-title-wrap">
+            <h3>Social proof (placeholders)</h3>
+            <div class="subtitle">Contador · testimonios · badges</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Sección A — Contador de descargas</div>
+        <div class="callout dato">
+          <strong>[+2.500] dueños de negocio ya han descargado la guía</strong>
+          <br><em>Nota: activar contador real cuando se alcancen las primeras 100 descargas. Hasta entonces, omitir esta sección.</em>
+        </div>
+
+        <div class="inner-section-title">Sección B — Testimonios (recopilar post-lanzamiento)</div>
+        <div class="content-block">
+          <p><strong>Placeholder 1:</strong> <em>"Ojalá hubiera leído esto antes de contratar a mi primera agencia. Me habría ahorrado 3.000 € y medio año."</em><br>— [Nombre], [Tipo de negocio], [Ciudad]</p>
+          <p><strong>Placeholder 2:</strong> <em>"La parte de presupuestos me abrió los ojos. Ahora sé exactamente qué preguntar y por qué."</em><br>— [Nombre], [Tipo de negocio], [Ciudad]</p>
+          <p><strong>Placeholder 3:</strong> <em>"Se la pasé a un amigo que estaba a punto de firmar con una agencia. Después de leerla, hizo las preguntas del capítulo 5. La agencia no supo contestar. Cambió de proveedor."</em><br>— [Nombre], [Tipo de negocio], [Ciudad]</p>
+        </div>
+
+        <div class="inner-section-title">Sección C — Logos / badges (opcional)</div>
+        <div class="cta-list">
+          <span class="cta-pill">Logo Oh Wow!</span>
+          <span class="cta-pill">"Guía actualizada a 2026"</span>
+          <span class="cta-pill">"Basada en +100 proyectos web reales"</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">7</div>
+          <div class="card-title-wrap">
+            <h3>FAQ &mdash; 5 preguntas frecuentes</h3>
+            <div class="subtitle">Objeciones resueltas · tono transparente</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="content-block">
+          <p><strong>¿Es realmente gratis? ¿Cuál es el truco?</strong><br>
+          Sí, es 100% gratis. El único "truco" es que te pedimos tu email para enviártela y, durante los siguientes días, te mandaremos algunos emails con consejos extra (que también son gratis y puedes cancelar cuando quieras). Creemos que si la guía te resulta útil, cuando necesites una agencia, nos tendrás en mente. Así de simple.</p>
+        </div>
+        <div class="content-block">
+          <p><strong>¿Cuánto tiempo lleva leerla?</strong><br>
+          Unos 20-25 minutos de lectura tranquila. Está diseñada para que la leas de una sentada o capítulo a capítulo según te interese. Incluye checklists que puedes imprimir y usar por separado.</p>
+        </div>
+        <div class="content-block">
+          <p><strong>¿Para quién es esta guía?</strong><br>
+          Para dueños de PyMEs y emprendedores en España que saben que necesitan una web (nueva o rediseñada) pero no saben cómo elegir al proveedor correcto. No necesitas saber de tecnología, diseño ni programación.</p>
+        </div>
+        <div class="content-block">
+          <p><strong>¿Necesito tener un presupuesto grande para que me sea útil?</strong><br>
+          No. La guía cubre desde opciones de bajo presupuesto (page builders, freelances) hasta proyectos más ambiciosos. Lo importante es que sepas qué puedes esperar en cada rango de inversión, sea cual sea el tuyo.</p>
+        </div>
+        <div class="content-block">
+          <p><strong>Ya tengo web. ¿Me sirve igualmente?</strong><br>
+          Absolutamente. El capítulo 1 incluye un auto-diagnóstico para evaluar si tu web actual necesita un rediseño o solo ajustes. Y si decides que necesitas un cambio, el resto de la guía te prepara para elegir bien.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number rosa">8</div>
+          <div class="card-title-wrap">
+            <h3>CTA &mdash; Formulario de descarga</h3>
+            <div class="subtitle">Texto · campos · 3 variantes de botón</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Texto pre-formulario</div>
+        <div class="option">
+          <div class="option-text">Descarga la guía gratuita y toma la mejor decisión para tu negocio.</div>
+        </div>
+
+        <div class="inner-section-title">Campos del formulario</div>
+        <div class="content-block">
+          <ul>
+            <li><strong>Nombre</strong> — campo de texto · placeholder: <em>"Tu nombre"</em></li>
+            <li><strong>Email</strong> — campo de email · placeholder: <em>"tu@email.com"</em></li>
+          </ul>
+        </div>
+
+        <div class="inner-section-title">Texto del botón &mdash; 3 opciones</div>
+        <div class="cta-list">
+          <span class="cta-pill">Quiero la guía gratuita</span>
+          <span class="cta-pill">Enviadme la guía</span>
+          <span class="cta-pill">Descargar guía ahora</span>
+        </div>
+        <div class="callout tip">
+          <span class="callout-label">💡 Recomendación</span>
+          <strong>Opción 1</strong> para test inicial. Color del botón: Lima (#c8f135) con texto Negro (#1c1c1c).
+        </div>
+
+        <div class="inner-section-title">Nota de privacidad (RGPD)</div>
+        <div class="content-block">
+          <em>Respetamos tu privacidad. Solo usaremos tu email para enviarte la guía y algunos consejos extra (máximo 5 emails). Puedes darte de baja en cualquier momento con un clic. Cumplimos con el RGPD. Sin spam, sin vender tus datos.</em>
+        </div>
+      </div>
+    </div>
+
+    <!-- BONUS -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">9</div>
+          <div class="card-title-wrap">
+            <h3>Bonus por descarga &mdash; Plantilla de comparación</h3>
+            <div class="subtitle">Incentivo adicional · Excel/Sheets editable</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="content-block">
+          <p><strong>BONUS INCLUIDO:</strong> Junto con la guía recibirás nuestra <strong>Plantilla de Comparación de Agencias</strong> — un documento editable (Google Sheets / Excel) donde puedes:</p>
+          <ul>
+            <li>Evaluar hasta 5 agencias lado a lado</li>
+            <li>Puntuar cada una en los 8 criterios clave de la guía</li>
+            <li>Ver automáticamente cuál obtiene mejor puntuación total</li>
+            <li>Anotar las respuestas a las 10 preguntas del capítulo 5</li>
+          </ul>
+          <p>Es la misma plantilla que usamos internamente cuando un cliente nos pide una segunda opinión sobre otra agencia. Ahora es tuya.</p>
+        </div>
+        <div class="callout tip">
+          <span class="callout-label">CTA del bonus</span>
+          <strong>La guía te enseña qué evaluar. La plantilla te ayuda a hacerlo.</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTAS IMPLEMENTACION -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number negro">10</div>
+          <div class="card-title-wrap">
+            <h3>Notas de implementación técnica</h3>
+            <div class="subtitle">URL · herramienta · tracking · email integration</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="content-block">
+          <p><strong>URL sugerida:</strong> <code>agencia.ohwow.es/guia-elegir-agencia-web</code></p>
+          <p><strong>Herramienta:</strong> Landing page en Elementor (consistente con el stack actual).</p>
+          <p><strong>Integración de email:</strong> formulario conectado a la herramienta de email marketing (Mailchimp / ActiveCampaign). Tag automático: <code>lead-magnet-guia-agencia</code>.</p>
+        </div>
+
+        <div class="inner-section-title">Página de gracias post-descarga</div>
+        <div class="content-block">
+          <ul>
+            <li><strong>Mensaje:</strong> "Tu guía está en camino. Revisa tu bandeja de entrada (y la carpeta de spam, por si acaso)."</li>
+            <li>Enlace de descarga directo como backup</li>
+            <li>CTA secundario: "Mientras esperas, conoce nuestro trabajo" → enlace a portfolio de Oh Wow!</li>
+          </ul>
+        </div>
+
+        <div class="inner-section-title">Pixel / tracking</div>
+        <div class="content-block">
+          <ul>
+            <li>Evento de conversión en el envío del formulario</li>
+            <li>Facebook Pixel + Google Ads conversion (si se activan campañas de pago)</li>
+            <li>Google Analytics 4: evento personalizado <code>lead_magnet_download</code></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /pane-landing -->
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- TAB 3: SECUENCIA DE EMAILS                                       -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <div class="section-pane" id="pane-emails">
+
+    <div class="section-intro">
+      <h3>✉️ Secuencia de nurturing &mdash; 5 emails en 10 días</h3>
+      <p>Secuencia completa tras descargar la guía. Cada email con asunto A/B, preview text, tono objetivo, cuerpo íntegro, CTAs y métrica objetivo. Segmento: <code>lead-magnet-guia-agencia</code>. Remitente: <code>Oh Wow! &lt;hola@agencia.ohwow.es&gt;</code>.</p>
+    </div>
+
+    <div class="global-actions no-print">
+      <button class="btn-action" onclick="openAll('pane-emails')">Expandir todo</button>
+      <button class="btn-action" onclick="closeAll('pane-emails')">Colapsar todo</button>
+    </div>
+
+    <!-- RESUMEN SECUENCIA -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number negro">Σ</div>
+          <div class="card-title-wrap">
+            <h3>Resumen de la secuencia completa</h3>
+            <div class="subtitle">Timeline · asuntos · objetivos</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <table class="data-table">
+          <thead><tr><th>Email</th><th>Día</th><th>Asunto principal</th><th>Objetivo</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1</strong></td><td>Inmediato</td><td>Entrega de guía</td><td>Entregar valor, establecer expectativas</td></tr>
+            <tr><td><strong>2</strong></td><td>Día 2</td><td>Tip del Cap. 3</td><td>Educar, demostrar expertise</td></tr>
+            <tr><td><strong>3</strong></td><td>Día 4</td><td>Red flags</td><td>Generar confianza por honestidad</td></tr>
+            <tr><td><strong>4</strong></td><td>Día 7</td><td>Caso real</td><td>Inspirar con resultados reales</td></tr>
+            <tr><td><strong>5</strong></td><td>Día 10</td><td>CTA suave</td><td>Abrir la puerta a conversación</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- EMAIL 1 -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">1</div>
+          <div class="card-title-wrap">
+            <h3>Email 1 &mdash; Entrega de la guía</h3>
+            <div class="subtitle">Inmediato tras formulario · cálido, breve</div>
+          </div>
+        </div>
+        <div class="card-meta-pills"><span class="meta-pill lima">Open &gt;60%</span><span class="meta-pill">Click &gt;40%</span></div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Asuntos A/B</div>
+        <div class="option">
+          <div class="option-label">Asunto A</div>
+          <div class="option-text">Tu guía está aquí: cómo elegir agencia web sin sustos</div>
+        </div>
+        <div class="option">
+          <div class="option-label">Asunto B</div>
+          <div class="option-text">[Nombre], tu guía para elegir agencia web te espera</div>
+        </div>
+
+        <div class="inner-section-title">Preview text · Tono</div>
+        <div class="content-block">
+          <p><strong>Preview text:</strong> 24 páginas de lo que nadie te cuenta antes de contratar.</p>
+          <p><strong>Tono:</strong> Cálido, profesional, breve. El protagonista es la guía, no nosotros.</p>
+        </div>
+
+        <div class="inner-section-title">Cuerpo completo del email</div>
+        <div class="email-wrap">
+          <div class="email-meta">
+            <span><strong>De:</strong> Oh Wow! &lt;hola@agencia.ohwow.es&gt;</span>
+            <span><strong>Trigger:</strong> 0 min</span>
+          </div>
+          <div class="email-subject">Tu guía está aquí: cómo elegir agencia web sin sustos</div>
+          <div class="email-preview">24 páginas de lo que nadie te cuenta antes de contratar.</div>
+          <div class="email-body">Hola [Nombre],
+
+Gracias por descargar "La Guía Definitiva para Elegir tu Agencia de Diseño Web".
+
+Aquí la tienes:
+
+<a href="#" class="btn-inline">📥 Descargar mi guía (PDF)</a>
+<code>agencia.ohwow.es/descargar/guia-elegir-agencia-web-2026.pdf</code>
+
+Dentro vas a encontrar:
+
+• Un test rápido para saber si realmente necesitas una web nueva (Capítulo 1)
+• Las 10 preguntas que deberías hacer en cualquier reunión con una agencia (Capítulo 5)
+• Los rangos reales de precios en España en 2026, sin adornos (Capítulo 6)
+• Un checklist final que puedes imprimir y llevar a cada reunión (Capítulo 8)
+
+<strong>Un consejo:</strong> no intentes leerlo todo de golpe si no tienes tiempo. Los capítulos 5 y 7 (preguntas y red flags) son los que más impacto inmediato tienen si estás en pleno proceso de búsqueda.
+
+Durante los próximos días te enviaré 4 emails con contenido extra que complementa la guía — tips prácticos, red flags comunes y un caso real. Todo gratuito. Si en algún momento no te interesa, el enlace de baja está siempre al final del email.
+
+Un saludo,
+
+El equipo de Oh Wow!
+agencia.ohwow.es
+
+<strong>P.D.</strong> También te hemos incluido la Plantilla de Comparación de Agencias (archivo Excel adjunto o segundo enlace). Es la herramienta que usamos internamente para evaluar proveedores. Ahora es tuya.</div>
+        </div>
+
+        <div class="inner-section-title">CTAs</div>
+        <div class="content-block">
+          <p><strong>CTA principal:</strong> Botón de descarga del PDF.</p>
+          <p><strong>CTA secundario:</strong> Enlace a la plantilla de comparación.</p>
+          <p><strong>URL:</strong> <code>agencia.ohwow.es/descargar/guia-elegir-agencia-web-2026.pdf</code></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 2 -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">2</div>
+          <div class="card-title-wrap">
+            <h3>Email 2 &mdash; Tip del Capítulo 3</h3>
+            <div class="subtitle">Día 2 · educativo, cero venta</div>
+          </div>
+        </div>
+        <div class="card-meta-pills"><span class="meta-pill lima">Open &gt;45%</span><span class="meta-pill">Click &gt;10%</span></div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Asuntos A/B</div>
+        <div class="option">
+          <div class="option-label">Asunto A</div>
+          <div class="option-text">5 cosas que tu web debería tener en 2026 (y que muchas agencias ignoran)</div>
+        </div>
+        <div class="option">
+          <div class="option-label">Asunto B</div>
+          <div class="option-text">Tu futura web necesita esto. Sin excepciones.</div>
+        </div>
+
+        <div class="inner-section-title">Preview text · Tono</div>
+        <div class="content-block">
+          <p><strong>Preview text:</strong> No es lo mismo una web bonita que una web que funciona.</p>
+          <p><strong>Tono:</strong> Educativo, directo, generoso con el contenido. Cero venta.</p>
+        </div>
+
+        <div class="inner-section-title">Cuerpo completo del email</div>
+        <div class="email-wrap">
+          <div class="email-meta">
+            <span><strong>De:</strong> Oh Wow! &lt;hola@agencia.ohwow.es&gt;</span>
+            <span><strong>Trigger:</strong> 48h después del Email 1</span>
+          </div>
+          <div class="email-subject">5 cosas que tu web debería tener en 2026 (y que muchas agencias ignoran)</div>
+          <div class="email-preview">No es lo mismo una web bonita que una web que funciona.</div>
+          <div class="email-body">Hola [Nombre],
+
+¿Has tenido tiempo de echar un vistazo a la guía? Si no, no pasa nada — este email funciona por sí solo.
+
+Hoy quiero hablarte de algo que vemos constantemente: webs que se ven bien pero que no trabajan para el negocio. Es la diferencia entre una web decorativa y una web funcional.
+
+En el Capítulo 3 de la guía hablamos de todo lo que una web profesional debería incluir en 2026. Aquí van los 5 puntos que más sorprenden a nuestros clientes cuando los descubren:
+
+<strong>1. Velocidad de carga inferior a 2,5 segundos</strong>
+No es un capricho técnico. Google penaliza las webs lentas en el ranking, y los usuarios las abandonan. Herramienta gratuita para comprobarlo: PageSpeed Insights (pagespeed.web.dev).
+
+<strong>2. Diseño mobile-first (no "también funciona en móvil")</strong>
+El 65% del tráfico en España viene del móvil. Tu web debería diseñarse primero para móvil y después adaptarse a escritorio, no al revés. Si tu agencia te enseña los diseños solo en pantalla grande, pregunta por la versión móvil.
+
+<strong>3. SEO básico desde el día 1</strong>
+Estructura de URLs limpia, meta titles y descriptions en cada página, textos alternativos en imágenes, schema markup. Si la agencia te dice que "el SEO se hace después", desconfía. Es como construir una casa y poner los cimientos al final.
+
+<strong>4. Formularios que no dan miedo</strong>
+¿Cuántos campos tiene tu formulario de contacto? Si son más de 4, estás perdiendo leads. Nombre, email, mensaje, y como mucho teléfono. Todo lo demás se pregunta después.
+
+<strong>5. Analíticas configuradas desde el lanzamiento</strong>
+Google Analytics 4, Search Console, y eventos de conversión configurados ANTES de lanzar. Si lanzas sin analíticas, estás conduciendo con los ojos cerrados.
+
+<strong>La prueba rápida:</strong> Coge tu web actual (o la de un competidor) y comprueba cuántos de estos 5 puntos cumple. El resultado puede ser revelador.
+
+Si quieres profundizar, el Capítulo 3 de la guía va mucho más a fondo.
+
+Nos vemos en un par de días con algo que te va a interesar: las 3 red flags más comunes que vemos en agencias web.
+
+Un saludo,
+
+El equipo de Oh Wow!</div>
+        </div>
+
+        <div class="inner-section-title">CTA</div>
+        <div class="content-block">
+          <p>Enlace a la guía (por si no la han descargado aún).<br><code>agencia.ohwow.es/descargar/guia-elegir-agencia-web-2026.pdf</code></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 3 -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number rosa">3</div>
+          <div class="card-title-wrap">
+            <h3>Email 3 &mdash; Las 3 red flags más comunes</h3>
+            <div class="subtitle">Día 4 · honesto, casi conspirativo</div>
+          </div>
+        </div>
+        <div class="card-meta-pills"><span class="meta-pill lima">Open &gt;40%</span><span class="meta-pill">Click &gt;8%</span></div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Asuntos A/B</div>
+        <div class="option">
+          <div class="option-label">Asunto A</div>
+          <div class="option-text">Estas 3 señales te dicen que esa agencia no es para ti</div>
+        </div>
+        <div class="option">
+          <div class="option-label">Asunto B</div>
+          <div class="option-text">Antes de firmar con ninguna agencia, lee esto</div>
+        </div>
+
+        <div class="inner-section-title">Preview text · Tono</div>
+        <div class="content-block">
+          <p><strong>Preview text:</strong> Lo que las agencias mediocres esperan que no preguntes.</p>
+          <p><strong>Tono:</strong> Honesto, protector, casi conspirativo ("te voy a contar lo que pasa de verdad"). La honestidad genera confianza masiva.</p>
+        </div>
+
+        <div class="inner-section-title">Cuerpo completo del email</div>
+        <div class="email-wrap">
+          <div class="email-meta">
+            <span><strong>De:</strong> Oh Wow! &lt;hola@agencia.ohwow.es&gt;</span>
+            <span><strong>Trigger:</strong> 48h después del Email 2</span>
+          </div>
+          <div class="email-subject">Estas 3 señales te dicen que esa agencia no es para ti</div>
+          <div class="email-preview">Lo que las agencias mediocres esperan que no preguntes.</div>
+          <div class="email-body">Hola [Nombre],
+
+Hoy vamos a hablar de lo incómodo: las señales de que una agencia no es la adecuada.
+
+En el Capítulo 7 de la guía listamos las red flags más comunes. Pero hay 3 que vemos repetirse tanto que merecen su propio email:
+
+───────────────────────────────
+
+<strong>🚩 RED FLAG 1: Te dan presupuesto sin hacerte preguntas</strong>
+
+Si una agencia te manda un presupuesto después de un email de 3 líneas o una llamada de 10 minutos, algo falla.
+
+Un proyecto web serio requiere entender tu negocio, tu público, tus objetivos y tus limitaciones. Si no preguntan, están presupuestando a ciegas — y tú vas a pagar las consecuencias de esa improvisación.
+
+<strong>La prueba:</strong> En tu primera conversación con una agencia, cuenta cuántas preguntas te hacen sobre tu negocio vs cuántas te hacen sobre tu presupuesto. Si la segunda cifra es mayor, eso te dice cuáles son sus prioridades.
+
+───────────────────────────────
+
+<strong>🚩 RED FLAG 2: No puedes hablar con clientes anteriores</strong>
+
+"Por temas de confidencialidad no podemos darte contactos de clientes."
+
+Esto es, en el 90% de los casos, una excusa. Las agencias con clientes satisfechos tienen al menos 2-3 que están encantados de servir como referencia. Si no pueden ponerte en contacto con nadie, pregúntate por qué.
+
+<strong>La prueba:</strong> Pídelo directamente. "Me gustaría hablar 5 minutos con un cliente que haya terminado un proyecto similar al mío." La reacción te dirá todo.
+
+───────────────────────────────
+
+<strong>🚩 RED FLAG 3: El 100% del pago es por adelantado</strong>
+
+Esto no debería pasar nunca. Una estructura de pago sana divide el proyecto en hitos:
+
+• 30-40% al firmar (para que la agencia pueda arrancar)
+• 30-40% a mitad de proyecto (al aprobar el diseño, por ejemplo)
+• 20-30% al entregar (cuando tú has validado que todo funciona)
+
+Si alguien te pide el 100% antes de empezar, no tienes ninguna palanca si algo sale mal. Y estadísticamente, algo siempre necesita ajustes.
+
+───────────────────────────────
+
+Estas 3 señales por sí solas te pueden ahorrar una mala experiencia. Las otras 7 están en el Capítulo 7 de la guía.
+
+Y una cosa más: que una agencia tenga alguna de estas red flags no significa necesariamente que sea mala. Pero sí significa que deberías investigar más antes de comprometerte.
+
+Nos vemos en 3 días con algo diferente: la historia de cómo una PyME transformó su negocio después de elegir bien.
+
+Un saludo,
+
+El equipo de Oh Wow!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 4 -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number">4</div>
+          <div class="card-title-wrap">
+            <h3>Email 4 &mdash; Caso real: una PyME que eligió bien</h3>
+            <div class="subtitle">Día 7 · narrativo, inspirador</div>
+          </div>
+        </div>
+        <div class="card-meta-pills"><span class="meta-pill lima">Open &gt;35%</span><span class="meta-pill">Click &gt;5%</span></div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Asuntos A/B</div>
+        <div class="option">
+          <div class="option-label">Asunto A</div>
+          <div class="option-text">Cómo una tienda de barrio triplicó sus pedidos online en 4 meses</div>
+        </div>
+        <div class="option">
+          <div class="option-label">Asunto B</div>
+          <div class="option-text">De "mi web no sirve para nada" a 3x en pedidos. Historia real.</div>
+        </div>
+
+        <div class="inner-section-title">Preview text · Tono</div>
+        <div class="content-block">
+          <p><strong>Preview text:</strong> No era magia. Era elegir al equipo correcto y hacer las cosas bien.</p>
+          <p><strong>Tono:</strong> Narrativo, inspirador pero realista. La conexión con Oh Wow! es natural, no forzada. El foco está en el cliente y sus resultados.</p>
+        </div>
+
+        <div class="inner-section-title">Cuerpo completo del email</div>
+        <div class="email-wrap">
+          <div class="email-meta">
+            <span><strong>De:</strong> Oh Wow! &lt;hola@agencia.ohwow.es&gt;</span>
+            <span><strong>Trigger:</strong> 72h después del Email 3</span>
+          </div>
+          <div class="email-subject">Cómo una tienda de barrio triplicó sus pedidos online en 4 meses</div>
+          <div class="email-preview">No era magia. Era elegir al equipo correcto y hacer las cosas bien.</div>
+          <div class="email-body">Hola [Nombre],
+
+Hoy quiero contarte una historia. Es real, aunque he cambiado algunos detalles por privacidad.
+
+<strong>La situación:</strong>
+
+María (nombre ficticio) tiene una tienda de productos gourmet en una ciudad mediana de España. El negocio físico funcionaba, pero su web era básicamente una tarjeta de visita digital: fotos antiguas, ningún producto comprable online, y un formulario de contacto que nadie usaba.
+
+Había contratado un freelance años atrás para hacerle "algo rápido". El resultado era una web que cargaba lento, no se veía bien en el móvil, y no aparecía en Google ni buscando el nombre exacto de la tienda.
+
+María sabía que necesitaba un cambio, pero le daba miedo invertir "mucho" y que volviera a salir mal.
+
+<strong>Lo que hizo diferente esta vez:</strong>
+
+María investigó. Habló con 4 proveedores. Hizo preguntas (parecidas a las del Capítulo 5 de la guía, de hecho). Pidió referencias. Comparó presupuestos con criterio, no solo con el precio.
+
+Al final, eligió una agencia boutique que le hizo muchas preguntas sobre su negocio antes de hablar de diseño. Le propusieron un plan en fases: primero la web corporativa con catálogo, después la tienda online, después SEO local.
+
+<strong>Los resultados (4 meses después del lanzamiento):</strong>
+
+→ Web con tiempo de carga de 1,8 segundos (antes: 7+)
+→ Tienda online activa con 120 productos
+→ Primeras posiciones en Google para búsquedas locales de su categoría
+→ 3 veces más pedidos online que la media anterior
+→ Reducción del 40% en las consultas de "¿estáis abiertos?" (porque ahora la info estaba clara en la web)
+
+Pero lo que más valora María no son los números. Es que ahora tiene un socio digital que le responde en menos de 24 horas, que le explica las cosas sin jerga, y que propone mejoras en vez de esperar a que ella las pida.
+
+<strong>La lección:</strong>
+
+El resultado de María no es extraordinario. Es lo normal cuando eliges bien. El problema es que muchos eligen sin criterio y asumen que "así son las agencias".
+
+No. Así son las agencias equivocadas.
+
+La guía que descargaste está diseñada para que tu proceso de búsqueda se parezca más al de María y menos al de su primera experiencia.
+
+Nos vemos en unos días con el último email de esta serie.
+
+Un saludo,
+
+El equipo de Oh Wow!</div>
+        </div>
+
+        <div class="inner-section-title">CTA</div>
+        <div class="content-block">
+          <p>Ninguno explícito. El email es puro valor narrativo. Si acaso, enlace sutil al portfolio de Oh Wow! en el footer del email (no en el cuerpo).<br><code>agencia.ohwow.es/portfolio</code></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 5 -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number rosa">5</div>
+          <div class="card-title-wrap">
+            <h3>Email 5 &mdash; CTA suave: la puerta abierta</h3>
+            <div class="subtitle">Día 10 · cercano, sin presión real</div>
+          </div>
+        </div>
+        <div class="card-meta-pills"><span class="meta-pill lima">Open &gt;35%</span><span class="meta-pill rosa">Click &gt;8%</span></div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Asuntos A/B</div>
+        <div class="option">
+          <div class="option-label">Asunto A</div>
+          <div class="option-text">Una conversación de 15 minutos (si te apetece)</div>
+        </div>
+        <div class="option">
+          <div class="option-label">Asunto B</div>
+          <div class="option-text">[Nombre], y ahora qué?</div>
+        </div>
+
+        <div class="inner-section-title">Preview text · Tono</div>
+        <div class="content-block">
+          <p><strong>Preview text:</strong> Sin presión. Sin compromiso. Solo una puerta abierta.</p>
+          <p><strong>Tono:</strong> Cercano, sin presión real. Es una invitación, no un cierre de ventas. El lector debe sentir que puede decir "no" sin consecuencias.</p>
+        </div>
+
+        <div class="inner-section-title">Cuerpo completo del email</div>
+        <div class="email-wrap">
+          <div class="email-meta">
+            <span><strong>De:</strong> Oh Wow! &lt;hola@agencia.ohwow.es&gt;</span>
+            <span><strong>Trigger:</strong> 72h después del Email 4</span>
+          </div>
+          <div class="email-subject">Una conversación de 15 minutos (si te apetece)</div>
+          <div class="email-preview">Sin presión. Sin compromiso. Solo una puerta abierta.</div>
+          <div class="email-body">Hola [Nombre],
+
+Este es el último email de la serie sobre la guía. Espero que el contenido te haya resultado útil.
+
+Antes de despedirme, quiero ser transparente contigo.
+
+<strong>Somos Oh Wow!, una agencia de diseño web especializada en WordPress y WooCommerce.</strong> Llevamos años ayudando a PyMEs y emprendedores en España a tener webs que trabajan para su negocio.
+
+La guía que escribimos no habla de nosotros (de hecho, en ningún capítulo nos mencionamos). La escribimos porque estamos cansados de ver a dueños de negocio quemados por malas experiencias con agencias. Y porque creemos que un cliente informado es un mejor cliente — para nosotros y para cualquier agencia seria.
+
+<strong>Ahora, si después de leer la guía tienes claro que necesitas una web nueva y quieres hablar de tu proyecto, aquí tienes una opción:</strong>
+
+<a href="#" class="btn-inline">📞 Reservar una llamada de 15 minutos</a>
+<code>agencia.ohwow.es/contacto</code>
+
+<strong>Qué es esta llamada:</strong>
+
+• 15 minutos por videollamada o teléfono
+• Nos cuentas tu proyecto por encima
+• Te damos una primera orientación: qué necesitas, rango de inversión estimado, y si somos el equipo adecuado para ti (a veces no lo somos, y te lo diremos)
+• Sin compromiso. Literal. No hay "seguimiento comercial" después si no quieres
+
+<strong>Qué NO es esta llamada:</strong>
+
+• No es un pitch de ventas
+• No te vamos a presionar para decidir nada
+• No te vamos a llamar 47 veces si no contestas
+
+Si no es el momento, ningún problema. Guardamos la puerta abierta.
+
+Y si la guía te ha sido útil, te agradeceríamos un pequeño favor: reenvíasela a algún colega o amigo que esté pensando en hacer su web. Cuantos más dueños de negocio elijan bien, mejor para todos.
+
+Gracias por tu tiempo, [Nombre]. Que tu próximo proyecto web sea una experiencia de las buenas.
+
+Un saludo,
+
+El equipo de Oh Wow!
+agencia.ohwow.es
+
+<strong>P.D.</strong> Si tienes cualquier pregunta sobre la guía o sobre tu proyecto, puedes responder directamente a este email. Lo leemos todo.</div>
+        </div>
+
+        <div class="inner-section-title">CTAs</div>
+        <div class="content-block">
+          <p><strong>CTA principal:</strong> Botón de reserva de llamada.</p>
+          <p><strong>CTA secundario:</strong> Responder al email / Reenviar guía a un amigo.</p>
+          <p><strong>URL:</strong> <code>agencia.ohwow.es/contacto</code></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTAS TECNICAS -->
+    <div class="card">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-header-left">
+          <div class="card-number negro">T</div>
+          <div class="card-title-wrap">
+            <h3>Notas técnicas de implementación</h3>
+            <div class="subtitle">Plataforma · A/B · métricas · exit conditions</div>
+          </div>
+        </div>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="inner-section-title">Configuración general</div>
+        <div class="content-block">
+          <ul>
+            <li><strong>Plataforma recomendada:</strong> ActiveCampaign, Mailchimp, o la herramienta que use Oh Wow!</li>
+            <li><strong>Automatización:</strong> Secuencia lineal con delays fijos (no condicional en esta versión)</li>
+            <li><strong>Segmento:</strong> Contactos con tag <code>lead-magnet-guia-agencia</code></li>
+            <li><strong>Horario de envío:</strong> Idealmente entre 9:00 y 11:00 CET (martes a jueves para mejor apertura)</li>
+          </ul>
+        </div>
+
+        <div class="inner-section-title">A/B testing</div>
+        <div class="content-block">
+          <ul>
+            <li>Testear asuntos A vs B en cada email</li>
+            <li>Métrica principal: tasa de apertura (emails 1-4), tasa de clic (email 5)</li>
+            <li>Tamaño de muestra mínimo: 100 contactos por variante antes de declarar ganador</li>
+          </ul>
+        </div>
+
+        <div class="inner-section-title">Métricas objetivo por email</div>
+        <table class="data-table">
+          <thead><tr><th>Email</th><th>Open rate objetivo</th><th>Click rate objetivo</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>&gt;60%</td><td>&gt;40% (descarga)</td></tr>
+            <tr><td>2</td><td>&gt;45%</td><td>&gt;10%</td></tr>
+            <tr><td>3</td><td>&gt;40%</td><td>&gt;8%</td></tr>
+            <tr><td>4</td><td>&gt;35%</td><td>&gt;5%</td></tr>
+            <tr><td>5</td><td>&gt;35%</td><td>&gt;8% (reserva)</td></tr>
+          </tbody>
+        </table>
+
+        <div class="inner-section-title">Exit conditions &amp; post-secuencia</div>
+        <div class="content-block">
+          <ul>
+            <li>Si el contacto reserva una llamada (evento en CRM), sacar de la secuencia automáticamente</li>
+            <li>Si el contacto se da de baja, respetar inmediatamente (RGPD)</li>
+            <li>Después del email 5, el contacto pasa a la lista general de newsletter (con consentimiento previo en el formulario de descarga)</li>
+            <li>Contactos que no reservaron llamada: mover a secuencia de newsletter mensual con contenido de valor</li>
+            <li>Contactos que abrieron 4+ emails pero no hicieron clic en el CTA del email 5: candidatos para retargeting suave (un email adicional a los 30 días con contenido de valor + recordatorio del CTA)</li>
+            <li>Contactos que reservaron llamada: pasar a pipeline de ventas en CRM con contexto de que descargaron la guía</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /pane-emails -->
+
+</div><!-- /main -->
+
+<footer class="footer">
+  Generado por <strong>Agencia Oh Wow!</strong> · <a href="https://agencia.ohwow.es">agencia.ohwow.es</a> · Abril 2026
+</footer>
+
+<script>
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+  document.querySelectorAll('.section-pane').forEach(p => p.classList.toggle('active', p.id === 'pane-' + name));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleCard(headerEl) {
+  headerEl.closest('.card').classList.toggle('open');
+}
+
+function openAll(paneId) {
+  document.querySelectorAll('#' + paneId + ' .card').forEach(c => c.classList.add('open'));
+}
+function closeAll(paneId) {
+  document.querySelectorAll('#' + paneId + ' .card').forEach(c => c.classList.remove('open'));
+}
+
+function exportPDF() {
+  document.querySelectorAll('.card').forEach(c => c.classList.add('open'));
+  window.print();
+}
+</script>
+
+</body>
+</html>

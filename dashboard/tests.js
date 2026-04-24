@@ -268,7 +268,27 @@ window.QA_TESTS = [
     archivo:     "tests/ohwow/2026-04-14-copies-diseno-web/dashboard/creatividades.html"
   },
 
+  // ─── OH WOW! · Infoproducto: Guía Elegir Agencia Web ──────────────────────
+  {
+    proyecto:    "OHWOW",
+    campana:     "Infoproducto — Guía Elegir Agencia Web",
+    campana_id:  "infoproducto-guia-elegir-agencia",
+    tipo:        "dashboard",
+    descripcion: "Pack completo: estructura del PDF (8 caps), landing de captura y secuencia de 5 emails de nurturing",
+    fecha:       "2026-04-14",
+    archivo:     "tests/ohwow/2026-04-14-infoproducto-guia-elegir-agencia/dashboard/index.html"
+  },
+
   // ─── OH WOW! · Propuesta PyME Ecommerce ────────────────────────────────────
+  {
+    proyecto:    "OHWOW",
+    campana:     "Propuesta PyME Ecommerce",
+    campana_id:  "propuesta-pyme-ecommerce",
+    tipo:        "dashboard",
+    descripcion: "Propuesta comercial completa · caso de éxito La Masa Madre · secuencia de seguimiento 3 emails",
+    fecha:       "2026-04-14",
+    archivo:     "tests/ohwow/2026-04-14-propuesta-pyme-ecommerce/dashboard/index.html"
+  },
   {
     proyecto:    "OHWOW",
     campana:     "Propuesta PyME Ecommerce",
@@ -393,7 +413,7 @@ window.QA_TESTS = [
     campana:     "SEO — ¿Cuánto cuesta una página web?",
     campana_id:  "seo-cuanto-cuesta",
     tipo:        "dashboard",
-    descripcion: "Artículo SEO completo con métricas",
+    descripcion: "Artículo SEO completo (~2000 palabras) + brief con keywords y competidores + checklist de publicación",
     fecha:       "2026-04-14",
     archivo:     "tests/ohwow/2026-04-14-seo-cuanto-cuesta-pagina-web/dashboard/index.html"
   },
