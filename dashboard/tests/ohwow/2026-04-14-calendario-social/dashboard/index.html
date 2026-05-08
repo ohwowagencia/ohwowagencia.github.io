@@ -759,14 +759,14 @@
                 <div class="kpi-detail">Post, carrusel, reel, story</div>
             </div>
             <div class="kpi-card">
-                <div class="kpi-label">Slides Higgsfield</div>
-                <div class="kpi-value">13</div>
-                <div class="kpi-detail">6 high 2k + 7 cheap 1k (incl. v2) + 1 reel 4s</div>
+                <div class="kpi-label">Im&aacute;genes generadas</div>
+                <div class="kpi-value">19</div>
+                <div class="kpi-detail">6 high + 7 cheap + 6 A/B modelos + 1 reel</div>
             </div>
             <div class="kpi-card">
-                <div class="kpi-label">Cr&eacute;ditos consumidos</div>
-                <div class="kpi-value">59</div>
-                <div class="kpi-detail">de 5878 &middot; default cheap ahorra <strong style="color:var(--pink);">71%</strong></div>
+                <div class="kpi-label">Cr&eacute;ditos / mes pico</div>
+                <div class="kpi-value">63</div>
+                <div class="kpi-detail">vs 5878 plan ultra &middot; default low 1k <strong style="color:var(--pink);">14&times; m&aacute;s barato</strong></div>
             </div>
         </div>
 
@@ -861,6 +861,38 @@
                     <div class="slide-card"><img src="../sketches/higgsfield/cheap/slide-6-resultado.png" alt="Slide 6 cheap"><div class="slide-card-label"><strong>Resultado</strong> <span class="num">6</span></div></div>
                 </div>
                 <p style="font-size:12px; color:var(--gray-300); margin-top:12px; line-height:1.6;">Slide 4 regenerado con el prompt del <code>produccion-pack.md</code> (3 pares feature/benefit literales) &mdash; <strong style="color:var(--accent);">cero lorem ipsum</strong>. Es la prueba end-to-end del schema production-ready v1.1.</p>
+            </div>
+
+            <!-- Comparativa de modelos image baratos (v1.2) -->
+            <div style="margin-top:32px; padding-top:24px; border-top:1px solid rgba(200,241,53,0.15);">
+                <div class="prod-section-head">
+                    <div>
+                        <h2>Comparativa modelos baratos &mdash; <span class="lima">discover &rarr; curate &rarr; upscale</span></h2>
+                        <p>A/B sobre 6 modelos image cheap con el mismo prompt. Conclusi&oacute;n: <strong>gpt_image_2 quality low resolution 1k = ~0.5 cr</strong> es el nuevo default para fase DISCOVER (14&times; m&aacute;s barato que el high 2k inicial). Solo subir a UPSCALE high 2k para piezas evergreen (hero web, dossier, paid ad).</p>
+                    </div>
+                    <div class="prod-meta">
+                        <div>Total batch: <strong>4.65 cr</strong> / 6 modelos</div>
+                        <div>Avg: <strong>~0.78 cr/img</strong></div>
+                        <div>vs. high 2k: <strong style="color:var(--accent);">14&times; m&aacute;s barato</strong></div>
+                    </div>
+                </div>
+                <div class="slide-grid">
+                    <div class="slide-card"><img src="../sketches/higgsfield/compare-models/01-gpt_image_2-low-1k.png" alt="gpt_image_2 low 1k - tipografia perfecta, paleta correcta"><div class="slide-card-label"><strong>gpt_image_2 low 1k</strong> <span class="num">★★★★★</span></div></div>
+                    <div class="slide-card"><img src="../sketches/higgsfield/compare-models/06-imagegen_2_0-low-1k.png" alt="imagegen_2_0 low 1k - clon visual"><div class="slide-card-label"><strong>imagegen_2_0 low 1k</strong> <span class="num">★★★★★</span></div></div>
+                    <div class="slide-card"><img src="../sketches/higgsfield/compare-models/03-nano_banana_flash-1k.png" alt="nano_banana_flash 1k - rapido y limpio"><div class="slide-card-label"><strong>nano_banana_flash</strong> <span class="num">★★★★★</span></div></div>
+                    <div class="slide-card"><img src="../sketches/higgsfield/compare-models/02-nano_banana.png" alt="nano_banana - tipografia OK, archivo comprimido"><div class="slide-card-label"><strong>nano_banana</strong> <span class="num">★★★★★</span></div></div>
+                    <div class="slide-card"><img src="../sketches/higgsfield/compare-models/05-seedream_v5_lite-basic.png" alt="seedream_v5_lite basic - paleta rosa pastel desviada"><div class="slide-card-label"><strong>seedream_v5_lite</strong> <span class="num" style="background:#fef3c7;color:#92400e;">★★★</span></div></div>
+                    <div class="slide-card"><img src="../sketches/higgsfield/compare-models/04-z_image.png" alt="z_image - tipografia destrozada, texto fragmentado"><div class="slide-card-label"><strong>z_image</strong> <span class="num" style="background:#fee2e2;color:#991b1b;">★ NO</span></div></div>
+                </div>
+                <div style="margin-top:20px; background:rgba(200,241,53,0.08); border-left:3px solid var(--accent); padding:14px 18px; border-radius:6px;">
+                    <p style="font-size:13px; color:var(--white); line-height:1.6;"><strong style="color:var(--accent);">Capacidad mensual con plan ultra (~5878 cr/mes):</strong></p>
+                    <p style="font-size:12px; color:var(--gray-300); line-height:1.7; margin-top:6px;">
+                        Mix recomendado: <strong style="color:var(--white);">9,400 imgs discover</strong> (gpt_image_2 low 1k @0.5 cr) +
+                        <strong style="color:var(--white);">125 upscales premium</strong> (high 2k @7 cr) +
+                        <strong style="color:var(--white);">120 reels</strong> (seedance1_5 4s @2.4 cr) =
+                        ~5,870 cr/mes &middot; <strong style="color:var(--accent);">50&times; m&aacute;s capacidad</strong> que la producci&oacute;n real necesaria de OH WOW! + LON + Jairo.
+                    </p>
+                </div>
             </div>
 
             <!-- Test video reel -->
