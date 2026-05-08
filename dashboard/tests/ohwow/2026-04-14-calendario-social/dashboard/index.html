@@ -760,13 +760,13 @@
             </div>
             <div class="kpi-card">
                 <div class="kpi-label">Slides Higgsfield</div>
-                <div class="kpi-value">6</div>
-                <div class="kpi-detail">Carrusel 25/04 renderizado &middot; production-ready</div>
+                <div class="kpi-value">13</div>
+                <div class="kpi-detail">6 high 2k + 7 cheap 1k (incl. v2) + 1 reel 4s</div>
             </div>
             <div class="kpi-card">
                 <div class="kpi-label">Cr&eacute;ditos consumidos</div>
-                <div class="kpi-value">42</div>
-                <div class="kpi-detail">de 5878 disponibles &middot; ~7 cr&eacute;ditos / slide</div>
+                <div class="kpi-value">59</div>
+                <div class="kpi-detail">de 5878 &middot; default cheap ahorra <strong style="color:var(--pink);">71%</strong></div>
             </div>
         </div>
 
@@ -834,6 +834,33 @@
                 <a href="../produccion-pack.md">Ver produccion-pack.md</a>
                 <a href="../sketches/higgsfield/">Carpeta higgsfield/</a>
                 <a href="../calendario.md">calendario.md (legacy)</a>
+            </div>
+
+            <!-- A/B test: Cheap default vs Premium override -->
+            <div style="margin-top:32px; padding-top:24px; border-top:1px solid rgba(200,241,53,0.15);">
+                <div class="prod-section-head">
+                    <div>
+                        <h2>A/B test &middot; Default barato vs override premium</h2>
+                        <p>Misma pieza 11 generada dos veces para validar el default cost-optimizado de la skill <code>produccion-lista</code> v1.1: <strong>gpt_image_2 medium 1k</strong> (default barato) vs <strong>gpt_image_2 high 2k</strong> (override premium). Conclusi&oacute;n: la calidad visual en feed Instagram es equivalente; el cheap se queda como default.</p>
+                    </div>
+                    <div class="prod-meta">
+                        <div>Premium: <strong>42 cr&eacute;ditos</strong> (7/slide)</div>
+                        <div>Cheap: <strong>12 cr&eacute;ditos</strong> (2/slide)</div>
+                        <div>Ahorro: <strong style="color:var(--accent);">71%</strong></div>
+                        <div>Tama&ntilde;o archivo: <strong>3&times; menor</strong></div>
+                    </div>
+                </div>
+
+                <h3 style="font-size:13px; text-transform:uppercase; letter-spacing:0.6px; color:var(--gray-300); margin:20px 0 12px;">Default barato &mdash; gpt_image_2 medium 1k (12 cr&eacute;ditos)</h3>
+                <div class="slide-grid">
+                    <div class="slide-card"><img src="../sketches/higgsfield/cheap/slide-1-portada.png" alt="Slide 1 cheap"><div class="slide-card-label"><strong>Portada</strong> <span class="num">1</span></div></div>
+                    <div class="slide-card"><img src="../sketches/higgsfield/cheap/slide-2-hero.png" alt="Slide 2 cheap"><div class="slide-card-label"><strong>HERO</strong> <span class="num">2</span></div></div>
+                    <div class="slide-card"><img src="../sketches/higgsfield/cheap/slide-3-prueba-social.png" alt="Slide 3 cheap"><div class="slide-card-label"><strong>Prueba social</strong> <span class="num">3</span></div></div>
+                    <div class="slide-card"><img src="../sketches/higgsfield/cheap/slide-4-beneficios-v2.png" alt="Slide 4 v2 con texto literal del produccion-pack"><div class="slide-card-label"><strong>Beneficios v2</strong> <span class="num">4</span></div></div>
+                    <div class="slide-card"><img src="../sketches/higgsfield/cheap/slide-5-cta.png" alt="Slide 5 cheap"><div class="slide-card-label"><strong>CTA</strong> <span class="num">5</span></div></div>
+                    <div class="slide-card"><img src="../sketches/higgsfield/cheap/slide-6-resultado.png" alt="Slide 6 cheap"><div class="slide-card-label"><strong>Resultado</strong> <span class="num">6</span></div></div>
+                </div>
+                <p style="font-size:12px; color:var(--gray-300); margin-top:12px; line-height:1.6;">Slide 4 regenerado con el prompt del <code>produccion-pack.md</code> (3 pares feature/benefit literales) &mdash; <strong style="color:var(--accent);">cero lorem ipsum</strong>. Es la prueba end-to-end del schema production-ready v1.1.</p>
             </div>
 
             <!-- Test video reel -->
