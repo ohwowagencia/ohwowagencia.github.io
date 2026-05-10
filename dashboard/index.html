@@ -411,12 +411,16 @@ main {
   cursor: pointer;
   transition: var(--transition);
   box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: var(--text);
 }
 
 .recent-card:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow);
 }
+
+.recent-card:hover .recent-card-title { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
 
 .recent-card-meta {
   display: flex;
